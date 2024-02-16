@@ -1,0 +1,15 @@
+.login-page{
+  background-image: linear-gradient(to right, #272539, #1D1A30); 
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card{
+  background-color: #29263C;
+  width:400px;
+  height:500px;
+  border-radius: 1em;
+}
+
