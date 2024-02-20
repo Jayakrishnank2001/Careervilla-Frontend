@@ -1,15 +1,102 @@
-.login-page{
+.login-page {
   background-image: linear-gradient(to right, #272539, #1D1A30); 
-  height: 100vh; 
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-card{
-  background-color: #29263C;
-  width:400px;
-  height:500px;
+.login-card {
+  width: 400px;
+  height: 500px;
   border-radius: 1em;
+  background-color: #272539;
+  border-width: 0.5px;
+  border-color: rgb(32, 32, 32);
+  display: flex; /* Add this line to use Flexbox */
+  flex-direction: column; /* Add this line to make it a column */
+  justify-content: center;
+  align-items: center;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: center;
+  border-radius: 15px;
+  width:250px;
+  overflow: hidden; 
+}
+
+.logo-image {
+  width: 50px;
+  height: auto;
+  text-align: center;
+  border-radius: 1em;
+  margin-left: -19px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+mat-card-title {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+}
+
+.rounded-input {
+  margin-top: 10px;
+  border-radius: 1em;
+  width: 300px;
+  display: flex; /* Add this line to use Flexbox */
+  flex-direction: column; /* Add this line to make it a column */
+}
+
+mat-card-actions button.mat-large-fab1 {
+  width: 300px;
+  font-size: 18px;
+  padding: 15px 30px;
+  background-color: #644DFF;
+  color: white;
+}
+
+.mat-large-fab2 {
+  width:300px;
+  font-size: 14px; /* Adjust the font size as needed */
+  padding: 15px 30px; /* Adjust the padding as needed */
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+mat-raised-button{
+  background-color: #4CAF50;
+}
+
+.button-content {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.google-logo {
+  width: 20px; /* Set the desired width for the logo */
+  height: auto;
+  margin-right: 8px; /* Add spacing between the icon and text */
+}
+
+mat-label{
+  color: white;
+}
+
+mat-form-field input.mat-Input{
+  color: white;
+}

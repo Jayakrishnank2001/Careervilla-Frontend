@@ -1,12 +1,40 @@
 <div class="login-page">
-  <mat-card class="login-card"> 
+  <mat-card class="login-card">
     <mat-card-header>
-      <mat-card-title>ADMIN LOGIN</mat-card-title>
-      <mat-card-subtitle>Start</mat-card-subtitle>
+      <div class="centered-container">
+        <div class="logo">
+          <img src="https://www.careersync.live/_next/image?url=%2Flogo%2Fcareersync.png&w=64&q=75" alt="" class="logo-image">
+          <span class="logo-text">CAREERVILLA</span>
+        </div>
+      </div>
     </mat-card-header>
+    <mat-card-title>
+      ADMIN LOGIN
+    </mat-card-title>
+    <mat-card-content>
+      <div class="rounded-input">
+        <mat-form-field appearance="outline">
+          <mat-label>USERNAME</mat-label>
+          <input matInput class="mat-Input" placeholder="">
+        </mat-form-field>
+      </div>
+      <div class="rounded-input">
+        <mat-form-field appearance="outline">
+          <mat-label>PASSWORD</mat-label>
+          <input matInput class="mat-Input" placeholder="">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-raised-button class="mat-large-fab1">LOGIN</button>
+    </mat-card-actions>
+    <mat-card-actions>
+      <button mat-raised-button class="mat-large-fab2">
+        <div class="button-content">
+          <img src="https://expresswriters.com/wp-content/uploads/2015/09/google-new-logo-450x450.jpg" alt="Google Logo" class="google-logo">
+          <span>SIGN IN WITH GOOGLE</span>
+        </div>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,0 +1,17 @@
+.admin-layout {
+    display: flex;
+    background-color: #242136; 
+    height: 100vh; /* Adjust height as needed */
+  }
+  
+  .sidebar {
+    width: 200px; /* Set your desired sidebar width */
+    padding: 16px;
+    background-color: #1D1A2B; /* Set your desired sidebar background color */
+  }
+  
+  .right-section {
+    flex: 1;
+    padding: 16px;
+  }
+  

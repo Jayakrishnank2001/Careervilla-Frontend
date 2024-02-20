@@ -4,6 +4,7 @@ import { AdminLoginComponent } from "./admin-login/admin-login.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { MaterialModule } from "src/app/material/material.module";
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { MaterialModule } from "src/app/material/material.module";
         AdminHomeComponent,
         AdminLoginComponent,
         AdminUsersComponent,
+        AdminLayoutComponent,
     ],
     imports:[
         AdminRoutingModule,
