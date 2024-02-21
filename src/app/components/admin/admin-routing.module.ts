@@ -1,17 +1,15 @@
 import { RouterModule, Routes } from "@angular/router";
-import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { AdminLoginComponent } from "./admin-login/admin-login.component";
-import { AdminUsersComponent } from "./admin-users/admin-users.component";
 import { NgModule } from "@angular/core";
-
-
-
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { AdminJobseekersComponent } from "./admin-jobseekers/admin-jobseekers.component";
+import { AdminEmployersComponent } from "./admin-employers/admin-employers.component";
 
 const routes: Routes=[
     {
-        path:'home',
+        path:'dashboard',
         title:'Careervilla | Dashboard',
-        component:AdminHomeComponent
+        component:AdminDashboardComponent
     },
     {
         path:'login',
@@ -19,9 +17,14 @@ const routes: Routes=[
         component:AdminLoginComponent
     },
     {
-        path:'users',
-        title:'Careervilla | Users',
-        component:AdminUsersComponent
+        path:'jobseekers',
+        title:'Careervilla | Jobseekers',
+        component:AdminJobseekersComponent
+    },
+    {
+        path: 'employers',
+        title: 'Carrervilla | Employers',
+        component:AdminEmployersComponent
     }
 ]
 
@@ -29,4 +32,5 @@ const routes: Routes=[
     imports:[RouterModule.forChild(routes)],
     exports:[RouterModule]
 })
+    
 export class AdminRoutingModule{}

@@ -1,10 +1,6 @@
-.admin-layout {
-    display: flex;
-    background-color: #242136; 
-    height: 100vh; /* Adjust height as needed */
-  }
-  
+
   .sidebar {
+    height: 95.45vh;
     width: 200px; /* Set your desired sidebar width */
     padding: 16px;
     background-color: #1D1A2B; /* Set your desired sidebar background color */
@@ -14,4 +10,61 @@
     flex: 1;
     padding: 16px;
   }
+
+  mat-form-field{
+    width:600px;
+  }
+
+  mat-label{
+   color:white;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    border-radius: 15px;
+    width:200px;
+    overflow: hidden; 
+  }
+  
+  .logo-image {
+    width: 50px;
+    height: auto;
+    text-align: center;
+    border-radius: 1em;
+    margin-left: -19px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  mat-card-actions button.mat-large-fab1 {
+    margin-top: 30px;
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 30px;
+    background-color: #644DFF;
+    color: rgb(208, 207, 207);
+    border-radius: 1em;
+  }
+
+  mat-nav-list {
+    margin-top: 40px;
+  }
+
+  mat-nav-list a.custom-list-item{
+    color:white;
+  }
+
+  .options{
+    color:rgb(208, 207, 207);
+  }
+  
+
   

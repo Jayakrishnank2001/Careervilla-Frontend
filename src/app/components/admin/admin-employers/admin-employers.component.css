@@ -1,0 +1,5 @@
+.main-class {
+    display: flex;
+    background-color: #242136; 
+    height: 100vh; /* Adjust height as needed */
+  }
