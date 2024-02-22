@@ -1,0 +1,71 @@
+.login-page{
+    display: flex;
+    margin:auto;
+    margin: 40px;
+}
+
+mat-card{
+    margin-left: 100px;
+    margin-top: 80px;
+    box-shadow: none;
+    align-items: center;
+}
+.login-div{
+    margin-left: 20px;
+}
+
+mat-card-actions button.mat-large-fab1 {
+    width: 300px;
+    font-size: 18px;
+    padding: 15px 30px;
+    background-color: #644DFF;
+    color: white;
+    border-radius: 0.5em;
+  }
+  
+  .mat-large-fab2 {
+    width:300px;
+    font-size: 14px; /* Adjust the font size as needed */
+    padding: 15px 30px; /* Adjust the padding as needed */
+    border-radius: 0.5em;
+  }
+
+  .google-logo {
+    width: 20px; 
+    height: auto;
+    border-radius: 50%;
+    margin-right: 8px; 
+  }
+
+  mat-card-content{
+    margin-top: 10px;
+  }
+
+  mat-form-field{
+    width: 300px;
+  }
+
+  .button-content{
+    display: flex;
+  }
+
+  .forgot-password{
+    text-align: end;
+    color: #644DFF;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .register{
+    color: #644DFF;
+    margin-left: 4px;
+  }
+
+  .sign-up{
+    display:flex;
+    height:5px;
+  }
+
+  

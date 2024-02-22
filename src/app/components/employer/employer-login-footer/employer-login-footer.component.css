@@ -1,0 +1,10 @@
+.custom-toolbar{
+    box-shadow: none; /* Remove the default shadow */
+    border-top: 1px solid #e0e0e0; /* Add a border */
+    height: 50px;
+    background-color: white;
+}
+.logo-text{
+    color: black;
+    font-size:small
+}

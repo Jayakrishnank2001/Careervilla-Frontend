@@ -1,4 +1,4 @@
-.login-page{
+.sign-up{
     display: flex;
     margin:auto;
     margin: 40px;
@@ -6,12 +6,9 @@
 
 mat-card{
     margin-left: 100px;
-    margin-top: 80px;
+    margin-top: 40px;
     box-shadow: none;
     align-items: center;
-}
-.login-div{
-    margin-left: 20px;
 }
 
 mat-card-actions button.mat-large-fab1 {
@@ -49,23 +46,19 @@ mat-card-actions button.mat-large-fab1 {
     display: flex;
   }
 
-  .forgot-password{
-    text-align: end;
-    color: #644DFF;
-  }
-
   a{
     text-decoration: none;
   }
 
-  .register{
+  .login{
     color: #644DFF;
     margin-left: 4px;
   }
 
-  .sign-up{
+  .sign-in{
     display:flex;
     height:5px;
+    margin-left:20px;
   }
 
   

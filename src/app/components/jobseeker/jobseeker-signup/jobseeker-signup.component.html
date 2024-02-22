@@ -1,0 +1,59 @@
+<app-jobseeker-nav></app-jobseeker-nav>
+<div class="sign-up">
+    <app-jobseeker-login-layout></app-jobseeker-login-layout>
+    <mat-card>
+        <mat-card-title>
+            Create An Account
+        </mat-card-title>
+        <mat-card-actions>
+            <button mat-raised-button class="mat-large-fab2">
+                <div class="button-content">
+                    <img src="../../../../assets/images/google-logo.jpg" alt="Google Logo" class="google-logo">
+                    <span>Continue with Google</span>
+                </div>
+            </button>
+        </mat-card-actions>
+        <mat-card-content>
+            <div class="rounded-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput class="mat-Input" placeholder="">
+                </mat-form-field>
+            </div>
+            <div class="rounded-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput class="mat-Input" placeholder="">
+                </mat-form-field>
+            </div>
+            <div class="rounded-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email ID</mat-label>
+                    <input matInput class="mat-Input" placeholder="">
+                </mat-form-field>
+            </div>
+            <div class="rounded-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput class="mat-Input" placeholder="">
+                </mat-form-field>
+            </div>
+            <div class="rounded-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput class="mat-Input" placeholder="">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button class="mat-large-fab1">Continue</button>
+        </mat-card-actions>
+    </mat-card>
+    <div class="sign-in">
+        <span>Already Registered?</span>
+        <a routerLink="/jobseeker/login">
+            <p class="login">Login</p>
+        </a>
+    </div>
+</div>
+<app-jobseeker-login-footer></app-jobseeker-login-footer>

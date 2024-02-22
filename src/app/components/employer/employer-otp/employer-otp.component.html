@@ -1,0 +1,26 @@
+<app-employer-nav></app-employer-nav>
+<div class="otp-page">
+    <app-employer-login-layout></app-employer-login-layout>
+    <mat-card>
+        <mat-card-title>
+          Enter OTP
+        </mat-card-title>
+        <mat-card-content>
+          <div class="rounded-input">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter OTP</mat-label>
+              <input matInput class="mat-Input" placeholder="">
+            </mat-form-field>
+          </div>
+          <a routerLink="" ><p class="resend-otp">Resend OTP?</p></a>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button class="mat-large-fab1">SUBMIT</button>
+        </mat-card-actions>
+    </mat-card>
+    <div class="sign-up">
+        <span>New to CARRERVILLA?</span>
+        <a routerLink="/employer/signup" ><p class="register">Register</p></a>
+    </div>
+</div>
+<app-employer-login-footer></app-employer-login-footer>
