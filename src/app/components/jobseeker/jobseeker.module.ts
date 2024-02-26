@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { JobseekerRoutingModule } from "./jobseeker-routing.module";
 import { JobseekerLoginComponent } from './jobseeker-login/jobseeker-login.component';
 import { JobseekerNavComponent } from './jobseeker-nav/jobseeker-nav.component';
@@ -8,7 +9,7 @@ import { JobseekerLoginLayoutComponent } from './jobseeker-login-layout/jobseeke
 import { JobseekerOtpComponent } from './jobseeker-otp/jobseeker-otp.component';
 import { JobseekerLoginFooterComponent } from './jobseeker-login-footer/jobseeker-login-footer.component';
 import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component';
-
+import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.component';
 
 
 @NgModule({
@@ -19,11 +20,13 @@ import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.co
         JobseekerLoginLayoutComponent,
         JobseekerOtpComponent,
         JobseekerLoginFooterComponent,
-        JobseekerSignupComponent
+        JobseekerSignupComponent,
+        JobseekerHomeComponent
     ],
     imports: [
         JobseekerRoutingModule,
         MaterialModule,
-    ]
+        CommonModule
+    ],
 })
 export class JobseekerModule { }

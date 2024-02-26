@@ -5,8 +5,10 @@ import { MaterialModule } from "src/app/material/material.module";
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminJobseekersComponent } from './admin-jobseekers/admin-jobseekers.component';
-import { AdminTableComponent } from "../common/admin-table/admin-table.component";
 import { AdminEmployersComponent } from "./admin-employers/admin-employers.component";
+import { ReactiveFormsModule } from "@angular/forms";
+import { AdminTableComponent } from './admin-table/admin-table.component';
+
 
 @NgModule({
     declarations:[
@@ -15,11 +17,13 @@ import { AdminEmployersComponent } from "./admin-employers/admin-employers.compo
         AdminDashboardComponent,
         AdminJobseekersComponent,
         AdminEmployersComponent,
-        AdminTableComponent
+        AdminTableComponent,
+        
     ],
     imports:[
         AdminRoutingModule,
-        MaterialModule
+        MaterialModule,
+        ReactiveFormsModule,
     ]
 })
 export class AdminModule{}

@@ -47,4 +47,8 @@ mat-card-actions button.mat-large-fab1 {
     height:5px;
   }
 
+  .otp-container {
+    display: flex;
+    justify-content: space-between;
+  }
   

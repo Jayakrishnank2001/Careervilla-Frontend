@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./jobseeker-login.component.css']
 })
 export class JobseekerLoginComponent {
+  
 
 }

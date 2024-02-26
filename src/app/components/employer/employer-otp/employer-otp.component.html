@@ -12,7 +12,12 @@
               <input matInput class="mat-Input" placeholder="">
             </mat-form-field>
           </div>
-          <a routerLink="" ><p class="resend-otp">Resend OTP?</p></a>
+          <div class="otp-container">
+            <p class="otp-timer" [ngStyle]="{'color': otpTimer === 0 ? 'red' : 'black'}">
+              Time left: {{ otpTimer === 0 ? 'Time expired' : otpTimer + ' seconds' }}
+            </p>
+            <a routerLink="/employer/forgot-otp" (click)="resendOTP()" class="resend-otp">Resend OTP?</a>
+          </div>
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button class="mat-large-fab1">SUBMIT</button>

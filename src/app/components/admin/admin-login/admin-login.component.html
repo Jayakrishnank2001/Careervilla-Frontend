@@ -12,31 +12,33 @@
     <mat-card-title>
       ADMIN LOGIN
     </mat-card-title>
-    <mat-card-content>
-      <div class="rounded-input">
-        <mat-form-field appearance="outline">
-          <mat-label>USERNAME</mat-label>
-          <input matInput class="mat-Input" placeholder="">
-        </mat-form-field>
-      </div>
-      <div class="rounded-input">
-        <mat-form-field appearance="outline">
-          <mat-label>PASSWORD</mat-label>
-          <input matInput class="mat-Input" placeholder="">
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button class="mat-large-fab1">LOGIN</button>
-    </mat-card-actions>
-    <mat-card-actions>
-      <button mat-raised-button class="mat-large-fab2">
-        <div class="button-content">
-          <img src="../../../../assets/images/google-logo.jpg" alt="Google Logo"
-            class="google-logo">
-          <span>SIGN IN WITH GOOGLE</span>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+        <div class="rounded-input">
+          <mat-form-field appearance="outline">
+            <mat-label>USERNAME</mat-label>
+            <input matInput class="mat-Input" formControlName="username" placeholder="" required="">
+          </mat-form-field>
         </div>
-      </button>
-    </mat-card-actions>
+        <div class="rounded-input">
+          <mat-form-field appearance="outline">
+            <mat-label>PASSWORD</mat-label>
+            <input matInput class="mat-Input" formControlName="password" type="password" placeholder="" required="">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="mat-large-fab1" type="submit">LOGIN</button>
+      </mat-card-actions>
+      <mat-card-actions>
+        <button mat-raised-button class="mat-large-fab2">
+          <div class="button-content">
+            <img src="../../../../assets/images/google-logo.jpg" alt="Google Logo"
+              class="google-logo">
+            <span>SIGN IN WITH GOOGLE</span>
+          </div>
+        </button>
+      </mat-card-actions>
+    </form>
   </mat-card>
 </div>
