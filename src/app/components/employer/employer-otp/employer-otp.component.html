@@ -1,31 +1,35 @@
 <app-employer-nav></app-employer-nav>
 <div class="otp-page">
-    <app-employer-login-layout></app-employer-login-layout>
+  <app-employer-login-layout></app-employer-login-layout>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card>
-        <mat-card-title>
-          Enter OTP
-        </mat-card-title>
-        <mat-card-content>
-          <div class="rounded-input">
-            <mat-form-field appearance="outline">
-              <mat-label>Enter OTP</mat-label>
-              <input matInput class="mat-Input" placeholder="">
-            </mat-form-field>
-          </div>
-          <div class="otp-container">
-            <p class="otp-timer" [ngStyle]="{'color': otpTimer === 0 ? 'red' : 'black'}">
-              Time left: {{ otpTimer === 0 ? 'Time expired' : otpTimer + ' seconds' }}
-            </p>
-            <a routerLink="/employer/forgot-otp" (click)="resendOTP()" class="resend-otp">Resend OTP?</a>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button class="mat-large-fab1">SUBMIT</button>
-        </mat-card-actions>
+      <mat-card-title>
+        Enter OTP
+      </mat-card-title>
+      <mat-card-content>
+        <div class="rounded-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter OTP</mat-label>
+            <input matInput class="mat-Input" placeholder="" formControlName="otp" required>
+          </mat-form-field>
+        </div>
+        <div class="otp-container">
+          <p class="otp-timer" [ngStyle]="{'color': otpTimer === 0 ? 'red' : 'black'}">
+            Time left: {{ otpTimer === 0 ? 'Time expired' : otpTimer + ' seconds' }}
+          </p>
+          <a (click)="resendOTP()" class="resend-otp" style="cursor:pointer">Resend OTP?</a>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="mat-large-fab1" type="submit">SUBMIT</button>
+      </mat-card-actions>
     </mat-card>
-    <div class="sign-up">
-        <span>New to CARRERVILLA?</span>
-        <a routerLink="/employer/signup" ><p class="register">Register</p></a>
-    </div>
+  </form>
+  <div class="sign-up">
+    <span>New to CARRERVILLA?</span>
+    <a routerLink="/employer/signup">
+      <p class="register">Register</p>
+    </a>
+  </div>
 </div>
 <app-employer-login-footer></app-employer-login-footer>

@@ -10,6 +10,7 @@ import { EmployerForgotPasswordComponent } from './employer-forgot-password/empl
 import { EmployerLoginFooterComponent } from './employer-login-footer/employer-login-footer.component';
 import { EmployerSignupComponent } from './employer-signup/employer-signup.component';
 import { EmployerHomeComponent } from './employer-home/employer-home.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { EmployerHomeComponent } from './employer-home/employer-home.component';
     imports: [
         EmployerRoutingModule,
         MaterialModule,
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ]
 })
 export class EmployerModule { }

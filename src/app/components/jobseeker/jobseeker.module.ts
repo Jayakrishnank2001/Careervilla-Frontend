@@ -10,6 +10,7 @@ import { JobseekerOtpComponent } from './jobseeker-otp/jobseeker-otp.component';
 import { JobseekerLoginFooterComponent } from './jobseeker-login-footer/jobseeker-login-footer.component';
 import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component';
 import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.componen
     imports: [
         JobseekerRoutingModule,
         MaterialModule,
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ],
 })
 export class JobseekerModule { }

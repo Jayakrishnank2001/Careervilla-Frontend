@@ -1,6 +1,7 @@
 <app-jobseeker-nav></app-jobseeker-nav>
 <div class="login-page">
     <app-jobseeker-login-layout></app-jobseeker-login-layout>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card>
         <mat-card-title>
           Jobseeker Login
@@ -9,19 +10,22 @@
           <div class="rounded-input">
             <mat-form-field appearance="outline">
               <mat-label>Email ID</mat-label>
-              <input matInput class="mat-Input" placeholder="">
+              <input matInput class="mat-Input" placeholder="" formControlName="email" type="email">
             </mat-form-field>
+            <div *ngIf="form.get('email')!.hasError('email') && form.get('email')!.touched" class="error-message">
+              Please enter a valid email.
+            </div>  
           </div>
           <div class="rounded-input">
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput class="mat-Input" placeholder="">
+              <input matInput class="mat-Input" placeholder="" formControlName="password" type="password">
             </mat-form-field>
           </div>
-          <a routerLink="/jobseeker/forgot-otp" ><p class="forgot-password">Forgot Password?</p></a>
+          <a (click)="onForgotPasswordClick()" style="cursor: pointer;"><p class="forgot-password">Forgot Password?</p></a>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button class="mat-large-fab1">LOGIN</button>
+          <button mat-raised-button class="mat-large-fab1" type="submit">LOGIN</button>
         </mat-card-actions>
         <mat-card-actions>
           <button mat-raised-button class="mat-large-fab2">
@@ -33,6 +37,7 @@
           </button>
         </mat-card-actions>
     </mat-card>
+  </form>
     <div class="sign-up">
         <span>New to CARRERVILLA?</span>
         <a routerLink="/jobseeker/signup"><p class="register">Register</p></a>

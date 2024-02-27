@@ -4,6 +4,7 @@ import { EmployerLoginComponent } from "./employer-login/employer-login.componen
 import { EmployerOTPComponent } from "./employer-otp/employer-otp.component";
 import { EmployerForgotPasswordComponent } from "./employer-forgot-password/employer-forgot-password.component";
 import { EmployerSignupComponent } from "./employer-signup/employer-signup.component";
+import { EmployerHomeComponent } from "./employer-home/employer-home.component";
 
 
 
@@ -14,7 +15,7 @@ const routes: Routes = [
         component:EmployerLoginComponent
     },
     {
-        path: 'forgot-otp',
+        path: 'otp',
         title: 'Carrervilla | Employer Forgot OTP',
         component:EmployerOTPComponent
     },
@@ -27,6 +28,11 @@ const routes: Routes = [
         path: 'signup',
         title: 'Careervilla | Employer Signup',
         component:EmployerSignupComponent
+    },
+    {
+        path: 'home',
+        title: 'Careervilla | Employer Homepage',
+        component:EmployerHomeComponent
     }
 
 ]

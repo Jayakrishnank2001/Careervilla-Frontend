@@ -4,6 +4,7 @@ import { JobseekerLoginComponent } from "./jobseeker-login/jobseeker-login.compo
 import { JobseekerOtpComponent } from "./jobseeker-otp/jobseeker-otp.component";
 import { JobseekerForgotPasswordComponent } from "./jobseeker-forgot-password/jobseeker-forgot-password.component";
 import { JobseekerSignupComponent } from "./jobseeker-signup/jobseeker-signup.component";
+import { JobseekerHomeComponent } from "./jobseeker-home/jobseeker-home.component";
 
 
 
@@ -14,7 +15,7 @@ const routes: Routes = [
         component:JobseekerLoginComponent
     },
     {
-        path: 'forgot-otp',
+        path: 'otp',
         title: 'Careervilla | Jobseeker Forgot OTP',
         component:JobseekerOtpComponent
     },
@@ -27,6 +28,11 @@ const routes: Routes = [
         path: 'signup',
         title: 'Careervilla | Jobseeker Signup',
         component:JobseekerSignupComponent
+    },
+    {
+        path: 'home',
+        title: 'Careervilla | Jobseeker Homepage',
+        component:JobseekerHomeComponent
     }
 
 ]
