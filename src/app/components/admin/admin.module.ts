@@ -7,7 +7,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminJobseekersComponent } from './admin-jobseekers/admin-jobseekers.component';
 import { AdminEmployersComponent } from "./admin-employers/admin-employers.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { AdminTableComponent } from './admin-table/admin-table.component';
+import { AdminTableComponent } from "./admin-table/admin-table.component";
 
 
 @NgModule({
@@ -17,13 +17,13 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
         AdminDashboardComponent,
         AdminJobseekersComponent,
         AdminEmployersComponent,
-        AdminTableComponent,
         
     ],
     imports:[
         AdminRoutingModule,
         MaterialModule,
         ReactiveFormsModule,
+        AdminTableComponent
     ]
 })
 export class AdminModule{}

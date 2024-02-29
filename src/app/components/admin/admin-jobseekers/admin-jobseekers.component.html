@@ -1,6 +1,45 @@
 <div class="main-class">
     <app-admin-layout></app-admin-layout>
-    <app-admin-table></app-admin-table>
+    <app-admin-table (search)="onSearchJobseekers($event)" (pageChange)="onPageChange($event)"
+    (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="jobseekersCount">
+
+    <mat-table [dataSource]="jobseekers" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="no">
+            <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
+            <mat-cell *matCellDef="let user; let i = index">{{ ((currPage - 1) * itemsPerPage) + (i + 1) }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell *matCellDef="let user">
+                <p>{{ user.email }}</p>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+            <mat-header-cell *matHeaderCellDef>Phone Number</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{ user.wallet }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="block">
+            <mat-header-cell *matHeaderCellDef>Block</mat-header-cell>
+            <mat-cell *matCellDef="let user">
+                <button mat-raised-button color="{{ user.isBlocked ? 'primary' : 'warn' }}"
+                    (click)="onBlock(user._id, user.isBlocked ? 'Unblock' : 'Block')">
+                    {{ user.isBlocked ? 'Unblock' : 'Block' }}
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['no', 'username', 'email', 'phoneNumber', 'block']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['no', 'username', 'email', 'phoneNumber', 'block']"></mat-row>
+    </mat-table>
+</app-admin-table>
+
 </div>
-
-

@@ -1,30 +1,58 @@
-<table mat-table class="mat-elevation-z8">
+<div class="container mx-auto p-4">
+  <div class="flex justify-between items-center bg-gray-800 p-4 rounded-md">
+    <div class="flex items-center">
+      <div *ngIf="searchField">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="flex items-center">
+          <mat-form-field appearance="outline">
+            <mat-label>Search...</mat-label>
+            <input matInput formControlName="searchQuery" placeholder="Search...">
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="ml-2">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <mat-form-field appearance="outline" class="mr-4">
+        <mat-label>Items per page:</mat-label>
+        <mat-select [(ngModel)]="itemsPerPage" (ngModelChange)="onItemsPerPageChange($event)">
+          <mat-option value="1">1</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="15">15</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  <ng-content></ng-content>
+
+  <div *ngIf="getTotalPage() > 1" class="flex justify-center mt-8 gap-1">
+    <button mat-button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
+      Prev
+    </button>
+
+    <ng-container *ngIf="getTotalPage() <= 7; else showDynamicPages">
+      <!-- Display individual page numbers if there are 7 or fewer pages -->
+      <button mat-button *ngFor="let page of getPagesArray()" [class.active]="currentPage === page" (click)="onPageChange(page)">
+        {{ page }}
+      </button>
     </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef=""></tr>
-    <tr mat-row *matRowDef="let row;"></tr>
-  </table>
-  
-  
+
+    <ng-template #showDynamicPages>
+      <!-- Display dynamic page numbers with ellipsis if there are more than 7 pages -->
+      <button mat-button *ngIf="currentPage > 2" (click)="onPageChange(1)">1</button>
+      <span *ngIf="currentPage > 3" class="pagination-btn">...</span>
+      <button mat-button *ngFor="let page of dynamicPages" (click)="onPageChange(page)">
+        {{ page }}
+      </button>
+      <span *ngIf="currentPage < getTotalPage() -2" class="pagination-btn">...</span>
+      <button mat-button *ngIf="currentPage < getTotalPage() -1" (click)="onPageChange(getTotalPage())">{{ getTotalPage() }}</button>
+    </ng-template>
+
+    <button mat-button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalItems">
+      Next
+    </button>
+  </div>
+</div>
