@@ -1,18 +1,10 @@
 
-  .sidebar {
-    height: 95.45vh;
-    width: 200px; /* Set your desired sidebar width */
+mat-sidenav {
+    height: 100%;
+    width: 235px; /* Set your desired sidebar width */
     padding: 16px;
     background-color: #1D1A2B; /* Set your desired sidebar background color */
-  }
-  
-  .right-section {
-    flex: 1;
-    padding: 16px;
-  }
-
-  mat-form-field{
-    width:600px;
+    transition: width 0.3s ease; /* Add a transition for a smooth animation */
   }
 
   mat-label{
@@ -64,6 +56,35 @@
 
   .options{
     color:rgb(208, 207, 207);
+  }
+
+
+
+
+  .sidenav-container {
+    height: 100%;
+  }
+  
+  .toggle-button-container {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  @media (max-width: 600px) {
+    .mat-sidenav {
+      width: 0; /* Set your desired sidebar width */
+      left: 0; /* Set minimum width to 0 */
+    }
+  
+    .toggle-button-container {
+      top: 8px;
+      left: 8px;
+    }
   }
   
 

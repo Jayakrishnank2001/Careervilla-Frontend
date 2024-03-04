@@ -30,7 +30,7 @@ export class AdminLoginComponent implements OnInit {
         next: (response:any) => {
           console.log('Login successful:', response)
           
-          const jwtToken = response.jwtToken
+          const jwtToken = response.data.token
           localStorage.setItem('jwtToken',jwtToken)
           void this.router.navigate(['/admin/dashboard'])
         },
