@@ -11,6 +11,10 @@ import { EmployerLoginFooterComponent } from './employer-login-footer/employer-l
 import { EmployerSignupComponent } from './employer-signup/employer-signup.component';
 import { EmployerHomeComponent } from './employer-home/employer-home.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
+import { EmployerFooterComponent } from './employer-footer/employer-footer.component';
 
 @NgModule({
     declarations: [
@@ -21,13 +25,17 @@ import { ReactiveFormsModule } from "@angular/forms";
         EmployerForgotPasswordComponent,
         EmployerLoginFooterComponent,
         EmployerSignupComponent,
-        EmployerHomeComponent
+        EmployerHomeComponent,
+        EmployerFooterComponent
     ],
     imports: [
         EmployerRoutingModule,
         MaterialModule,
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatIconModule,
+        LayoutModule
     ]
 })
 export class EmployerModule { }

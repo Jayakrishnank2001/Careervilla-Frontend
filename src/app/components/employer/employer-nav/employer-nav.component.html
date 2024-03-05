@@ -1,9 +1,49 @@
 <mat-toolbar class="mat-elevation-z4" fxLayout="row" fxLayoutAlign="start center">
 
   <img src="../../../../assets/images/app-logo.png" alt="" class="logo-image">
-
   <span class="logo-text">CAREERVILLA</span>
+  
+  <span class="fill-remaining-space"></span>
 
-  <span fxFlex></span>
+  <ng-container *ngIf="(screenSize | async) === 'small'">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/employer/home">
+        <mat-icon>home</mat-icon>HOME
+      </button>
+      <button mat-menu-item routerLink="/jobseeker/login">
+        <mat-icon>login</mat-icon>JOBSEEKER LOGIN
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications</mat-icon> NOTIFICATIONS
+      </button>
+      <button mat-menu-item>
+        <mat-icon>message</mat-icon> MESSAGES
+      </button>
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon> ACCOUNT
+      </button>
+    </mat-menu>
+  </ng-container>
+  
+
+  <!-- Add a ngIf directive to check if it's not a small screen -->
+  <ng-container *ngIf="(screenSize | async) !== 'small'">
+    <button mat-button routerLink="/employer/home">HOME</button>
+    <button mat-button routerLink="/jobseeker/login">JOBSEEKER LOGIN</button>
+    
+
+    <button mat-icon-button>
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>message</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </ng-container>
 
 </mat-toolbar>

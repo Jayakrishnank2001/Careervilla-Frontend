@@ -1,2 +1,69 @@
 <app-jobseeker-nav></app-jobseeker-nav>
-<p>jobseeker-home works!</p>
+
+<mat-card class="search-bar-card">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="search-criteria">
+      <mat-form-field class="search-field" appearance="outline">
+        <mat-label>Company Name/Job Title</mat-label>
+        <input matInput placeholder="">
+        <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">search</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field class="search-field" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput placeholder="">
+        <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">place</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field class="search-field" appearance="outline">
+        <mat-label>Experience</mat-label>
+        <mat-select>
+          <mat-option value="0-1">0-1 years</mat-option>
+          <mat-option value="1-3">1-3 years</mat-option>
+          <mat-option value="3-5">3-5 years</mat-option>
+          <mat-option value="5+">5+ years</mat-option>
+        </mat-select>
+        <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">date_range</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button class="search-button">Search</button>
+    </div>
+</mat-card>
+  
+
+<mat-card class="welcome-card">
+    <div fxLayout.xs="column" fxLayout="row" fxLayoutAlign="space-between stretch" class="homepage">
+      <div fxFlex.xs="100" fxFlex="50">
+        <div class="left-content">
+          <img src="../../../../assets/images/jobseeker home image.jpg" alt="Welcome Image">
+        </div>
+      </div>
+      <div fxFlex.xs="100" fxFlex="50">
+        <div class="right-content">
+          <h1 class="welcome-h1">Welcome !</h1>
+          <p class="p1">Welcome to CAREERVILLA, your trusted partner in navigating the path to your dream career.</p>
+          <button mat-fab extended class="apply-jobs">Apply For Jobs</button>
+        </div>
+      </div>
+    </div>
+</mat-card>
+
+<mat-card class="announce-card">
+    <div fxLayout.xs="column" fxLayout="row" fxLayoutAlign="space-between stretch" class="annouce-class">
+        <div fxFlex.xs="100" fxFlex="50">
+          <div class="announce-left-content">
+            <img src="../../../../assets/images/announce image.png" alt="Welcome Image">
+          </div>
+        </div>
+    
+        <div fxFlex.xs="100" fxFlex="50">
+          <div class="announce-right-content">
+            <h1 class="welcome-h1">Searching for jobs?</h1>
+            <p class="p1">Embark on your job search journey with CAREERVILLA. Discover a multitude of exciting job opportunities from leading companies across various industries. Your dream job is just a click away.</p>
+            <button mat-fab extended class="apply-jobs">Start Applying Now</button>
+          </div>
+        </div>
+      </div>
+</mat-card>
+
+<mat-card>
+    
+</mat-card>

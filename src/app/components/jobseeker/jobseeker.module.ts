@@ -11,6 +11,7 @@ import { JobseekerLoginFooterComponent } from './jobseeker-login-footer/jobseeke
 import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component';
 import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { JobseekerFooterComponent } from './jobseeker-footer/jobseeker-footer.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from "@angular/forms";
         JobseekerOtpComponent,
         JobseekerLoginFooterComponent,
         JobseekerSignupComponent,
-        JobseekerHomeComponent
+        JobseekerHomeComponent,
+        JobseekerFooterComponent
     ],
     imports: [
         JobseekerRoutingModule,

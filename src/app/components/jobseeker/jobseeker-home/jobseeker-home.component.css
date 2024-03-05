@@ -1,0 +1,138 @@
+/* employer-home.component.scss */
+
+.welcome-card {
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: none;
+  }
+  
+  .left-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Center content vertically and horizontally in each column */
+  .right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  
+  button.apply-jobs {
+    background-color: #644DFF;
+    color: white;
+    margin-top: 10px;
+    font-size: 16px; 
+    padding: 15px 20px; 
+  }
+  
+  .welcome-h1 {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .p1 {
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+  .homepage {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
+  }
+  
+  .homepage > div {
+    width: 100%; /* Full width for each column on small screens */
+  }
+  
+  @media (min-width: 600px) {
+    .homepage > div {
+      width: 50%; /* Each column takes up 50% of the width on larger screens */
+    }
+  }
+
+
+
+
+.search-bar-card {
+    width: 100%;
+    padding: 20px;
+    box-shadow:none ;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  
+  .search-criteria {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .search-field {
+    margin-right: 10px;
+  }
+  
+  button.search-button {
+    background-color: #644DFF;
+    color: white;
+    border-radius: 0.5em;
+    width:8%;
+    height: 55px;
+    display: flex;
+    font-size: 16px; 
+    margin-top: -22px;
+    padding: 25px 40px;
+  }
+
+
+  .announce-card {
+    max-width: 95%; /* Set a maximum width if necessary */
+    background-color: #D2DBEA;
+    border-radius: 2em;
+    height:auto;
+    margin: 20px auto; /* Centers the card horizontally and adds a margin top and bottom */
+    padding: 20px; /* Add padding for inner content */
+    box-sizing: border-box;
+    margin-top: 30px; /* Ensure padding is included in the total width */
+  }
+  
+  .announce-left-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Center content vertically and horizontally in each column */
+  .announce-right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  
+  .annouce-class {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
+  }
+  
+  .annouce-class > div {
+    width: 100%; /* Full width for each column on small screens */
+  }
+  
+  @media (min-width: 600px) {
+    .annouce-class > div {
+      width: 50%; /* Each column takes up 50% of the width on larger screens */
+    }
+  }
+  

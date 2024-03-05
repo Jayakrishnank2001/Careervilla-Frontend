@@ -1,2 +1,38 @@
 <app-employer-nav></app-employer-nav>
-<p>employer-home works!</p>
+<mat-card class="welcome-card">
+  <div fxLayout.xs="column" fxLayout="row" fxLayoutAlign="space-between stretch" class="homepage">
+    <div fxFlex.xs="100" fxFlex="50">
+      <div class="left-content">
+        <img src="../../../../assets/images/employer home image.jpg" alt="Welcome Image">
+      </div>
+    </div>
+
+    <div fxFlex.xs="100" fxFlex="50">
+      <div class="right-content">
+        <h1 class="welcome-h1">Welcome !</h1>
+        <p class="p1">Welcome to CAREERVILLA, your gateway to finding the perfect talent for your organization.</p>
+        <button mat-fab extended class="post-jobs">Post Jobs</button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="announce-card">
+    <div fxLayout.xs="column" fxLayout="row" fxLayoutAlign="space-between stretch" class="annouce-class">
+        <div fxFlex.xs="100" fxFlex="50">
+          <div class="announce-left-content">
+            <img src="../../../../assets/images/announce image.png" alt="Welcome Image">
+          </div>
+        </div>
+    
+        <div fxFlex.xs="100" fxFlex="50">
+          <div class="announce-right-content">
+            <h1 class="welcome-h1">Recruiting?</h1>
+            <p class="p1">Advertise your jobs to millions of monthly users and search 15.8 million CVs in our database.</p>
+            <button mat-fab extended class="post-jobs">Start Recruiting Now</button>
+          </div>
+        </div>
+      </div>
+</mat-card>
+
+<app-employer-footer></app-employer-footer>
