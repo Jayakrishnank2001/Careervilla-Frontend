@@ -5,7 +5,8 @@ import { EmployerOTPComponent } from "./employer-otp/employer-otp.component";
 import { EmployerForgotPasswordComponent } from "./employer-forgot-password/employer-forgot-password.component";
 import { EmployerSignupComponent } from "./employer-signup/employer-signup.component";
 import { EmployerHomeComponent } from "./employer-home/employer-home.component";
-
+import { EmployerPostJobComponent } from "./employer-post-job/employer-post-job.component";
+import { EmployerSubscriptionComponent } from "./employer-subscription/employer-subscription.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,16 @@ const routes: Routes = [
         path: 'home',
         title: 'Careervilla | Employer Homepage',
         component:EmployerHomeComponent
+    },
+    {
+        path: 'post-job',
+        title: 'Careervilla | Employer Post-Job',
+        component:EmployerPostJobComponent
+    },
+    {
+        path: 'subscription',
+        title: 'Careervilla | Employer Subscription',
+        component:EmployerSubscriptionComponent
     }
 
 ]

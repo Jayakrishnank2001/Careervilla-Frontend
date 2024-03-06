@@ -3,6 +3,7 @@
 .welcome-card {
     width: 90%;
     margin: 20px auto;
+    margin-top: -20px;
     box-shadow: none;
   }
   
@@ -64,7 +65,7 @@
     width: 100%;
     padding: 20px;
     box-shadow:none ;
-    margin-top: 20px;
+    margin-top: 35px;
     box-sizing: border-box;
   }
   
@@ -91,16 +92,15 @@
     padding: 25px 40px;
   }
 
-
   .announce-card {
-    max-width: 95%; /* Set a maximum width if necessary */
+    max-width: 90%; /* Set a maximum width if necessary */
     background-color: #D2DBEA;
     border-radius: 2em;
     height:auto;
     margin: 20px auto; /* Centers the card horizontally and adds a margin top and bottom */
     padding: 20px; /* Add padding for inner content */
     box-sizing: border-box;
-    margin-top: 30px; /* Ensure padding is included in the total width */
+    margin-top: 40px; /* Ensure padding is included in the total width */
   }
   
   .announce-left-content img {

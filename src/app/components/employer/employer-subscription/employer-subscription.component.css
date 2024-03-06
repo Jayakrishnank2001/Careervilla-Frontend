@@ -1,0 +1,62 @@
+.announce-card {
+    max-width: 95%;
+    background-image: linear-gradient(to bottom, rgb(198, 189, 255), rgb(217, 211, 253), rgb(246, 244, 247));
+    border-radius: 2em;
+    height: auto;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .h1 {
+    font-weight: bolder;
+    font-size: xx-large;
+  }
+  
+  .span1 {
+    font-weight: 500;
+  }
+  
+  .subscription-card {
+    border-radius: 1em;
+    background-image: linear-gradient(to bottom, rgb(247, 241, 255), rgb(158, 144, 255));
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-left: 38px;
+  }
+  
+  .subscription-card:last-child {
+    margin-right: 38px;
+  }
+  
+  .subscription-cards {
+    display: flex;
+  }
+  
+  @media (max-width: 600px) {
+    .subscription-cards {
+      flex-direction: column;
+    }
+  
+    .subscription-card {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+  }
+
+  button{
+    background-color:#644DFF;
+    width: 40%;
+  }
+
+  .span2{
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  

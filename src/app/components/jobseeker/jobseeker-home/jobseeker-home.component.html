@@ -14,7 +14,7 @@
         <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">place</mat-icon>
       </mat-form-field>
   
-      <mat-form-field class="search-field" appearance="outline">
+      <mat-form-field class="search-field" appearance="outline" *ngIf="!(isSmallScreen | async)">
         <mat-label>Experience</mat-label>
         <mat-select>
           <mat-option value="0-1">0-1 years</mat-option>
@@ -64,6 +64,4 @@
       </div>
 </mat-card>
 
-<mat-card>
-    
-</mat-card>
+<app-jobseeker-footer></app-jobseeker-footer>

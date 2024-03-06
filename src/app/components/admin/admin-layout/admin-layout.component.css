@@ -58,34 +58,10 @@ mat-sidenav {
     color:rgb(208, 207, 207);
   }
 
-
-
-
   .sidenav-container {
     height: 100%;
   }
   
-  .toggle-button-container {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-  }
-  
-  .main-content {
-    padding: 16px;
-  }
-  
-  @media (max-width: 600px) {
-    .mat-sidenav {
-      width: 0; /* Set your desired sidebar width */
-      left: 0; /* Set minimum width to 0 */
-    }
-  
-    .toggle-button-container {
-      top: 8px;
-      left: 8px;
-    }
-  }
   
 
   

@@ -15,6 +15,8 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import { EmployerFooterComponent } from './employer-footer/employer-footer.component';
+import { EmployerPostJobComponent } from './employer-post-job/employer-post-job.component';
+import { EmployerSubscriptionComponent } from './employer-subscription/employer-subscription.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import { EmployerFooterComponent } from './employer-footer/employer-footer.compo
         EmployerLoginFooterComponent,
         EmployerSignupComponent,
         EmployerHomeComponent,
-        EmployerFooterComponent
+        EmployerFooterComponent,
+        EmployerPostJobComponent,
+        EmployerSubscriptionComponent
     ],
     imports: [
         EmployerRoutingModule,

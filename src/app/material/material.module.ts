@@ -11,6 +11,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 
 const MaterialComponents=[
@@ -25,7 +29,9 @@ const MaterialComponents=[
   MatButtonToggleModule,
   MatTableModule,
   MatToolbarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatMenuModule,
+  MatGridListModule
 ]
 
 @NgModule({

@@ -1,0 +1,47 @@
+/* employer-home.component.scss */
+
+.footer-card {
+    width: 100%;
+    background-color: #15102F;
+    border-radius: 0em;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .left-content,
+  .right-content {
+    flex: 1;
+    width: 100%; /* Take up full width on small screens */
+  }
+  
+  .left-content span,
+  .right-content span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  span {
+    color: white;
+    margin-top: 7px;
+  }
+  
+  mat-divider {
+    background-color: rgb(69, 69, 69);
+    width: 85%; /* Full width for the divider */
+  }
+  
+  /* Media query for adjusting layout on small screens */
+  @media (min-width: 600px) {
+    .left-content,
+    .right-content {
+      width: auto; /* Reset width to default for larger screens */
+    }
+  }
+  

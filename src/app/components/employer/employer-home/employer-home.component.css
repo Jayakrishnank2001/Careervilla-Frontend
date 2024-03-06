@@ -1,7 +1,7 @@
 /* employer-home.component.scss */
 
 .welcome-card {
-    width: 100%;
+    width: 95%;
     margin: 20px auto;
     box-shadow: none;
   }
@@ -59,7 +59,7 @@
 
 
   .announce-card {
-    max-width: 95%; /* Set a maximum width if necessary */
+    max-width: 90%; /* Set a maximum width if necessary */
     background-color: #D2DBEA;
     border-radius: 2em;
     height:auto;
