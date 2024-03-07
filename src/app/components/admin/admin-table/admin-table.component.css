@@ -16,3 +16,77 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.pagination-div{
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.mat-form-field1{
+  width:70%;
+  margin-left: 190px;
+  margin-top: 16px;
+}
+
+.mat-form-field2{
+  width:40%;
+  margin-left: 90px;
+}
+
+
+form{
+  display: flex;
+
+}
+
+.search-bar-card mat-card-content {
+  padding: 20px;
+}
+
+.table-class{
+  width: 100%;
+
+}
+
+.container{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.search-btn{
+  color: white;
+  margin-top: 16px;
+  height: 54px;
+  margin-left: 2px;
+}
+
+mat-label{
+  color: rgb(187, 187, 187);
+  font-weight: 200;
+}
+
+mat-icon{
+  color: rgb(187, 187, 187);
+}
+
+mat-form-field input.input{
+  color: rgb(187, 187, 187);
+}
+
+mat-select{
+  color: rgb(187, 187, 187);
+}
+
+
+@media screen and (max-width:600px){
+  .mat-form-field1{
+    width: 30%;
+    margin-left: 30px;
+  }
+  .mat-form-field2{
+    width: 44%;
+    margin-left: -270px;
+  }
+}

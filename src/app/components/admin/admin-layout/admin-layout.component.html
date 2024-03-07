@@ -17,10 +17,41 @@
           class="options">SUBSCRIPTION PLAN</span></a>
     </mat-nav-list>
     <mat-card-actions>
-      <button mat-raised-button class="mat-large-fab1">LOGOUT</button>
+      <button mat-raised-button class="mat-large-fab1" color="primary">LOGOUT</button>
     </mat-card-actions>
   </mat-sidenav>
 
+  <div *ngIf="(screenSize | async) === 'small'" class="small-screen-container">
+    <ng-container>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon style="color:#6f689c;">menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="centered-container">
+          <div class="logo">
+            <img src="../../../../assets/images/app-logo.png" alt="" class="logo-image">
+            <span class="logo-text">CAREERVILLA</span>
+          </div>
+        </div>
+        <button mat-menu-item routerLink="/admin/dashboard">
+          <mat-icon>home</mat-icon>DASHBOARD
+        </button>
+        <button mat-menu-item routerLink="/admin/jobseekers">
+          <mat-icon>people</mat-icon>JOBSEEKERS
+        </button>
+        <button mat-menu-item routerLink="/admin/employers">
+          <mat-icon>work</mat-icon> EMPLOYERS
+        </button>
+        <button mat-menu-item routerLink="/admin/reported-jobs">
+          <mat-icon>error</mat-icon> REPORTED JOBS
+        </button>
+        <button mat-menu-item routerLink="/admin/subscription-plans">
+          <mat-icon>money</mat-icon> SUBSCRIPTION PLAN
+        </button>
+      </mat-menu>
+    </ng-container>
+  </div>
+  
   
 
 </mat-sidenav-container>

@@ -44,7 +44,7 @@ export class AdminJobseekersComponent implements OnInit {
       if (result.isConfirmed) {
         this.adminService.blockJobseeker(jobseekerId).subscribe({
           next: () => {
-            const jobseekerIndex = this.jobseekers.findIndex(jobseeker => jobseeker.id === jobseekerId)
+            const jobseekerIndex = this.jobseekers.findIndex(jobseeker => jobseeker._id === jobseekerId)
             if (jobseekerIndex !== -1) {
               this.jobseekers = [
                 ...this.jobseekers.slice(0, jobseekerIndex),

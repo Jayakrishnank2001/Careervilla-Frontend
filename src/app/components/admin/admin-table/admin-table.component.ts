@@ -4,14 +4,16 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angul
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-admin-table',
   templateUrl: './admin-table.component.html',
   styleUrls: ['./admin-table.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule, MatIconModule, MatButtonModule],
 })
 export class AdminTableComponent implements OnInit {
 

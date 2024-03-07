@@ -41,7 +41,6 @@ mat-sidenav {
     font-size: 18px;
     font-weight: 600;
     padding: 15px 30px;
-    background-color: #644DFF;
     color: rgb(208, 207, 207);
     border-radius: 1em;
   }
@@ -61,7 +60,11 @@ mat-sidenav {
   .sidenav-container {
     height: 100%;
   }
-  
+
+  .small-screen-container {
+    background-color:#1D1A2B; 
+    height: 100%;
+  }
   
 
   

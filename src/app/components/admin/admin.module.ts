@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { AdminLoginComponent } from "./admin-login/admin-login.component";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { MaterialModule } from "src/app/material/material.module";
@@ -8,6 +9,7 @@ import { AdminJobseekersComponent } from './admin-jobseekers/admin-jobseekers.co
 import { AdminEmployersComponent } from "./admin-employers/admin-employers.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AdminTableComponent } from "./admin-table/admin-table.component";
+import { AdminSubscriptionComponent } from './admin-subscription/admin-subscription.component';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { AdminTableComponent } from "./admin-table/admin-table.component";
         AdminDashboardComponent,
         AdminJobseekersComponent,
         AdminEmployersComponent,
+        AdminSubscriptionComponent,
         
     ],
     imports:[
         AdminRoutingModule,
         MaterialModule,
         ReactiveFormsModule,
-        AdminTableComponent
+        AdminTableComponent,
+        CommonModule
     ]
 })
 export class AdminModule{}

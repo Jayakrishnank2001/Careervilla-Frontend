@@ -7,27 +7,27 @@
 
         <ng-container matColumnDef="no">
             <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
-            <mat-cell *matCellDef="let user; let i = index">{{ ((currPage - 1) * itemsPerPage) + (i + 1) }}</mat-cell>
+            <mat-cell *matCellDef="let user; let i = index" class="data">{{ ((currPage - 1) * itemsPerPage) + (i + 1) }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <ng-container matColumnDef="username" class="heading">
+            <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
             <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="email">
+        <ng-container matColumnDef="email" class="heading">
             <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
             <mat-cell *matCellDef="let user">
                 <p>{{ user.email }}</p>
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="phoneNumber">
+        <ng-container matColumnDef="phoneNumber" class="heading">
             <mat-header-cell *matHeaderCellDef>Phone Number</mat-header-cell>
             <mat-cell *matCellDef="let user">{{ user.phoneNumber }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="block">
+        <ng-container matColumnDef="block" class="heading">
             <mat-header-cell *matHeaderCellDef>Block</mat-header-cell>
             <mat-cell *matCellDef="let user">
                 <button mat-raised-button color="{{ user.isBlocked ? 'primary' : 'warn' }}"

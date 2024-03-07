@@ -1,22 +1,20 @@
-<div class="container mx-auto p-4">
-  <div class="flex justify-between items-center bg-gray-800 p-4 rounded-md">
-    <div class="flex items-center">
-      <div *ngIf="searchField">
-        <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="flex items-center">
-          <mat-form-field appearance="outline">
-            <mat-label>Search...</mat-label>
-            <input matInput formControlName="searchQuery" placeholder="Search...">
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit" class="ml-2">
-            Search
-          </button>
-        </form>
-      </div>
-    </div>
-    <div class="flex items-center">
-      <mat-form-field appearance="outline" class="mr-4">
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="table-class" fxLayout="row" fxLayoutAlign="center start">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <mat-form-field appearance="outline" class="mat-form-field1">
+        <mat-label>Search</mat-label>
+        <input matInput formControlName="searchQuery" placeholder="" class="input">
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button type="submit" class="search-btn" color="primary">
+        Search
+      </button>
+    </form>
+
+    <div class="flex items-center ml-4">
+      <mat-form-field appearance="outline" class="mat-form-field2">
         <mat-label>Items per page:</mat-label>
-        <mat-select [(ngModel)]="itemsPerPage" (ngModelChange)="onItemsPerPageChange($event)">
+        <mat-select [(ngModel)]="itemsPerPage" (ngModelChange)="onItemsPerPageChange($event)" >
           <mat-option value="1">1</mat-option>
           <mat-option value="5">5</mat-option>
           <mat-option value="10">10</mat-option>
@@ -26,33 +24,36 @@
     </div>
   </div>
 
+
   <ng-content></ng-content>
 
-  <div *ngIf="getTotalPage() > 1" class="flex justify-center mt-8 gap-1">
-    <button mat-button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
-      Prev
+  <div *ngIf="getTotalPage() > 1" fxLayout="row" fxLayoutAlign="center" class="pagination-div">
+    <button mat-stroked-button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1" color="primary">
+      <
     </button>
 
     <ng-container *ngIf="getTotalPage() <= 7; else showDynamicPages">
       <!-- Display individual page numbers if there are 7 or fewer pages -->
-      <button mat-button *ngFor="let page of getPagesArray()" [class.active]="currentPage === page" (click)="onPageChange(page)">
+      <button mat-stroked-button *ngFor="let page of getPagesArray()" [class.active]="currentPage === page"
+        (click)="onPageChange(page)" color="primary">
         {{ page }}
       </button>
     </ng-container>
 
     <ng-template #showDynamicPages>
       <!-- Display dynamic page numbers with ellipsis if there are more than 7 pages -->
-      <button mat-button *ngIf="currentPage > 2" (click)="onPageChange(1)">1</button>
+      <button mat-stroked-button *ngIf="currentPage > 2" (click)="onPageChange(1)" color="primary">1</button>
       <span *ngIf="currentPage > 3" class="pagination-btn">...</span>
-      <button mat-button *ngFor="let page of dynamicPages" (click)="onPageChange(page)">
+      <button mat-stroked-button *ngFor="let page of dynamicPages" (click)="onPageChange(page)" color="primary">
         {{ page }}
       </button>
       <span *ngIf="currentPage < getTotalPage() -2" class="pagination-btn">...</span>
-      <button mat-button *ngIf="currentPage < getTotalPage() -1" (click)="onPageChange(getTotalPage())">{{ getTotalPage() }}</button>
+      <button mat-stroked-button *ngIf="currentPage < getTotalPage() -1" (click)="onPageChange(getTotalPage())" color="primary">{{
+        getTotalPage() }}</button>
     </ng-template>
 
-    <button mat-button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalItems">
-      Next
+    <button mat-stroked-button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalItems" color="primary">
+      >
     </button>
   </div>
 </div>
