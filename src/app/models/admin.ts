@@ -9,4 +9,5 @@ export interface IJobseekersAndCount{
   export interface IEmployersAndCount{
     employers: IEmployerRes[],
     employersCount:number
-  }
+}
+  

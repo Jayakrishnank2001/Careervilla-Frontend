@@ -2,7 +2,6 @@
     <app-admin-layout></app-admin-layout>
     <app-admin-table (search)="onSearchEmployers($event)" (pageChange)="onPageChange($event)"
     (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="employersCount">
-
     <mat-table [dataSource]="employers" class="mat-elevation-z8">
 
         <ng-container matColumnDef="no">

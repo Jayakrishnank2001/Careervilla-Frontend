@@ -1,5 +1,5 @@
 export interface IJobseekerRes {
-    id?: string,
+    _id?: string,
     firstName?: string,
     lastName?: string,
     password?: string,

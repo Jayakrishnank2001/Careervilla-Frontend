@@ -10,6 +10,7 @@ import { AdminEmployersComponent } from "./admin-employers/admin-employers.compo
 import { ReactiveFormsModule } from "@angular/forms";
 import { AdminTableComponent } from "./admin-table/admin-table.component";
 import { AdminSubscriptionComponent } from './admin-subscription/admin-subscription.component';
+import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported-jobs.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AdminSubscriptionComponent } from './admin-subscription/admin-subscript
         AdminJobseekersComponent,
         AdminEmployersComponent,
         AdminSubscriptionComponent,
+        AdminReportedJobsComponent,
         
     ],
     imports:[
