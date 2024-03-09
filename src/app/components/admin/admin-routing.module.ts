@@ -6,6 +6,7 @@ import { AdminJobseekersComponent } from "./admin-jobseekers/admin-jobseekers.co
 import { AdminEmployersComponent } from "./admin-employers/admin-employers.component";
 import { AdminSubscriptionComponent } from "./admin-subscription/admin-subscription.component";
 import { AdminReportedJobsComponent } from "./admin-reported-jobs/admin-reported-jobs.component";
+import { AuthGuard } from "src/app/guards/auth.guard";
 
 const routes: Routes = [
     {
@@ -16,28 +17,33 @@ const routes: Routes = [
     {
         path:'dashboard',
         title:'Careervilla | Dashboard',
-        component:AdminDashboardComponent
+        component: AdminDashboardComponent,
+        canActivate:[AuthGuard]
     },
     {
         path:'jobseekers',
         title:'Careervilla | Jobseekers',
-        component:AdminJobseekersComponent
+        component: AdminJobseekersComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: 'employers',
         title: 'Carrervilla | Employers',
-        component:AdminEmployersComponent
+        component: AdminEmployersComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: 'reported-jobs',
         title: 'Careervilla | Reported Jobs',
-        component:AdminReportedJobsComponent
+        component: AdminReportedJobsComponent,
+        canActivate:[AuthGuard]
 
     },
     {
         path: 'subscription-plans',
         title: 'Careervilla | Subscription Plans',
-        component:AdminSubscriptionComponent
+        component: AdminSubscriptionComponent,
+        canActivate:[AuthGuard]
     }
 ]
 

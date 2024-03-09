@@ -1,0 +1,27 @@
+<form [formGroup]="newPlanForm" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1 *ngIf="data.editMode">EDIT PLAN</h1>
+    <h1 *ngIf="!data.editMode">CREATE NEW PLAN</h1>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Plan Name</mat-label>
+        <input matInput type="text" formControlName="planName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" formControlName="amount" min="1">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Duration</mat-label>
+        <input matInput type="text" formControlName="duration">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="newPlanForm.invalid" color="primary">SUBMIT</button>
+</form>

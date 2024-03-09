@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -13,6 +14,7 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly adminService: AdminService,
+    private readonly authService:AuthService,
     private readonly router: Router) { }
 
   ngOnInit(): void {
@@ -28,10 +30,8 @@ export class AdminLoginComponent implements OnInit {
       const values = this.form.getRawValue()
       this.adminService.adminLogin(values.username, values.password).subscribe({
         next: (response:any) => {
-          console.log('Login successful:', response)
-          
           const jwtToken = response.data.token
-          localStorage.setItem('jwtToken',jwtToken)
+          this.authService.setToken(jwtToken)
           void this.router.navigate(['/admin/dashboard'])
         },
         error: (error:any) => {

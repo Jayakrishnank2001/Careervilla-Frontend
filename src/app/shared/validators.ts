@@ -1,5 +1,5 @@
 import { Validators } from "@angular/forms";
-import { emailRegex, OTPRegex, passwordRegex, passwordLength, ZipRegex, charRegex, mobileRegex, firstnameRegex, employerFirstnameMinLength, employerFirstnameMaxLength, employerLastnameMinLength, employerLastnameMaxLength, lastnameRegex } from "./constants";
+import { emailRegex, OTPRegex, passwordRegex, passwordLength, ZipRegex, mobileRegex, firstnameRegex, employerFirstnameMinLength, employerFirstnameMaxLength, employerLastnameMinLength, employerLastnameMaxLength, lastnameRegex } from "./constants";
 
 export const firstnameValidators = [
     Validators.required,

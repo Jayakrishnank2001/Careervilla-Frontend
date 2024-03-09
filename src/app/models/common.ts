@@ -9,3 +9,12 @@ export interface IApiRes<T extends AllResTypes> {
     message: string,
     data: T
 }
+
+export interface IRes{
+    status: number,
+    data: {
+        success: boolean,
+        message:string
+    }
+    
+}

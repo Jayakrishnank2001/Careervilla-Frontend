@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AdminTableComponent } from "./admin-table/admin-table.component";
 import { AdminSubscriptionComponent } from './admin-subscription/admin-subscription.component';
 import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported-jobs.component';
+import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dialog.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported
         AdminEmployersComponent,
         AdminSubscriptionComponent,
         AdminReportedJobsComponent,
+        AdminPlansDialogComponent,
         
     ],
     imports:[

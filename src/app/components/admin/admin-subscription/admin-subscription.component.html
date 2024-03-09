@@ -23,8 +23,10 @@
     
             <ng-container matColumnDef="status" class="heading">
                 <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-                <mat-cell *matCellDef="let plan">{{ plan.status }}</mat-cell>
-            </ng-container>
+                <mat-cell *matCellDef="let plan" [style.color]="plan.status === 'Active' ? 'rgb(63, 81, 181)' : 'rgb(244, 67, 54)'">
+                    {{ plan.status }}     
+                </mat-cell>      
+             </ng-container>
     
             <ng-container matColumnDef="actions" class="heading">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>

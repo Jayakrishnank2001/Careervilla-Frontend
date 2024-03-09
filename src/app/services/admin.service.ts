@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environments } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { IApiRes } from '../models/common';
+import { IApiRes, IRes } from '../models/common';
 import { IEmployersAndCount, IJobseekersAndCount } from '../models/admin';
 import { ISubscriptionRes } from '../models/subscriptionPlan';
 
@@ -42,6 +42,13 @@ export class AdminService {
     return this.http.delete<boolean>(`${this.baseURL}/admin/delete-plan/${planId}`,{})
   }
 
+  createPlan(data: ISubscriptionRes): Observable<IRes>{
+    return this.http.post<IRes>(`${this.baseURL}/admin/create-plan`,{data})
+  }
+
+  editPlan(planId: string, data: ISubscriptionRes): Observable<IRes>{
+    return this.http.put<IRes>(`${this.baseURL}/admin/update-plan/${planId}`,{data})
+  }
 
 
 

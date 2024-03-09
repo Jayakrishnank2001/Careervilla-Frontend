@@ -1,49 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { ISubscriptionRes } from 'src/app/models/subscriptionPlan';
 import { AdminService } from 'src/app/services/admin.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminPlansDialogComponent } from '../admin-plans-dialog/admin-plans-dialog.component';
 import Swal from 'sweetalert2';
+import { IRes } from 'src/app/models/common';
 
 @Component({
   selector: 'app-admin-subscription',
   templateUrl: './admin-subscription.component.html',
   styleUrls: ['./admin-subscription.component.css']
 })
-export class AdminSubscriptionComponent implements OnInit{
+export class AdminSubscriptionComponent implements OnInit {
   plans: ISubscriptionRes[] = []
-  
-  constructor(private readonly adminService: AdminService) { }
-  
+
+  constructor(private readonly adminService: AdminService,
+    private dialog: MatDialog) { }
+
   ngOnInit(): void {
     this.getPlans()
   }
 
-  getPlans(): void{
+  getPlans(): void {
     this.adminService.getAllPlans().subscribe({
       next: (res) => {
         if (res !== null) {
-          this.plans=res
+          this.plans = res
         }
       }
     })
   }
 
-  onDeletePlan(planId:string): void{
+  onDeletePlan(planId: string): void {
     void Swal.fire({
       title: 'Are you sure?',
       text: 'Do you want to delete this plan!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, Delete',
-      cancelButtonText:'No, Cancel'
+      cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
         this.adminService.deletePlan(planId).subscribe({
-          next: (res) => {
+          next: () => {
             const planIndex = this.plans.findIndex(plan => plan._id === planId)
             if (planIndex !== -1) {
               this.plans = [
                 ...this.plans.slice(0, planIndex),
-                ...this.plans.slice(planIndex+1)
+                ...this.plans.slice(planIndex + 1)
               ]
             }
           }
@@ -52,12 +56,59 @@ export class AdminSubscriptionComponent implements OnInit{
     })
   }
 
-  onCreateNewPlan():void {
-    
+  onCreateNewPlan(): void {
+    this.openDialog(false)
   }
 
-  onEditPlan(planId:string):void {
-    
+  onEditPlan(planId: string): void {
+    this.openDialog(true, planId)
+  }
+
+  openDialog(editMode: boolean, planId?: string): void {
+    const dialogRef = this.dialog.open(AdminPlansDialogComponent, {
+      data: { editMode, planId, plans: this.plans }
+    })
+    dialogRef.afterClosed().subscribe((result: ISubscriptionRes) => {
+      if (result) {
+        if (!editMode) {
+          this.adminService.createPlan(result).subscribe({
+            next: (res: IRes) => {
+              this.getPlans()
+              if (res.data.message == 'Plan created successfully') {
+                void Swal.fire({
+                  title: 'New Plan created Successfully',
+                  icon: 'success',
+                  timer: 3000,
+                  showConfirmButton: false
+                })
+              } else {
+                void Swal.fire({
+                  title: 'Plan Already Exists',
+                  icon: 'warning',
+                  timer: 3000,
+                  showConfirmButton: false
+                })
+              }
+            }
+          })
+        } else if (planId !== undefined) {
+          console.log(result)
+          this.adminService.editPlan(planId, result).subscribe({
+            next: (res: IRes) => {
+              this.getPlans()
+              if (res.data.message == 'Plan updated successfully') {
+                void Swal.fire({
+                  title: 'Plan Updated Successfully',
+                  icon: 'success',
+                  timer: 3000,
+                  showConfirmButton: false
+                })
+              }
+            }
+          })
+        }
+      }
+    })
   }
 
 }
