@@ -35,4 +35,5 @@ export class EmployerService {
   resendOTP() {
     return this.http.post<IRes>(`${this.baseURL}/employer/resendOTP`,{})
   }
+
 }

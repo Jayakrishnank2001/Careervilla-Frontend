@@ -4,7 +4,6 @@ import { environments } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { IApiRes, IRes } from '../models/common';
 import { IEmployersAndCount, IJobseekersAndCount } from '../models/admin';
-import { ISubscriptionRes } from '../models/subscriptionPlan';
 
 @Injectable({
   providedIn: 'root'
@@ -32,22 +31,6 @@ export class AdminService {
 
   blockEmployer(employerId: string) {
     return this.http.patch<any>(`${this.baseURL}/admin/employers/block/${employerId}`,{})
-  }
-
-  getAllPlans(): Observable<ISubscriptionRes[]>{
-    return this.http.get<ISubscriptionRes[]>(`${this.baseURL}/admin/subscription-plans`,{})
-  }
-
-  deletePlan(planId: string): Observable<boolean>{
-    return this.http.delete<boolean>(`${this.baseURL}/admin/delete-plan/${planId}`,{})
-  }
-
-  createPlan(data: ISubscriptionRes): Observable<IRes>{
-    return this.http.post<IRes>(`${this.baseURL}/admin/create-plan`,{data})
-  }
-
-  editPlan(planId: string, data: ISubscriptionRes): Observable<IRes>{
-    return this.http.put<IRes>(`${this.baseURL}/admin/update-plan/${planId}`,{data})
   }
 
 

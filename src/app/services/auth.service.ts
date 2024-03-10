@@ -31,4 +31,8 @@ export class AuthService {
     const token = localStorage.getItem(this.TOKEN_KEY)
     return !!token
   }
+
+
+
+  
 }
