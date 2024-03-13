@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { validateByTrimming } from 'src/app/helpers/validations';
-import { IRes } from 'src/app/models/employer';
+import { IEmployerAuthResponse, IRes } from 'src/app/models/employer';
 import { EmployerService } from 'src/app/services/employer.service';
 import { otpValidators } from 'src/app/shared/validators';
 
@@ -13,7 +13,7 @@ import { otpValidators } from 'src/app/shared/validators';
 })
 export class EmployerOTPComponent implements OnInit, OnDestroy {
   otpTimer!: number
-  private timerInterval: any
+  private timerInterval!: number
   isSubmitted: boolean = false
   form!: FormGroup
 
@@ -37,7 +37,7 @@ export class EmployerOTPComponent implements OnInit, OnDestroy {
       } else {
         clearInterval(this.timerInterval)
       }
-    }, 1000)
+    }, 1000) as unknown as number
   }
 
   resendOTP(): void {
@@ -60,13 +60,11 @@ export class EmployerOTPComponent implements OnInit, OnDestroy {
       console.log(this.form)
       const data = this.form.getRawValue()
       this.employerService.verifyOTP(data.otp).subscribe({
-        next: (res: any) => {
-          if (res.userId) {
-            void this.router.navigate(['/employer/login'])
-          } else if (res.success) {
+        next: (res: IEmployerAuthResponse) => {
+          if (!res) {
             void this.router.navigate(['/employer/forgot-password'])
-          } else {
-            console.error(res.message)
+          } else if(res.data.userId) {
+            void this.router.navigate(['/employer/login'])
           }
         },
         error: (error) => {

@@ -17,6 +17,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { EmployerFooterComponent } from './employer-footer/employer-footer.component';
 import { EmployerPostJobComponent } from './employer-post-job/employer-post-job.component';
 import { EmployerSubscriptionComponent } from './employer-subscription/employer-subscription.component';
+import { EmployerService } from "src/app/services/employer.service";
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { EmployerSubscriptionComponent } from './employer-subscription/employer-
         MatSidenavModule,
         MatIconModule,
         LayoutModule
-    ]
+    ],
+    providers:[EmployerService]
 })
 export class EmployerModule { }

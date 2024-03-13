@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ISubscriptionRes } from 'src/app/models/subscriptionPlan';
+import { IDialogData, ISubscriptionRes } from 'src/app/models/subscriptionPlan';
 
 @Component({
   selector: 'app-admin-plans-dialog',
@@ -14,7 +14,7 @@ export class AdminPlansDialogComponent {
   newPlanForm: FormGroup
 
   constructor(private dialogRef: MatDialogRef<AdminPlansDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: IDialogData,
     private fb: FormBuilder) {
     
     this.newPlanForm = this.fb.group({

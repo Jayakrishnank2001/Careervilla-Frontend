@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
-import { IJobseekerRes, IRes } from '../models/jobseeker';
+import { IJobseekerAuthResponse, IJobseekerRes, IRes } from '../models/jobseeker';
+import { IResponse } from '../models/common';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+  
 export class JobseekerService {
 
   baseURL=environments.baseURL
@@ -13,15 +13,15 @@ export class JobseekerService {
   constructor(private readonly http: HttpClient) { }
   
   login(email: string, password: string) {
-    return this.http.post<IJobseekerRes>(`${this.baseURL}/jobseeker/login`,{email,password})
+    return this.http.post<IJobseekerAuthResponse>(`${this.baseURL}/jobseeker/login`,{email,password})
   }
 
-  signup(jobseekerData: any) {
+  signup(jobseekerData: IJobseekerRes) {
     return this.http.post<IJobseekerRes>(`${this.baseURL}/jobseeker/signup`,{jobseekerData})
   }
 
   verifyOTP(otp: number) {
-    return this.http.post<IJobseekerRes>(`${this.baseURL}/jobseeker/verifyOTP`,{otp})
+    return this.http.post<IJobseekerAuthResponse>(`${this.baseURL}/jobseeker/verifyOTP`,{otp})
   }
 
   forgotPassword(email: string) {

@@ -37,17 +37,24 @@
   .subscription-cards {
     display: flex;
   }
+
+  mat-card button.mat-raised-button{
+    background-color: #1D1934;
+    color:white;
+    width:100%;
+  }
   
   @media (max-width: 600px) {
     .subscription-cards {
+      display: flex;
       flex-direction: column;
+      align-items: center; 
     }
   
     .subscription-card {
-      margin-left: 0;
-      margin-right: 0;
+      width: 80%;
+      margin: 20px auto; 
     }
-
   }
 
   button{

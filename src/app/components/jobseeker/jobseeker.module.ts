@@ -12,6 +12,7 @@ import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.co
 import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { JobseekerFooterComponent } from './jobseeker-footer/jobseeker-footer.component';
+import { JobseekerService } from "src/app/services/jobseeker.service";
 
 
 @NgModule({
@@ -32,5 +33,6 @@ import { JobseekerFooterComponent } from './jobseeker-footer/jobseeker-footer.co
         CommonModule,
         ReactiveFormsModule
     ],
+    providers:[JobseekerService]
 })
 export class JobseekerModule { }

@@ -10,4 +10,14 @@ export interface IJobseekersAndCount{
     employers: IEmployerRes[],
     employersCount:number
 }
+
+export interface IAdminAuthResponse {
+  status: number;
+  data: {
+    success: boolean;
+    message: string;
+    adminId?: string;
+    token?: string; 
+  };
+}
   

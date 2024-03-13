@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IAdminAuthResponse } from 'src/app/models/admin';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,6 +23,7 @@ export class AdminLoginComponent implements OnInit {
       username: [''],
       password: ['']
     })
+    this.authService.setUserRole('admin')
   }
 
   submit() {
@@ -29,12 +31,14 @@ export class AdminLoginComponent implements OnInit {
     if (this.form.valid) {
       const values = this.form.getRawValue()
       this.adminService.adminLogin(values.username, values.password).subscribe({
-        next: (response:any) => {
+        next: (response:IAdminAuthResponse) => {
           const jwtToken = response.data.token
-          this.authService.setToken(jwtToken)
+          if (jwtToken) {
+            this.authService.setToken(jwtToken)
+          }
           void this.router.navigate(['/admin/dashboard'])
         },
-        error: (error:any) => {
+        error: (error) => {
           console.error('Login failed:',error)
         }
         

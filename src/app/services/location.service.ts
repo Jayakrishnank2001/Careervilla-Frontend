@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Country,State,City } from 'country-state-city';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+  
 export class LocationService {
 
   getCountries(): string[] {

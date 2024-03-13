@@ -35,12 +35,8 @@ export class JobseekerSignupComponent implements OnInit{
     if (this.form.valid) {
       const data = this.form.getRawValue()
       this.jobseekerService.signup(data).subscribe({
-        next: (res: any)=>{
-          if (res.success) {
+        next: ()=>{
             void this.router.navigate(['/jobseeker/otp'])
-          } else {
-            console.error(res.message)
-          }
         },
         error: (error) => {
           console.error(error)

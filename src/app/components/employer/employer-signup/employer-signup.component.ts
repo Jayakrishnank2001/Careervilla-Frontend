@@ -35,9 +35,11 @@ export class EmployerSignupComponent implements OnInit {
     if (this.form.valid) {
       const data = this.form.getRawValue()
       this.employerService.signup(data).subscribe({
-        next: (res: any) => {
-          console.log(res)
+        next: () => {
           void this.router.navigate(['/employer/otp'])
+        },
+        error: (error) => {
+          console.error(error)
         }
       })
     }

@@ -7,6 +7,7 @@ import { EmployerSignupComponent } from "./employer-signup/employer-signup.compo
 import { EmployerHomeComponent } from "./employer-home/employer-home.component";
 import { EmployerPostJobComponent } from "./employer-post-job/employer-post-job.component";
 import { EmployerSubscriptionComponent } from "./employer-subscription/employer-subscription.component";
+import { AuthGuard } from "src/app/guards/auth.guard";
 
 
 const routes: Routes = [
@@ -33,17 +34,20 @@ const routes: Routes = [
     {
         path: 'home',
         title: 'Careervilla | Employer Homepage',
-        component:EmployerHomeComponent
+        component: EmployerHomeComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: 'post-job',
         title: 'Careervilla | Employer Post-Job',
-        component:EmployerPostJobComponent
+        component: EmployerPostJobComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: 'subscription',
         title: 'Careervilla | Employer Subscription',
-        component:EmployerSubscriptionComponent
+        component: EmployerSubscriptionComponent,
+        canActivate:[AuthGuard]
     }
 
 ]

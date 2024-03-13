@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { JobseekerHomeComponent } from './components/jobseeker/jobseeker-home/jobseeker-home.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
     path:'jobseeker',
     title:'Jobseeker',
     loadChildren: () =>import('./components/jobseeker/jobseeker.module').then(m =>m.JobseekerModule)
+  },
+  {
+    path: '',
+    title: 'Careervilla Homepage',
+    component:JobseekerHomeComponent
   }
 ];
 

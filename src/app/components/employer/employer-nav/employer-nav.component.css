@@ -2,6 +2,11 @@
   flex: 1 1 auto;
 }
 
+button.mat-raised-button{
+  background-color: #644DFF;
+  color:white;
+}
+
 
 @media (max-width: 600px) {
     .logo-text {

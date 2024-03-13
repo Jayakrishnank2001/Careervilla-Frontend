@@ -12,6 +12,7 @@ import { AdminTableComponent } from "./admin-table/admin-table.component";
 import { AdminSubscriptionComponent } from './admin-subscription/admin-subscription.component';
 import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported-jobs.component';
 import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dialog.component';
+import { AdminService } from "src/app/services/admin.service";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dial
         ReactiveFormsModule,
         AdminTableComponent,
         CommonModule
-    ]
+    ],
+    providers:[AdminService]
 })
 export class AdminModule{}

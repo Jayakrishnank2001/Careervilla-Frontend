@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ISubscriptionRes } from 'src/app/models/subscriptionPlan';
-import { AdminService } from 'src/app/services/admin.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminPlansDialogComponent } from '../admin-plans-dialog/admin-plans-dialog.component';
 import Swal from 'sweetalert2';
 import { IRes } from 'src/app/models/common';
+import { SubscriptionPlanService } from 'src/app/services/subscription-plan.service';
 
 @Component({
   selector: 'app-admin-subscription',
@@ -14,7 +14,7 @@ import { IRes } from 'src/app/models/common';
 export class AdminSubscriptionComponent implements OnInit {
   plans: ISubscriptionRes[] = []
 
-  constructor(private readonly adminService: AdminService,
+  constructor(private readonly subscriptionPlanService: SubscriptionPlanService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class AdminSubscriptionComponent implements OnInit {
   }
 
   getPlans(): void {
-    this.adminService.getAllPlans().subscribe({
+    this.subscriptionPlanService.getAllPlans('admin').subscribe({
       next: (res) => {
         if (res !== null) {
           this.plans = res
@@ -41,7 +41,7 @@ export class AdminSubscriptionComponent implements OnInit {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.adminService.deletePlan(planId).subscribe({
+        this.subscriptionPlanService.deletePlan(planId).subscribe({
           next: () => {
             const planIndex = this.plans.findIndex(plan => plan._id === planId)
             if (planIndex !== -1) {
@@ -71,7 +71,7 @@ export class AdminSubscriptionComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: ISubscriptionRes) => {
       if (result) {
         if (!editMode) {
-          this.adminService.createPlan(result).subscribe({
+          this.subscriptionPlanService.createPlan(result).subscribe({
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan created successfully') {
@@ -93,7 +93,7 @@ export class AdminSubscriptionComponent implements OnInit {
           })
         } else if (planId !== undefined) {
           console.log(result)
-          this.adminService.editPlan(planId, result).subscribe({
+          this.subscriptionPlanService.editPlan(planId, result).subscribe({
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan updated successfully') {

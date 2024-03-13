@@ -17,3 +17,13 @@ export interface IRes{
     success?: boolean,
     message?:string
 }
+
+export interface IJobseekerAuthResponse {
+    status: number;
+    data: {
+      success: boolean;
+      message: string;
+      userId?: string;
+      token?: string; 
+    };
+  }

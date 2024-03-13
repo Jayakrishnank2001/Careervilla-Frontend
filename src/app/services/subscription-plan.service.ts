@@ -6,9 +6,8 @@ import { ISubscriptionRes } from '../models/subscriptionPlan';
 import { IRes } from '../models/common';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+  
 export class SubscriptionPlanService {
 
   baseURL=environments.baseURL
@@ -16,8 +15,9 @@ export class SubscriptionPlanService {
   constructor(private readonly http: HttpClient) { }
 
 
-  getAllPlans(): Observable<ISubscriptionRes[]>{
-    return this.http.get<ISubscriptionRes[]>(`${this.baseURL}/admin/subscription-plans`,{})
+  getAllPlans(role: 'admin' | 'employer'): Observable<ISubscriptionRes[]>{
+    const endpoint = role == 'admin' ? 'admin/subscription-plans' : 'employer/subscription-plans'
+    return this.http.get<ISubscriptionRes[]>(`${this.baseURL}/${endpoint}`,{})
   }
 
   deletePlan(planId: string): Observable<boolean>{

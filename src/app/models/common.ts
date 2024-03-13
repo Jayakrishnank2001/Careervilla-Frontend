@@ -16,5 +16,15 @@ export interface IRes{
         success: boolean,
         message:string
     }
-    
+}
+
+export interface IToken{
+    id: string,
+    username: string,
+    role:string
+}
+
+export interface IResponse{
+    success: boolean
+    message:string
 }

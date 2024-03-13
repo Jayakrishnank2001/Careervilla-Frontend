@@ -6,6 +6,7 @@ export interface IEmployerRes {
     location?: string,
     phoneNumber?: string,
     isBlocked?: boolean,
+    isSubscribed?:boolean,
     password: string,
     company_Id?: string
 }
@@ -14,4 +15,14 @@ export interface IRes{
     success?: boolean,
     message?:string
 }
+
+export interface IEmployerAuthResponse {
+    status: number;
+    data: {
+      success: boolean;
+      message: string;
+      userId?: string;
+      token?: string; 
+    };
+  }
 

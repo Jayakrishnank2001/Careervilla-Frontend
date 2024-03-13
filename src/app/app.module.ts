@@ -13,6 +13,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
+import { AuthService } from './services/auth.service';
+import { SubscriptionPlanService } from './services/subscription-plan.service';
+import { LocationService } from './services/location.service';
+import { JobService } from './services/job.service';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -30,7 +34,11 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
+    AuthService,
+    SubscriptionPlanService,
     BreakpointObserver,
+    LocationService,
+    JobService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
   ],

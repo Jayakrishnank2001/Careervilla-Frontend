@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { validateByTrimming } from 'src/app/helpers/validations';
-import { IRes } from 'src/app/models/jobseeker';
+import { IResponse } from 'src/app/models/common';
+import { IJobseekerAuthResponse, IRes } from 'src/app/models/jobseeker';
 import { JobseekerService } from 'src/app/services/jobseeker.service';
 import { otpValidators } from 'src/app/shared/validators';
 
@@ -15,7 +16,7 @@ export class JobseekerOtpComponent implements OnInit, OnDestroy{
 
   form!: FormGroup
   otpTimer!: number
-  private timerInterval:any
+  private timerInterval!: number
   isSubmitted: boolean = false
   
   constructor(private readonly formBuilder: FormBuilder,
@@ -37,7 +38,7 @@ export class JobseekerOtpComponent implements OnInit, OnDestroy{
       } else {
         clearInterval(this.timerInterval)
       }
-    },1000)
+    },1000)as unknown as number
   }
 
   resendOTP(): void{
@@ -59,13 +60,11 @@ export class JobseekerOtpComponent implements OnInit, OnDestroy{
     if (this.form.valid) {
       const data = this.form.getRawValue()
       this.jobseekerService.verifyOTP(data.otp).subscribe({
-        next: (res: any) => {
-          if (res.userId) {
-            void this.router.navigate(['/jobseeker/login'])
-          } else if(res.success){
+        next: (res: IJobseekerAuthResponse) => {
+          if (!res) {
             void this.router.navigate(['/jobseeker/forgot-password'])
-          } else {
-            console.error(res.message)
+          } else if(res.data.userId){
+            void this.router.navigate(['/jobseeker/login'])
           }
         },
         error: (error) => {

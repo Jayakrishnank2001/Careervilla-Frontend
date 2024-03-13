@@ -22,15 +22,30 @@
       <button mat-menu-item routerLink="/employer/login">
         <mat-icon>login</mat-icon>EMPLOYER LOGIN
       </button>
-      <button mat-menu-item>
-        <mat-icon>notifications</mat-icon> NOTIFICATIONS
-      </button>
-      <button mat-menu-item>
-        <mat-icon>message</mat-icon> MESSAGES
-      </button>
-      <button mat-menu-item>
-        <mat-icon>account_circle</mat-icon> ACCOUNT
-      </button>
+      <ng-container *ngIf="token;else loginButtonGroup">
+        <button mat-menu-item>
+          <mat-icon>notifications</mat-icon> NOTIFICATIONS
+        </button>
+        <button mat-menu-item>
+          <mat-icon>message</mat-icon> MESSAGES
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="accountMenu">
+          <mat-icon>account_circle</mat-icon> ACCOUNT
+        </button>
+  
+        <mat-menu #accountMenu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item (click)="onLogOut()">Logout</button>
+        </mat-menu>
+      </ng-container>
+
+      <ng-template #loginButtonGroup>
+        <button mat-menu-item routerLink="/jobseeker/login">
+          <mat-icon>login</mat-icon> LOGIN
+        </button>
+      </ng-template>
+      
     </mat-menu>
   </ng-container>
   
@@ -42,15 +57,28 @@
     <button mat-button routerLink="/jobseeker/companies">COMPANIES</button>
     <span class="fill-remaining-space"></span>
     <button mat-button routerLink="/employer/login">EMPLOYER LOGIN</button>
-    <button mat-icon-button>
-      <mat-icon>notifications</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>message</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
-    </button>
+    <ng-container *ngIf="token;else loginButtonGroup">
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>message</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="onLogOut()">Logout</button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #loginButtonGroup>
+      <button mat-raised-button class="mat-raised-button" routerLink="/jobseeker/login">LOGIN</button>
+    </ng-template>
+    
   </ng-container>
 
 </mat-toolbar>

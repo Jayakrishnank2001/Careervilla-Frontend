@@ -10,40 +10,56 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/employer/home">
+      <button *ngIf="token" mat-menu-item routerLink="/employer/home">
         <mat-icon>home</mat-icon>HOME
       </button>
       <button mat-menu-item routerLink="/jobseeker/login">
         <mat-icon>login</mat-icon>JOBSEEKER LOGIN
       </button>
-      <button mat-menu-item>
-        <mat-icon>notifications</mat-icon> NOTIFICATIONS
-      </button>
-      <button mat-menu-item>
-        <mat-icon>message</mat-icon> MESSAGES
-      </button>
-      <button mat-menu-item>
-        <mat-icon>account_circle</mat-icon> ACCOUNT
-      </button>
+      <ng-container *ngIf="token">
+        <button mat-menu-item>
+          <mat-icon>notifications</mat-icon> NOTIFICATIONS
+        </button>
+        <button mat-menu-item>
+          <mat-icon>message</mat-icon> MESSAGES
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="accountMenu">
+          <mat-icon>account_circle</mat-icon> ACCOUNT
+        </button>
+  
+        <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item (click)="onLogOut()">Sign Out</button>
+        </mat-menu>
+      </ng-container>
+  
     </mat-menu>
   </ng-container>
   
 
   <!-- Add a ngIf directive to check if it's not a small screen -->
   <ng-container *ngIf="(screenSize | async) !== 'small'">
-    <button mat-button routerLink="/employer/home">HOME</button>
+    <button *ngIf="token" mat-button routerLink="/employer/home">HOME</button>
     <button mat-button routerLink="/jobseeker/login">JOBSEEKER LOGIN</button>
-    
+    <ng-container *ngIf="token">
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>message</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+  
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="onLogOut()">Logout</button>
+      </mat-menu>
+    </ng-container>
 
-    <button mat-icon-button>
-      <mat-icon>notifications</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>message</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
-    </button>
   </ng-container>
 
 </mat-toolbar>
