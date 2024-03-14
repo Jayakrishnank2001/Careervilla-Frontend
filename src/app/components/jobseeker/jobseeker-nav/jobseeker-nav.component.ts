@@ -28,7 +28,7 @@ export class JobseekerNavComponent {
   }
 
   ngOnInit() {
-    this.token = this.authService.getToken()
+    this.token = this.authService.getToken('jobseekerToken')
   }
 
   toggleMenu() {
@@ -44,7 +44,7 @@ export class JobseekerNavComponent {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.authService.clearToken()
+        this.authService.clearToken('jobseekerToken')
         void this.router.navigate(['/jobseeker/login'])
       }
     })

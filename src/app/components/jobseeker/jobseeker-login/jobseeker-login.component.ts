@@ -28,7 +28,6 @@ export class JobseekerLoginComponent implements OnInit {
       email: ['', [validateByTrimming(emailValidators)]],
       password:['',[validateByTrimming(passwordValidators)]]
     })
-    this.authService.setUserRole('jobseeker')
   }
 
   onSubmit() {
@@ -40,7 +39,7 @@ export class JobseekerLoginComponent implements OnInit {
           if (res.data.success) {
             const jwtToken = res.data.token
             if (jwtToken) {
-              this.authService.setToken(jwtToken)
+              this.authService.setToken('jobseekerToken',jwtToken)
             }
             void this.router.navigate(['/jobseeker/home'])
           } else {

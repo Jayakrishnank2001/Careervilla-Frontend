@@ -14,7 +14,6 @@ export class JobseekerHomeComponent implements OnInit{
   private authService:AuthService) { }
   
   ngOnInit(): void {
-    this.authService.setUserRole('jobseeker')
   }
 
 isSmallScreen = this.breakpointObserver.observe('(max-width: 600px)').pipe(

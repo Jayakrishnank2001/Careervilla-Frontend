@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path:'login',
         title:'Careervilla | Admin Login',
-        component:AdminLoginComponent
+        component: AdminLoginComponent
     },
     {
         path:'dashboard',

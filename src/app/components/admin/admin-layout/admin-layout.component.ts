@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.css'],
 })
-export class AdminLayoutComponent {
+export class AdminLayoutComponent implements OnInit{
   screenSize: Observable<string>;
 
   isMenuOpen = true;
@@ -24,6 +24,11 @@ export class AdminLayoutComponent {
       );
   }
 
+  ngOnInit(): void {
+    
+  }
+
+
   onLogout(): void {
     void Swal.fire({
       title: 'Do you want to Logout ?',
@@ -33,7 +38,7 @@ export class AdminLayoutComponent {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.authService.clearToken()
+        this.authService.clearToken('adminToken')
         void this.router.navigate(['/admin/login'])
       }
     })

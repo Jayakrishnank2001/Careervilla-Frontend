@@ -28,7 +28,7 @@ export class EmployerNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.token=this.authService.getToken()
+    this.token=this.authService.getToken('employerToken')
   }
 
   toggleMenu() {
@@ -44,7 +44,7 @@ export class EmployerNavComponent implements OnInit {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.authService.clearToken()
+        this.authService.clearToken('employerToken')
         void this.router.navigate(['/employer/login'])
       }
     })

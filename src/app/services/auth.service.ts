@@ -1,46 +1,38 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
  
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
   
 export class AuthService {
 
-  private readonly TOKEN_KEY = 'jwtToken'
-  userRole:string=''
+  private readonly TOKEN_KEY = 'jwtToken';
   
-  private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(this.getToken())
+  private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(this.getToken(this.TOKEN_KEY))
   token$: Observable<string | null> = this.tokenSubject.asObservable()
 
-  constructor() { }
+  constructor() {}
 
-  getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY)
+  getToken(tokenKey:string): string | null {
+    return localStorage.getItem(tokenKey)
   }
 
-  setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token)
+  setToken(tokenKey:string,token: string): void {
+    localStorage.setItem(tokenKey, token)
     this.tokenSubject.next(token)
   }
 
-  clearToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY)
+  clearToken(tokenKey:string): void {
+    localStorage.removeItem(tokenKey)
     this.tokenSubject.next(null)
   }
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem(this.TOKEN_KEY)
+  isAuthenticated(tokenKey:string): boolean {
+    const token = localStorage.getItem(tokenKey)
     return !!token
-  }
-
-  setUserRole(role: string): void{
-    this.userRole=role
-  }
-
-  getUserRole(): string{
-    return this.userRole
   }
     
   
-
-
+  
 }

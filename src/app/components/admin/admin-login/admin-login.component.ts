@@ -23,7 +23,6 @@ export class AdminLoginComponent implements OnInit {
       username: [''],
       password: ['']
     })
-    this.authService.setUserRole('admin')
   }
 
   submit() {
@@ -31,10 +30,11 @@ export class AdminLoginComponent implements OnInit {
     if (this.form.valid) {
       const values = this.form.getRawValue()
       this.adminService.adminLogin(values.username, values.password).subscribe({
-        next: (response:IAdminAuthResponse) => {
+        next: (response: IAdminAuthResponse) => {
+          console.log(response)
           const jwtToken = response.data.token
           if (jwtToken) {
-            this.authService.setToken(jwtToken)
+            this.authService.setToken('adminToken',jwtToken)
           }
           void this.router.navigate(['/admin/dashboard'])
         },

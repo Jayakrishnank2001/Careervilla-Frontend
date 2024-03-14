@@ -27,7 +27,6 @@ export class EmployerLoginComponent implements OnInit{
       email: ['', [validateByTrimming(emailValidators)]],
       password:['',[validateByTrimming(passwordValidators)]]
     })
-    this.authService.setUserRole('employer')
   }
 
   onSubmit() {
@@ -39,7 +38,7 @@ export class EmployerLoginComponent implements OnInit{
           if (res.data.success) {
             const jwtToken = res.data.token
             if (jwtToken) {
-              this.authService.setToken(jwtToken)
+              this.authService.setToken('employerToken',jwtToken)
             }
             void this.router.navigate(['/employer/home'])
           } else {

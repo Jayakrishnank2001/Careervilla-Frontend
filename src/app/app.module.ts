@@ -34,7 +34,6 @@ import { JobService } from './services/job.service';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
-    AuthService,
     SubscriptionPlanService,
     BreakpointObserver,
     LocationService,
