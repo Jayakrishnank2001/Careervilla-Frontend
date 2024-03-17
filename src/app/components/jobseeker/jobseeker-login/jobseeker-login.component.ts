@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { validateByTrimming } from 'src/app/helpers/validations';
 import { IJobseekerAuthResponse, IRes } from 'src/app/models/jobseeker';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,15 +14,21 @@ import { emailValidators, passwordValidators } from 'src/app/shared/validators';
   templateUrl: './jobseeker-login.component.html',
   styleUrls: ['./jobseeker-login.component.css']
 })
-export class JobseekerLoginComponent implements OnInit {
+export class JobseekerLoginComponent implements OnInit,OnDestroy {
 
   isSubmitted: boolean = false
   form!: FormGroup
+  authSubscription!:Subscription
 
   constructor(private readonly formBuilder: FormBuilder,
     private readonly jobseekerService: JobseekerService,
     private readonly router: Router,
-    private readonly authService: AuthService) { }
+    private readonly authService: AuthService,
+    private readonly socialAuthService: SocialAuthService) { }
+  
+    ngOnDestroy(): void {
+      this.authSubscription.unsubscribe();
+    }
   
 
   ngOnInit(): void {
@@ -28,6 +36,14 @@ export class JobseekerLoginComponent implements OnInit {
       email: ['', [validateByTrimming(emailValidators)]],
       password:['',[validateByTrimming(passwordValidators)]]
     })
+
+    this.authSubscription = this.socialAuthService.authState.subscribe((user) => {
+      console.log(user)
+    })
+  }
+
+  googleSignin(googleWrapper: any) {
+    googleWrapper.click();
   }
 
   onSubmit() {

@@ -3,9 +3,10 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -38,6 +39,19 @@ export class JwtInterceptor implements HttpInterceptor {
       })
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          if (userRole == 'employer') {
+            this.authService.clearToken('employerToken')
+            this.router.navigate(['/employer/login'])
+          } else if (userRole == 'jobseeker') {
+            this.authService.clearToken('jobseekerToken')
+            this.router.navigate(['/jobseeker/login'])
+          }
+        }
+        return throwError(error)
+      })
+    )
   }
 }

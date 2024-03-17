@@ -27,9 +27,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   private handleHttpError(error: HttpErrorResponse): void{
     let errorMessage = 'An error occured'
     if (error.error instanceof ErrorEvent) {
-      errorMessage=`Client Error:${error.error.message}`
+      errorMessage=`:${error.error.message}`
     } else {
-      errorMessage=`Server Error:${error.status} - ${error.error.message || error.statusText}`
+      errorMessage=`${error.error.message || error.statusText}`
     }
     this.snackBar.open(errorMessage, 'Close', {
       duration: 5000,

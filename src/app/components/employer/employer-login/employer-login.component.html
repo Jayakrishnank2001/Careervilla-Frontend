@@ -1,46 +1,44 @@
 <app-employer-nav></app-employer-nav>
 <div class="login-page">
-    <app-employer-login-layout></app-employer-login-layout>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-employer-login-layout></app-employer-login-layout>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card>
-        <mat-card-title>
-          Employer Login
-        </mat-card-title>
-        <mat-card-content>
-          <div class="rounded-input">
-            <mat-form-field appearance="outline">
-              <mat-label>Email ID</mat-label>
-              <input matInput class="mat-Input" placeholder="" formControlName="email" type="email" required>
-            </mat-form-field>
-            <div *ngIf="form.get('email')!.hasError('email') && form.get('email')!.touched" class="error-message">
-              Please enter a valid email.
-            </div>            
+      <mat-card-title>
+        Employer Login
+      </mat-card-title>
+      <mat-card-content>
+        <div class="rounded-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Email ID</mat-label>
+            <input matInput class="mat-Input" placeholder="" formControlName="email" type="email" required>
+          </mat-form-field>
+          <div *ngIf="form.get('email')!.hasError('email') && form.get('email')!.touched" class="error-message">
+            Please enter a valid email.
           </div>
-          <div class="rounded-input">
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput class="mat-Input" placeholder="" formControlName="password" type="password" required>
-            </mat-form-field>
-          </div>
-          <a (click)="onForgotPasswordClick()" style="cursor: pointer;"><p class="forgot-password">Forgot Password?</p></a>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button class="mat-large-fab1" type="submit">LOGIN</button>
-        </mat-card-actions>
-        <mat-card-actions>
-          <button mat-raised-button class="mat-large-fab2">
-            <div class="button-content">
-              <img src="../../../../assets/images/google-logo.jpg" alt="Google Logo"
-                class="google-logo">
-              <span>SIGN IN WITH GOOGLE</span>
-            </div>
-          </button>
-        </mat-card-actions>
+        </div>
+        <div class="rounded-input">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput class="mat-Input" placeholder="" formControlName="password" type="password" required>
+          </mat-form-field>
+        </div>
+        <a (click)="onForgotPasswordClick()" style="cursor: pointer;">
+          <p class="forgot-password">Forgot Password?</p>
+        </a>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="mat-large-fab1" type="submit">LOGIN</button>
+      </mat-card-actions>
+      <mat-card-actions>
+        <app-google-login (click)="googleSignin($event)" (loginWithGoogle)="googleSignin($event)"></app-google-login>
+      </mat-card-actions>
     </mat-card>
   </form>
-    <div class="sign-up">
-        <span>New to CARRERVILLA?</span>
-        <a routerLink="/employer/signup" ><p class="register">Register</p></a>
-    </div>
+  <div class="sign-up">
+    <span>New to CARRERVILLA?</span>
+    <a routerLink="/employer/signup">
+      <p class="register">Register</p>
+    </a>
+  </div>
 </div>
 <app-employer-login-footer></app-employer-login-footer>

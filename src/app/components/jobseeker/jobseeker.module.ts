@@ -13,7 +13,9 @@ import { JobseekerHomeComponent } from './jobseeker-home/jobseeker-home.componen
 import { ReactiveFormsModule } from "@angular/forms";
 import { JobseekerFooterComponent } from './jobseeker-footer/jobseeker-footer.component';
 import { JobseekerService } from "src/app/services/jobseeker.service";
-
+import { GoogleLoginComponent } from "../common/google-login/google-login.component";
+import { SocialAuthServiceConfig, SocialLoginModule, GoogleLoginProvider } from "@abacritt/angularx-social-login";
+import { environments } from "src/environments/environment";
 
 @NgModule({
     declarations: [
@@ -31,8 +33,29 @@ import { JobseekerService } from "src/app/services/jobseeker.service";
         JobseekerRoutingModule,
         MaterialModule,
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SocialLoginModule,
+        GoogleLoginComponent
     ],
-    providers:[JobseekerService]
+    providers: [
+        JobseekerService,
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+              autoLogin: false,
+              providers: [
+                {
+                  id: GoogleLoginProvider.PROVIDER_ID,
+                  provider: new GoogleLoginProvider(environments.google_client_id, {
+                    scopes: 'openid profile email',
+                  }),
+                },
+              ],
+              onError: (err) => {
+                console.error(err);
+              },
+            } as SocialAuthServiceConfig,
+        }
+    ]
 })
 export class JobseekerModule { }

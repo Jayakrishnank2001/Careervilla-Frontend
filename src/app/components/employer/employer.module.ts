@@ -18,6 +18,9 @@ import { EmployerFooterComponent } from './employer-footer/employer-footer.compo
 import { EmployerPostJobComponent } from './employer-post-job/employer-post-job.component';
 import { EmployerSubscriptionComponent } from './employer-subscription/employer-subscription.component';
 import { EmployerService } from "src/app/services/employer.service";
+import { SocialAuthServiceConfig, SocialLoginModule, GoogleLoginProvider } from "@abacritt/angularx-social-login";
+import { environments } from "src/environments/environment";
+import { GoogleLoginComponent } from "../common/google-login/google-login.component";
 
 @NgModule({
     declarations: [
@@ -40,8 +43,29 @@ import { EmployerService } from "src/app/services/employer.service";
         ReactiveFormsModule,
         MatSidenavModule,
         MatIconModule,
-        LayoutModule
+        LayoutModule,
+        SocialLoginModule,
+        GoogleLoginComponent,
     ],
-    providers:[EmployerService]
+    providers: [
+        EmployerService,
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+              autoLogin: false,
+              providers: [
+                {
+                  id: GoogleLoginProvider.PROVIDER_ID,
+                  provider: new GoogleLoginProvider(environments.google_client_id, {
+                    scopes: 'openid profile email',
+                  }),
+                },
+              ],
+              onError: (err) => {
+                console.error(err);
+              },
+            } as SocialAuthServiceConfig,
+          }
+    ]
 })
 export class EmployerModule { }
