@@ -23,6 +23,7 @@ export interface IJobseekerAuthResponse {
     data: {
       success: boolean;
       message: string;
+      data: IJobseekerRes;
       userId?: string;
       token?: string; 
     };

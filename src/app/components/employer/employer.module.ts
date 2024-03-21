@@ -21,51 +21,54 @@ import { EmployerService } from "src/app/services/employer.service";
 import { SocialAuthServiceConfig, SocialLoginModule, GoogleLoginProvider } from "@abacritt/angularx-social-login";
 import { environments } from "src/environments/environment";
 import { GoogleLoginComponent } from "../common/google-login/google-login.component";
+import { StoreModule } from "@ngrx/store";
+import { employerReducer } from "src/app/states/employer/employer.reducer";
 
 @NgModule({
-    declarations: [
-        EmployerLoginComponent,
-        EmployerNavComponent,
-        EmployerLoginLayoutComponent,
-        EmployerOTPComponent,
-        EmployerForgotPasswordComponent,
-        EmployerLoginFooterComponent,
-        EmployerSignupComponent,
-        EmployerHomeComponent,
-        EmployerFooterComponent,
-        EmployerPostJobComponent,
-        EmployerSubscriptionComponent
-    ],
-    imports: [
-        EmployerRoutingModule,
-        MaterialModule,
-        CommonModule,
-        ReactiveFormsModule,
-        MatSidenavModule,
-        MatIconModule,
-        LayoutModule,
-        SocialLoginModule,
-        GoogleLoginComponent,
-    ],
-    providers: [
-        EmployerService,
-        {
-            provide: 'SocialAuthServiceConfig',
-            useValue: {
-              autoLogin: false,
-              providers: [
-                {
-                  id: GoogleLoginProvider.PROVIDER_ID,
-                  provider: new GoogleLoginProvider(environments.google_client_id, {
-                    scopes: 'openid profile email',
-                  }),
-                },
-              ],
-              onError: (err) => {
-                console.error(err);
-              },
-            } as SocialAuthServiceConfig,
-          }
-    ]
+  declarations: [
+    EmployerLoginComponent,
+    EmployerNavComponent,
+    EmployerLoginLayoutComponent,
+    EmployerOTPComponent,
+    EmployerForgotPasswordComponent,
+    EmployerLoginFooterComponent,
+    EmployerSignupComponent,
+    EmployerHomeComponent,
+    EmployerFooterComponent,
+    EmployerPostJobComponent,
+    EmployerSubscriptionComponent
+  ],
+  imports: [
+    EmployerRoutingModule,
+    MaterialModule,
+    CommonModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('employer', employerReducer),
+    MatSidenavModule,
+    MatIconModule,
+    LayoutModule,
+    SocialLoginModule,
+    GoogleLoginComponent,
+  ],
+  providers: [
+    EmployerService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environments.google_client_id, {
+              scopes: 'openid profile email',
+            }),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    }
+  ]
 })
 export class EmployerModule { }

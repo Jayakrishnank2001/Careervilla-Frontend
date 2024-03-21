@@ -41,7 +41,7 @@ const routes: Routes = [
         path: 'post-job',
         title: 'Careervilla | Employer Post-Job',
         component: EmployerPostJobComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard],
     },
     {
         path: 'subscription',

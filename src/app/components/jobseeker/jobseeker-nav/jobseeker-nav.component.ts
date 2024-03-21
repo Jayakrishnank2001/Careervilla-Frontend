@@ -44,6 +44,9 @@ export class JobseekerNavComponent {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
+        setTimeout(() => {
+          window.location.reload()
+        })
         this.authService.clearToken('jobseekerToken')
         void this.router.navigate(['/jobseeker/login'])
       }

@@ -40,7 +40,7 @@
         <div class="right-content">
           <h1 class="welcome-h1">Welcome !</h1>
           <p class="p1">Welcome to CAREERVILLA, your trusted partner in navigating the path to your dream career.</p>
-          <button mat-fab extended class="apply-jobs">Apply For Jobs</button>
+          <button mat-fab extended class="apply-jobs" [routerLink]="['/jobseeker/jobs']" routerLinkActive="router-link-active" >Apply For Jobs</button>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
           <div class="announce-right-content">
             <h1 class="welcome-h1">Searching for jobs?</h1>
             <p class="p1">Embark on your job search journey with CAREERVILLA. Discover a multitude of exciting job opportunities from leading companies across various industries. Your dream job is just a click away.</p>
-            <button mat-fab extended class="apply-jobs">Start Applying Now</button>
+            <button mat-fab extended class="apply-jobs" [routerLink]="['/jobseeker/jobs']" routerLinkActive="router-link-active" >Start Applying Now</button>
           </div>
         </div>
       </div>

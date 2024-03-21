@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { IEmployerAuthResponse, IEmployerRes, IRes } from '../models/employer';
+import { Observable } from 'rxjs';
 
 @Injectable()
   
@@ -12,6 +13,10 @@ export class EmployerService {
   
   login(email: string, password: string) {
     return this.http.post<IEmployerAuthResponse>(`${this.baseURL}/employer/login`,{email,password})
+  }
+
+  googleLogin(email: string, firstName: string, image: string) {
+    return this.http.post<IEmployerAuthResponse>(`${this.baseURL}/employer/googleLogin`,{email,firstName,image})
   }
 
   signup(employerData: IEmployerRes) {
@@ -32,6 +37,10 @@ export class EmployerService {
 
   resendOTP() {
     return this.http.post<IRes>(`${this.baseURL}/employer/resendOTP`,{})
+  }
+
+  getEmployerDetails(employerId: String): Observable<IEmployerRes>{
+    return this.http.get<IEmployerRes>(`${this.baseURL}/employer/getDetails/${employerId}`)
   }
 
 }

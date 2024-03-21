@@ -16,46 +16,51 @@ import { JobseekerService } from "src/app/services/jobseeker.service";
 import { GoogleLoginComponent } from "../common/google-login/google-login.component";
 import { SocialAuthServiceConfig, SocialLoginModule, GoogleLoginProvider } from "@abacritt/angularx-social-login";
 import { environments } from "src/environments/environment";
+import { StoreModule } from "@ngrx/store";
+import { jobSeekerReducer } from "src/app/states/jobseeker/jobseeker.reducer";
+import { JobseekerJobsComponent } from './jobseeker-jobs/jobseeker-jobs.component';
 
 @NgModule({
-    declarations: [
-        JobseekerLoginComponent,
-        JobseekerNavComponent,
-        JobseekerForgotPasswordComponent,
-        JobseekerLoginLayoutComponent,
-        JobseekerOtpComponent,
-        JobseekerLoginFooterComponent,
-        JobseekerSignupComponent,
-        JobseekerHomeComponent,
-        JobseekerFooterComponent
-    ],
-    imports: [
-        JobseekerRoutingModule,
-        MaterialModule,
-        CommonModule,
-        ReactiveFormsModule,
-        SocialLoginModule,
-        GoogleLoginComponent
-    ],
-    providers: [
-        JobseekerService,
-        {
-            provide: 'SocialAuthServiceConfig',
-            useValue: {
-              autoLogin: false,
-              providers: [
-                {
-                  id: GoogleLoginProvider.PROVIDER_ID,
-                  provider: new GoogleLoginProvider(environments.google_client_id, {
-                    scopes: 'openid profile email',
-                  }),
-                },
-              ],
-              onError: (err) => {
-                console.error(err);
-              },
-            } as SocialAuthServiceConfig,
-        }
-    ]
+  declarations: [
+    JobseekerLoginComponent,
+    JobseekerNavComponent,
+    JobseekerForgotPasswordComponent,
+    JobseekerLoginLayoutComponent,
+    JobseekerOtpComponent,
+    JobseekerLoginFooterComponent,
+    JobseekerSignupComponent,
+    JobseekerHomeComponent,
+    JobseekerFooterComponent,
+    JobseekerJobsComponent,
+  ],
+  imports: [
+    JobseekerRoutingModule,
+    MaterialModule,
+    CommonModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('jobseeker', jobSeekerReducer),
+    SocialLoginModule,
+    GoogleLoginComponent
+  ],
+  providers: [
+    JobseekerService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environments.google_client_id, {
+              scopes: 'openid profile email',
+            }),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    }
+  ]
 })
 export class JobseekerModule { }

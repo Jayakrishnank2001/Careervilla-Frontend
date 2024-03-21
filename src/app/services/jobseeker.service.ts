@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { IJobseekerAuthResponse, IJobseekerRes, IRes } from '../models/jobseeker';
 import { IResponse } from '../models/common';
+import { Observable } from 'rxjs';
 
 @Injectable()
   
@@ -14,6 +15,10 @@ export class JobseekerService {
   
   login(email: string, password: string) {
     return this.http.post<IJobseekerAuthResponse>(`${this.baseURL}/jobseeker/login`,{email,password})
+  }
+
+  googleLogin(email: string, firstName: string, image: string) {
+    return this.http.post<IJobseekerAuthResponse>(`${this.baseURL}/jobseeker/googleLogin`,{email,firstName,image})
   }
 
   signup(jobseekerData: IJobseekerRes) {
@@ -34,5 +39,9 @@ export class JobseekerService {
 
   resendOTP() {
     return this.http.post<IRes>(`${this.baseURL}/jobseeker/resendOTP`,{})
+  }
+
+  getJobseekerDetails(jobseekerId: string): Observable<IJobseekerRes>{
+    return this.http.get(`${this.baseURL}/jobseeker/getDetails/${jobseekerId}`)
   }
 }

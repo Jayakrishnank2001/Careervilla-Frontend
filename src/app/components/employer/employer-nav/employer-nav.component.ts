@@ -44,6 +44,9 @@ export class EmployerNavComponent implements OnInit {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
+        setTimeout(() => {
+          window.location.reload()
+        })
         this.authService.clearToken('employerToken')
         void this.router.navigate(['/employer/login'])
       }

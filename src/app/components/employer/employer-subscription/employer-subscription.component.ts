@@ -3,6 +3,11 @@ import { ISubscriptionRes } from 'src/app/models/subscriptionPlan';
 import { SubscriptionPlanService } from 'src/app/services/subscription-plan.service';
 import { MatDialog } from '@angular/material/dialog';
 import { environments } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { JobService } from 'src/app/services/job.service';
+import { IJobRes } from 'src/app/models/job';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-employer-subscription',
@@ -17,7 +22,12 @@ export class EmployerSubscriptionComponent implements OnInit {
   failure: boolean = false
 
   constructor(private subscriptionPlanService: SubscriptionPlanService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public router: Router,
+    public snackBar: MatSnackBar,
+    private jobService: JobService,
+  private authService:AuthService) { }
+  
 
   ngOnInit(): void {
     this.getPlans()
@@ -29,13 +39,12 @@ export class EmployerSubscriptionComponent implements OnInit {
       next: (res) => {
         if (res !== null) {
           this.plans = res
-          console.log(this.plans)
         }
       }
     })
   }
 
-  makePayment(amount: number) {
+  makePayment(amount: number,duration:string|undefined) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environments.stripe_publishable_key,
       locale: 'auto',
@@ -46,6 +55,32 @@ export class EmployerSubscriptionComponent implements OnInit {
     });
 
     const paymentstripe = (stripeToken: any) => {
+      const employerId = this.authService.extractUserIdFromToken('employerToken')
+      if(employerId && duration)
+      this.subscriptionPlanService.makePayment(stripeToken,duration,employerId).subscribe({
+        next: (res) => {
+          if (res.data == 'success') {
+            this.success = true
+            const data= localStorage.getItem('postJobDetails')
+            if (data) {
+              const storedData: IJobRes = JSON.parse(data);
+              this.jobService.saveJob(storedData).subscribe({
+                next: () => {
+                  
+                }
+              })
+            }
+            
+            void this.router.navigate(['/employer/post-job'])
+            this.snackBar.open('Job Posted Successfully', 'Close', {
+              duration: 5000,
+              verticalPosition: 'top',
+            })
+          } else {
+            this.failure=true
+          }
+        }
+      })
 
     };
 
@@ -75,7 +110,6 @@ export class EmployerSubscriptionComponent implements OnInit {
           key:environments.stripe_publishable_key,
           locale: 'auto',
           token: function (stripeToken: any) {
-            console.log(stripeToken);
           },
         });
       };

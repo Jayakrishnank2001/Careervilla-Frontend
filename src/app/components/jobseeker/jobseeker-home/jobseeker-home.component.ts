@@ -10,8 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class JobseekerHomeComponent implements OnInit{
 
-  constructor(private breakpointObserver: BreakpointObserver,
-  private authService:AuthService) { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
   
   ngOnInit(): void {
   }

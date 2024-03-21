@@ -32,4 +32,10 @@ export class SubscriptionPlanService {
     return this.http.put<IRes>(`${this.baseURL}/admin/update-plan/${planId}`,{data})
   }
 
+  makePayment(stripeToken: any,duration:string,employerId:string) {
+    return this.http.post<{data:string}>(`${this.baseURL}/employer/payment/${employerId}`,{stripeToken,duration})
+  }
+
+
+
 }

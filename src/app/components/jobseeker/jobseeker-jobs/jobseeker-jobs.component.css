@@ -1,0 +1,55 @@
+.search-bar-card {
+    width: 100%;
+    padding: 20px;
+    box-shadow:none ;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  
+  .search-criteria {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .search-field {
+    margin-right: 10px;
+    width: 400px;
+  }
+  
+  button.search-button {
+    background-color: #644DFF;
+    color: white;
+    border-radius: 0.5em;
+    width:8%;
+    height: 55px;
+    display: flex;
+    font-size: 16px; 
+    margin-top: -22px;
+    padding: 25px 40px;
+  }
+
+  .container {
+    display: flex;
+    margin-left: 14%;
+    margin-top: 2%; /* Adjust margin from the left side */
+  }
+  
+  .job-list {
+    width: 40%;
+    /* Additional styling for the job list */
+  }
+
+  .job-list2 {
+    width: 40%;
+    margin-left:2%;
+    /* Additional styling for the job list */
+  }
+
+
+  @media (max-width:500px){
+    .search-field{
+        width: 150px;
+    }
+  }
