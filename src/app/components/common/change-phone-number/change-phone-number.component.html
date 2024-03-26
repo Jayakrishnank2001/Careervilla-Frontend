@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1>Change Phone Number</h1>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="countryCode">
+          <mat-option *ngFor="let country of countries" [value]="country.dialCode">
+            {{ country.name }}({{ country.dialCode }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Set Phone Number</mat-label>
+        <input matInput type="text" formControlName="phoneNumber" required>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="!isFormValid">SUBMIT</button>
+</form>
