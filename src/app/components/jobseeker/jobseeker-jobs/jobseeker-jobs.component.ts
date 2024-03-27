@@ -1,4 +1,4 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { map } from 'rxjs';
 import { IJobRes } from 'src/app/models/job';
@@ -11,7 +11,8 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class JobseekerJobsComponent {
 
-  jobs!:IJobRes
+  jobs: IJobRes[] = []
+  selectJob: IJobRes  = {}
 
   constructor(private breakpointObserver: BreakpointObserver,
     private jobService: JobService) { }
@@ -20,16 +21,22 @@ export class JobseekerJobsComponent {
     this.getJobs()
   }
 
-  isSmallScreen = this.breakpointObserver.observe('(max-width: 600px)').pipe(
-    map(result => result.matches)
-  )
+  isSmallScreen = this.breakpointObserver.observe(Breakpoints.XSmall)
+        .pipe(
+            map(result => result.matches)
+        );
 
-  getJobs(): void{
+  getJobs(): void {
     this.jobService.getJobs().subscribe({
-      next: () => {
-        
+      next: (res) => {
+        this.jobs = res
+        this.selectJob=this.jobs[0]
       }
     })
+  }
+
+  selectedJob(job: IJobRes): void {
+    this.selectJob = job
   }
 
 

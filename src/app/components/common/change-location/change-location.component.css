@@ -1,0 +1,35 @@
+.mat-form {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 80%; /* Adjust the width as needed */
+    margin: auto; /* Center the form on the page */
+    max-height: 420px;
+}
+
+.form-field {
+    margin-top: 10px;
+    width: 100%; /* Full width on small screens */
+    max-width: 400px; /* Limit the width on larger screens */
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+@media screen and (min-width: 600px) {
+    .mat-form {
+        margin-top: 10px;
+        text-align: center;
+        width: 500px;
+        height: 540px;
+        flex-direction: column; /* Arrange form elements in a row on larger screens */
+    }
+    button{
+        width: 150px;
+        border-radius: 1em;
+    }
+    h1{
+        font-weight:600;
+    }
+}
+

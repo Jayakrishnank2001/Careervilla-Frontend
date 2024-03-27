@@ -8,6 +8,8 @@ import { EmployerHomeComponent } from "./employer-home/employer-home.component";
 import { EmployerPostJobComponent } from "./employer-post-job/employer-post-job.component";
 import { EmployerSubscriptionComponent } from "./employer-subscription/employer-subscription.component";
 import { AuthGuard } from "src/app/guards/auth.guard";
+import { EmployerProfileComponent } from "./employer-profile/employer-profile.component";
+import { EmployerSettingsComponent } from "./employer-settings/employer-settings.component";
 
 
 const routes: Routes = [
@@ -47,6 +49,18 @@ const routes: Routes = [
         path: 'subscription',
         title: 'Careervilla | Employer Subscription',
         component: EmployerSubscriptionComponent,
+        canActivate:[AuthGuard]
+    },
+    {
+        path: 'profile',
+        title: 'Careervilla|Employer Profile',
+        component: EmployerProfileComponent,
+        canActivate:[AuthGuard]
+    },
+    {
+        path: 'settings',
+        title: 'Careervilla|Employer Settings',
+        component: EmployerSettingsComponent,
         canActivate:[AuthGuard]
     }
 

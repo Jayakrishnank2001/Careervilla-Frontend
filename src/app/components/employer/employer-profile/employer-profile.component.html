@@ -1,0 +1,40 @@
+<app-employer-nav></app-employer-nav>
+<mat-card class="profile-card">
+    <mat-card-header>
+        <div class="left-content">
+            <div class="name">
+                <mat-card-title class="username">{{userData.firstName}} {{userData.lastName}}</mat-card-title>
+            </div>
+            <div class="details">
+
+                <mat-card-subtitle><mat-icon>mail</mat-icon>{{userData.email}}</mat-card-subtitle>
+                <mat-card-subtitle><mat-icon>phone</mat-icon>{{userData.phoneNumber}}</mat-card-subtitle>
+                <mat-card-subtitle><mat-icon>place</mat-icon>{{userData.location}}</mat-card-subtitle>
+            </div>
+        </div>
+        <div class="right-content">
+            <div mat-card-avatar class="example-header-image"></div>
+        </div>
+    </mat-card-header>
+    <br>
+    <mat-card-header>
+        <mat-card-title class="professionalDetails">Professional Details</mat-card-title>
+    </mat-card-header>
+    <mat-divider style="background-color: rgb(211, 211, 211);"></mat-divider>
+    <mat-card class="professional-card">
+        <div class="form-container">
+            <mat-form-field class="input-field" appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input matInput placeholder="" formControlName="companyName">
+            </mat-form-field>
+            <mat-form-field class="input-field" appearance="outline">
+              <mat-label>Website</mat-label>
+              <input matInput placeholder="" formControlName="website">
+            </mat-form-field>
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Company Size</mat-label>
+                <input matInput placeholder="" formControlName="companySize">
+            </mat-form-field>
+          </div>
+    </mat-card>
+</mat-card>

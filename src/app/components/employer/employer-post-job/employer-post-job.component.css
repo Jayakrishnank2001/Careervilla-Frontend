@@ -3,6 +3,7 @@
     margin: 20px auto;
     padding: 20px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
   }
   
   .form-container {

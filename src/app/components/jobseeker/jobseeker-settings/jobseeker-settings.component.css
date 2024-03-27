@@ -1,0 +1,35 @@
+.settings-card{
+    width: 45%;
+    margin: 25px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1.5em;
+}
+
+.title{
+    font-size:x-large;
+    margin-left: -10px;
+}
+
+.password-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button.btn{
+    background-color:#644DFF ;
+    color: white;
+    width: 165px;
+}
+
+@media screen and (max-width:600px){
+    .settings-card{
+        width: 90%;
+    }
+
+    button.btn{
+        width: 110px;
+    }
+}

@@ -1,0 +1,98 @@
+.profile-card{
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-content {
+    flex: 1;
+    display: flex;
+    margin:30px 30px auto;
+    flex-direction: column;
+    padding-right: 70px;
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.name {
+    margin-bottom: 8px;
+}
+
+.username{
+    font-size:xx-large;
+}
+
+.details{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resume{
+    margin:0px 30px auto;
+    font-size:x-large;
+}
+
+button.resume-btn{
+    background-color: #644DFF;
+    color: white;
+    width: 91%;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.qualifications{
+    margin:0px 45px auto;
+    flex-grow: 1;
+}
+
+.qualification-div{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+mat-icon {
+    margin-right: 8px; 
+    margin-top: 8px;
+}
+
+.example-header-image {
+    background-image: url('https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt3a48501789cdf113/60db790b47339c0fc01c188c/3e947186d512164cf8dbe0987a865dd2b714eea6.png?auto=webp&format=pjpg&width=3840&quality=60');
+    background-size:cover;
+    height: 120px;
+    width: 120px;
+  }
+
+
+  @media screen and (max-width:800px){
+    .profile-card{
+        width: 90%;
+        flex-direction: column;
+    }
+    .left-content{
+        margin: 0;
+        padding-right: 0;
+        flex: 1;
+    }
+    .example-header-image{
+        height: 80px;
+        width: 80px;
+    }
+    .username{
+        font-size: x-large;
+    }
+   
+  }

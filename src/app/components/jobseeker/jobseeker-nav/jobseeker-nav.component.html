@@ -34,8 +34,8 @@
         </button>
   
         <mat-menu #accountMenu="matMenu">
-          <button mat-menu-item>Profile</button>
-          <button mat-menu-item>Settings</button>
+          <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
+          <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
           <button mat-menu-item (click)="onLogOut()">Logout</button>
         </mat-menu>
       </ng-container>
@@ -69,8 +69,8 @@
       </button>
       
       <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item>Profile</button>
-        <button mat-menu-item>Settings</button>
+        <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
+        <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
         <button mat-menu-item (click)="onLogOut()">Logout</button>
       </mat-menu>
     </ng-container>

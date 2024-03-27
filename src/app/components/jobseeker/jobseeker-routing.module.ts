@@ -6,6 +6,9 @@ import { JobseekerForgotPasswordComponent } from "./jobseeker-forgot-password/jo
 import { JobseekerSignupComponent } from "./jobseeker-signup/jobseeker-signup.component";
 import { JobseekerHomeComponent } from "./jobseeker-home/jobseeker-home.component";
 import { JobseekerJobsComponent } from "./jobseeker-jobs/jobseeker-jobs.component";
+import { JobseekerSettingsComponent } from "./jobseeker-settings/jobseeker-settings.component";
+import { AuthGuard } from "src/app/guards/auth.guard";
+import { JobseekerProfileComponent } from "./jobseeker-profile/jobseeker-profile.component";
 
 
 
@@ -37,8 +40,20 @@ const routes: Routes = [
     },
     {
         path: 'jobs',
-        title: 'Careervilla|Jobseeker Jobs',
+        title: 'Careervilla | Jobseeker Jobs',
         component:JobseekerJobsComponent
+    },
+    {
+        path: 'settings',
+        title: 'Careervilla | Jobseeker Settings',
+        component: JobseekerSettingsComponent,
+        canActivate:[AuthGuard]
+    },
+    {
+        path: 'profile',
+        title: 'Careervilla | Jobseeker Profile',
+        component: JobseekerProfileComponent,
+        canActivate:[AuthGuard]
     }
 
 ]

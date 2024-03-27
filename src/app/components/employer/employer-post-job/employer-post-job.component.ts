@@ -92,9 +92,7 @@ export class EmployerPostJobComponent implements OnInit {
 
   onStateChange(countryCode: string, event: MatSelectChange): void {
     const stateName = event.value;
-    console.log(stateName)
     const stateCode = this.getStateCode(countryCode, stateName);
-    console.log(stateCode)
     if (stateCode) {
       this.cities = this.locationService.getCities(countryCode, stateCode);
     }

@@ -2,7 +2,7 @@
 
   <img src="../../../../assets/images/app-logo.png" alt="" class="logo-image">
   <span class="logo-text">CAREERVILLA</span>
-  
+
   <span class="fill-remaining-space"></span>
 
   <ng-container *ngIf="(screenSize | async) === 'small'">
@@ -26,17 +26,19 @@
         <button mat-menu-item [matMenuTriggerFor]="accountMenu">
           <mat-icon>account_circle</mat-icon> ACCOUNT
         </button>
-  
-        <mat-menu #accountMenu="matMenu">
-            <button mat-menu-item>Profile</button>
-            <button mat-menu-item>Settings</button>
+
+        <mat-card>
+          <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item routerLink="/employer/profile">Profile</button>
+            <button mat-menu-item routerLink="/employer/settings">Settings</button>
             <button mat-menu-item (click)="onLogOut()">Sign Out</button>
-        </mat-menu>
+          </mat-menu>
+        </mat-card>
       </ng-container>
-  
+
     </mat-menu>
   </ng-container>
-  
+
 
   <!-- Add a ngIf directive to check if it's not a small screen -->
   <ng-container *ngIf="(screenSize | async) !== 'small'">
@@ -52,12 +54,15 @@
       <button mat-icon-button [matMenuTriggerFor]="accountMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
-  
+
+      <mat-card>
       <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item>Profile</button>
-        <button mat-menu-item>Settings</button>
-        <button mat-menu-item (click)="onLogOut()">Logout</button>
+        <button mat-menu-item routerLink="/employer/profile">Profile</button>
+        <button mat-menu-item routerLink="/employer/settings">Settings</button>
+        <mat-divider></mat-divider>
+        <button mat-raised-button class="logout-button" color="warn" (click)="onLogOut()">Sign Out</button>
       </mat-menu>
+    </mat-card>
     </ng-container>
 
   </ng-container>

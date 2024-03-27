@@ -35,4 +35,4 @@ export interface DecodedToken {
     role: string;
     iat: number;
     exp: number;
-  }
+}

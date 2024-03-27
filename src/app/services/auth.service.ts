@@ -45,6 +45,16 @@ export class AuthService {
     return null
   }
 
+  extractUserEmailFromToken(tokenKey: string) :string | null{
+    const token = this.getToken(tokenKey)
+    let decodedToken: DecodedToken
+    if (token) {
+      decodedToken = jwtDecode(token) 
+      return decodedToken.email
+    }
+    return null
+  }
+
 
 
 }

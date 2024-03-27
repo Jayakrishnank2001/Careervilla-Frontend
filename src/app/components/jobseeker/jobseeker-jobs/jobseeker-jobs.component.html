@@ -18,27 +18,79 @@
     <mat-divider></mat-divider>
 </mat-card>
 
-<div class="container">
-    <div class="job-list">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title></mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-
-            </mat-card-content>
-        </mat-card>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <div class="job-list" fxFlex="100" fxFlex.xs="100%">
+        <ng-container *ngFor="let job of jobs">
+            <mat-card class="job-card" (click)="selectedJob(job)" style="cursor:pointer;">
+                <mat-card-header>
+                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    <mat-card-subtitle>{{job.companyId?.companyName}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <button mat-button class="mat-button">{{job.salary}}</button>
+                    <button mat-button class="mat-button">{{job.jobType}}</button>
+                </mat-card-actions>
+                <mat-card-content>
+                    <div class="truncate-text">
+                        <p>{{ job.jobDescription }}</p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
     </div>
-    <div class="job-list2">
-        <mat-card>
+    <div class="job-list2" *ngIf="isSmallScreen">
+        <mat-card class="selected-job">
             <mat-card-header>
-                <mat-card-title></mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-title>{{selectJob.jobTitle}}</mat-card-title>
+                <mat-card-subtitle>{{selectJob.companyId?.companyName}}</mat-card-subtitle>
+                <mat-card-subtitle>{{selectJob.addressId?.city}}, {{selectJob.addressId?.state}}</mat-card-subtitle>
             </mat-card-header>
+            <mat-card-actions>
+                <button mat-button>{{selectJob.salary}}</button>
+            </mat-card-actions>
+            <mat-card-actions>
+                <button mat-raised-button class="apply-button">Apply</button>
+                <button mat-raised-button class="save-button"><span class="icon-wrapper">
+                        <mat-icon>bookmark_border</mat-icon>
+                    </span>
+                </button>
+            </mat-card-actions>
+            <br>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-card-title>Job Details</mat-card-title>
+                <mat-card-subtitle class="small-text">Job Type
+                    <br>
+                    <button mat-button class="mat-button">{{selectJob.jobType}}</button>
+                </mat-card-subtitle>
+                <mat-card-subtitle class="small-text">Salary
+                    <br>
+                    <button mat-button class="mat-button">{{selectJob.salary}}</button>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <br>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-card-title>Location</mat-card-title>
+                <mat-card-subtitle class="subtitle">
+                    <mat-icon class="icon">place</mat-icon>
+                    {{ selectJob.addressId?.city }}, {{ selectJob.addressId?.state }}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <br>
+            <mat-divider></mat-divider>
+            <mat-card-header>
+                <mat-card-title>Full Job Description</mat-card-title>
+            </mat-card-header>
+            <br>
             <mat-card-content>
-
+                <mat-card-subtitle>Experience: {{selectJob.experience}} years</mat-card-subtitle>
+                <p>
+                    {{selectJob.jobDescription}}
+                </p>
             </mat-card-content>
         </mat-card>
     </div>
 </div>
+<br>

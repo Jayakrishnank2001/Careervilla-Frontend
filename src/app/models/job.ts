@@ -1,20 +1,27 @@
 export interface IJobRes{
     id?: string,
-    companyName:string,
+    companyId?: {
+        companyName?: string,
+        website?: string,
+        email?: string,
+        companySize?: string,
+        industry?: string,
+        foundedYear?: number,
+        description?:string
+    }
+    jobTitle?: string,
     jobDescription?: string,
-    email?: string,
-    jobType?: string,
+    email?:string,
     salary?: string,
-    specialisms?: string,
+    specialisms?:string,
+    jobType?: string,
     experience?: string,
     gender?: string,
-    industry?: string,
     applicationDeadline?: string,
-    address: {
-        id:string,
-        address?: string,
+    addressId?: {
+        address?:string,
+        city?: string
         state?: string,
-        city?: string,
         country?:string
-    }
+    };
 }

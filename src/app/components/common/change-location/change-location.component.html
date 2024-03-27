@@ -1,1 +1,32 @@
-<p>change-location works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1>Change Location</h1>
+
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>country</mat-label>
+        <mat-select placeholder="" (selectionChange)="onCountryChange($event)" formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select placeholder="" (selectionChange)="onStateChange(selectedCountry,$event)" formControlName="state">
+          <mat-option *ngFor="let state of states" [value]="state">
+            {{ state }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>City</mat-label>
+        <mat-select placeholder="" formControlName="city">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="!isFormValid">SUBMIT</button>
+</form>

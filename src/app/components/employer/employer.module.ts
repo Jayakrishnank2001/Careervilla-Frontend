@@ -23,6 +23,11 @@ import { environments } from "src/environments/environment";
 import { GoogleLoginComponent } from "../common/google-login/google-login.component";
 import { StoreModule } from "@ngrx/store";
 import { employerReducer } from "src/app/states/employer/employer.reducer";
+import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
+import { EmployerSettingsComponent } from './employer-settings/employer-settings.component';
+import { ChangePasswordComponent } from "../common/change-password/change-password.component";
+import { ChangePhoneNumberComponent } from "../common/change-phone-number/change-phone-number.component";
+import { ChangeLocationComponent } from "../common/change-location/change-location.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +41,9 @@ import { employerReducer } from "src/app/states/employer/employer.reducer";
     EmployerHomeComponent,
     EmployerFooterComponent,
     EmployerPostJobComponent,
-    EmployerSubscriptionComponent
+    EmployerSubscriptionComponent,
+    EmployerProfileComponent,
+    EmployerSettingsComponent
   ],
   imports: [
     EmployerRoutingModule,
@@ -49,6 +56,9 @@ import { employerReducer } from "src/app/states/employer/employer.reducer";
     LayoutModule,
     SocialLoginModule,
     GoogleLoginComponent,
+    ChangePasswordComponent,
+    ChangePhoneNumberComponent,
+    ChangeLocationComponent
   ],
   providers: [
     EmployerService,

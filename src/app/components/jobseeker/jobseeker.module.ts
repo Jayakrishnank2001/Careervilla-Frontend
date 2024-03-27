@@ -19,6 +19,11 @@ import { environments } from "src/environments/environment";
 import { StoreModule } from "@ngrx/store";
 import { jobSeekerReducer } from "src/app/states/jobseeker/jobseeker.reducer";
 import { JobseekerJobsComponent } from './jobseeker-jobs/jobseeker-jobs.component';
+import { JobseekerSettingsComponent } from './jobseeker-settings/jobseeker-settings.component';
+import { ChangePasswordComponent } from "../common/change-password/change-password.component";
+import { ChangePhoneNumberComponent } from "../common/change-phone-number/change-phone-number.component";
+import { ChangeLocationComponent } from "../common/change-location/change-location.component";
+import { JobseekerProfileComponent } from './jobseeker-profile/jobseeker-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,8 @@ import { JobseekerJobsComponent } from './jobseeker-jobs/jobseeker-jobs.componen
     JobseekerHomeComponent,
     JobseekerFooterComponent,
     JobseekerJobsComponent,
+    JobseekerSettingsComponent,
+    JobseekerProfileComponent,
   ],
   imports: [
     JobseekerRoutingModule,
@@ -40,7 +47,10 @@ import { JobseekerJobsComponent } from './jobseeker-jobs/jobseeker-jobs.componen
     ReactiveFormsModule,
     StoreModule.forFeature('jobseeker', jobSeekerReducer),
     SocialLoginModule,
-    GoogleLoginComponent
+    GoogleLoginComponent,
+    ChangePasswordComponent,
+    ChangePhoneNumberComponent,
+    ChangeLocationComponent
   ],
   providers: [
     JobseekerService,

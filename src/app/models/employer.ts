@@ -8,8 +8,17 @@ export interface IEmployerRes {
   isBlocked?: boolean,
   isSubscribed?: boolean,
   planExpiresAt?: string,
-  password: string,
-  company_Id?: string
+  image?:string,
+  password?: string,
+  company_Id?: {
+    companyName?: string,
+    website?: string,
+    email?: string,
+    companySize?: string,
+    industry?: string,
+    foundedYear?: number,
+    description?: string
+  }
 }
 
 export interface IRes {
@@ -26,5 +35,13 @@ export interface IEmployerAuthResponse {
     userId?: string;
     token?: string;
   };
+}
+
+export interface IResponse{
+  status: string,
+  data: {
+    success: boolean,
+    message:string
+  }
 }
 

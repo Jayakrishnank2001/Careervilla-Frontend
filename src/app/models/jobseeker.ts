@@ -27,4 +27,12 @@ export interface IJobseekerAuthResponse {
       userId?: string;
       token?: string; 
     };
+}
+  
+export interface IResponse{
+  status: string,
+  data: {
+    success: boolean,
+    message:string
   }
+}

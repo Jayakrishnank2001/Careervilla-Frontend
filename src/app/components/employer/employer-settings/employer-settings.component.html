@@ -1,0 +1,58 @@
+<app-employer-nav></app-employer-nav>
+<mat-card class="settings-card">
+    <mat-card-header>
+        <mat-card-title class="title">Account Settings</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-card-title>Account Type</mat-card-title>
+    <mat-card-subtitle>Employer</mat-card-subtitle>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-card-title>Email</mat-card-title>
+    <mat-card-subtitle>{{userData.email}}</mat-card-subtitle>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="password-row">
+        <mat-card-title>Password
+            <mat-card-subtitle>********</mat-card-subtitle>
+        </mat-card-title>
+        <button mat-raised-button class="btn" (click)="onChangePassword()">Change Password</button>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="password-row">
+        <mat-card-title>Phone Number
+            <mat-card-subtitle *ngIf="userData.phoneNumber">{{ userData.phoneNumber }}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!userData.phoneNumber">None</mat-card-subtitle>
+        </mat-card-title>
+        <button mat-raised-button class="btn" *ngIf="userData.phoneNumber" (click)="onChangePhoneNumber()">Change
+            Number</button>
+        <button mat-raised-button class="btn" *ngIf="!userData.phoneNumber" (click)="onChangePhoneNumber()">Add
+            Number</button>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="password-row">
+        <mat-card-title>Location
+            <mat-card-subtitle>{{userData.location}}</mat-card-subtitle>
+        </mat-card-title>
+        <button mat-raised-button class="btn" (click)="onChangeLocation()" *ngIf="userData.location">Change
+            Location</button>
+        <button mat-raised-button class="btn" (click)="onChangeLocation()" *ngIf="!userData.location">Add
+            Location</button>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="password-row">
+        <mat-card-subtitle>{{ userData.email }}</mat-card-subtitle>
+        <button mat-raised-button class="btn" (click)="onLogOut()">Sign Out</button>
+    </div>
+</mat-card>
+<br>
+
