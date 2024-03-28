@@ -24,6 +24,8 @@ import { ChangePasswordComponent } from "../common/change-password/change-passwo
 import { ChangePhoneNumberComponent } from "../common/change-phone-number/change-phone-number.component";
 import { ChangeLocationComponent } from "../common/change-location/change-location.component";
 import { JobseekerProfileComponent } from './jobseeker-profile/jobseeker-profile.component';
+import { JobseekerQualificationsComponent } from './jobseeker-qualifications/jobseeker-qualifications.component';
+import { JobseekerJobPreferencesComponent } from './jobseeker-job-preferences/jobseeker-job-preferences.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { JobseekerProfileComponent } from './jobseeker-profile/jobseeker-profile
     JobseekerJobsComponent,
     JobseekerSettingsComponent,
     JobseekerProfileComponent,
+    JobseekerQualificationsComponent,
+    JobseekerJobPreferencesComponent,
   ],
   imports: [
     JobseekerRoutingModule,

@@ -1,0 +1,39 @@
+.profile-card {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+button.previous-btn {
+    width: 8%;
+    height: 40px;
+    border-radius: 0.5em;
+    margin: 0px 45px auto;
+    background-color: rgb(244, 244, 244);
+}
+
+.qualifications {
+    margin: 0px 30px auto;
+}
+
+.title{
+    font-size: x-large;
+}
+
+.user-details{
+    margin: 0px 45px auto;
+    display: flex;
+}
+
+@media screen and (max-width:800px) {
+    .profile-card {
+        width: 90%;
+        flex-direction: column;
+    }
+
+}
