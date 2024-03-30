@@ -55,4 +55,8 @@ export class EmployerService {
     return this.http.post<IResponse>(`${this.baseURL}/employer/changeLocation/${employerId}`, { location })
   }
 
+  updatePhoto(employerId: string, url: string) {
+    return this.http.post<IResponse>(`${this.baseURL}/employer/updatePhoto/${employerId}`,{url})
+  }
+
 }

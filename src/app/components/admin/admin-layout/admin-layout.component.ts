@@ -44,4 +44,8 @@ export class AdminLayoutComponent implements OnInit{
     })
   }
 
+  isActive(route: string): boolean {
+    return this.router.isActive(route, true);
+  }
+
 }

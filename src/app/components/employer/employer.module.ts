@@ -28,6 +28,7 @@ import { EmployerSettingsComponent } from './employer-settings/employer-settings
 import { ChangePasswordComponent } from "../common/change-password/change-password.component";
 import { ChangePhoneNumberComponent } from "../common/change-phone-number/change-phone-number.component";
 import { ChangeLocationComponent } from "../common/change-location/change-location.component";
+import { AngularFireModule } from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { ChangeLocationComponent } from "../common/change-location/change-locati
     MaterialModule,
     CommonModule,
     ReactiveFormsModule,
+    AngularFireModule,
     StoreModule.forFeature('employer', employerReducer),
+    AngularFireModule.initializeApp(environments.firebaseConfig),
     MatSidenavModule,
     MatIconModule,
     LayoutModule,

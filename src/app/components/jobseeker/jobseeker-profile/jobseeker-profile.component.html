@@ -12,17 +12,42 @@
             </div>
         </div>
         <div class="right-content">
-            <div mat-card-avatar class="example-header-image"></div>
+            <input type="file" accept="image/*" #fileInput style="display: none;" (change)="onFileSelected($event)">
+            <label class="avatar-container" (click)="openFileInput(fileInput)">
+                <img src={{userData.image}} alt="" mat-card-avatar class="example-header-image">
+                <mat-icon class="camera-icon">camera_alt</mat-icon>
+            </label>
         </div>
+
+
     </mat-card-header>
     <br>
     <mat-card-header>
         <mat-card-title class="resume">Resume</mat-card-title>
     </mat-card-header>
     <br>
-    <mat-card-content class="button-container">
-        <button mat-raised-button class="resume-btn">Upload Resume</button>
+    <mat-card-content *ngIf="userData.resume">
+        <mat-card class="resume-card">
+            <div>
+                <mat-icon style="color: #644DFF;">description</mat-icon>
+            </div>
+            <div style="flex-grow: 1;">
+                <mat-card-title style="color: #644DFF;">
+                    {{userData.firstName}} {{userData.lastName}}(Resume).pdf
+                </mat-card-title>
+            </div>
+            <div>
+                <mat-icon style="margin-right: 10px; color:#644DFF; cursor: pointer;" (click)="showResume(userData.resume)">visibility</mat-icon>
+                <mat-icon style="margin-right: 10px; color:#644DFF; cursor: pointer;" (click)="deleteResume()">delete</mat-icon>
+            </div>
+        </mat-card>
     </mat-card-content>
+    <mat-card-content class="button-container" *ngIf="!userData.resume">
+        <input type="file" accept="application/pdf" #resumeInput style="display: none;"
+            (change)="onResumeSelected($event)">
+        <button mat-raised-button class="resume-btn" (click)="openResumeInput(resumeInput)">Upload Resume</button>
+    </mat-card-content>
+
     <br>
     <mat-card-header>
         <mat-card-title class="resume">Improve your job matches</mat-card-title>

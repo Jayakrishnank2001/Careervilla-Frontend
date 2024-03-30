@@ -13,7 +13,11 @@
             </div>
         </div>
         <div class="right-content">
-            <div mat-card-avatar class="example-header-image"></div>
+            <input type="file" accept="image/*" #fileInput style="display: none;" (change)="onFileSelected($event)">
+            <label class="avatar-container" (click)="openFileInput(fileInput)">
+                <img src={{userData.image}} alt="" mat-card-avatar class="example-header-image">
+                <mat-icon class="camera-icon">camera_alt</mat-icon>
+            </label>
         </div>
     </mat-card-header>
     <br>
@@ -21,20 +25,76 @@
         <mat-card-title class="professionalDetails">Professional Details</mat-card-title>
     </mat-card-header>
     <mat-divider style="background-color: rgb(211, 211, 211);"></mat-divider>
-    <mat-card class="professional-card">
-        <div class="form-container">
-            <mat-form-field class="input-field" appearance="outline">
-              <mat-label>Company Name</mat-label>
-              <input matInput placeholder="" formControlName="companyName">
-            </mat-form-field>
-            <mat-form-field class="input-field" appearance="outline">
-              <mat-label>Website</mat-label>
-              <input matInput placeholder="" formControlName="website">
-            </mat-form-field>
-            <mat-form-field class="input-field" appearance="outline">
-                <mat-label>Company Size</mat-label>
-                <input matInput placeholder="" formControlName="companySize">
-            </mat-form-field>
-          </div>
-    </mat-card>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput placeholder="" formControlName="companyName">
+                </mat-form-field>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Website</mat-label>
+                    <input matInput placeholder="" formControlName="website">
+                </mat-form-field>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Company Size</mat-label>
+                    <input matInput placeholder="" formControlName="companySize">
+                </mat-form-field>
+            </div>
+            <div class="form-container">
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Industry</mat-label>
+                    <input matInput placeholder="" formControlName="industry">
+                </mat-form-field>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="" formControlName="email">
+                </mat-form-field>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Founded Year</mat-label>
+                    <input matInput placeholder="" formControlName="foundedYear">
+                </mat-form-field>
+            </div>
+            <div class="form-container">
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Company Description</mat-label>
+                    <textarea matInput placeholder="" formControlName="companyDescription"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-container">
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="" formControlName="address"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="form-container">
+                <mat-form-field class="input-field" appearance="outline">
+                  <mat-label>country</mat-label>
+                  <mat-select placeholder="" (selectionChange)="onCountryChange($event)" formControlName="country">
+                    <mat-option *ngFor="let country of countries" [value]="country">
+                      {{ country }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          
+                <mat-form-field class="input-field" appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select placeholder="" (selectionChange)="onStateChange(selectedCountry,$event)" formControlName="state">
+                    <mat-option *ngFor="let state of states" [value]="state">
+                      {{ state }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          
+                <mat-form-field class="input-field" appearance="outline">
+                  <mat-label>City</mat-label>
+                  <mat-select placeholder="" formControlName="city">
+                    <mat-option *ngFor="let city of cities" [value]="city">
+                      {{ city }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+    </form>
 </mat-card>
+<br>

@@ -42,7 +42,7 @@ mat-sidenav {
     font-weight: 600;
     padding: 15px 30px;
     color: rgb(208, 207, 207);
-    border-radius: 1em;
+    border-radius: 0.5em;
   }
 
   mat-nav-list {
@@ -64,6 +64,11 @@ mat-sidenav {
   .small-screen-container {
     background-color:#1D1A2B; 
     height: 100%;
+  }
+
+  .custom-list-item.active {
+    background-color: #403561;
+    border-radius: 0.5em;
   }
   
 

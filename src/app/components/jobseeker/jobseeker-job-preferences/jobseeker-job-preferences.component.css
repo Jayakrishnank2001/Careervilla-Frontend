@@ -19,7 +19,15 @@ button.previous-btn {
 
 .job-preferences {
     margin: 0px 30px auto;
+}
+
+.title{
     font-size: x-large;
+}
+
+.user-details{
+    margin: 0px 45px auto;
+    display: flex;
 }
 
 @media screen and (max-width:800px) {

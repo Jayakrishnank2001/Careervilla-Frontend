@@ -1,4 +1,4 @@
-.profile-card{
+.profile-card {
     width: 50%;
     margin: 50px auto;
     padding: 20px;
@@ -12,7 +12,7 @@
 .left-content {
     flex: 1;
     display: flex;
-    margin:30px 30px auto;
+    margin: 30px 30px auto;
     flex-direction: column;
     padding-right: 70px;
 }
@@ -28,22 +28,22 @@
     margin-bottom: 8px;
 }
 
-.username{
-    font-size:xx-large;
+.username {
+    font-size: xx-large;
 }
 
-.details{
+.details {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
 }
 
-.resume{
-    margin:0px 30px auto;
-    font-size:x-large;
+.resume {
+    margin: 0px 30px auto;
+    font-size: x-large;
 }
 
-button.resume-btn{
+button.resume-btn {
     background-color: #644DFF;
     color: white;
     width: 91%;
@@ -53,46 +53,79 @@ button.resume-btn{
     text-align: center;
 }
 
-.qualifications{
-    margin:0px 45px auto;
+.qualifications {
+    margin: 0px 45px auto;
     flex-grow: 1;
 }
 
-.qualification-div{
+.qualification-div {
     cursor: pointer;
     display: flex;
     align-items: center;
 }
 
 mat-icon {
-    margin-right: 8px; 
+    margin-right: 8px;
     margin-top: 8px;
 }
 
 .example-header-image {
-    background-image: url('https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt3a48501789cdf113/60db790b47339c0fc01c188c/3e947186d512164cf8dbe0987a865dd2b714eea6.png?auto=webp&format=pjpg&width=3840&quality=60');
-    background-size:cover;
+    background-size: cover;
     height: 120px;
     width: 120px;
-  }
+}
+
+.right-content {
+    position: relative;
+}
+
+.camera-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    margin-top: 30px;
+}
+
+.resume-card {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    height: 50px;
+    flex-direction: row;
+    border: 1px solid #644DFF;
+}
 
 
-  @media screen and (max-width:800px){
-    .profile-card{
+@media screen and (max-width:800px) {
+    .profile-card {
         width: 90%;
         flex-direction: column;
     }
-    .left-content{
+
+    .left-content {
         margin: 0;
         padding-right: 0;
         flex: 1;
     }
-    .example-header-image{
+
+    .example-header-image {
         height: 80px;
         width: 80px;
     }
-    .username{
+
+    .username {
         font-size: x-large;
     }
-   
-  }
+
+    .camera-icon {
+        margin-top: 15px;
+    }
+
+}

@@ -56,4 +56,16 @@ export class JobseekerService {
     return this.http.post<IResponse>(`${this.baseURL}/jobseeker/changeLocation/${jobseekerId}`, { location })
   }
 
+  updatePhoto(jobseekerId: string, url: string) {
+    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/updatePhoto/${jobseekerId}`,{url})
+  }
+
+  addResume(jobseekerId: string, url: string) {
+    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/addResume/${jobseekerId}`,{url})
+  }
+
+  deleteResume(jobseekerId: string) {
+    return this.http.delete<IResponse>(`${this.baseURL}/jobseeker/deleteResume/${jobseekerId}`)
+  }
+
 }

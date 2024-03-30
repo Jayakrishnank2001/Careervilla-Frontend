@@ -68,10 +68,27 @@ mat-icon {
 }
 
 .example-header-image {
-    background-image: url('https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt3a48501789cdf113/60db790b47339c0fc01c188c/3e947186d512164cf8dbe0987a865dd2b714eea6.png?auto=webp&format=pjpg&width=3840&quality=60');
     background-size:cover;
     height: 120px;
     width: 120px;
+  }
+
+  .right-content {
+    position: relative;
+  }
+  
+  .camera-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    margin-top: 30px;
   }
 
 

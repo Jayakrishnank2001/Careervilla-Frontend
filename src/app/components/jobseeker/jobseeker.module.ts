@@ -26,6 +26,9 @@ import { ChangeLocationComponent } from "../common/change-location/change-locati
 import { JobseekerProfileComponent } from './jobseeker-profile/jobseeker-profile.component';
 import { JobseekerQualificationsComponent } from './jobseeker-qualifications/jobseeker-qualifications.component';
 import { JobseekerJobPreferencesComponent } from './jobseeker-job-preferences/jobseeker-job-preferences.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 @NgModule({
   declarations: [
@@ -49,12 +52,14 @@ import { JobseekerJobPreferencesComponent } from './jobseeker-job-preferences/jo
     MaterialModule,
     CommonModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
     StoreModule.forFeature('jobseeker', jobSeekerReducer),
+    AngularFireModule.initializeApp(environments.firebaseConfig),
     SocialLoginModule,
     GoogleLoginComponent,
     ChangePasswordComponent,
     ChangePhoneNumberComponent,
-    ChangeLocationComponent
+    ChangeLocationComponent,
   ],
   providers: [
     JobseekerService,

@@ -17,7 +17,7 @@ export interface IEmployerRes {
     companySize?: string,
     industry?: string,
     foundedYear?: number,
-    description?: string
+    description?: string,
   }
 }
 
