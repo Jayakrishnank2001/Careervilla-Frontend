@@ -55,6 +55,10 @@
                         <mat-icon>bookmark_border</mat-icon>
                     </span>
                 </button>
+                <button mat-raised-button class="save-button" (click)="onReportJob(selectJob.jobTitle,selectJob.companyId?.companyName)"><span class="icon-wrapper">
+                    <mat-icon>outlined_flag</mat-icon>
+                </span>
+            </button>
             </mat-card-actions>
             <br>
             <mat-divider></mat-divider>

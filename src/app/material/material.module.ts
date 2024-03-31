@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 const MaterialComponents=[
@@ -38,6 +39,7 @@ const MaterialComponents=[
   MatNativeDateModule,
   MatDatepickerModule,
   MatSnackBarModule,
+  MatRadioModule
   
 ]
 

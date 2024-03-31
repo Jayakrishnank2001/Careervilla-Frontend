@@ -1,0 +1,27 @@
+mat-radio-group{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card{
+    width:500px;
+    border: none;
+}
+
+.description{
+    text-align: center;
+}
+
+mat-form-field{
+    width:90%;
+}
+
+form{
+    border-radius: 1.5em;
+}
+
+h1{
+    margin: 22px 16px auto;
+    font-weight: 500;
+
+}

@@ -28,6 +28,7 @@ import { JobseekerQualificationsComponent } from './jobseeker-qualifications/job
 import { JobseekerJobPreferencesComponent } from './jobseeker-job-preferences/jobseeker-job-preferences.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ReportJobComponent } from "../common/report-job/report-job.component";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     ChangePasswordComponent,
     ChangePhoneNumberComponent,
     ChangeLocationComponent,
+    ReportJobComponent
   ],
   providers: [
     JobseekerService,

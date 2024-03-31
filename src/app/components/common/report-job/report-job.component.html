@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Choose a problem :</h1>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{jobTitle}}</mat-card-title>
+            <mat-card-subtitle>{{companyName}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-radio-group formControlName="reason">
+            <mat-radio-button color="primary" value="It's offensive or harassing">It's offensive or
+                harassing</mat-radio-button>
+            <mat-radio-button color="primary" value="Asking for money or seems like a fake job">Asking for money or
+                seems like a fake job</mat-radio-button>
+            <mat-radio-button color="primary" value="Incorrect company, location or job details">Incorrect company,
+                location or job details</mat-radio-button>
+            <mat-radio-button color="primary" value="I think it's not a Job, but selling something">I think it's not a
+                Job, but selling something</mat-radio-button>
+            <mat-radio-button color="primary" value="Other">Other</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <div class="description">
+            <div>
+                <mat-form-field class="input-field" appearance="outline">
+                    <mat-label>Describe your problem here:</mat-label>
+                    <textarea matInput placeholder="" formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button type="submit" color="primary" [disabled]="!isFormValid">Report to
+                Careervilla</button>
+        </div>
+        <br>
+    </mat-card>
+</form>

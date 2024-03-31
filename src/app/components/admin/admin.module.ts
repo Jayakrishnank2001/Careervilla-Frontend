@@ -14,7 +14,6 @@ import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported
 import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dialog.component';
 import { AdminService } from "src/app/services/admin.service";
 
-
 @NgModule({
     declarations:[
         AdminLoginComponent,

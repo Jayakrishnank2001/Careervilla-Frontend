@@ -16,6 +16,7 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
 import { SubscriptionPlanService } from './services/subscription-plan.service';
 import { LocationService } from './services/location.service';
 import { JobService } from './services/job.service';
+import { ReportedJobService } from './services/reported-job.service';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { JobService } from './services/job.service';
     BreakpointObserver,
     LocationService,
     JobService,
+    ReportedJobService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
   ],

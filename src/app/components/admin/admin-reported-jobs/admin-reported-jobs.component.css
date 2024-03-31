@@ -1,5 +1,36 @@
 .main-div {
-    display: flex;
-    background-color: #242136; 
-    height: 100vh; /* Adjust height as needed */
+  display: flex;
+  background-color: #242136; 
+  height: 100vh; /* Adjust height as needed */
+}
+
+.mat-elevation-z8{
+  width: 1150px;
+  height: 100%;
+  background-color: #1D1A2B;
+  margin-left: 50px;
+}
+
+mat-header-cell,mat-cell{
+  height: 5em;
+  border-color: rgb(72, 71, 71);
+  color: rgb(187, 187, 187);
+  justify-content: center;
+}
+
+.delete-icon,
+  .view-icon{
+    margin-right: 10px;
+    cursor: pointer;
   }
+
+@media screen and (max-width: 600px) {
+  .mat-elevation-z8,
+  mat-header-cell,
+  mat-cell {
+    width: -20%;
+    height: 10%;
+    font-size: xx-small;
+    white-space: normal; /* Allow text wrapping for small screens */
+  }
+}

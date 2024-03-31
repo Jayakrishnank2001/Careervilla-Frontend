@@ -1,6 +1,7 @@
 export interface IJobRes{
-    id?: string,
+    _id?: string,
     companyId?: {
+        _id?:string,
         companyName?: string,
         website?: string,
         email?: string,

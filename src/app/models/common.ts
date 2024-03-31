@@ -1,8 +1,9 @@
 import { IEmployersAndCount, IJobseekersAndCount } from "./admin"
 import { IEmployerRes } from "./employer"
 import { IJobseekerRes } from "./jobseeker"
+import { IReportedJobAndCount } from "./reportedJob"
 
-export type AllResTypes = IJobseekerRes | IJobseekerRes[] | IEmployerRes | IEmployerRes[] | IJobseekersAndCount | IEmployersAndCount | null
+export type AllResTypes = IJobseekerRes | IJobseekerRes[] | IEmployerRes | IEmployerRes[] | IJobseekersAndCount | IEmployersAndCount | null | IReportedJobAndCount
 
 export interface IApiRes<T extends AllResTypes> {
     status: number,

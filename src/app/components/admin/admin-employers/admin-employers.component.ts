@@ -45,14 +45,7 @@ export class AdminEmployersComponent implements OnInit {
       if (result.isConfirmed) {
         this.adminService.blockEmployer(employerId).subscribe({
           next: () => {
-            const employerIndex = this.employers.findIndex(employer => employer._id === employerId)
-            if (employerIndex !== -1) {
-                this.employers = [
-                  ...this.employers.slice(0, employerIndex),
-                  { ...this.employers[employerIndex], isBlocked: !this.employers[employerIndex].isBlocked },
-                  ...this.employers.slice(employerIndex + 1)
-                ];
-            }
+            this.ngOnInit()
           }
         })
       }

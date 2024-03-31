@@ -1,3 +1,51 @@
 <div class="main-div">
     <app-admin-layout></app-admin-layout>
+    <app-admin-table (search)="onSearchReportedJob($event)" (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="reportedJobCount">
+
+        <mat-table [dataSource]="reportedJobs" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="jobTitle">
+                <mat-header-cell *matHeaderCellDef>Job Title</mat-header-cell>
+                <mat-cell *matCellDef="let job">{{job.jobId.jobTitle}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="companyName">
+                <mat-header-cell *matHeaderCellDef>Company Name</mat-header-cell>
+                <mat-cell *matCellDef="let job">{{job.companyId.companyName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reportedAt">
+                <mat-header-cell *matHeaderCellDef>Date Reported</mat-header-cell>
+                <mat-cell *matCellDef="let job">{{ job.reportedAt | date: 'shortDate' }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reportedBy">
+                <mat-header-cell *matHeaderCellDef>Reporter</mat-header-cell>
+                <mat-cell *matCellDef="let job">{{job.reportedBy.firstName}} {{job.reportedBy.lastName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let job" [style.color]="job.status === 'Pending' ? 'rgb(244, 67, 54)' : 'rgb(63, 81, 181)'">
+                    {{ job.status }}     
+                </mat-cell>    
+            </ng-container>
+
+            <ng-container matColumnDef="actions" class="heading">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let job">
+                    <button mat-raised-button (click)="viewJob()" color="primary">View</button>
+                    <button mat-raised-button style="margin-left: 5px;" color="{{ job.jobId.isBlocked ? 'primary' : 'warn' }}"
+                        (click)="onBlock(job.jobId._id,job._id, job.jobId.isBlocked ? 'Unblock' : 'Block')">
+                        {{ job.jobId.isBlocked ? 'Unblock' : 'Block' }}
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="['jobTitle', 'companyName', 'reportedAt', 'reportedBy', 'status','actions']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['jobTitle', 'companyName', 'reportedAt', 'reportedBy', 'status','actions']"></mat-row>
+        </mat-table>
+
+    </app-admin-table>
 </div>
