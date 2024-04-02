@@ -29,6 +29,9 @@ import { JobseekerJobPreferencesComponent } from './jobseeker-job-preferences/jo
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ReportJobComponent } from "../common/report-job/report-job.component";
+import { ApplyJobDialogComponent } from './apply-job-dialog/apply-job-dialog.component';
+import { JobseekerMyJobsComponent } from './jobseeker-my-jobs/jobseeker-my-jobs.component';
+import { JobseekerMyReviewsComponent } from './jobseeker-my-reviews/jobseeker-my-reviews.component';
 
 
 @NgModule({
@@ -47,6 +50,9 @@ import { ReportJobComponent } from "../common/report-job/report-job.component";
     JobseekerProfileComponent,
     JobseekerQualificationsComponent,
     JobseekerJobPreferencesComponent,
+    ApplyJobDialogComponent,
+    JobseekerMyJobsComponent,
+    JobseekerMyReviewsComponent,
   ],
   imports: [
     JobseekerRoutingModule,

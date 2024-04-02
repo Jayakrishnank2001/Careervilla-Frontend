@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1 mat-dialog-title>Apply Job</h1>
+    <mat-card>
+        <mat-card-content class="resume">
+            <div>
+                <mat-icon style="color: #644DFF;">description</mat-icon>
+            </div>
+            <div style="flex-grow: 1;">
+                <mat-card-title style="color: #644DFF;">
+                    {{ jobseekerName }} (Resume).pdf
+                </mat-card-title>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <span>or</span>
+
+        <div class="upload-resume">
+            <button mat-raised-button color="primary">Upload another resume</button>
+        </div>
+        <br>
+        <mat-form-field class="input-field" appearance="outline">
+            <mat-label>Highest Qualification</mat-label>
+            <mat-select placeholder="" formControlName="qualification">
+                <mat-option value="Full-time">High School</mat-option>
+                <mat-option value="Part-time">Diploma</mat-option>
+                <mat-option value="Freelance">Bachelor Degree</mat-option>
+                <mat-option value="Remote">Master Degree</mat-option>
+                <mat-option value="Hybrid">PhD</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="input-field" appearance="outline">
+            <mat-label>Work Experience</mat-label>
+            <input matInput placeholder="" formControlName="experience" type="number" min="0">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary">SUBMIT</button>
+    </mat-card>
+</form>

@@ -8,6 +8,8 @@ import { JobService } from 'src/app/services/job.service';
 import { ReportJobComponent } from '../../common/report-job/report-job.component';
 import { ReportedJobService } from 'src/app/services/reported-job.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { JobseekerService } from 'src/app/services/jobseeker.service';
+import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.component';
 
 @Component({
   selector: 'app-jobseeker-jobs',
@@ -18,16 +20,21 @@ export class JobseekerJobsComponent {
 
   jobs: IJobRes[] = []
   selectJob: IJobRes = {}
+  savedJobs: (string | undefined)[] = []
+  jobseekerId!: string | null
 
   constructor(private breakpointObserver: BreakpointObserver,
     private jobService: JobService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private reportedJobService: ReportedJobService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private jobseekerService: JobseekerService) { }
 
   ngOnInit(): void {
+    this.jobseekerId = this.authService.extractUserIdFromToken('jobseekerToken')
     this.getJobs()
+    this.getSavedJobs()
   }
 
   isSmallScreen = this.breakpointObserver.observe(Breakpoints.XSmall)
@@ -44,6 +51,21 @@ export class JobseekerJobsComponent {
     })
   }
 
+  getSavedJobs(): void {
+    if (this.jobseekerId) {
+      console.log(this.jobseekerId)
+      this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
+        next: (res) => {
+          this.savedJobs = res?.savedJobs?.map(job => job.jobId) || [];
+        }
+      })
+    }
+  }
+
+  isJobSaved(jobId: string | undefined): boolean {
+    return this.savedJobs.includes(jobId);
+  }
+
   selectedJob(job: IJobRes): void {
     this.selectJob = job
   }
@@ -58,19 +80,55 @@ export class JobseekerJobsComponent {
       data: { jobTitle, companyName }
     })
     dialogRef.afterClosed().subscribe(result => {
-      const jobseekerId = this.authService.extractUserIdFromToken('jobseekerToken')
-      if (result && jobseekerId) {
-        this.reportedJobService.reportJob(this.selectJob.companyId?._id, this.selectJob._id, jobseekerId, result.reason, result.description).subscribe({
+      if (result && this.jobseekerId) {
+        this.reportedJobService.reportJob(this.selectJob.companyId?._id, this.selectJob._id, this.jobseekerId, result.reason, result.description).subscribe({
           next: (res) => {
             if (res.success == true) {
               this.snackBar.open('Job reported successfully', 'Close', {
                 duration: 5000,
-                verticalPosition:'top'
+                verticalPosition: 'top'
               })
             }
           }
         })
       }
+    })
+  }
+
+  onSaveJob(jobId: string | undefined): void {
+    if (this.jobseekerId && jobId)
+      this.jobseekerService.saveJob(this.jobseekerId, jobId).subscribe({
+        next: (res) => {
+          if (res.data.success == true) {
+            this.snackBar.open('Job saved successfully', 'Close', {
+              duration: 5000,
+              verticalPosition: 'top'
+            })
+            this.getSavedJobs()
+          }
+        }
+      })
+  }
+
+  onUnsaveJob(jobId: string | undefined): void {
+    if (this.jobseekerId && jobId) {
+      this.jobseekerService.unsaveJob(this.jobseekerId, jobId).subscribe({
+        next: (res) => {
+          if (res.data.success == true) {
+            this.snackBar.open('Job unsaved successfully', 'Close', {
+              duration: 5000,
+              verticalPosition: 'top'
+            })
+            this.getSavedJobs()
+          }
+        }
+      })
+    }
+  }
+
+  onApplyJob(jobId: string | undefined): void {
+    const dialogRef = this.dialog.open(ApplyJobDialogComponent, {
+      data: { jobId, jobseekerId: this.jobseekerId }
     })
   }
 

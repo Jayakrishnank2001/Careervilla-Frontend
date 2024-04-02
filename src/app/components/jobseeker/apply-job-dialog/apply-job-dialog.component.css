@@ -1,0 +1,18 @@
+.resume {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    height: 50px;
+    flex-direction: row;
+    border: 1px solid #644DFF;
+}
+
+mat-card{
+    width: 350px;
+}
+
+form{
+    text-align: center;
+    width: 400px;
+    height: 450px;
+}

@@ -50,15 +50,23 @@
                 <button mat-button>{{selectJob.salary}}</button>
             </mat-card-actions>
             <mat-card-actions>
-                <button mat-raised-button class="apply-button">Apply</button>
-                <button mat-raised-button class="save-button"><span class="icon-wrapper">
+                <button mat-raised-button class="apply-button" (click)="onApplyJob(selectJob._id)">Apply</button>
+                <button mat-raised-button class="save-button" (click)="onUnsaveJob(selectJob._id)"
+                    *ngIf="isJobSaved(selectJob._id)"><span class="icon-wrapper">
+                        <mat-icon>bookmark</mat-icon>
+                    </span>
+                </button>
+                <button mat-raised-button class="save-button" (click)="onSaveJob(selectJob._id)"
+                    *ngIf="!isJobSaved(selectJob._id)"><span class="icon-wrapper">
                         <mat-icon>bookmark_border</mat-icon>
                     </span>
                 </button>
-                <button mat-raised-button class="save-button" (click)="onReportJob(selectJob.jobTitle,selectJob.companyId?.companyName)"><span class="icon-wrapper">
-                    <mat-icon>outlined_flag</mat-icon>
-                </span>
-            </button>
+                <button mat-raised-button class="save-button"
+                    (click)="onReportJob(selectJob.jobTitle,selectJob.companyId?.companyName)"><span
+                        class="icon-wrapper">
+                        <mat-icon>outlined_flag</mat-icon>
+                    </span>
+                </button>
             </mat-card-actions>
             <br>
             <mat-divider></mat-divider>
