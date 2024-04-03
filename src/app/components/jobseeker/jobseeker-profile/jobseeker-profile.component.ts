@@ -5,7 +5,6 @@ import { JobseekerService } from 'src/app/services/jobseeker.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 

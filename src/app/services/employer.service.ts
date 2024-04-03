@@ -59,4 +59,6 @@ export class EmployerService {
     return this.http.post<IResponse>(`${this.baseURL}/employer/updatePhoto/${employerId}`,{url})
   }
 
+  
+
 }

@@ -1,39 +1,49 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-form">
-    <h1 mat-dialog-title>Apply Job</h1>
-    <mat-card>
-        <mat-card-content class="resume">
-            <div>
-                <mat-icon style="color: #644DFF;">description</mat-icon>
+    <div class="form-container">
+        <h1 mat-dialog-title class="title">APPLY JOB</h1>
+        <mat-card class="center-card">
+            <mat-card-content class="resume">
+                <div class="centered-content">
+                    <div>
+                        <mat-icon style="color: #644DFF;">description</mat-icon>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <mat-card-title style="color: #644DFF;">
+                            {{ resumeName }}
+                        </mat-card-title>
+                    </div>
+                    <div>
+                        <button mat-button style="margin-right: 5px;" color="primary"
+                            (click)="onViewResume($event)">View</button>
+                    </div>
+                </div>
+            </mat-card-content>
+            <span><strong>OR</strong></span>
+
+            <div class="upload-resume">
+                <input type="file" accept="application/pdf" #resumeInput style="display: none;"
+                    (change)="onResumeSelected($event)">
+                <button mat-raised-button color="primary" (click)="openResumeInput($event,resumeInput)">Upload another
+                    resume</button>
             </div>
-            <div style="flex-grow: 1;">
-                <mat-card-title style="color: #644DFF;">
-                    {{ jobseekerName }} (Resume).pdf
-                </mat-card-title>
-            </div>
-        </mat-card-content>
-        <mat-divider></mat-divider>
-        <span>or</span>
+            <br>
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Highest Qualification</mat-label>
+                <mat-select placeholder="" formControlName="qualification">
+                    <mat-option value="High School">High School</mat-option>
+                    <mat-option value="Diploma">Diploma</mat-option>
+                    <mat-option value="Bachelor Degree">Bachelor Degree</mat-option>
+                    <mat-option value="Master Degree">Master Degree</mat-option>
+                    <mat-option value="PhD">PhD</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        <div class="upload-resume">
-            <button mat-raised-button color="primary">Upload another resume</button>
-        </div>
-        <br>
-        <mat-form-field class="input-field" appearance="outline">
-            <mat-label>Highest Qualification</mat-label>
-            <mat-select placeholder="" formControlName="qualification">
-                <mat-option value="Full-time">High School</mat-option>
-                <mat-option value="Part-time">Diploma</mat-option>
-                <mat-option value="Freelance">Bachelor Degree</mat-option>
-                <mat-option value="Remote">Master Degree</mat-option>
-                <mat-option value="Hybrid">PhD</mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Work Experience</mat-label>
+                <input matInput placeholder="" formControlName="experience" type="number" min="0">
+            </mat-form-field>
 
-        <mat-form-field class="input-field" appearance="outline">
-            <mat-label>Work Experience</mat-label>
-            <input matInput placeholder="" formControlName="experience" type="number" min="0">
-        </mat-form-field>
-
-        <button mat-raised-button type="submit" color="primary">SUBMIT</button>
-    </mat-card>
+            <button mat-raised-button type="submit" color="primary">SUBMIT APPLICATION</button>
+        </mat-card>
+    </div>
 </form>

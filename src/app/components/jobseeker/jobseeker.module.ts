@@ -32,6 +32,7 @@ import { ReportJobComponent } from "../common/report-job/report-job.component";
 import { ApplyJobDialogComponent } from './apply-job-dialog/apply-job-dialog.component';
 import { JobseekerMyJobsComponent } from './jobseeker-my-jobs/jobseeker-my-jobs.component';
 import { JobseekerMyReviewsComponent } from './jobseeker-my-reviews/jobseeker-my-reviews.component';
+import { JobApplicationService } from "src/app/services/job-application.service";
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { JobseekerMyReviewsComponent } from './jobseeker-my-reviews/jobseeker-my
   ],
   providers: [
     JobseekerService,
+    JobApplicationService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

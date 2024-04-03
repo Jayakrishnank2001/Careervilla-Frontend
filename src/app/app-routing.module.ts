@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JobseekerHomeComponent } from './components/jobseeker/jobseeker-home/jobseeker-home.component';
+import { JobseekerLoginComponent } from './components/jobseeker/jobseeker-login/jobseeker-login.component';
 
 const routes: Routes = [
   {
@@ -18,11 +18,6 @@ const routes: Routes = [
     title:'Jobseeker',
     loadChildren: () =>import('./components/jobseeker/jobseeker.module').then(m =>m.JobseekerModule)
   },
-  {
-    path: '',
-    title: 'Careervilla Homepage',
-    component:JobseekerHomeComponent
-  }
 ];
 
 @NgModule({

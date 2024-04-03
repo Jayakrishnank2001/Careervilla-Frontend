@@ -21,6 +21,7 @@ export class JobseekerJobsComponent {
   jobs: IJobRes[] = []
   selectJob: IJobRes = {}
   savedJobs: (string | undefined)[] = []
+  appliedJobs: (string | undefined)[] = []
   jobseekerId!: string | null
 
   constructor(private breakpointObserver: BreakpointObserver,
@@ -53,7 +54,6 @@ export class JobseekerJobsComponent {
 
   getSavedJobs(): void {
     if (this.jobseekerId) {
-      console.log(this.jobseekerId)
       this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
         next: (res) => {
           this.savedJobs = res?.savedJobs?.map(job => job.jobId) || [];
@@ -127,9 +127,24 @@ export class JobseekerJobsComponent {
   }
 
   onApplyJob(jobId: string | undefined): void {
-    const dialogRef = this.dialog.open(ApplyJobDialogComponent, {
-      data: { jobId, jobseekerId: this.jobseekerId }
-    })
+    if (this.jobseekerId) {
+      this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
+        next: (res) => {
+          this.appliedJobs = res?.appliedJobs?.map(job => job.jobId) || [];
+          if (this.appliedJobs.includes(jobId)) {
+            this.snackBar.open('Already applied to this job', 'Close', {
+              duration: 5000,
+              verticalPosition: 'top'
+            })
+          } else {
+            this.dialog.open(ApplyJobDialogComponent, {
+              data: { jobId, jobseekerId: this.jobseekerId }
+            })
+          }
+        }
+      })
+    }
+
   }
 
 

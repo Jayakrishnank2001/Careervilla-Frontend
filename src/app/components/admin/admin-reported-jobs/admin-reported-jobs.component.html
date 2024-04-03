@@ -35,7 +35,7 @@
             <ng-container matColumnDef="actions" class="heading">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
                 <mat-cell *matCellDef="let job">
-                    <button mat-raised-button (click)="viewJob()" color="primary">View</button>
+                    <button mat-raised-button (click)="viewJob(job._id)" color="primary">View</button>
                     <button mat-raised-button style="margin-left: 5px;" color="{{ job.jobId.isBlocked ? 'primary' : 'warn' }}"
                         (click)="onBlock(job.jobId._id,job._id, job.jobId.isBlocked ? 'Unblock' : 'Block')">
                         {{ job.jobId.isBlocked ? 'Unblock' : 'Block' }}

@@ -10,19 +10,20 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/jobseeker/home">
-        <mat-icon>home</mat-icon>HOME
-      </button>
-      <button mat-menu-item routerLink="/jobseeker/jobs">
-        <mat-icon>work</mat-icon>JOBS
-      </button>
-      <button mat-menu-item routerLink="/jobseeker/companies">
-        <mat-icon>location_city</mat-icon>COMPANIES
-      </button>
-      <button mat-menu-item routerLink="/employer/login">
-        <mat-icon>login</mat-icon>EMPLOYER LOGIN
-      </button>
+      
       <ng-container *ngIf="token;else loginButtonGroup">
+        <button mat-menu-item routerLink="/jobseeker/home">
+          <mat-icon>home</mat-icon>HOME
+        </button>
+        <button mat-menu-item routerLink="/jobseeker/jobs">
+          <mat-icon>work</mat-icon>JOBS
+        </button>
+        <button mat-menu-item routerLink="/jobseeker/companies">
+          <mat-icon>location_city</mat-icon>COMPANIES
+        </button>
+        <button mat-menu-item routerLink="/employer/login">
+          <mat-icon>login</mat-icon>EMPLOYER LOGIN
+        </button>
         <button mat-menu-item>
           <mat-icon>notifications</mat-icon> NOTIFICATIONS
         </button>
@@ -35,16 +36,16 @@
   
         <mat-menu #accountMenu="matMenu">
           <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
-          <button mat-menu-item routerLink="/jobseeker/my-Jobs">My Jobs</button>
-          <button mat-menu-item routerLink="/jobseeker/my-Reviews">My Reviews</button>
+          <button mat-menu-item routerLink="/jobseeker/my-jobs">My Jobs</button>
+          <button mat-menu-item routerLink="/jobseeker/my-reviews">My Reviews</button>
           <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
           <button mat-menu-item (click)="onLogOut()">Logout</button>
         </mat-menu>
       </ng-container>
 
       <ng-template #loginButtonGroup>
-        <button mat-menu-item routerLink="/jobseeker/login">
-          <mat-icon>login</mat-icon> LOGIN
+        <button mat-menu-item routerLink="/employer/login">
+          <mat-icon>login</mat-icon> EMPLOYER LOGIN
         </button>
       </ng-template>
       
@@ -54,12 +55,13 @@
 
   <!-- Add a ngIf directive to check if it's not a small screen -->
   <ng-container *ngIf="(screenSize | async) !== 'small'">
-    <button mat-button routerLink="/jobseeker/home">HOME</button>
+    
+    <ng-container *ngIf="token;else loginButtonGroup">
+      <button mat-button routerLink="/jobseeker/home">HOME</button>
     <button mat-button routerLink="/jobseeker/jobs">JOBS</button>
     <button mat-button routerLink="/jobseeker/companies">COMPANIES</button>
     <span class="fill-remaining-space"></span>
     <button mat-button routerLink="/employer/login">EMPLOYER LOGIN</button>
-    <ng-container *ngIf="token;else loginButtonGroup">
       <button mat-icon-button>
         <mat-icon>notifications</mat-icon>
       </button>
@@ -72,15 +74,15 @@
       
       <mat-menu #accountMenu="matMenu">
         <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
-        <button mat-menu-item routerLink="/jobseeker/my-Jobs">My Jobs</button>
-          <button mat-menu-item routerLink="/jobseeker/my-Reviews">My Reviews</button>
+        <button mat-menu-item routerLink="/jobseeker/my-jobs">My Jobs</button>
+          <button mat-menu-item routerLink="/jobseeker/my-reviews">My Reviews</button>
         <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
         <button mat-menu-item (click)="onLogOut()">Logout</button>
       </mat-menu>
     </ng-container>
 
     <ng-template #loginButtonGroup>
-      <button mat-raised-button class="mat-raised-button" routerLink="/jobseeker/login">LOGIN</button>
+      <button mat-raised-button class="mat-raised-button" routerLink="/employer/login">EMPLOYER LOGIN</button>
     </ng-template>
     
   </ng-container>

@@ -19,4 +19,8 @@ export class JobService {
   getJobs() {
     return this.http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs`)
   }
+
+  
+
+
 }

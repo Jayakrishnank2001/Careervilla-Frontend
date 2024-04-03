@@ -1,18 +1,36 @@
-.resume {
-    text-align: center;
-    align-items: center;
+.centered-content {
     display: flex;
-    height: 50px;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #644DFF;
+    border-radius: 0.5em;
+    height: 50px;
 }
 
-mat-card{
-    width: 350px;
+.title{
+    font-size:x-large;
+    font-weight: 600;
 }
 
-form{
+.center-card{
+    width: 450px;
+    margin: 0px 24px auto;
+    border:1px solid white;
+}
+
+.mat-form{
     text-align: center;
-    width: 400px;
-    height: 450px;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 435px;
+}
+
+@media screen and (max-width:600px){
+    .mat-form{
+        width:100%
+    }
+    .center-card{
+        width: 100%;
+    }
 }

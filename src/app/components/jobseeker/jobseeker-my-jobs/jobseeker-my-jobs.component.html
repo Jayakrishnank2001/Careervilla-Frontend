@@ -1,1 +1,23 @@
-<p>jobseeker-my-jobs works!</p>
+<app-jobseeker-nav></app-jobseeker-nav>
+<mat-card class="settings-card">
+    <mat-card-header>
+        <mat-card-title class="title">
+            My Jobs
+        </mat-card-title>
+    </mat-card-header>
+    <br>
+    <span class="job-categories">
+        <span>Saved</span>
+        <span>Applied</span>
+    </span>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <ng-container *ngFor="let job of savedJobs">
+            <mat-icon>domain</mat-icon>
+            <mat-card-title></mat-card-title>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </div>
+</mat-card>
+<br>

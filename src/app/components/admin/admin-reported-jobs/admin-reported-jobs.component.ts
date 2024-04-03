@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { IReportedJob } from 'src/app/models/reportedJob';
 import { ReportedJobService } from 'src/app/services/reported-job.service';
 import Swal from 'sweetalert2';
+import { AdminReportedDialogComponent } from '../admin-reported-dialog/admin-reported-dialog.component';
 
 @Component({
   selector: 'app-admin-reported-jobs',
@@ -16,7 +18,7 @@ export class AdminReportedJobsComponent implements OnInit {
   searchQuery: string = ''
   reportedJobCount = 0
 
-  constructor(private reportedJobService: ReportedJobService) { }
+  constructor(private reportedJobService: ReportedJobService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getReportedJobs()
@@ -70,9 +72,15 @@ export class AdminReportedJobsComponent implements OnInit {
       }
     })
   }
+  
+  viewJob(jobId:string): void {
+    this.openDialog(jobId)
+  }
 
-  viewJob(): void {
-
+  openDialog(jobId: string): void{
+    const dialogRef = this.dialog.open(AdminReportedDialogComponent, {
+      data:{jobId}
+    })
   }
 
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { IApiRes, IResponse } from '../models/common';
 import { Observable } from 'rxjs';
-import { IReportedJobAndCount } from '../models/reportedJob';
+import { IReportedJob, IReportedJobAndCount } from '../models/reportedJob';
 
 @Injectable()
   
@@ -23,6 +23,10 @@ export class ReportedJobService {
 
   blockReportedJob(jobId: string,reportJobId:string) {
     return this.http.patch<IResponse>(`${this.baseURL}/admin/block-reportedJob`, { jobId, reportJobId })
+  }
+
+  reportedJobDetails(jobId: string) {
+    return this.http.get<IReportedJob>(`${this.baseURL}/admin/reportedJob-details/${jobId}`)
   }
 
 

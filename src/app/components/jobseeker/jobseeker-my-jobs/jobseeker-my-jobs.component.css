@@ -1,0 +1,42 @@
+.settings-card{
+    width: 85%;
+    margin: 25px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1.5em;
+}
+
+.title{
+    font-size:x-large;
+    margin-left: -10px;
+}
+
+.job-categories {
+    display: inline-flex;
+    margin-left: 6px;
+  }
+  
+  .job-categories span {
+    font-size: larger;
+    font-weight:500;
+    cursor: pointer;
+    margin-right: 40px; 
+    color: #000000;
+  }
+
+button.btn{
+    background-color:#644DFF ;
+    color: white;
+    width: 165px;
+}
+
+@media screen and (max-width:600px){
+    .settings-card{
+        width: 90%;
+    }
+
+    button.btn{
+        width: 110px;
+    }
+}

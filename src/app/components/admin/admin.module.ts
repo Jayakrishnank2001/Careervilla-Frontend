@@ -13,6 +13,7 @@ import { AdminSubscriptionComponent } from './admin-subscription/admin-subscript
 import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported-jobs.component';
 import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dialog.component';
 import { AdminService } from "src/app/services/admin.service";
+import { AdminReportedDialogComponent } from './admin-reported-dialog/admin-reported-dialog.component';
 
 @NgModule({
     declarations:[
@@ -24,6 +25,7 @@ import { AdminService } from "src/app/services/admin.service";
         AdminSubscriptionComponent,
         AdminReportedJobsComponent,
         AdminPlansDialogComponent,
+        AdminReportedDialogComponent,
         
     ],
     imports:[

@@ -29,6 +29,7 @@ import { ChangePasswordComponent } from "../common/change-password/change-passwo
 import { ChangePhoneNumberComponent } from "../common/change-phone-number/change-phone-number.component";
 import { ChangeLocationComponent } from "../common/change-location/change-location.component";
 import { AngularFireModule } from "@angular/fire/compat";
+import { JobApplicationService } from "src/app/services/job-application.service";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AngularFireModule } from "@angular/fire/compat";
   ],
   providers: [
     EmployerService,
+    JobApplicationService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

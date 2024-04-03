@@ -1,0 +1,23 @@
+<form>
+    <mat-card class="job-card">
+        <mat-card-header>
+            <div class="header-content">
+                <mat-card-title>{{ job.jobId?.jobTitle }}</mat-card-title>
+                <mat-card-subtitle>{{ job.companyId?.companyName }}</mat-card-subtitle>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="content-row">
+                <p><strong>Reason:</strong> {{ job.reason }}</p>
+                <p><strong>Description:</strong> {{ job.description }}</p>
+                <p><strong>Status:</strong> {{ job.status }}</p>
+                <p><strong>Website:</strong> <a href="{{ job.companyId?.website }}" target="_blank">{{
+                        job.companyId?.website }}</a></p>
+                <p><strong>Email:</strong> <a href="mailto:{{ job.companyId?.email }}">{{ job.companyId?.email }}</a>
+                </p>
+                <p><strong>Date Reported:</strong> {{ job.reportedAt | date:'shortDate'}}</p>
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

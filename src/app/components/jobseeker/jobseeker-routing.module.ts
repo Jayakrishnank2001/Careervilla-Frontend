@@ -11,6 +11,8 @@ import { AuthGuard } from "src/app/guards/auth.guard";
 import { JobseekerProfileComponent } from "./jobseeker-profile/jobseeker-profile.component";
 import { JobseekerQualificationsComponent } from "./jobseeker-qualifications/jobseeker-qualifications.component";
 import { JobseekerJobPreferencesComponent } from "./jobseeker-job-preferences/jobseeker-job-preferences.component";
+import { JobseekerMyJobsComponent } from "./jobseeker-my-jobs/jobseeker-my-jobs.component";
+import { JobseekerMyReviewsComponent } from "./jobseeker-my-reviews/jobseeker-my-reviews.component";
 
 
 
@@ -18,62 +20,76 @@ const routes: Routes = [
     {
         path: 'login',
         title: 'Careervilla | Jobseeker Login',
-        component:JobseekerLoginComponent
+        component: JobseekerLoginComponent
     },
     {
         path: 'otp',
         title: 'Careervilla | Jobseeker Forgot OTP',
-        component:JobseekerOtpComponent
+        component: JobseekerOtpComponent
     },
     {
         path: 'forgot-password',
         title: 'Careervilla | Jobseeker Forgot Password',
-        component:JobseekerForgotPasswordComponent
+        component: JobseekerForgotPasswordComponent
     },
     {
         path: 'signup',
         title: 'Careervilla | Jobseeker Signup',
-        component:JobseekerSignupComponent
+        component: JobseekerSignupComponent
     },
     {
         path: 'home',
         title: 'Careervilla | Jobseeker Homepage',
-        component:JobseekerHomeComponent
+        component: JobseekerHomeComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'jobs',
         title: 'Careervilla | Jobseeker Jobs',
-        component:JobseekerJobsComponent
+        component: JobseekerJobsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'settings',
         title: 'Careervilla | Jobseeker Settings',
         component: JobseekerSettingsComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'profile',
         title: 'Careervilla | Jobseeker Profile',
         component: JobseekerProfileComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'qualifications',
         title: 'Careervilla | Jobseeker Qualifications',
         component: JobseekerQualificationsComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'job-preferences',
         title: 'Careervilla | Jobseeker Job-Preferences',
         component: JobseekerJobPreferencesComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'my-jobs',
+        title: 'Careervilla | Jobseeker My-Jobs',
+        component: JobseekerMyJobsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'my-reviews',
+        title: 'Careervilla | Jobseeker My-Reviews',
+        component: JobseekerMyReviewsComponent,
+        canActivate: [AuthGuard]
     }
 
 ]
 
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
-    exports:[RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class JobseekerRoutingModule{}
+export class JobseekerRoutingModule { }

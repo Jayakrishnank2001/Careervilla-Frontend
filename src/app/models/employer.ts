@@ -10,7 +10,7 @@ export interface IEmployerRes {
   planExpiresAt?: string,
   image?:string,
   password?: string,
-  company_Id?: {
+  companyId?: {
     companyName?: string,
     website?: string,
     email?: string,

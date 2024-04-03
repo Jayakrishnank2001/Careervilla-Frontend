@@ -68,4 +68,11 @@ export class JobseekerService {
     return this.http.delete<IResponse>(`${this.baseURL}/jobseeker/deleteResume/${jobseekerId}`)
   }
 
+  saveJob(jobseekerId:string,jobId: String) {
+    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/saveJob`,{jobseekerId,jobId})
+  }
+
+  unsaveJob(jobseekerId: string, jobId: string) {
+    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/unsaveJob`,{jobseekerId,jobId})
+  }
 }
