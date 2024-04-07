@@ -12,8 +12,8 @@ export class JobService {
 
   baseURL=environments.baseURL
 
-  saveJob(jobData: IJobRes) {
-    return this.http.post<IRes>(`${this.baseURL}/employer/addJob`,jobData)
+  saveJob(jobData: IJobRes,employerId:string) {
+    return this.http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`,jobData)
   }
 
   getJobs() {

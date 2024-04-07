@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 const MaterialComponents=[
@@ -30,6 +31,7 @@ const MaterialComponents=[
   MatCheckboxModule,
   MatListModule,
   MatButtonToggleModule,
+  MatBadgeModule,
   MatTableModule,
   MatToolbarModule,
   MatSelectModule,

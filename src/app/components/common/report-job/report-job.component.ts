@@ -9,7 +9,7 @@ import { MaterialModule } from 'src/app/material/material.module';
   templateUrl: './report-job.component.html',
   styleUrls: ['./report-job.component.css'],
   standalone: true,
-  imports:[MaterialModule,ReactiveFormsModule, CommonModule, FormsModule]
+  imports: [MaterialModule, ReactiveFormsModule, CommonModule, FormsModule]
 })
 export class ReportJobComponent implements OnInit{
 

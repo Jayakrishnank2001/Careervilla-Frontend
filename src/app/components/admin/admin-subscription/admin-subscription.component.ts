@@ -5,6 +5,7 @@ import { AdminPlansDialogComponent } from '../admin-plans-dialog/admin-plans-dia
 import Swal from 'sweetalert2';
 import { IRes } from 'src/app/models/common';
 import { SubscriptionPlanService } from 'src/app/services/subscription-plan.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-subscription',
@@ -15,7 +16,8 @@ export class AdminSubscriptionComponent implements OnInit {
   plans: ISubscriptionRes[] = []
 
   constructor(private readonly subscriptionPlanService: SubscriptionPlanService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getPlans()
@@ -43,13 +45,11 @@ export class AdminSubscriptionComponent implements OnInit {
       if (result.isConfirmed) {
         this.subscriptionPlanService.deletePlan(planId).subscribe({
           next: () => {
-            const planIndex = this.plans.findIndex(plan => plan._id === planId)
-            if (planIndex !== -1) {
-              this.plans = [
-                ...this.plans.slice(0, planIndex),
-                ...this.plans.slice(planIndex + 1)
-              ]
-            }
+            this.ngOnInit()
+            this.snackBar.open('Plan deleted successfully', 'Close', {
+              duration: 5000,
+              verticalPosition:'top'
+            })
           }
         })
       }
@@ -75,18 +75,14 @@ export class AdminSubscriptionComponent implements OnInit {
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan created successfully') {
-                void Swal.fire({
-                  title: 'New Plan created Successfully',
-                  icon: 'success',
-                  timer: 3000,
-                  showConfirmButton: false
+                this.snackBar.open('New plan created', 'Close', {
+                  duration: 5000,
+                  verticalPosition:'top'
                 })
               } else {
-                void Swal.fire({
-                  title: 'Plan Already Exists',
-                  icon: 'warning',
-                  timer: 3000,
-                  showConfirmButton: false
+                this.snackBar.open('Plan already exists', 'Close', {
+                  duration: 5000,
+                  verticalPosition:'top'
                 })
               }
             }
@@ -97,11 +93,9 @@ export class AdminSubscriptionComponent implements OnInit {
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan updated successfully') {
-                void Swal.fire({
-                  title: 'Plan Updated Successfully',
-                  icon: 'success',
-                  timer: 3000,
-                  showConfirmButton: false
+                this.snackBar.open('Plan updated successfully', 'Close', {
+                  duration: 5000,
+                  verticalPosition:'top'
                 })
               }
             }

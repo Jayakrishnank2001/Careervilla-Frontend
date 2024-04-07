@@ -44,19 +44,19 @@ export class EmployerService {
   }
 
   changePassword(employerEmail: string, newPassword: string, confirmPassword: string) {
-    return this.http.post<IRes>(`${this.baseURL}/employer/changePassword`, { employerEmail, newPassword, confirmPassword })
+    return this.http.put<IRes>(`${this.baseURL}/employer/changePassword`, { employerEmail, newPassword, confirmPassword })
   }
 
   changePhoneNumber(employerId: string, phoneNumber: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/employer/changePhoneNumber/${employerId}`, { phoneNumber })
+    return this.http.put<IResponse>(`${this.baseURL}/employer/changePhoneNumber/${employerId}`, { phoneNumber })
   }
 
   changeLocation(employerId: string, location: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/employer/changeLocation/${employerId}`, { location })
+    return this.http.put<IResponse>(`${this.baseURL}/employer/changeLocation/${employerId}`, { location })
   }
 
   updatePhoto(employerId: string, url: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/employer/updatePhoto/${employerId}`,{url})
+    return this.http.put<IResponse>(`${this.baseURL}/employer/updatePhoto/${employerId}`,{url})
   }
 
   

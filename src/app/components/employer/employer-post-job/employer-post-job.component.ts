@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { IJobRes } from 'src/app/models/job';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { IEmployerRes } from 'src/app/models/employer';
 
 @Component({
   selector: 'app-employer-post-job',
@@ -26,6 +27,7 @@ export class EmployerPostJobComponent implements OnInit {
   states: string[] = []
   cities: string[] = []
   selectedCountry!: string;
+  employer: IEmployerRes = {}
 
   isSubmitted: boolean = false
   form!: FormGroup
@@ -40,7 +42,9 @@ export class EmployerPostJobComponent implements OnInit {
     private employerService: EmployerService,
     private router: Router,
     private jobService: JobService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar) { 
+    
+    }
   
 
 
@@ -49,6 +53,7 @@ export class EmployerPostJobComponent implements OnInit {
   );
 
   ngOnInit(): void {
+    this.getEmployerData()
     this.countries = this.locationService.getCountries()
     this.form = this.formBuilder.group({
       jobTitle: ['', Validators.required],
@@ -67,6 +72,15 @@ export class EmployerPostJobComponent implements OnInit {
       state: ['', Validators.required],
       city: ['', Validators.required]
     })
+  }
+
+  getEmployerData(): void{
+    const employerId = this.authService.extractUserIdFromToken('employerToken')
+    if(employerId)
+      this.employerService.getEmployerDetails(employerId).subscribe({
+        next: (res) => {
+          this.employer = res
+      }})
   }
 
   getCountryCode(countryName: string): string | undefined {
@@ -121,7 +135,7 @@ export class EmployerPostJobComponent implements OnInit {
               if (res.isSubscribed == false || (res.planExpiresAt && new Date(res.planExpiresAt) < new Date())) {
                 void this.router.navigate(['/employer/subscription'])
               } else {
-                this.jobService.saveJob(data).subscribe({
+                this.jobService.saveJob(data,employerId).subscribe({
                   next: (res) => {
                     if (res.data.success == true) {
                       this.resetForm()

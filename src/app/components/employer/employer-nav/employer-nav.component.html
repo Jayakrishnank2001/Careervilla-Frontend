@@ -30,6 +30,9 @@
         <mat-card>
           <mat-menu #accountMenu="matMenu">
             <button mat-menu-item routerLink="/employer/profile">Profile</button>
+            <button mat-menu-item routerLink="/employer/manage-jobs">Manage Jobs</button>
+            <button mat-menu-item routerLink="/employer/post-job">Post Job</button>
+            <button mat-menu-item routerLink="/employer/manage-candidates">candidates</button>
             <button mat-menu-item routerLink="/employer/settings">Settings</button>
             <button mat-menu-item (click)="onLogOut()">Sign Out</button>
           </mat-menu>
@@ -43,7 +46,8 @@
   <!-- Add a ngIf directive to check if it's not a small screen -->
   <ng-container *ngIf="(screenSize | async) !== 'small'">
     <button *ngIf="token" mat-button routerLink="/employer/home">HOME</button>
-    <button mat-raised-button routerLink="/jobseeker/login" style="background-color: #644DFF; color: white;" *ngIf="!token">JOBSEEKER LOGIN</button>
+    <button mat-raised-button routerLink="/jobseeker/login" style="background-color: #644DFF; color: white;"
+      *ngIf="!token">JOBSEEKER LOGIN</button>
     <button mat-button routerLink="/jobseeker/login" *ngIf="token">JOBSEEKER LOGIN</button>
     <ng-container *ngIf="token">
       <button mat-icon-button>
@@ -57,13 +61,16 @@
       </button>
 
       <mat-card>
-      <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item routerLink="/employer/profile">Profile</button>
-        <button mat-menu-item routerLink="/employer/settings">Settings</button>
-        <mat-divider></mat-divider>
-        <button mat-raised-button class="logout-button" color="warn" (click)="onLogOut()">Sign Out</button>
-      </mat-menu>
-    </mat-card>
+        <mat-menu #accountMenu="matMenu">
+          <button mat-menu-item routerLink="/employer/profile">Profile</button>
+          <button mat-menu-item routerLink="/employer/manage-jobs">Manage Jobs</button>
+          <button mat-menu-item routerLink="/employer/post-job">Post Job</button>
+          <button mat-menu-item routerLink="/employer/manage-candidates">Manage candidates</button>
+          <button mat-menu-item routerLink="/employer/settings">Settings</button>
+          <mat-divider></mat-divider>
+          <button mat-raised-button class="logout-button" color="warn" (click)="onLogOut()">Sign Out</button>
+        </mat-menu>
+      </mat-card>
     </ng-container>
 
   </ng-container>

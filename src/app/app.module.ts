@@ -17,6 +17,7 @@ import { SubscriptionPlanService } from './services/subscription-plan.service';
 import { LocationService } from './services/location.service';
 import { JobService } from './services/job.service';
 import { ReportedJobService } from './services/reported-job.service';
+import { CompanyService } from './services/company.service';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ReportedJobService } from './services/reported-job.service';
     SubscriptionPlanService,
     BreakpointObserver,
     LocationService,
+    CompanyService,
     JobService,
     ReportedJobService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

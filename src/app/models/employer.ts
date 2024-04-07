@@ -11,6 +11,7 @@ export interface IEmployerRes {
   image?:string,
   password?: string,
   companyId?: {
+    _id?:string,
     companyName?: string,
     website?: string,
     email?: string,

@@ -12,33 +12,6 @@
     margin-left: -10px;
 }
 
-.job-categories {
-    display: inline-flex;
-    margin-left: 6px;
-}
-
-.job-categories span {
-    font-size: larger;
-    font-weight: 500;
-    cursor: pointer;
-    margin-right: 40px;
-    color: #000000;
-}
-
-button.btn {
-    background-color: #644DFF;
-    color: white;
-    width: 165px;
-}
-
-.jobs {
-    display: flex;
-}
-
-.job-title {
-    flex-grow: 1;
-}
-
 @media screen and (max-width:600px) {
     .settings-card {
         width: 90%;

@@ -14,7 +14,8 @@
         <div class="right-content">
             <input type="file" accept="image/*" #fileInput style="display: none;" (change)="onFileSelected($event)">
             <label class="avatar-container" (click)="openFileInput(fileInput)">
-                <img src={{userData.image}} alt="" mat-card-avatar class="example-header-image">
+                <img src={{userData.image}} alt="" mat-card-avatar class="example-header-image" *ngIf="userData.image">
+                <img src="../../../../assets/images/user-default-profile-pic.jpg" alt="" mat-card-avatar class="example-header-image" *ngIf="!userData.image">
                 <mat-icon class="camera-icon">camera_alt</mat-icon>
             </label>
         </div>

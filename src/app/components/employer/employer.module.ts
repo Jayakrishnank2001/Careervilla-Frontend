@@ -30,6 +30,9 @@ import { ChangePhoneNumberComponent } from "../common/change-phone-number/change
 import { ChangeLocationComponent } from "../common/change-location/change-location.component";
 import { AngularFireModule } from "@angular/fire/compat";
 import { JobApplicationService } from "src/app/services/job-application.service";
+import { EmployerManageJobsComponent } from './employer-manage-jobs/employer-manage-jobs.component';
+import { EmployerManageCandidatesComponent } from './employer-manage-candidates/employer-manage-candidates.component';
+import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { JobApplicationService } from "src/app/services/job-application.service"
     EmployerPostJobComponent,
     EmployerSubscriptionComponent,
     EmployerProfileComponent,
-    EmployerSettingsComponent
+    EmployerSettingsComponent,
+    EmployerManageJobsComponent,
+    EmployerManageCandidatesComponent,
+    AddCompanyDialogComponent
   ],
   imports: [
     EmployerRoutingModule,

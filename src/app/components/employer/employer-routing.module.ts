@@ -10,34 +10,36 @@ import { EmployerSubscriptionComponent } from "./employer-subscription/employer-
 import { AuthGuard } from "src/app/guards/auth.guard";
 import { EmployerProfileComponent } from "./employer-profile/employer-profile.component";
 import { EmployerSettingsComponent } from "./employer-settings/employer-settings.component";
+import { EmployerManageJobsComponent } from "./employer-manage-jobs/employer-manage-jobs.component";
+import { EmployerManageCandidatesComponent } from "./employer-manage-candidates/employer-manage-candidates.component";
 
 
 const routes: Routes = [
     {
         path: 'login',
         title: 'Careervilla | Employer Login',
-        component:EmployerLoginComponent
+        component: EmployerLoginComponent
     },
     {
         path: 'otp',
         title: 'Carrervilla | Employer Forgot OTP',
-        component:EmployerOTPComponent
+        component: EmployerOTPComponent
     },
     {
         path: 'forgot-password',
         title: 'Carrervilla | Employer Forgot Password',
-        component:EmployerForgotPasswordComponent
+        component: EmployerForgotPasswordComponent
     },
     {
         path: 'signup',
         title: 'Careervilla | Employer Signup',
-        component:EmployerSignupComponent
+        component: EmployerSignupComponent
     },
     {
         path: 'home',
         title: 'Careervilla | Employer Homepage',
         component: EmployerHomeComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'post-job',
@@ -49,25 +51,37 @@ const routes: Routes = [
         path: 'subscription',
         title: 'Careervilla | Employer Subscription',
         component: EmployerSubscriptionComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'profile',
-        title: 'Careervilla|Employer Profile',
+        title: 'Careervilla | Employer Profile',
         component: EmployerProfileComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'settings',
-        title: 'Careervilla|Employer Settings',
+        title: 'Careervilla | Employer Settings',
         component: EmployerSettingsComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'manage-jobs',
+        title: 'Careervilla | Employer Manage Jobs',
+        component: EmployerManageJobsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'manage-candidates',
+        title: 'Careervilla | Employer Manage Candidates',
+        component: EmployerManageCandidatesComponent,
+        canActivate: [AuthGuard]
     }
 
 ]
 
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
-    exports:[RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class EmployerRoutingModule{}
+export class EmployerRoutingModule { }

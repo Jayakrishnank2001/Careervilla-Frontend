@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { IJobseekerAuthResponse, IJobseekerRes, IRes, IResponse } from '../models/jobseeker';
 import { Observable } from 'rxjs';
+import { IJobRes } from '../models/job';
 
 @Injectable()
 
@@ -45,19 +46,19 @@ export class JobseekerService {
   }
 
   changePassword(jobseekerEmail: string, newPassword: string, confirmPassword: string) {
-    return this.http.post<IRes>(`${this.baseURL}/jobseeker/changePassword`, { jobseekerEmail, newPassword, confirmPassword })
+    return this.http.put<IRes>(`${this.baseURL}/jobseeker/changePassword`, { jobseekerEmail, newPassword, confirmPassword })
   }
 
   changePhoneNumber(jobseekerId: string, phoneNumber: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/changePhoneNumber/${jobseekerId}`, { phoneNumber })
+    return this.http.put<IResponse>(`${this.baseURL}/jobseeker/changePhoneNumber/${jobseekerId}`, { phoneNumber })
   }
 
   changeLocation(jobseekerId: string, location: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/changeLocation/${jobseekerId}`, { location })
+    return this.http.put<IResponse>(`${this.baseURL}/jobseeker/changeLocation/${jobseekerId}`, { location })
   }
 
   updatePhoto(jobseekerId: string, url: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/updatePhoto/${jobseekerId}`,{url})
+    return this.http.put<IResponse>(`${this.baseURL}/jobseeker/updatePhoto/${jobseekerId}`,{url})
   }
 
   addResume(jobseekerId: string, url: string) {
@@ -75,4 +76,21 @@ export class JobseekerService {
   unsaveJob(jobseekerId: string, jobId: string) {
     return this.http.post<IResponse>(`${this.baseURL}/jobseeker/unsaveJob`,{jobseekerId,jobId})
   }
+
+  getSavedJobs(jobseekerId: string) {
+    return this.http.get<IJobRes[]>(`${this.baseURL}/jobseeker/savedJobs/${jobseekerId}`)
+  }
+
+  getAppliedJobs(jobseekerId: string) {
+    return this.http.get<IJobRes[]>(`${this.baseURL}/jobseeker/appliedJobs/${jobseekerId}`)
+  }
+
+  withdrawApplication(jobId: string, jobseekerId: string) {
+    return this.http.patch<IResponse>(`${this.baseURL}/jobseeker/withdraw-application`,{jobId,jobseekerId})
+  }
+
+  
+
+
+
 }

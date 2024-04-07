@@ -64,7 +64,7 @@ export class EmployerSubscriptionComponent implements OnInit {
             const data= localStorage.getItem('postJobDetails')
             if (data) {
               const storedData: IJobRes = JSON.parse(data);
-              this.jobService.saveJob(storedData).subscribe({
+              this.jobService.saveJob(storedData,employerId).subscribe({
                 next: () => {
                   
                 }

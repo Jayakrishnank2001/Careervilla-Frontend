@@ -6,16 +6,51 @@
         </mat-card-title>
     </mat-card-header>
     <br>
+    <br>
     <span class="job-categories">
-        <span>Saved</span>
-        <span>Applied</span>
+        <span (click)="getSavedJobs(jobseekerId)" matBadge={{savedJobs.length}} matBadgeOverlap="false" matBadgePosition="before">Saved</span>
+        <span (click)="getAppliedJobs(jobseekerId)" matBadge={{appliedJobs.length}} matBadgeOverlap="false" matBadgePosition="before">Applied</span>
     </span>
     <mat-divider></mat-divider>
-    <br>
-    <div>
+    <div *ngIf="isSavedJobs">
         <ng-container *ngFor="let job of savedJobs">
-            <mat-icon>domain</mat-icon>
-            <mat-card-title></mat-card-title>
+            <br>
+            <div class="jobs">
+                <div>
+                    <mat-icon>domain</mat-icon>
+                </div>
+                <div class="job-title">
+                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                </div>
+                <div>
+                    <button mat-raised-button (click)="onApplyJob(job._id)" color="primary" style="margin-right: 10px;">Apply Now</button>
+                    <button mat-raised-button class="save-button" (click)="onUnsaveJob(job._id)">
+                        <span class="icon-wrapper">
+                            <mat-icon>bookmark</mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <br>
+            <mat-divider></mat-divider>
+        </ng-container>
+        
+    </div>
+    <div *ngIf="!isSavedJobs">
+        <ng-container *ngFor="let job of appliedJobs">
+            <br>
+            <div class="jobs">
+                <div>
+                    <mat-icon>domain</mat-icon>
+                </div>
+                <div class="job-title">
+                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" (click)="onWithdrawApplication(job._id)">Withdraw Application</button>
+                </div>
+            </div>
+            <br>
             <mat-divider></mat-divider>
         </ng-container>
     </div>
