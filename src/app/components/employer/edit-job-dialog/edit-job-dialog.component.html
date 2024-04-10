@@ -1,0 +1,129 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-card class="post-job-card">
+    <mat-card-title>
+      Edit Job
+      <mat-divider></mat-divider>
+      <br>
+    </mat-card-title>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Job Title</mat-label>
+        <input matInput placeholder="" formControlName="jobTitle">
+      </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Company Name</mat-label>
+        <input matInput placeholder="" formControlName="companyName">
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Job Description</mat-label>
+        <textarea matInput placeholder="" formControlName="jobDescription"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Job Type</mat-label>
+        <mat-select placeholder="" formControlName="jobType">
+          <mat-option value="Full-time">Full-Time</mat-option>
+          <mat-option value="Part-time">Part-Time</mat-option>
+          <mat-option value="Freelance">Freelance</mat-option>
+          <mat-option value="Remote">Remote</mat-option>
+          <mat-option value="Hybrid">Hybrid</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Offered Salary</mat-label>
+        <input matInput placeholder="" formControlName="salary">
+      </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Specialisms</mat-label>
+        <input matInput placeholder="" formControlName="specialisms">
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Experience</mat-label>
+        <mat-select placeholder="" formControlName="experience">
+          <mat-option value="0-2">0-2 years</mat-option>
+          <mat-option value="2-5">2-5 years</mat-option>
+          <mat-option value="5-10">5-10 years</mat-option>
+          <mat-option value="10+">10+ years</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select placeholder="" formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Industry</mat-label>
+        <input matInput placeholder="" formControlName="industry">
+      </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Application Deadline</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="" formControlName="applicationDeadline">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="" formControlName="address"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>country</mat-label>
+        <mat-select placeholder="" (selectionChange)="onCountryChange($event)" formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select placeholder="" (selectionChange)="onStateChange(selectedCountry,$event)" formControlName="state">
+          <mat-option *ngFor="let state of states" [value]="state">
+            {{ state }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>City</mat-label>
+        <mat-select placeholder="" formControlName="city">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayoutAlign="center" style="text-align: center;">
+      <button mat-fab extended>Submit</button>
+    </div>
+  </mat-card>
+  <br>
+</form>

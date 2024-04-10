@@ -12,6 +12,8 @@ import { EmployerProfileComponent } from "./employer-profile/employer-profile.co
 import { EmployerSettingsComponent } from "./employer-settings/employer-settings.component";
 import { EmployerManageJobsComponent } from "./employer-manage-jobs/employer-manage-jobs.component";
 import { EmployerManageCandidatesComponent } from "./employer-manage-candidates/employer-manage-candidates.component";
+import { EmployerMessagesComponent } from "./employer-messages/employer-messages.component";
+import { EmployerNotificationsComponent } from "./employer-notifications/employer-notifications.component";
 
 
 const routes: Routes = [
@@ -75,6 +77,18 @@ const routes: Routes = [
         path: 'manage-candidates',
         title: 'Careervilla | Employer Manage Candidates',
         component: EmployerManageCandidatesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'messages',
+        title: 'Careervilla | Employer Messages',
+        component: EmployerMessagesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'notifications',
+        title: 'Careervilla | Employer Notifications',
+        component: EmployerNotificationsComponent,
         canActivate: [AuthGuard]
     }
 

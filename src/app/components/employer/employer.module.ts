@@ -33,6 +33,12 @@ import { JobApplicationService } from "src/app/services/job-application.service"
 import { EmployerManageJobsComponent } from './employer-manage-jobs/employer-manage-jobs.component';
 import { EmployerManageCandidatesComponent } from './employer-manage-candidates/employer-manage-candidates.component';
 import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dialog.component';
+import { EmployerMessagesComponent } from './employer-messages/employer-messages.component';
+import { EmployerNotificationsComponent } from './employer-notifications/employer-notifications.component';
+import { WebSocketService } from "src/app/services/web-socket.service";
+import { NotificationService } from "src/app/services/notification.service";
+import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
+import { EditJobDialogComponent } from "./edit-job-dialog/edit-job-dialog.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +57,11 @@ import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dial
     EmployerSettingsComponent,
     EmployerManageJobsComponent,
     EmployerManageCandidatesComponent,
-    AddCompanyDialogComponent
+    AddCompanyDialogComponent,
+    EmployerMessagesComponent,
+    EmployerNotificationsComponent,
+    EditJobDialogComponent,
+    CustomDatePipe
   ],
   imports: [
     EmployerRoutingModule,
@@ -73,6 +83,8 @@ import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dial
   providers: [
     EmployerService,
     JobApplicationService,
+    WebSocketService,
+    NotificationService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

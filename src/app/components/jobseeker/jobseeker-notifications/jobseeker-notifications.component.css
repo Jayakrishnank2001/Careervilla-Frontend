@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+  }
+
+  mat-card-title{
+    font-size:23px;
+  }
+
+  .notification-card{
+    width: 60%;
+    border-radius: 1em;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+  }

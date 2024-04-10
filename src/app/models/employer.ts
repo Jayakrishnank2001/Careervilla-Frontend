@@ -10,6 +10,7 @@ export interface IEmployerRes {
   planExpiresAt?: string,
   image?:string,
   password?: string,
+  postedJobs?:AppliedJob[],
   companyId?: {
     _id?:string,
     companyName?: string,
@@ -20,6 +21,12 @@ export interface IEmployerRes {
     foundedYear?: number,
     description?: string,
   }
+}
+
+export interface AppliedJob {
+  _id: string;
+  jobId?: string;
+  postedAt?: string;
 }
 
 export interface IRes {

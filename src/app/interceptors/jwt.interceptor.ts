@@ -48,6 +48,9 @@ export class JwtInterceptor implements HttpInterceptor {
           } else if (userRole == 'jobseeker') {
             this.authService.clearToken('jobseekerToken')
             this.router.navigate(['/jobseeker/login'])
+          } else if (userRole == 'admin') {
+            this.authService.clearToken('adminToken')
+            this.router.navigate(['/admin/login'])
           }
         }
         return throwError(error)

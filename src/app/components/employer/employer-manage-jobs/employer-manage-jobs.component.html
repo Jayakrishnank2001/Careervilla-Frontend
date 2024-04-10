@@ -6,6 +6,39 @@
         </mat-card-title>
     </mat-card-header>
     <mat-divider></mat-divider>
+    <div>
+        <ng-container *ngFor="let job of postedJobs">
+            <br>
+            <div class="jobs">
+                <div class="left">
+                    <div>
+                        <mat-icon>domain</mat-icon>
+                    </div>
+                    <div class="job-title">
+                        <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    </div>
+                </div>
+                <div class="status-container">
+                    <mat-card-subtitle class="status"
+                        [style.color]="job.status === 'Active' ? 'rgb(63, 81, 181)' : 'rgb(244, 67, 54)'">{{job.status}}</mat-card-subtitle>
+                </div>
+                <div class="right">
+                    <div>
+                        <button mat-raised-button class="mat-raised-button" (click)="onEditJob(job._id)">Edit</button>
+                        <button mat-raised-button style="margin-left: 5px;"
+                            [ngClass]="{'mat-warn': job.status === 'Active', 'mat-primary': job.status === 'Inactive'}"
+                            [disabled]="job.status === 'Inactive'"
+                            (click)="changeJobStatus(job._id,job.status=='Active'?'Deactivate':'Activate')">
+                            {{ job.status === 'Active' ? 'Deactivate' : 'Activate' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+    </div>
     <br>
 </mat-card>
 <br>

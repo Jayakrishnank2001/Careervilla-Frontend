@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { IEmployerAuthResponse, IEmployerRes, IRes, IResponse } from '../models/employer';
 import { Observable } from 'rxjs';
+import { IJobRes } from '../models/job';
 
 @Injectable()
 
@@ -57,6 +58,10 @@ export class EmployerService {
 
   updatePhoto(employerId: string, url: string) {
     return this.http.put<IResponse>(`${this.baseURL}/employer/updatePhoto/${employerId}`,{url})
+  }
+
+  getPostedJobs(employerId: string) {
+    return this.http.get<IJobRes[]>(`${this.baseURL}/employer/postedJobs/${employerId}`)
   }
 
   

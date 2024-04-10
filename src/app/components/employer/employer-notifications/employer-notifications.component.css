@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+  }
+
+  mat-card-title{
+    font-size:24px;
+  }
+
+  .notification-card{
+    width: 60%;
+    height: 580px;
+    border-radius: 1em;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+  }
+
+  .notification {
+    display: flex; 
+    align-items: center; 
+    cursor: pointer;
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+mat-icon{
+  background-color: #ececec;
+  border-radius: 1em;
+}
+
+.details {
+    flex-grow: 0; 
+}
+
+@media screen and (max-width:800px){
+  .notification-card{
+    width: 95%;
+  }
+}

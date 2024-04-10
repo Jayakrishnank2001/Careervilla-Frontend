@@ -24,10 +24,10 @@
         <button mat-menu-item routerLink="/employer/login">
           <mat-icon>login</mat-icon>EMPLOYER LOGIN
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/jobseeker/notifications">
           <mat-icon>notifications</mat-icon> NOTIFICATIONS
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/jobseeker/messages">
           <mat-icon>message</mat-icon> MESSAGES
         </button>
         <button mat-menu-item [matMenuTriggerFor]="accountMenu">
@@ -62,10 +62,10 @@
     <button mat-button routerLink="/jobseeker/companies">COMPANIES</button>
     <span class="fill-remaining-space"></span>
     <button mat-button routerLink="/employer/login">EMPLOYER LOGIN</button>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/jobseeker/notifications">
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/jobseeker/messages">
         <mat-icon>message</mat-icon>
       </button>
       <button mat-icon-button [matMenuTriggerFor]="accountMenu">

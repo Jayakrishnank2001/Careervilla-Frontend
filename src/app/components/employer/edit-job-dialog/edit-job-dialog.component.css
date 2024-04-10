@@ -1,0 +1,45 @@
+form{
+    height: 600px;
+}
+
+.post-job-card {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .input-field {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    width: 30%;
+    background-color: #644DFF;
+    color: white;
+  }
+  
+  mat-divider {
+    background-color: rgb(155, 155, 155);
+    margin-top: 10px;
+  }
+  
+  @media screen and (max-width: 600px) {
+  
+    .input-field {
+      width: 100%;
+    }
+
+    .post-job-card{
+        width:98%;
+    }
+  }
+  

@@ -19,7 +19,6 @@ import { JobService } from './services/job.service';
 import { ReportedJobService } from './services/reported-job.service';
 import { CompanyService } from './services/company.service';
 
-
 @NgModule({
   declarations: [ AppComponent ],
   imports: [

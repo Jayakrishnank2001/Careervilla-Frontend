@@ -33,6 +33,10 @@ import { ApplyJobDialogComponent } from './apply-job-dialog/apply-job-dialog.com
 import { JobseekerMyJobsComponent } from './jobseeker-my-jobs/jobseeker-my-jobs.component';
 import { JobseekerMyReviewsComponent } from './jobseeker-my-reviews/jobseeker-my-reviews.component';
 import { JobApplicationService } from "src/app/services/job-application.service";
+import { JobseekerMessagesComponent } from './jobseeker-messages/jobseeker-messages.component';
+import { JobseekerNotificationsComponent } from './jobseeker-notifications/jobseeker-notifications.component';
+import { WebSocketService } from "src/app/services/web-socket.service";
+import { NotificationService } from "src/app/services/notification.service";
 
 
 @NgModule({
@@ -54,6 +58,8 @@ import { JobApplicationService } from "src/app/services/job-application.service"
     ApplyJobDialogComponent,
     JobseekerMyJobsComponent,
     JobseekerMyReviewsComponent,
+    JobseekerMessagesComponent,
+    JobseekerNotificationsComponent,
   ],
   imports: [
     JobseekerRoutingModule,
@@ -73,6 +79,8 @@ import { JobApplicationService } from "src/app/services/job-application.service"
   providers: [
     JobseekerService,
     JobApplicationService,
+    WebSocketService,
+    NotificationService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

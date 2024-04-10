@@ -24,6 +24,7 @@ export class JobseekerJobsComponent {
   appliedJobs: (string | undefined)[] = []
   jobseekerId!: string | null
 
+
   constructor(private breakpointObserver: BreakpointObserver,
     private jobService: JobService,
     private snackBar: MatSnackBar,
@@ -57,6 +58,7 @@ export class JobseekerJobsComponent {
       this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
         next: (res) => {
           this.savedJobs = res?.savedJobs?.map(job => job.jobId) || [];
+          this.appliedJobs = res?.appliedJobs?.map(job => job.jobId) || []
         }
       })
     }

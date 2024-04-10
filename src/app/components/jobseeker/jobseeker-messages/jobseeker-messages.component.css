@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    margin-left: 5%;
+    margin-top: 2%;
+  }
+  
+  .message-list {
+    width: 30%;
+  }
+
+  .message-card{
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+  }
+
+  .message{
+    width: 64.5%;
+  }
+
+  .single-message-card{
+    margin-left: 35px;
+    border: 1px solid #ccc;
+  }
+
+
+  
+

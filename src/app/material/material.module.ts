@@ -19,6 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 const MaterialComponents=[
@@ -41,8 +43,8 @@ const MaterialComponents=[
   MatNativeDateModule,
   MatDatepickerModule,
   MatSnackBarModule,
-  MatRadioModule
-  
+  MatRadioModule,
+  MatSlideToggleModule
 ]
 
 @NgModule({

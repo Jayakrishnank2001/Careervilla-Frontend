@@ -17,10 +17,10 @@
         <mat-icon>login</mat-icon>JOBSEEKER LOGIN
       </button>
       <ng-container *ngIf="token">
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/employer/notifications">
           <mat-icon>notifications</mat-icon> NOTIFICATIONS
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/employer/messages">
           <mat-icon>message</mat-icon> MESSAGES
         </button>
         <button mat-menu-item [matMenuTriggerFor]="accountMenu">
@@ -50,10 +50,10 @@
       *ngIf="!token">JOBSEEKER LOGIN</button>
     <button mat-button routerLink="/jobseeker/login" *ngIf="token">JOBSEEKER LOGIN</button>
     <ng-container *ngIf="token">
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/employer/notifications">
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/employer/messages">
         <mat-icon>message</mat-icon>
       </button>
       <button mat-icon-button [matMenuTriggerFor]="accountMenu">

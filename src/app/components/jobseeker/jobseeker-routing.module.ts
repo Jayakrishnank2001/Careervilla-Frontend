@@ -13,6 +13,8 @@ import { JobseekerQualificationsComponent } from "./jobseeker-qualifications/job
 import { JobseekerJobPreferencesComponent } from "./jobseeker-job-preferences/jobseeker-job-preferences.component";
 import { JobseekerMyJobsComponent } from "./jobseeker-my-jobs/jobseeker-my-jobs.component";
 import { JobseekerMyReviewsComponent } from "./jobseeker-my-reviews/jobseeker-my-reviews.component";
+import { JobseekerMessagesComponent } from "./jobseeker-messages/jobseeker-messages.component";
+import { JobseekerNotificationsComponent } from "./jobseeker-notifications/jobseeker-notifications.component";
 
 
 
@@ -83,6 +85,18 @@ const routes: Routes = [
         path: 'my-reviews',
         title: 'Careervilla | Jobseeker My-Reviews',
         component: JobseekerMyReviewsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'messages',
+        title: 'Careervilla | Jobseeker Messages',
+        component: JobseekerMessagesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'notifications',
+        title: 'Careervilla | Jobseeker Notifications',
+        component: JobseekerNotificationsComponent,
         canActivate: [AuthGuard]
     }
 

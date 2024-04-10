@@ -1,0 +1,27 @@
+<app-employer-nav></app-employer-nav>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <mat-card class="notification-card">
+        <mat-card-header>
+            <mat-card-title>Notifications</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <ng-container *ngFor="let notification of notifications">
+                <br>
+                <div class="notification">
+                    <div class="icon">
+                        <mat-icon color="primary">notifications</mat-icon>
+                    </div>
+                    <div class="details">
+                        <mat-card-title style="font-size:19px;">{{notification?.title}}</mat-card-title>
+                        <mat-card-subtitle>{{notification?.body}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{notification.time | customDate }}</mat-card-subtitle>
+                    </div>
+                </div>
+                <br>
+                <mat-divider></mat-divider>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</div>
