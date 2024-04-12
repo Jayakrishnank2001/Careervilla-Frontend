@@ -37,6 +37,9 @@ import { JobseekerMessagesComponent } from './jobseeker-messages/jobseeker-messa
 import { JobseekerNotificationsComponent } from './jobseeker-notifications/jobseeker-notifications.component';
 import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
+import { JobseekerCompanyComponent } from './jobseeker-company/jobseeker-company.component';
+import { JobseekerCompaniesComponent } from './jobseeker-companies/jobseeker-companies.component';
+
 
 
 @NgModule({
@@ -60,6 +63,8 @@ import { NotificationService } from "src/app/services/notification.service";
     JobseekerMyReviewsComponent,
     JobseekerMessagesComponent,
     JobseekerNotificationsComponent,
+    JobseekerCompanyComponent,
+    JobseekerCompaniesComponent,
   ],
   imports: [
     JobseekerRoutingModule,
