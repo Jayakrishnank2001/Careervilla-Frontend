@@ -48,6 +48,11 @@ button.mat-raised-button{
     background-color: #644DFF;
 }
 
+.jobStatus-btn{
+    margin-left: 5px;
+    width: 90px;
+}
+
 
 @media screen and (max-width:600px) {
     .settings-card {

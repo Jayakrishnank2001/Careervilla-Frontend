@@ -1,0 +1,94 @@
+.container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+mat-card-header {
+    align-items: center;
+}
+
+mat-select {
+    width: 200px;
+}
+
+mat-card-title {
+    font-size: 24px;
+}
+
+.job-title-card {
+    border: 1px solid #ccc;
+    height: 50px;
+    margin: 40px 50px 0px 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #c0c0fa;
+}
+
+.selectedJob {
+    justify-content: center;
+}
+
+.candidates-card {
+    width: 80%;
+    border-radius: 1em;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+}
+
+img {
+    width: 400px;
+    height: 280px;
+    margin: 70px 0px 0px 0px;
+}
+
+.image {
+    text-align: center;
+}
+
+.right {
+    margin-right: 10px;
+    gap: 10px;
+}
+
+.job-list {
+    margin: 30px auto;
+    width:90%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-auto-rows: auto; /* Auto-sized rows */
+    gap: 20px; /* Gap between cards */
+}
+
+.job-card {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+}
+
+.example-header-image {
+    background-size: cover;
+    height: 120px;
+    width: 120px;
+}
+
+.jobApplication{
+    display: flex;
+}
+
+@media screen and (max-width:600px) {
+    .candidates-card {
+        width: 95%;
+    }
+
+    img {
+        width: 250px;
+        height: 170px;
+    }
+
+}

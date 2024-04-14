@@ -37,8 +37,8 @@ import { EmployerMessagesComponent } from './employer-messages/employer-messages
 import { EmployerNotificationsComponent } from './employer-notifications/employer-notifications.component';
 import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
-import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
 import { EditJobDialogComponent } from "./edit-job-dialog/edit-job-dialog.component";
+import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
 
 @NgModule({
   declarations: [

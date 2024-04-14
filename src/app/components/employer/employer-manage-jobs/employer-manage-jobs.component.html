@@ -25,9 +25,8 @@
                 <div class="right">
                     <div>
                         <button mat-raised-button class="mat-raised-button" (click)="onEditJob(job._id)">Edit</button>
-                        <button mat-raised-button style="margin-left: 5px;"
+                        <button mat-raised-button class="jobStatus-btn"
                             [ngClass]="{'mat-warn': job.status === 'Active', 'mat-primary': job.status === 'Inactive'}"
-                            [disabled]="job.status === 'Inactive'"
                             (click)="changeJobStatus(job._id,job.status=='Active'?'Deactivate':'Activate')">
                             {{ job.status === 'Active' ? 'Deactivate' : 'Activate' }}
                         </button>

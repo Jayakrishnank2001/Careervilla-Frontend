@@ -1,2 +1,66 @@
 <app-employer-nav></app-employer-nav>
-<p>Manage candidates component!</p>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <mat-card class="candidates-card">
+        <mat-card-header>
+            <div class="title">
+                <mat-card-title>Candidates</mat-card-title>
+            </div>
+            <div>
+                <button mat-raised-button style="background-color: #c0c0fa;">
+                    <mat-select placeholder="Select a job" (selectionChange)="onSelectJob($event.value)">
+                        <mat-option *ngFor="let job of postedJobs" [value]="job">
+                            {{job.jobTitle}}
+                        </mat-option>
+                    </mat-select>
+                </button>
+            </div>
+        </mat-card-header>
+        <br>
+        <mat-divider></mat-divider>
+        <div *ngIf="!selectedJob" class="image">
+            <img src="../../../../assets/images/4208395.jpg" alt="Welcome Image">
+            <h2>Discover top talent and build your dream team.</h2>
+            <h3>Ready to find your best candidates? Select a job!</h3>
+        </div>
+        <div class="selectedJob" *ngIf="selectedJob">
+            <mat-card class="job-title-card">
+                <div style="flex-grow: 1; margin-left: 5px;">
+                    <mat-card-title>{{selectedJob.jobTitle}}</mat-card-title>
+                </div>
+                <div class="right">
+                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id)">Total</button>
+                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id,'Approved')">Approved</button>
+                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id,'Rejected')">Rejected</button>
+                </div>
+            </mat-card>
+        </div>
+        <div class="job-list">
+            <ng-container *ngFor="let application of jobApplications; let i = index">
+                <mat-card class="job-card" [style.grid-column]="(i % 2 === 0) ? '1 / span 1' : '2 / span 1'"
+                    [style.grid-row]="(i < 2) ? '1' : '2'">
+                    <div class="jobApplication">
+                        <div style="flex-grow: 1;">
+                            <mat-card-header>
+                                <mat-card-title>{{application.jobseekerId?.firstName}}
+                                    {{application.jobseekerId?.lastName}}</mat-card-title>
+                                <mat-card-subtitle>{{application.jobseekerId?.email}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{application.jobseekerId?.phoneNumber}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{application.jobseekerId?.location}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-actions>
+                                <button mat-button class="mat-button" (click)="onChangeApplicationStatus(application._id,'Approved')" *ngIf="application.status!=='Approved'"><mat-icon
+                                        style="color: rgb(20, 113, 20);">check_circle</mat-icon></button>
+                                <button mat-button class="mat-button" (click)="onChangeApplicationStatus(application._id,'Rejected')" *ngIf="application.status!=='Rejected'"><mat-icon color="warn">cancel</mat-icon></button>
+                                <button mat-button color="primary" (click)="onViewResume(application.resume)">View Resume</button>
+                            </mat-card-actions>
+                        </div>
+                        <div>
+                            <img src={{application.jobseekerId?.image}} alt="" mat-card-avatar class="example-header-image">
+                        </div>
+                    </div>
+                </mat-card>
+            </ng-container>
+        </div>
+    </mat-card>
+</div>

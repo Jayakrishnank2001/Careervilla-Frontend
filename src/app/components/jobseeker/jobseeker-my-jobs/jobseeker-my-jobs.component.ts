@@ -51,6 +51,7 @@ export class JobseekerMyJobsComponent implements OnInit {
       this.jobseekerService.getSavedJobs(jobseekerId).subscribe({
         next: (res) => {
           this.savedJobs = res
+          this.savedJobs.reverse()
           this.isSavedJobs = true
         }
       })
@@ -62,6 +63,7 @@ export class JobseekerMyJobsComponent implements OnInit {
       this.jobseekerService.getAppliedJobs(jobseekerId).subscribe({
         next: (res) => {
           this.appliedJobs = res
+          this.appliedJobs.reverse()
           this.isSavedJobs = false
         }
       })

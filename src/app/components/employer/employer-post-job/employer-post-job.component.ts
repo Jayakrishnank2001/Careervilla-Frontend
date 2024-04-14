@@ -64,7 +64,7 @@ export class EmployerPostJobComponent implements OnInit {
       salary: ['', Validators.required],
       specialisms: ['', Validators.required],
       experience: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: [''],
       industry: ['', Validators.required],
       applicationDeadline: ['', Validators.required],
       address: ['', Validators.required],
@@ -139,6 +139,7 @@ export class EmployerPostJobComponent implements OnInit {
                   next: (res) => {
                     if (res.data.success == true) {
                       this.resetForm()
+                      void this.router.navigate(['/employer/manage-jobs'])
                       this.snackbar.open('Job Posted Successfully', 'Close', {
                         duration: 5000,
                         verticalPosition: 'top',

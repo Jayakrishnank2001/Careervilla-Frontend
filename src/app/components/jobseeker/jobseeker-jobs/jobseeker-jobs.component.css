@@ -83,6 +83,7 @@
 
 .selected-job{
   border: 1px solid #ccc;
+  background-color: #f5f2ff;
 }
 
 .subtitle {
@@ -106,7 +107,7 @@ p{
 }
 
 .mat-button{
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(238, 238, 238);
 }
 
   @media screen and (max-width:600px){

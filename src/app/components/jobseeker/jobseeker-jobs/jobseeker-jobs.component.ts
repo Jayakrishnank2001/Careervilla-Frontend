@@ -48,6 +48,7 @@ export class JobseekerJobsComponent {
     this.jobService.getJobs().subscribe({
       next: (res) => {
         this.jobs = res
+        this.jobs.reverse()
         this.selectJob = this.jobs[0]
       }
     })
