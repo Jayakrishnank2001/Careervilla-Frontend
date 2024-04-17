@@ -1,0 +1,79 @@
+.search-bar-card {
+    width: 100%;
+    padding: 20px;
+    box-shadow:none ;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+
+  .search-criteria {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center;
+    text-align: center;
+  }
+
+  .search-field {
+    margin-right: 10px;
+    width: 500px;
+  }
+  
+  button.search-button {
+    background-color: #644DFF;
+    color: white;
+    border-radius: 0.5em;
+    width:8%;
+    height: 55px;
+    display: flex;
+    font-size: 16px; 
+    margin-top: -22px;
+    padding: 25px 40px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%; 
+  }
+
+  .job-list {
+    width: 65%;
+  }
+
+  .job-card{
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+  }
+
+  .header-container {
+    display: flex;
+}
+
+  .example-header-image {
+    background-size: cover;
+    height: 35px;
+    width: 35px;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-details{
+    font-size: larger;
+}
+
+.truncate-text {
+    display: -webkit-box;
+    color: rgb(63, 63, 63);
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+@media screen and (max-width:700px){
+    .job-list{
+        width: 90%;
+    }
+}

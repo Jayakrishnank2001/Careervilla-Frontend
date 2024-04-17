@@ -28,6 +28,10 @@ export class CompanyService {
     return this.http.put<IRes>(`${this.baseURL}/employer/updateCompany`,{companyData,companyId,addressId})
   }
 
+  getAllCompanies() {
+    return this.http.get<ICompany[]>(`${this.baseURL}/jobseeker/companies`)
+  }
+
 
 
 

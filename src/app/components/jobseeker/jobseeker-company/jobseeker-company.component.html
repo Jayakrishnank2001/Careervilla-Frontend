@@ -1,1 +1,25 @@
-<p>jobseeker-company works!</p>
+<app-jobseeker-nav></app-jobseeker-nav>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <mat-card class="company-card">
+        <mat-card-header class="header-container">
+            <div>
+                <img src={{company.logo}} alt="" mat-card-avatar class="example-header-image">
+            </div>
+            <div>
+                <mat-card-title style="margin-left: 10px;">{{company.companyName}}</mat-card-title>
+            </div>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+            <div class="company-options">
+                <span>Overview</span>
+                <span class="divider">|</span>
+                <span>Reviews</span>
+                <span class="divider">|</span>
+                <span>Jobs</span>
+              </div>
+            <button mat-raised-button class="mat-raised-btn">Add a Review +</button>
+        </mat-card-content>
+    </mat-card>
+</div>

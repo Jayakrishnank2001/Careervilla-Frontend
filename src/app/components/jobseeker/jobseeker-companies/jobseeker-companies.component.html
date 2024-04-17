@@ -1,1 +1,48 @@
-<p>jobseeker-companies works!</p>
+<app-jobseeker-nav></app-jobseeker-nav>
+
+<mat-card class="search-bar-card">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="search-criteria">
+        <mat-form-field class="search-field" appearance="outline">
+            <mat-label>Search for a company</mat-label>
+            <input matInput placeholder="">
+            <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">search</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button class="search-button">Search</button>
+    </div>
+    <mat-divider></mat-divider>
+</mat-card>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <div class="job-list" fxFlex="100" fxFlex.xs="100%">
+        <ng-container *ngFor="let company of companies">
+            <mat-card class="job-card" style="cursor:pointer;" (click)="companyDetails(company._id)">
+                <mat-card-header class="header-container">
+                    <div>
+                        <img src={{company.logo}} alt="" mat-card-avatar class="example-header-image">
+                    </div>
+                    <div>
+                        <mat-card-title style="margin-left: 10px;">{{company.companyName}}</mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-card-content class="details">
+                    <div>
+                        <mat-card-title class="company-details">Location</mat-card-title>
+                        <mat-card-subtitle>{{company.addressId?.state}}, {{company.addressId?.city}}</mat-card-subtitle>
+                    </div>
+                    <div>
+                        <mat-card-title class="company-details">Company Size</mat-card-title>
+                        <mat-card-subtitle>{{company.companySize}} Employees</mat-card-subtitle>
+                    </div>
+                    <div>
+                        <mat-card-title class="company-details">Industry</mat-card-title>
+                        <mat-card-subtitle>{{company.industry}}</mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title class="company-details">Description</mat-card-title>
+                    <mat-card-subtitle class="truncate-text">{{company.description}}</mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </div>
+</div>

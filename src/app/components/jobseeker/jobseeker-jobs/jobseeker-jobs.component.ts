@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs';
@@ -16,7 +16,7 @@ import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.co
   templateUrl: './jobseeker-jobs.component.html',
   styleUrls: ['./jobseeker-jobs.component.css']
 })
-export class JobseekerJobsComponent {
+export class JobseekerJobsComponent implements OnInit{
 
   jobs: IJobRes[] = []
   selectJob: IJobRes = {}

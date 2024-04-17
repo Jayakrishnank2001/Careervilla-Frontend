@@ -33,7 +33,7 @@
   .container {
     display: flex;
     margin-left: 14%;
-    margin-top: 2%; /* Adjust margin from the left side */
+    margin-top: 1%; /* Adjust margin from the left side */
   }
   
   .job-list {

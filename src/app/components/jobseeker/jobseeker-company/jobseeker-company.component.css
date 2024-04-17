@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+  }
+
+  mat-card-title{
+    font-size:26px;
+    margin-top: 20px;
+  }
+
+  .company-card{
+    width: 90%;
+    border-radius: 0.5em;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+  }
+
+  .example-header-image {
+    border-radius: 0em;
+    background-size:auto;
+    height: 90px;
+    width: 90px;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+mat-card-content{
+    display: flex;
+}
+
+button.mat-raised-btn{
+    background-color: #644DFF;
+    color: white;
+}
+
+.company-options {
+    display: flex;
+    flex-grow: 1;
+    gap:15px;
+    margin: 0px 0px 0px 15px;
+  }
+  
+  .company-options span {
+    font-size:16px;
+    font-weight:450;
+  }
+  
+  .divider {
+    margin: 0 10px;
+    color: #000000;
+  }
