@@ -13,13 +13,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AdminLoginComponent implements OnInit {
   form!: FormGroup
   constructor(
-    private readonly formBuilder: FormBuilder,
-    private readonly adminService: AdminService,
-    private readonly authService:AuthService,
-    private readonly router: Router) { }
+    private readonly _formBuilder: FormBuilder,
+    private readonly _adminService: AdminService,
+    private readonly _authService:AuthService,
+    private readonly _router: Router) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.form = this._formBuilder.group({
       username: [''],
       password: ['']
     })
@@ -29,14 +29,14 @@ export class AdminLoginComponent implements OnInit {
     console.log(this.form)
     if (this.form.valid) {
       const values = this.form.getRawValue()
-      this.adminService.adminLogin(values.username, values.password).subscribe({
+      this._adminService.adminLogin(values.username, values.password).subscribe({
         next: (response: IAdminAuthResponse) => {
           console.log(response)
           const jwtToken = response.data.token
           if (jwtToken) {
-            this.authService.setToken('adminToken',jwtToken)
+            this._authService.setToken('adminToken',jwtToken)
           }
-          void this.router.navigate(['/admin/dashboard'])
+          void this._router.navigate(['/admin/dashboard'])
         },
         error: (error) => {
           console.error('Login failed:',error)

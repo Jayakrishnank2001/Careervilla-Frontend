@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { JobseekerService } from 'src/app/services/jobseeker.service';
 import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.component';
 import Swal from 'sweetalert2';
+import { JobApplicationService } from 'src/app/services/job-application.service';
+import { IJobApplication } from 'src/app/models/jobApplication';
 
 @Component({
   selector: 'app-jobseeker-my-jobs',
@@ -15,20 +17,21 @@ import Swal from 'sweetalert2';
 export class JobseekerMyJobsComponent implements OnInit {
 
   savedJobs: IJobRes[] = []
-  appliedJobs: IJobRes[] = []
+  appliedApplications: IJobApplication[] = []
   jobseekerId!: string | null
   selectedJobs: IJobRes[] = []
   isSavedJobs!: boolean
   savedJobsIdArray: (string | undefined)[] = []
   appliedJobsIdArray: (string | undefined)[] = []
 
-  constructor(private jobseekerService: JobseekerService,
-    private authService: AuthService,
-    private snackBar: MatSnackBar,
-    private dialog: MatDialog) { }
+  constructor(private _jobseekerService: JobseekerService,
+    private _authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private _dialog: MatDialog,
+    private _jobApplicationService: JobApplicationService) { }
 
   ngOnInit(): void {
-    this.jobseekerId = this.authService.extractUserIdFromToken('jobseekerToken')
+    this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
     this.getSavedJobs(this.jobseekerId)
     this.getAppliedJobs(this.jobseekerId)
     this.getJobseekerDetails()
@@ -36,7 +39,7 @@ export class JobseekerMyJobsComponent implements OnInit {
 
   getJobseekerDetails(): void {
     if (this.jobseekerId) {
-      this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
+      this._jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
         next: (res) => {
           this.appliedJobsIdArray = res.appliedJobs?.map(job => job.jobId) || [];
           this.savedJobsIdArray = res.savedJobs?.map(job => job.jobId) || [];
@@ -48,7 +51,7 @@ export class JobseekerMyJobsComponent implements OnInit {
 
   getSavedJobs(jobseekerId: string | null): void {
     if (jobseekerId) {
-      this.jobseekerService.getSavedJobs(jobseekerId).subscribe({
+      this._jobseekerService.getSavedJobs(jobseekerId).subscribe({
         next: (res) => {
           this.savedJobs = res
           this.savedJobs.reverse()
@@ -60,10 +63,10 @@ export class JobseekerMyJobsComponent implements OnInit {
 
   getAppliedJobs(jobseekerId: string | null): void {
     if (jobseekerId) {
-      this.jobseekerService.getAppliedJobs(jobseekerId).subscribe({
+      this._jobApplicationService.getJobseekerApplications(jobseekerId).subscribe({
         next: (res) => {
-          this.appliedJobs = res
-          this.appliedJobs.reverse()
+          this.appliedApplications = res
+          this.appliedApplications.reverse()
           this.isSavedJobs = false
         }
       })
@@ -73,12 +76,12 @@ export class JobseekerMyJobsComponent implements OnInit {
   onApplyJob(jobId: string | undefined): void {
     this.getJobseekerDetails()
     if (this.appliedJobsIdArray.includes(jobId)) {
-      this.snackBar.open('Already applied to this job', 'Close', {
+      this._snackBar.open('Already applied to this job', 'Close', {
         duration: 5000,
         verticalPosition: 'top'
       })
     } else {
-      const dialogRef = this.dialog.open(ApplyJobDialogComponent, {
+      const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
         data: { jobId, jobseekerId: this.jobseekerId }
       })
       dialogRef.afterClosed().subscribe(result => {
@@ -89,10 +92,10 @@ export class JobseekerMyJobsComponent implements OnInit {
 
   onUnsaveJob(jobId: string | undefined): void {
     if (this.jobseekerId && jobId) {
-      this.jobseekerService.unsaveJob(this.jobseekerId, jobId).subscribe({
+      this._jobseekerService.unsaveJob(this.jobseekerId, jobId).subscribe({
         next: (res) => {
           if (res.data.success == true) {
-            this.snackBar.open('Job unsaved successfully', 'Close', {
+            this._snackBar.open('Job unsaved successfully', 'Close', {
               duration: 5000,
               verticalPosition: 'top'
             })
@@ -113,11 +116,11 @@ export class JobseekerMyJobsComponent implements OnInit {
       cancelButtonText: 'No'
     }).then(result => {
       if (result.isConfirmed && jobId && this.jobseekerId) {
-        this.jobseekerService.withdrawApplication(jobId, this.jobseekerId).subscribe({
+        this._jobseekerService.withdrawApplication(jobId, this.jobseekerId).subscribe({
           next: (res) => {
             if (res.data.success == true) {
               this.getAppliedJobs(this.jobseekerId)
-              this.snackBar.open('Job application withdrawn','Close', {
+              this._snackBar.open('Job application withdrawn','Close', {
                 duration: 5000,
                 verticalPosition:'top'
               })

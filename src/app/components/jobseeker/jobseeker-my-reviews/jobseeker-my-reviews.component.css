@@ -1,0 +1,90 @@
+.myReviews-card {
+    width: 70%;
+    margin: 25px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 1.5em;
+}
+
+.title {
+    font-size: x-large;
+    margin-left: -10px;
+}
+
+.reviews {
+    display: inline-flex;
+    margin-left: 6px;
+}
+
+.reviews span {
+    font-size: larger;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 40px;
+    color: #000000;
+}
+
+.review {
+    display: flex;
+}
+
+.review-title {
+    flex-grow: 1;
+}
+
+.company-card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+}
+
+.company-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 1em;
+    margin: 10px 0px 3px 10px;
+}
+
+.company-details {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.delete-button {
+    margin-left: auto;
+}
+
+.review-content {
+    margin:10px 0px 0px 12px
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating mat-icon {
+    color: #644DFF;
+}
+
+.comment {
+    margin: 10px 0px 0px 15px;
+}
+
+.span{
+    font-weight: 500;
+}
+
+
+
+
+@media screen and (max-width:600px) {
+    .myReviews-card {
+        width: 95%;
+    }
+}

@@ -13,11 +13,11 @@ import { Router } from '@angular/router';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private readonly authService: AuthService,private router:Router) { }
+  constructor(private readonly _authService: AuthService,private _router:Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    const url = this.router.routerState.snapshot.url;
+    const url = this._router.routerState.snapshot.url;
     const segments = url.split('/');
     const userRole = segments[segments.length - 2];
     let tokenKey
@@ -30,7 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
     } else {
       tokenKey = ''
     }
-    const jwtToken = this.authService.getToken(tokenKey)
+    const jwtToken = this._authService.getToken(tokenKey)
     if (jwtToken) {
       request = request.clone({
         setHeaders: {
@@ -43,14 +43,14 @@ export class JwtInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           if (userRole == 'employer') {
-            this.authService.clearToken('employerToken')
-            this.router.navigate(['/employer/login'])
+            this._authService.clearToken('employerToken')
+            this._router.navigate(['/employer/login'])
           } else if (userRole == 'jobseeker') {
-            this.authService.clearToken('jobseekerToken')
-            this.router.navigate(['/jobseeker/login'])
+            this._authService.clearToken('jobseekerToken')
+            this._router.navigate(['/jobseeker/login'])
           } else if (userRole == 'admin') {
-            this.authService.clearToken('adminToken')
-            this.router.navigate(['/admin/login'])
+            this._authService.clearToken('adminToken')
+            this._router.navigate(['/admin/login'])
           }
         }
         return throwError(error)

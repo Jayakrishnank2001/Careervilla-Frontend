@@ -15,14 +15,14 @@ export class AdminJobseekersComponent implements OnInit {
   searchQuery: string = ''
   jobseekersCount = 0
 
-  constructor(private readonly adminService: AdminService) { }
+  constructor(private readonly _adminService: AdminService) { }
 
   ngOnInit(): void {
     this.getJobseekers()
   }
 
   getJobseekers(): void {
-    this.adminService.getAllJobseekers(this.currPage, this.itemsPerPage, this.searchQuery).subscribe({
+    this._adminService.getAllJobseekers(this.currPage, this.itemsPerPage, this.searchQuery).subscribe({
       next: (res) => {
         if (res.data !== null) {
           this.jobseekers = res.data.jobseekers
@@ -42,7 +42,7 @@ export class AdminJobseekersComponent implements OnInit {
       cancelButtonText:'NO, cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.adminService.blockJobseeker(jobseekerId).subscribe({
+        this._adminService.blockJobseeker(jobseekerId).subscribe({
           next: () => {
             this.ngOnInit()
           }

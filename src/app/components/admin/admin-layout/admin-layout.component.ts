@@ -15,10 +15,10 @@ export class AdminLayoutComponent implements OnInit{
 
   isMenuOpen = true;
 
-  constructor(private breakpointObserver: BreakpointObserver,
-    private readonly authService: AuthService,
-    private readonly router: Router) {
-    this.screenSize = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
+  constructor(private _breakpointObserver: BreakpointObserver,
+    private readonly _authService: AuthService,
+    private readonly _router: Router) {
+    this.screenSize = this._breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
       .pipe(
         map(breakpointState => breakpointState.matches ? 'small' : 'large')
       );
@@ -38,14 +38,14 @@ export class AdminLayoutComponent implements OnInit{
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.authService.clearToken('adminToken')
-        void this.router.navigate(['/admin/login'])
+        this._authService.clearToken('adminToken')
+        void this._router.navigate(['/admin/login'])
       }
     })
   }
 
   isActive(route: string): boolean {
-    return this.router.isActive(route, true);
+    return this._router.isActive(route, true);
   }
 
 }

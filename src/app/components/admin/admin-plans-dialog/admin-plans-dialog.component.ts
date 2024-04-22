@@ -13,11 +13,11 @@ export class AdminPlansDialogComponent {
 
   newPlanForm: FormGroup
 
-  constructor(private dialogRef: MatDialogRef<AdminPlansDialogComponent>,
+  constructor(private _dialogRef: MatDialogRef<AdminPlansDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IDialogData,
-    private fb: FormBuilder) {
+    private _fb: FormBuilder) {
     
-    this.newPlanForm = this.fb.group({
+    this.newPlanForm = this._fb.group({
       planName: [data.editMode ? data.plans.find((plan: ISubscriptionRes) => plan._id === data.planId)?.planName : '', Validators.required],
       amount: [data.editMode ? data.plans.find((plan: ISubscriptionRes) => plan._id === data.planId)?.amount : '', Validators.required],
       duration: [data.editMode ? data.plans.find((plan: ISubscriptionRes) => plan._id === data.planId)?.duration : '', Validators.required],
@@ -26,7 +26,7 @@ export class AdminPlansDialogComponent {
   }
 
   onSubmit(): void{
-    this.dialogRef.close(this.newPlanForm.value)
+    this._dialogRef.close(this.newPlanForm.value)
   }
 
 }

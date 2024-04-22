@@ -11,15 +11,142 @@
             </div>
         </mat-card-header>
         <br>
-        <mat-card-content>
+        <mat-card-content class="mat-card-content">
             <div class="company-options">
-                <span>Overview</span>
+                <span (click)="getCompanyDetails()">Overview</span>
                 <span class="divider">|</span>
-                <span>Reviews</span>
+                <span (click)="getCompanyReviews()">Reviews</span>
                 <span class="divider">|</span>
-                <span>Jobs</span>
-              </div>
-            <button mat-raised-button class="mat-raised-btn">Add a Review +</button>
+                <span (click)="getCompanyJobs()">Jobs</span>
+            </div>
+            <button mat-raised-button class="mat-raised-btn" (click)="onAddReview()">Add a Review +</button>
         </mat-card-content>
     </mat-card>
 </div>
+
+<div class="container-2" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    <div class="companyDetails" fxFlex="100" fxFlex.xs="100%">
+
+        <mat-card class="companyDetails-card" *ngIf="selected==='overview'">
+            <mat-card-header class="header-container-2">
+                <div>
+                    <mat-card-title>{{company.companyName}} Overview</mat-card-title>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="details">
+                <div>
+                    <mat-card-title class="company-details">Website</mat-card-title>
+                    <mat-card-subtitle><a href="//{{company.website}}"
+                            target="_blank">{{company.website}}</a></mat-card-subtitle>
+                    <mat-card-title class="company-details">Location</mat-card-title>
+                    <mat-card-subtitle>{{company.addressId?.state}}, {{company.addressId?.city}}</mat-card-subtitle>
+                </div>
+                <div>
+                    <mat-card-title class="company-details">Company Size</mat-card-title>
+                    <mat-card-subtitle>{{company.companySize}} Employees</mat-card-subtitle>
+                    <mat-card-title class="company-details">Founded Year</mat-card-title>
+                    <mat-card-subtitle>{{company.foundedYear}}</mat-card-subtitle>
+                </div>
+                <div>
+                    <mat-card-title class="company-details">Industry</mat-card-title>
+                    <mat-card-subtitle>{{company.industry}}</mat-card-subtitle>
+                    <mat-card-title class="company-details">Email</mat-card-title>
+                    <mat-card-subtitle><a class="detail-value" href="mailto:">{{company.email}}</a></mat-card-subtitle>
+                </div>
+            </mat-card-content>
+            <mat-card-content>
+                <mat-card-title class="company-details">About the company</mat-card-title>
+                <mat-card-subtitle class="description">{{company.description}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="companyDetails-card" *ngIf="selected==='review'">
+            <mat-card-header class="header-container-2">
+                <div>
+                    <mat-card-title>{{company.companyName}} Reviews</mat-card-title>
+                </div>
+            </mat-card-header>
+            <br>
+            <mat-divider></mat-divider>
+            <div>
+                <ng-container *ngFor="let review of reviews">
+                    <div class="review-header">
+                        <div>
+                            <img src="{{ review.jobseekerId?.image }}" alt="" mat-card-avatar class="profile-pic">
+                        </div>
+                        <div class="review-details">
+                            <span>{{ review.jobseekerId?.firstName }} {{review.jobseekerId?.lastName}}</span>
+                            <mat-card-subtitle>{{review.jobseekerId?.location}}</mat-card-subtitle>
+                        </div>
+                        <div>
+                            <mat-card-subtitle>{{ review.createdAt | date: 'MMMM d, y' }}</mat-card-subtitle>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <div class="rating">
+                            <ng-container *ngFor="let _ of [].constructor(5); let i = index">
+                                <mat-icon>{{ (i < review.rating) ? 'star' : 'star_outline' }}</mat-icon>
+                            </ng-container>
+                            <span class="span" style="margin: 2.5px 0px 0px 3px;">{{review.rating}}.0</span>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <span class="span">{{review.comment}}</span>
+                    </div>
+                    <br>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </div>
+        </mat-card>
+
+        <mat-card class="companyDetails-card" *ngIf="selected==='jobs'">
+            <mat-card-header class="header-container-2">
+                <div>
+                    <mat-card-title>{{company.companyName}} Jobs</mat-card-title>
+                </div>
+            </mat-card-header>
+            <br>
+            <mat-divider></mat-divider>
+            <div>
+                <ng-container *ngFor="let job of jobs">
+                    <br>
+                    <div class="jobs">
+                        <div>
+                            <mat-icon>domain</mat-icon>
+                        </div>
+                        <div class="job-title">
+                            <h2>{{job.jobTitle}}</h2>
+                        </div>
+                        <mat-card-actions>
+                            <button mat-raised-button class="apply-button" (click)="applyJob(job._id)"
+                                *ngIf="!appliedJobs.includes(job._id)">Apply</button>
+                            <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(job._id)"
+                                style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
+                            <button mat-raised-button class="save-button" (click)="unsaveJob(job._id)"
+                                *ngIf="savedJobs.includes(job._id)"><span class="icon-wrapper">
+                                    <mat-icon>bookmark</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-raised-button class="save-button" (click)="saveJob(job._id)"
+                                *ngIf="!savedJobs.includes(job._id)"><span class="icon-wrapper">
+                                    <mat-icon>bookmark_border</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-raised-button class="save-button"
+                                (click)="reportJob(job.jobTitle,job.companyId?.companyName,job._id)"><span
+                                    class="icon-wrapper">
+                                    <mat-icon>outlined_flag</mat-icon>
+                                </span>
+                            </button>
+                        </mat-card-actions>
+                    </div>
+                    <br>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </div>
+        </mat-card>
+
+
+    </div>
+</div>
+<br>

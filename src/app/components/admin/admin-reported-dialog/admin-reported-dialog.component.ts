@@ -12,12 +12,12 @@ export class AdminReportedDialogComponent implements OnInit {
 
   job: IReportedJob={}
 
-  constructor(private dialogRef: MatDialogRef<AdminReportedDialogComponent>,
+  constructor(private _dialogRef: MatDialogRef<AdminReportedDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { jobId: string },
-    private reportJobService: ReportedJobService) { }
+    private _reportJobService: ReportedJobService) { }
 
   ngOnInit(): void {
-    this.reportJobService.reportedJobDetails(this.data.jobId).subscribe({
+    this._reportJobService.reportedJobDetails(this.data.jobId).subscribe({
       next: (res) => {
         this.job = res
       }

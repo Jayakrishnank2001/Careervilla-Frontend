@@ -56,7 +56,7 @@ img {
     gap: 10px;
 }
 
-.job-list {
+.candidates-list {
     margin: 30px auto;
     width:90%;
     display: grid;
@@ -66,24 +66,46 @@ img {
     gap: 20px; /* Gap between cards */
 }
 
-.job-card {
+.candidate-card {
     margin-bottom: 30px;
     border: 1px solid #ccc;
 }
 
 .example-header-image {
     background-size: cover;
-    height: 120px;
-    width: 120px;
+    height: 90px;
+    width: 90px;
+    margin:38px 15px 0px 0px;
 }
 
 .jobApplication{
     display: flex;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:950px) {
     .candidates-card {
         width: 95%;
+    }
+
+    mat-card-header{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .job-title-card{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px;
+        height: 60px;
+    }
+
+    .candidates-list{
+        display: flex;
+        flex-direction: column;
+        width:90%;
     }
 
     img {

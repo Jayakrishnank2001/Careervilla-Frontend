@@ -1,2 +1,52 @@
 <app-jobseeker-nav></app-jobseeker-nav>
-<p>jobseeker-my-reviews component!</p>
+
+<mat-card class="myReviews-card">
+    <mat-card-header>
+        <mat-card-title class="title">
+            My Reviews
+        </mat-card-title>
+    </mat-card-header>
+    <br>
+    <br>
+    <span class="reviews">
+        <span matBadge={{myReviews.length}} matBadgeOverlap="false" matBadgePosition="before">My Reviews</span>
+    </span>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <ng-container *ngFor="let review of myReviews">
+            <mat-card class="company-card">
+                <div class="review-header">
+                    <div>
+                        <img src="{{ review.companyId?.logo }}" alt="" mat-card-avatar class="company-logo">
+                    </div>
+                    <div class="company-details">
+                        <mat-card-title>{{ review.companyId?.companyName }}</mat-card-title>
+                    </div>
+                    <div>
+                        <mat-card-subtitle>{{ review.createdAt | date: 'MMMM d, y' }}</mat-card-subtitle>
+                    </div>
+                    <div class="delete-button">
+                        <button mat-icon-button (click)="deleteReview(review._id)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="review-content">
+                    <div class="rating">
+                        <ng-container *ngFor="let _ of [].constructor(5); let i = index">
+                            <mat-icon>{{ (i < review.rating) ? 'star' : 'star_outline' }}</mat-icon>
+                          </ng-container>
+                          <span class="span" style="margin: 2.5px 0px 0px 3px;">{{review.rating}}.0</span>
+                    </div>
+                </div>
+                <div class="comment">
+                    <span class="span">{{review.comment}}</span>
+                </div>
+                <br>
+            </mat-card>
+        </ng-container>
+    </div>
+</mat-card>
+<br>

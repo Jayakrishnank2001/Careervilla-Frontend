@@ -1,5 +1,5 @@
 <app-jobseeker-nav></app-jobseeker-nav>
-<mat-card class="settings-card">
+<mat-card class="myJobs-card">
     <mat-card-header>
         <mat-card-title class="title">
             My Jobs
@@ -8,8 +8,10 @@
     <br>
     <br>
     <span class="job-categories">
-        <span (click)="getSavedJobs(jobseekerId)" matBadge={{savedJobs.length}} matBadgeOverlap="false" matBadgePosition="before">Saved</span>
-        <span (click)="getAppliedJobs(jobseekerId)" matBadge={{appliedJobs.length}} matBadgeOverlap="false" matBadgePosition="before">Applied</span>
+        <span (click)="getSavedJobs(jobseekerId)" matBadge={{savedJobs.length}} matBadgeOverlap="false"
+            matBadgePosition="before">Saved</span>
+        <span (click)="getAppliedJobs(jobseekerId)" matBadge={{appliedApplications.length}} matBadgeOverlap="false"
+            matBadgePosition="before">Applied</span>
     </span>
     <mat-divider></mat-divider>
     <div *ngIf="isSavedJobs">
@@ -23,7 +25,8 @@
                     <mat-card-title>{{job.jobTitle}}</mat-card-title>
                 </div>
                 <div>
-                    <button mat-raised-button (click)="onApplyJob(job._id)" color="primary" style="margin-right: 10px;">Apply Now</button>
+                    <button mat-raised-button (click)="onApplyJob(job._id)" color="primary"
+                        style="margin-right: 10px;">Apply Now</button>
                     <button mat-raised-button class="save-button" (click)="onUnsaveJob(job._id)">
                         <span class="icon-wrapper">
                             <mat-icon>bookmark</mat-icon>
@@ -34,20 +37,35 @@
             <br>
             <mat-divider></mat-divider>
         </ng-container>
-        
+
     </div>
     <div *ngIf="!isSavedJobs">
-        <ng-container *ngFor="let job of appliedJobs">
+        <ng-container *ngFor="let application of appliedApplications">
             <br>
             <div class="jobs">
                 <div>
                     <mat-icon>domain</mat-icon>
                 </div>
                 <div class="job-title">
-                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    <mat-card-title>{{application.jobId?.jobTitle}}</mat-card-title>
                 </div>
                 <div>
-                    <button mat-raised-button color="primary" (click)="onWithdrawApplication(job._id)">Withdraw Application</button>
+                    <button mat-button style="margin-right: 30px;">
+                        <mat-card-subtitle [ngStyle]="{
+                          color: application.status === 'Applied'  
+                            ? 'blue'
+                            : application.status === 'Approved'
+                            ? 'green'
+                            : application.status === 'Rejected'
+                            ? 'red'
+                            : '' 
+                        }">
+                            {{ application.status }}
+                        </mat-card-subtitle></button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary"
+                        (click)="onWithdrawApplication(application.jobId?._id)">Withdraw Application</button>
                 </div>
             </div>
             <br>

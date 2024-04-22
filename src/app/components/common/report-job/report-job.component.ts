@@ -17,16 +17,16 @@ export class ReportJobComponent implements OnInit{
   jobTitle!: string
   companyName!:string
 
-  constructor(private dialogRef: MatDialogRef<ReportJobComponent>,
+  constructor(private _dialogRef: MatDialogRef<ReportJobComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { jobTitle: string, companyName: string },
-    private fb: FormBuilder) { 
+    private _fb: FormBuilder) { 
     
     this.jobTitle = data.jobTitle
     this.companyName=data.companyName
     }
   
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.form = this._fb.group({
       reason: ['', Validators.required],
       description:['']
     })
@@ -37,7 +37,7 @@ export class ReportJobComponent implements OnInit{
   }
   
   onSubmit(): void{
-    this.dialogRef.close(this.form.value)
+    this._dialogRef.close(this.form.value)
   }
 
 }

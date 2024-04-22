@@ -29,10 +29,10 @@ export class AdminTableComponent implements OnInit {
   totalPages = 1
   dynamicPages: number[] = [1, 2, 3]
 
-  constructor(private readonly formBuilder: FormBuilder) { }
+  constructor(private readonly _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.searchForm = this.formBuilder.group({
+    this.searchForm = this._formBuilder.group({
       searchQuery: ['']
     })
   }

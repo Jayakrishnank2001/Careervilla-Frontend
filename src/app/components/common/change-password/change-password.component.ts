@@ -20,11 +20,11 @@ export class ChangePasswordComponent implements OnInit {
   form!: FormGroup
   hideConfirmPassword:boolean=true
 
-  constructor(private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ChangePasswordComponent>) { }
+  constructor(private _fb: FormBuilder,
+    private _dialogRef: MatDialogRef<ChangePasswordComponent>) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.form = this._fb.group({
       newPassword: ['', [validateByTrimming(passwordValidators)]],
       confirmPassword: ['', Validators.required]
     }, { validators: passwordMatchValidator })
@@ -32,7 +32,7 @@ export class ChangePasswordComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.dialogRef.close(this.form.value)
+    this._dialogRef.close(this.form.value)
   }
 
   get isFormValid(): boolean {

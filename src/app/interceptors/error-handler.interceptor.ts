@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
 
-  constructor(private readonly snackBar:MatSnackBar) {}
+  constructor(private readonly _snackBar:MatSnackBar) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -31,7 +31,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     } else {
       errorMessage=`${error.error.message || error.statusText}`
     }
-    this.snackBar.open(errorMessage, 'Close', {
+    this._snackBar.open(errorMessage, 'Close', {
       duration: 5000,
       verticalPosition: 'top'
     })

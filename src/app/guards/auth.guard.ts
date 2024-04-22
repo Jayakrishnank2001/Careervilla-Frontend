@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 
 export class AuthGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private _authService: AuthService, private _router: Router) { }
 
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         const url = state.url;
@@ -24,24 +24,23 @@ export class AuthGuard implements CanActivate {
         } else {
             tokenKey = ''
         }
-        if (this.authService.isAuthenticated(tokenKey)) {
+        if (this._authService.isAuthenticated(tokenKey)) {
             return true
         } else {
             switch (role) {
                 case 'admin':
-                    this.router.navigate(['/admin/login'])
+                    this._router.navigate(['/admin/login'])
                     break
                 case 'employer':
-                    this.router.navigate(['/employer/login'])
+                    this._router.navigate(['/employer/login'])
                     break
                 case 'jobseeker':
-                    this.router.navigate(['/jobseeker/login'])
+                    this._router.navigate(['/jobseeker/login'])
                     break
                 default:
                     break
             }
             return false
         }
-
     }
 }

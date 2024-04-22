@@ -22,13 +22,13 @@ export class ChangeLocationComponent implements OnInit{
   cities: string[] = []
   selectedCountry!: string;
 
-  constructor(private locationService: LocationService,
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ChangeLocationComponent>) { }
+  constructor(private _locationService: LocationService,
+    private _fb: FormBuilder,
+    private _dialogRef: MatDialogRef<ChangeLocationComponent>) { }
   
   ngOnInit(): void {
-    this.countries = this.locationService.getCountries()
-    this.form = this.fb.group({
+    this.countries = this._locationService.getCountries()
+    this.form = this._fb.group({
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required]
@@ -52,7 +52,7 @@ export class ChangeLocationComponent implements OnInit{
     const countryCode = this.getCountryCode(countryName);
     if (countryCode) {
       this.selectedCountry = countryCode;
-      this.states = this.locationService.getStates(countryCode);
+      this.states = this._locationService.getStates(countryCode);
     }
   }
 
@@ -60,7 +60,7 @@ export class ChangeLocationComponent implements OnInit{
     const stateName = event.value;
     const stateCode = this.getStateCode(countryCode, stateName);
     if (stateCode) {
-      this.cities = this.locationService.getCities(countryCode, stateCode);
+      this.cities = this._locationService.getCities(countryCode, stateCode);
     }
   }
 
@@ -70,7 +70,7 @@ export class ChangeLocationComponent implements OnInit{
 
 
   onSubmit(): void{
-    this.dialogRef.close(this.form.value)
+    this._dialogRef.close(this.form.value)
   }
 
 }

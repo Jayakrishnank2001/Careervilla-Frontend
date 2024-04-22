@@ -39,6 +39,9 @@ import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { JobseekerCompanyComponent } from './jobseeker-company/jobseeker-company.component';
 import { JobseekerCompaniesComponent } from './jobseeker-companies/jobseeker-companies.component';
+import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
+import { ReviewService } from "src/app/services/review.service";
+import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-job-details.component';
 
 
 
@@ -65,6 +68,8 @@ import { JobseekerCompaniesComponent } from './jobseeker-companies/jobseeker-com
     JobseekerNotificationsComponent,
     JobseekerCompanyComponent,
     JobseekerCompaniesComponent,
+    ReviewDialogComponent,
+    JobseekerJobDetailsComponent,
   ],
   imports: [
     JobseekerRoutingModule,
@@ -86,6 +91,7 @@ import { JobseekerCompaniesComponent } from './jobseeker-companies/jobseeker-com
     JobApplicationService,
     WebSocketService,
     NotificationService,
+    ReviewService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

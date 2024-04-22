@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1>Review this company</h1>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Write a review</mat-label>
+        <textarea matInput type="text" formControlName="review" required></textarea>
+    </mat-form-field>
+    <div>
+        <span class="rate">Rate this company</span>
+    </div>
+    <div class="star-rating">
+        <span class="star" *ngFor="let star of stars" (click)="setRating(star)" [ngClass]="{'rated': star <= currentRating, 'unrated': star > currentRating}">
+            <mat-icon>{{ star <= currentRating ? 'star' : 'star_outline' }}</mat-icon>
+        </span>
+    </div>
+    <br>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!isFormValid">SUBMIT</button>
+</form>

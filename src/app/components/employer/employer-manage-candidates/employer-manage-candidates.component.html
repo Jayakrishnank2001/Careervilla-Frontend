@@ -18,11 +18,13 @@
         </mat-card-header>
         <br>
         <mat-divider></mat-divider>
+
         <div *ngIf="!selectedJob" class="image">
             <img src="../../../../assets/images/4208395.jpg" alt="Welcome Image">
             <h2>Discover top talent and build your dream team.</h2>
             <h3>Ready to find your best candidates? Select a job!</h3>
         </div>
+
         <div class="selectedJob" *ngIf="selectedJob">
             <mat-card class="job-title-card">
                 <div style="flex-grow: 1; margin-left: 5px;">
@@ -35,12 +37,12 @@
                 </div>
             </mat-card>
         </div>
-        <div class="job-list">
+        <div class="candidates-list">
             <ng-container *ngFor="let application of jobApplications; let i = index">
-                <mat-card class="job-card" [style.grid-column]="(i % 2 === 0) ? '1 / span 1' : '2 / span 1'"
+                <mat-card class="candidate-card" [style.grid-column]="(i % 2 === 0) ? '1 / span 1' : '2 / span 1'"
                     [style.grid-row]="(i < 2) ? '1' : '2'">
                     <div class="jobApplication">
-                        <div style="flex-grow: 1;">
+                        <div style="flex-grow: 1; cursor: pointer;">
                             <mat-card-header>
                                 <mat-card-title>{{application.jobseekerId?.firstName}}
                                     {{application.jobseekerId?.lastName}}</mat-card-title>

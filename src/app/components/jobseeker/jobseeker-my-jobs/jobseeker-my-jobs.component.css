@@ -1,4 +1,4 @@
-.settings-card {
+.myJobs-card {
     width: 70%;
     height: 580px;
     margin: 25px auto;
@@ -40,8 +40,13 @@ button.btn {
     flex-grow: 1;
 }
 
+mat-card-title{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 @media screen and (max-width:600px) {
-    .settings-card {
+    .myJobs-card {
         width: 90%;
     }
 

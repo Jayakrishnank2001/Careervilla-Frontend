@@ -15,16 +15,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AdminSubscriptionComponent implements OnInit {
   plans: ISubscriptionRes[] = []
 
-  constructor(private readonly subscriptionPlanService: SubscriptionPlanService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar) { }
+  constructor(private readonly _subscriptionPlanService: SubscriptionPlanService,
+    private _dialog: MatDialog,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getPlans()
   }
 
   getPlans(): void {
-    this.subscriptionPlanService.getAllPlans('admin').subscribe({
+    this._subscriptionPlanService.getAllPlans('admin').subscribe({
       next: (res) => {
         if (res !== null) {
           this.plans = res
@@ -43,10 +43,10 @@ export class AdminSubscriptionComponent implements OnInit {
       cancelButtonText: 'No, Cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.subscriptionPlanService.deletePlan(planId).subscribe({
+        this._subscriptionPlanService.deletePlan(planId).subscribe({
           next: () => {
             this.ngOnInit()
-            this.snackBar.open('Plan deleted successfully', 'Close', {
+            this._snackBar.open('Plan deleted successfully', 'Close', {
               duration: 5000,
               verticalPosition:'top'
             })
@@ -65,22 +65,22 @@ export class AdminSubscriptionComponent implements OnInit {
   }
 
   openDialog(editMode: boolean, planId?: string): void {
-    const dialogRef = this.dialog.open(AdminPlansDialogComponent, {
+    const dialogRef = this._dialog.open(AdminPlansDialogComponent, {
       data: { editMode, planId, plans: this.plans }
     })
     dialogRef.afterClosed().subscribe((result: ISubscriptionRes) => {
       if (result) {
         if (!editMode) {
-          this.subscriptionPlanService.createPlan(result).subscribe({
+          this._subscriptionPlanService.createPlan(result).subscribe({
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan created successfully') {
-                this.snackBar.open('New plan created', 'Close', {
+                this._snackBar.open('New plan created', 'Close', {
                   duration: 5000,
                   verticalPosition:'top'
                 })
               } else {
-                this.snackBar.open('Plan already exists', 'Close', {
+                this._snackBar.open('Plan already exists', 'Close', {
                   duration: 5000,
                   verticalPosition:'top'
                 })
@@ -89,11 +89,11 @@ export class AdminSubscriptionComponent implements OnInit {
           })
         } else if (planId !== undefined) {
           console.log(result)
-          this.subscriptionPlanService.editPlan(planId, result).subscribe({
+          this._subscriptionPlanService.editPlan(planId, result).subscribe({
             next: (res: IRes) => {
               this.getPlans()
               if (res.data.message == 'Plan updated successfully') {
-                this.snackBar.open('Plan updated successfully', 'Close', {
+                this._snackBar.open('Plan updated successfully', 'Close', {
                   duration: 5000,
                   verticalPosition:'top'
                 })

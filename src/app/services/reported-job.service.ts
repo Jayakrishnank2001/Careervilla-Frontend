@@ -11,22 +11,22 @@ export class ReportedJobService {
 
   baseURL = environments.baseURL
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
   
   reportJob(companyId: string | undefined, jobId: string | undefined, reportedBy: string, reason: string, description: string) {
-    return this.http.post<IResponse>(`${this.baseURL}/jobseeker/reportJob`,{companyId,jobId,reportedBy,reason,description})
+    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/reportJob`,{companyId,jobId,reportedBy,reason,description})
   }
 
   getAllReportedJobs(page: number, limit: number, searchQuery: string): Observable<IApiRes<IReportedJobAndCount | null>>{
-    return this.http.get<IApiRes<IReportedJobAndCount | null>>(`${this.baseURL}/admin/reportedJobs?page=${page}&limit=${limit}&searchQuery=${searchQuery}`)
+    return this._http.get<IApiRes<IReportedJobAndCount | null>>(`${this.baseURL}/admin/reportedJobs?page=${page}&limit=${limit}&searchQuery=${searchQuery}`)
   }
 
   blockReportedJob(jobId: string,reportJobId:string) {
-    return this.http.patch<IResponse>(`${this.baseURL}/admin/block-reportedJob`, { jobId, reportJobId })
+    return this._http.patch<IResponse>(`${this.baseURL}/admin/block-reportedJob`, { jobId, reportJobId })
   }
 
   reportedJobDetails(jobId: string) {
-    return this.http.get<IReportedJob>(`${this.baseURL}/admin/reportedJob-details/${jobId}`)
+    return this._http.get<IReportedJob>(`${this.baseURL}/admin/reportedJob-details/${jobId}`)
   }
 
 

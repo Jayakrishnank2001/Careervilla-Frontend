@@ -86,7 +86,7 @@ export class JobseekerJobsComponent implements OnInit{
       if (result && this.jobseekerId) {
         this.reportedJobService.reportJob(this.selectJob.companyId?._id, this.selectJob._id, this.jobseekerId, result.reason, result.description).subscribe({
           next: (res) => {
-            if (res.success == true) {
+            if (res.success === true) {
               this.snackBar.open('Job reported successfully', 'Close', {
                 duration: 5000,
                 verticalPosition: 'top'
@@ -102,7 +102,7 @@ export class JobseekerJobsComponent implements OnInit{
     if (this.jobseekerId && jobId)
       this.jobseekerService.saveJob(this.jobseekerId, jobId).subscribe({
         next: (res) => {
-          if (res.data.success == true) {
+          if (res.data.success === true) {
             this.snackBar.open('Job saved successfully', 'Close', {
               duration: 5000,
               verticalPosition: 'top'
@@ -117,7 +117,7 @@ export class JobseekerJobsComponent implements OnInit{
     if (this.jobseekerId && jobId) {
       this.jobseekerService.unsaveJob(this.jobseekerId, jobId).subscribe({
         next: (res) => {
-          if (res.data.success == true) {
+          if (res.data.success === true) {
             this.snackBar.open('Job unsaved successfully', 'Close', {
               duration: 5000,
               verticalPosition: 'top'

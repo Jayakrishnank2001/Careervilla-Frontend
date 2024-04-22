@@ -20,11 +20,11 @@ export class ChangePhoneNumberComponent implements OnInit {
 
   countries = CountryList.getAll()
 
-  constructor(private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ChangePhoneNumberComponent>) { }
+  constructor(private _fb: FormBuilder,
+    private _dialogRef: MatDialogRef<ChangePhoneNumberComponent>) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.form = this._fb.group({
       countryCode: ['', Validators.required],
       phoneNumber: ['', [validateByTrimming(mobileValidators)]]
     })
@@ -32,7 +32,7 @@ export class ChangePhoneNumberComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.dialogRef.close(this.form.value)
+    this._dialogRef.close(this.form.value)
   }
 
   get isFormValid(): boolean {

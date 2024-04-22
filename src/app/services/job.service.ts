@@ -8,28 +8,28 @@ import { IRes } from '../models/common';
   
 export class JobService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private _http:HttpClient) { }
 
   baseURL=environments.baseURL
 
   saveJob(jobData: IJobRes,employerId:string) {
-    return this.http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`,jobData)
+    return this._http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`,jobData)
   }
 
-  getJobs() {
-    return this.http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs`)
+  getJobs(companyId?:string) {
+    return this._http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs?companyId=${companyId}`)
   }
 
   getJobDetails(jobId: string) {
-    return this.http.get<IJobRes>(`${this.baseURL}/employer/get-jobDetails/${jobId}`)
+    return this._http.get<IJobRes>(`${this.baseURL}/employer/get-jobDetails/${jobId}`)
   }
 
   updateJob(jobData: IJobRes, jobId: string, addressId:string) {
-    return this.http.put<IRes>(`${this.baseURL}/employer/updateJob`,{jobData,jobId,addressId})
+    return this._http.put<IRes>(`${this.baseURL}/employer/updateJob`,{jobData,jobId,addressId})
   }
 
   updateJobStatus(jobId: string) {
-    return this.http.patch<IRes>(`${this.baseURL}/employer/update-jobStatus/${jobId}`,{})
+    return this._http.patch<IRes>(`${this.baseURL}/employer/update-jobStatus/${jobId}`,{})
   }
 
   

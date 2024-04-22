@@ -18,14 +18,15 @@ export class AdminReportedJobsComponent implements OnInit {
   searchQuery: string = ''
   reportedJobCount = 0
 
-  constructor(private reportedJobService: ReportedJobService,private dialog:MatDialog) { }
+  constructor(private _reportedJobService: ReportedJobService,
+    private _dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getReportedJobs()
   }
 
   getReportedJobs(): void {
-    this.reportedJobService.getAllReportedJobs(this.currPage, this.itemsPerPage, this.searchQuery).subscribe({
+    this._reportedJobService.getAllReportedJobs(this.currPage, this.itemsPerPage, this.searchQuery).subscribe({
       next: (res) => {
         if (res.data !== null) {
           this.reportedJobs = res.data.reportedJobs
@@ -62,7 +63,7 @@ export class AdminReportedJobsComponent implements OnInit {
       cancelButtonText: 'NO, cancel'
     }).then(result => {
       if (result.isConfirmed) {
-        this.reportedJobService.blockReportedJob(jobId, reportJobId).subscribe({
+        this._reportedJobService.blockReportedJob(jobId, reportJobId).subscribe({
           next: (res) => {
             if (res.success == true) {
               this.ngOnInit()
@@ -72,14 +73,14 @@ export class AdminReportedJobsComponent implements OnInit {
       }
     })
   }
-  
-  viewJob(jobId:string): void {
+
+  viewJob(jobId: string): void {
     this.openDialog(jobId)
   }
 
-  openDialog(jobId: string): void{
-    const dialogRef = this.dialog.open(AdminReportedDialogComponent, {
-      data:{jobId}
+  openDialog(jobId: string): void {
+    const dialogRef = this._dialog.open(AdminReportedDialogComponent, {
+      data: { jobId }
     })
   }
 

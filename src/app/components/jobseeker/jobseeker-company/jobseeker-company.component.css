@@ -1,39 +1,40 @@
 .container {
     display: flex;
-    margin-top: 3%;
+    margin-top: 2%;
     justify-content: center;
-  }
+}
 
-  mat-card-title{
-    font-size:26px;
+mat-card-title {
+    font-size: 26px;
     margin-top: 20px;
-  }
+}
 
-  .company-card{
+.company-card {
     width: 90%;
     border-radius: 0.5em;
     margin-bottom: 30px;
     border: 1px solid #ccc;
-  }
-
-  .example-header-image {
-    border-radius: 0em;
-    background-size:auto;
-    height: 90px;
-    width: 90px;
 }
 
-.header-container{
+.example-header-image {
+    border-radius: 0em;
+    background-size: auto;
+    height: 90px;
+    width: 90px;
+    border-radius: 1em;
+}
+
+.header-container {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-mat-card-content{
+.mat-card-content {
     display: flex;
 }
 
-button.mat-raised-btn{
+button.mat-raised-btn {
     background-color: #644DFF;
     color: white;
 }
@@ -41,16 +42,154 @@ button.mat-raised-btn{
 .company-options {
     display: flex;
     flex-grow: 1;
-    gap:15px;
+    gap: 15px;
     margin: 0px 0px 0px 15px;
-  }
-  
-  .company-options span {
-    font-size:16px;
-    font-weight:450;
-  }
-  
-  .divider {
+}
+
+.company-options span {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 450;
+}
+
+.divider {
     margin: 0 10px;
     color: #000000;
+}
+
+.container-2 {
+    display: flex;
+    justify-content: center;
+}
+
+.companyDetails {
+    width: 90%;
+}
+
+.companyDetails-card {
+    border: 1px solid #ccc;
+}
+
+.header-container-2 {
+    display: flex;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-details {
+    font-size: larger;
+}
+
+.description{
+    color: rgb(63, 63, 63);
+}
+
+.company-card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0px 3px 10px;
+}
+
+.review-details {
+    flex-grow: 0.98;
+    margin-left: 10px;
+}
+
+.review-content {
+    margin:10px 0px 0px 12px
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating mat-icon {
+    color: #644DFF;
+}
+
+.comment {
+    margin: 10px 0px 0px 15px;
+}
+
+.span{
+    font-weight: 500;
+}
+
+.jobs {
+    display: flex;
+    margin-left: 15px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.job-title {
+    flex-grow: 0.97;
+    margin:15px 0px 0px 10px;
+}
+
+mat-card-actions button.mat-button{
+    background-color: rgb(237, 236, 236);
+    margin-left: 1%;
   }
+
+  mat-card-actions button.apply-button{
+    background-color: #644DFF;
+    color: white;
+    margin-left: 1.5%;
+  }
+
+  mat-card-actions button.save-button{
+    margin-left: 3%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .apply-button{
+    width: 88px;
+    height: 38px;
+  }
+
+
+@media screen and (max-width:600px) {
+    .company-card {
+        width: 98%;
+    }
+
+    .companyDetails {
+        width: 98%;
+    }
+
+    .company-options {
+        display: flex;
+        margin: 0px;
+    }
+    .mat-card-content {
+        display: grid;
+        gap: 15px;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    mat-card-actions{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

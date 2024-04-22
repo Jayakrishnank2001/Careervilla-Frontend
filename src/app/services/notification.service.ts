@@ -9,10 +9,10 @@ export class NotificationService {
 
   baseURL=environments.baseURL
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
   
   getEmployerNotifications(userId: string) {
-    return this.http.get<INotification>(`${this.baseURL}/employer/notifications/${userId}`)
+    return this._http.get<INotification>(`${this.baseURL}/employer/notifications/${userId}`)
   }
 
 

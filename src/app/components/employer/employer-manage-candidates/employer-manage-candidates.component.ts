@@ -75,7 +75,8 @@ export class EmployerManageCandidatesComponent implements OnInit {
     if(jobId)
     this.jobApplicationService.getJobApplications(jobId, status).subscribe({
       next: (res) => {
-        this.jobApplications=res
+        this.jobApplications = res
+        this.jobApplications.reverse()
       }
     })
   }
