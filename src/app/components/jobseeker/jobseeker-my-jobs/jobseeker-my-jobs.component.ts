@@ -8,6 +8,8 @@ import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.co
 import Swal from 'sweetalert2';
 import { JobApplicationService } from 'src/app/services/job-application.service';
 import { IJobApplication } from 'src/app/models/jobApplication';
+import { Router } from '@angular/router';
+import { JobService } from 'src/app/services/job.service';
 
 @Component({
   selector: 'app-jobseeker-my-jobs',
@@ -28,7 +30,9 @@ export class JobseekerMyJobsComponent implements OnInit {
     private _authService: AuthService,
     private _snackBar: MatSnackBar,
     private _dialog: MatDialog,
-    private _jobApplicationService: JobApplicationService) { }
+    private _jobApplicationService: JobApplicationService,
+    private _router: Router,
+    private _jobService: JobService) { }
 
   ngOnInit(): void {
     this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
@@ -127,6 +131,20 @@ export class JobseekerMyJobsComponent implements OnInit {
             }
           }
         })
+      }
+    })
+  }
+
+  getJobDetails(jobId: string | undefined): void{
+    this._router.navigate(['/jobseeker/job-details'],{ queryParams: { jobId: jobId } })
+  }
+
+  messageEmployer(jobId: string | undefined) {
+    if(jobId)
+    this._jobService.getJobDetails(jobId).subscribe({
+      next: (res) => {
+        const queryParams = { jobId: jobId }
+        this._router.navigate(['/jobseeker/messages'],{queryParams})
       }
     })
   }

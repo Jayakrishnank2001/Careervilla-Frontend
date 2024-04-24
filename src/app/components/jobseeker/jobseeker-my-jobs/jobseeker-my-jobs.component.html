@@ -22,11 +22,11 @@
                     <mat-icon>domain</mat-icon>
                 </div>
                 <div class="job-title">
-                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    <mat-card-title (click)="getJobDetails(job._id)">{{job.jobTitle}}</mat-card-title>
                 </div>
                 <div>
-                    <button mat-raised-button (click)="onApplyJob(job._id)" color="primary"
-                        style="margin-right: 10px;">Apply Now</button>
+                    <button mat-raised-button (click)="onApplyJob(job._id)"
+                        style="margin-right: 10px;" class="mat-raised-button">Apply Now</button>
                     <button mat-raised-button class="save-button" (click)="onUnsaveJob(job._id)">
                         <span class="icon-wrapper">
                             <mat-icon>bookmark</mat-icon>
@@ -47,7 +47,11 @@
                     <mat-icon>domain</mat-icon>
                 </div>
                 <div class="job-title">
-                    <mat-card-title>{{application.jobId?.jobTitle}}</mat-card-title>
+                    <mat-card-title (click)="getJobDetails(application.jobId?._id)">{{application.jobId?.jobTitle}}</mat-card-title>
+                    <div class="message" *ngIf="application.status=='Approved'">
+                        <mat-card-subtitle (click)="messageEmployer(application.jobId?._id)">Message this employer</mat-card-subtitle>
+                        <mat-card-subtitle><mat-icon>arrow_forward</mat-icon></mat-card-subtitle>
+                    </div>
                 </div>
                 <div>
                     <button mat-button style="margin-right: 30px;">
@@ -64,7 +68,7 @@
                         </mat-card-subtitle></button>
                 </div>
                 <div>
-                    <button mat-raised-button color="primary"
+                    <button mat-raised-button class="mat-raised-button"
                         (click)="onWithdrawApplication(application.jobId?._id)">Withdraw Application</button>
                 </div>
             </div>

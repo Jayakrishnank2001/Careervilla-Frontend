@@ -83,7 +83,7 @@ button.mat-raised-btn {
     font-size: larger;
 }
 
-.description{
+.description {
     color: rgb(63, 63, 63);
 }
 
@@ -109,7 +109,7 @@ button.mat-raised-btn {
 }
 
 .review-content {
-    margin:10px 0px 0px 12px
+    margin: 10px 0px 0px 12px
 }
 
 .rating {
@@ -125,7 +125,7 @@ button.mat-raised-btn {
     margin: 10px 0px 0px 15px;
 }
 
-.span{
+.span {
     font-weight: 500;
 }
 
@@ -133,36 +133,39 @@ button.mat-raised-btn {
     display: flex;
     margin-left: 15px;
     align-items: center;
+}
+
+h2 {
     cursor: pointer;
 }
 
 .job-title {
     flex-grow: 0.97;
-    margin:15px 0px 0px 10px;
+    margin: 15px 0px 0px 10px;
 }
 
-mat-card-actions button.mat-button{
+mat-card-actions button.mat-button {
     background-color: rgb(237, 236, 236);
     margin-left: 1%;
-  }
+}
 
-  mat-card-actions button.apply-button{
+mat-card-actions button.apply-button {
     background-color: #644DFF;
     color: white;
     margin-left: 1.5%;
-  }
+}
 
-  mat-card-actions button.save-button{
+mat-card-actions button.save-button {
     margin-left: 3%;
     text-align: center;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .apply-button{
+.apply-button {
     width: 88px;
     height: 38px;
-  }
+}
 
 
 @media screen and (max-width:600px) {
@@ -178,16 +181,19 @@ mat-card-actions button.mat-button{
         display: flex;
         margin: 0px;
     }
+
     .mat-card-content {
         display: grid;
         gap: 15px;
     }
-    .details{
+
+    .details {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-    mat-card-actions{
+
+    mat-card-actions {
         display: flex;
         flex-direction: column;
         gap: 5px;

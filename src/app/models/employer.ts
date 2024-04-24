@@ -20,6 +20,7 @@ export interface IEmployerRes {
     industry?: string,
     foundedYear?: number,
     description?: string,
+    logo?:string
   }
 }
 

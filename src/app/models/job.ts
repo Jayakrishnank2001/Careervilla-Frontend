@@ -9,6 +9,7 @@ export interface IJobRes {
         industry?: string,
         foundedYear?: number,
         description?: string
+        logo?:string
     }
     jobTitle?: string,
     jobDescription?: string,
@@ -20,7 +21,9 @@ export interface IJobRes {
     gender?: string,
     applicationDeadline?: string,
     status?: string,
-    postedBy?:string,
+    postedBy?: {
+        _id:string
+    }
     addressId?: {
         _id?:string
         address?: string,

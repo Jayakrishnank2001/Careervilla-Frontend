@@ -1,0 +1,62 @@
+mat-card {
+    border: 1px solid #ccc;
+    width: 70%;
+    margin: 30px auto;
+}
+
+.jobTitle{
+    font-size: x-large;
+}
+
+mat-card-actions button.mat-button {
+    background-color: rgb(237, 236, 236);
+    margin-left: 1%;
+}
+
+mat-card-actions button.apply-button {
+    background-color: #644DFF;
+    color: white;
+    margin-left: 1.5%;
+}
+
+mat-card-actions button.save-button {
+    margin-left: 3%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper {
+    font-size: 60px;
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.icon {
+    margin-right: 8px;
+    width: 24px;
+}
+
+p {
+    margin-top: 3%;
+}
+
+.small-text {
+    margin-top: 3%;
+    font-size: 15px;
+}
+
+.mat-button {
+    background-color: rgb(238, 238, 238);
+}
+
+@media screen and (max-width:600px){
+    mat-card{
+        width: 95%;
+    }
+    
+}

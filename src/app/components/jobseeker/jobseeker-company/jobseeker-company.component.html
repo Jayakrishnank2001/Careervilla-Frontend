@@ -115,7 +115,7 @@
                             <mat-icon>domain</mat-icon>
                         </div>
                         <div class="job-title">
-                            <h2>{{job.jobTitle}}</h2>
+                            <h2 (click)="getJobDetails(job._id)">{{job.jobTitle}}</h2>
                         </div>
                         <mat-card-actions>
                             <button mat-raised-button class="apply-button" (click)="applyJob(job._id)"

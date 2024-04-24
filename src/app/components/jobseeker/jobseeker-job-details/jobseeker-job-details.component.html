@@ -1,1 +1,86 @@
-<p>jobseeker-job-details works!</p>
+<app-jobseeker-nav></app-jobseeker-nav>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title class="jobTitle">{{job.jobTitle}}</mat-card-title>
+        <mat-card-subtitle>{{job.companyId?.companyName}}</mat-card-subtitle>
+        <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+        <button mat-button>{{job.salary}}</button>
+    </mat-card-actions>
+    <mat-card-actions>
+        <button mat-raised-button class="apply-button" (click)="applyJob(job._id)"
+            *ngIf="!appliedJobs.includes(job._id)">Apply</button>
+        <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(job._id)"
+            style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
+        <button mat-raised-button class="save-button" (click)="unsaveJob(job._id)"
+            *ngIf="savedJobs.includes(job._id)"><span class="icon-wrapper">
+                <mat-icon>bookmark</mat-icon>
+            </span>
+        </button>
+        <button mat-raised-button class="save-button" (click)="saveJob(job._id)"
+            *ngIf="!savedJobs.includes(job._id)"><span class="icon-wrapper">
+                <mat-icon>bookmark_border</mat-icon>
+            </span>
+        </button>
+        <button mat-raised-button class="save-button" (click)="reportJob(job.jobTitle,job.companyId?.companyName)"><span
+                class="icon-wrapper">
+                <mat-icon>outlined_flag</mat-icon>
+            </span>
+        </button>
+    </mat-card-actions>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-header>
+        <mat-card-title>Job Details</mat-card-title>
+        <mat-card-subtitle class="small-text">Job Type
+            <br>
+            <button mat-button class="mat-button">{{job.jobType}}</button>
+        </mat-card-subtitle>
+        <mat-card-subtitle class="small-text">Salary
+            <br>
+            <button mat-button class="mat-button">{{job.salary}}</button>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-header>
+        <mat-card-title>Location</mat-card-title>
+        <mat-card-subtitle class="subtitle">
+            <mat-icon class="icon">place</mat-icon>
+            {{ job.addressId?.city }}, {{ job.addressId?.state }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-header>
+        <mat-card-title>Specialisms</mat-card-title>
+        <mat-card-subtitle class="subtitle">
+            {{ job.specialisms }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-header>
+        <mat-card-title>Full Job Description</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+        <mat-card-subtitle>Experience: {{job.experience}} years</mat-card-subtitle>
+        <p>
+            {{job.jobDescription}}
+        </p>
+    </mat-card-content>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-header>
+        <mat-card-title>Application Deadline</mat-card-title>
+        <mat-card-subtitle class="subtitle">
+            <mat-icon class="icon">timer</mat-icon>
+            {{ job.applicationDeadline | date: 'MMMM d, y' }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <br>
+</mat-card>
+<br>

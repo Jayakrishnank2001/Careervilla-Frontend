@@ -4,20 +4,47 @@
     <div class="message-list" fxFlex="100" fxFlex.xs="100%">
         <mat-card class="message-card">
             <mat-card-header>
-                <mat-card-title></mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-title>Messages</mat-card-title>
             </mat-card-header>
+            <mat-divider></mat-divider>
         </mat-card>
     </div>
 
     <div class="message" fxFlex="100" fxFlex.xs="100%">
-        <mat-card class="single-message-card">
-            <mat-card-header>
-                <mat-card-title></mat-card-title>
-                <mat-card-subtitle></mat-card-subtitle>
-                <mat-card-subtitle></mat-card-subtitle>
-            </mat-card-header>
+
+        <mat-card class="single-message-card" *ngIf="!jobId">
+            <div class="image-div">
+                <img src="../../../../assets/images/66149.jpg" alt="Welcome Image" class="message-image">
+                <mat-card-title>Welcome to Messages</mat-card-title>
+                <mat-card-subtitle>When an employer contacts you,
+                    you will see messages here.</mat-card-subtitle>
+            </div>
+        </mat-card>
+
+        <mat-card class="single-message-card" *ngIf="jobId">
+
+            <div class="jobTitle">
+                <div>
+                    <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
+                </div>
+                <div>
+                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    <mat-card-subtitle>{{job.companyId?.companyName}}</mat-card-subtitle>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="message-content">
+
+            </div>
+            <mat-divider></mat-divider>
+            <div class="message-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Write your message</mat-label>
+                    <input matInput class="mat-Input" formControlName="message" type="text">
+                </mat-form-field>
+                <button mat-raised-button class="mat-raised-button">Send</button>
+            </div>
+
         </mat-card>
     </div>
 </div>

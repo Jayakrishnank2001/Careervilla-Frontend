@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICompany } from 'src/app/models/company';
 import { CompanyService } from 'src/app/services/company.service';
 import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
@@ -39,7 +39,8 @@ export class JobseekerCompanyComponent implements OnInit {
     private _jobService: JobService,
     private _jobseekerService: JobseekerService,
     private _snackBar: MatSnackBar,
-    private _reportedJobService: ReportedJobService) { }
+    private _reportedJobService: ReportedJobService,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
@@ -176,6 +177,10 @@ export class JobseekerCompanyComponent implements OnInit {
         })
       }
     })
+  }
+
+  getJobDetails(jobId: string | undefined): void{
+    this._router.navigate(['/jobseeker/job-details'],{ queryParams: { jobId: jobId } })
   }
 
 

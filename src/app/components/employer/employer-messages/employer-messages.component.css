@@ -2,7 +2,7 @@
   .container {
     display: flex;
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 2.06%;
   }
   
   .message-list {
@@ -10,6 +10,7 @@
   }
 
   .message-card{
+    height: 570px;
     margin-bottom: 30px;
     border: 1px solid #ccc;
   }
@@ -19,7 +20,35 @@
   }
 
   .single-message-card{
+    height: 570px;
     margin-left: 35px;
     border: 1px solid #ccc;
   }
+
+  .image{
+    text-align: center;
+  }
+
+  img {
+    width: 300px;
+    height: 220px;
+    margin: 130px 0px 0px 0px;
+}
+  
+@media screen and (max-width:600px) {
+  .message {
+    display: none;
+  }
+
+  .message-list {
+    width: 90%;
+  }
+
+  .container{
+    margin-left: 0;
+    justify-content: center;
+  }
+
+
+}
 

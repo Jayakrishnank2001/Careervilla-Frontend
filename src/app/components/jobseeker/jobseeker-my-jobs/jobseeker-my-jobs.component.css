@@ -34,6 +34,7 @@ button.btn {
 
 .jobs {
     display: flex;
+    align-items: center;
 }
 
 .job-title {
@@ -43,6 +44,22 @@ button.btn {
 mat-card-title{
     cursor: pointer;
     margin-left: 10px;
+}
+
+.message{
+    display: flex;
+    flex-direction: row;
+    margin: 3px 0px 0px 12px;
+    cursor: pointer;
+}
+
+.message mat-card-subtitle{
+    color: #644DFF;
+}
+
+button.mat-raised-button{
+    background-color: #644DFF;
+    color: white;
 }
 
 @media screen and (max-width:600px) {
