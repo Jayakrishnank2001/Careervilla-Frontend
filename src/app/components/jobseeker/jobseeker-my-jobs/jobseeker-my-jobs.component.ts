@@ -98,7 +98,7 @@ export class JobseekerMyJobsComponent implements OnInit {
     if (this.jobseekerId && jobId) {
       this._jobseekerService.unsaveJob(this.jobseekerId, jobId).subscribe({
         next: (res) => {
-          if (res.data.success == true) {
+          if (res.data.success === true) {
             this._snackBar.open('Job unsaved successfully', 'Close', {
               duration: 5000,
               verticalPosition: 'top'
@@ -110,9 +110,9 @@ export class JobseekerMyJobsComponent implements OnInit {
     }
   }
 
-  onWithdrawApplication(jobId: string | undefined): void{
+  onWithdrawApplication(jobId: string | undefined): void {
     void Swal.fire({
-      title:'Are you sure ?',
+      title: 'Are you sure ?',
       text: 'Do you want to withdraw the application ?',
       icon: 'warning',
       showCancelButton: true,
@@ -122,11 +122,11 @@ export class JobseekerMyJobsComponent implements OnInit {
       if (result.isConfirmed && jobId && this.jobseekerId) {
         this._jobseekerService.withdrawApplication(jobId, this.jobseekerId).subscribe({
           next: (res) => {
-            if (res.data.success == true) {
+            if (res.data.success === true) {
               this.getAppliedJobs(this.jobseekerId)
-              this._snackBar.open('Job application withdrawn','Close', {
+              this._snackBar.open('Job application withdrawn', 'Close', {
                 duration: 5000,
-                verticalPosition:'top'
+                verticalPosition: 'top'
               })
             }
           }
@@ -135,18 +135,18 @@ export class JobseekerMyJobsComponent implements OnInit {
     })
   }
 
-  getJobDetails(jobId: string | undefined): void{
-    this._router.navigate(['/jobseeker/job-details'],{ queryParams: { jobId: jobId } })
+  getJobDetails(jobId: string | undefined): void {
+    this._router.navigate(['/jobseeker/job-details'], { queryParams: { jobId: jobId } })
   }
 
   messageEmployer(jobId: string | undefined) {
-    if(jobId)
-    this._jobService.getJobDetails(jobId).subscribe({
-      next: (res) => {
-        const queryParams = { jobId: jobId }
-        this._router.navigate(['/jobseeker/messages'],{queryParams})
-      }
-    })
+    if (jobId)
+      this._jobService.getJobDetails(jobId).subscribe({
+        next: (res) => {
+          const queryParams = { jobId: jobId, employerId: res.postedBy?._id }
+          this._router.navigate(['/jobseeker/messages'], { queryParams })
+        }
+      })
   }
 
 

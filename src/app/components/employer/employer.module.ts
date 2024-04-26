@@ -39,6 +39,7 @@ import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { EditJobDialogComponent } from "./edit-job-dialog/edit-job-dialog.component";
 import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
+import { PlanDialogComponent } from './plan-dialog/plan-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
     EmployerMessagesComponent,
     EmployerNotificationsComponent,
     EditJobDialogComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    PlanDialogComponent
   ],
   imports: [
     EmployerRoutingModule,

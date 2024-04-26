@@ -20,7 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 const MaterialComponents=[
@@ -44,7 +44,8 @@ const MaterialComponents=[
   MatDatepickerModule,
   MatSnackBarModule,
   MatRadioModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

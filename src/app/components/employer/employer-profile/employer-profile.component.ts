@@ -9,6 +9,7 @@ import { ICompany } from 'src/app/models/company';
 import { CompanyService } from 'src/app/services/company.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCompanyDialogComponent } from '../add-company-dialog/add-company-dialog.component';
+import { PlanDialogComponent } from '../plan-dialog/plan-dialog.component';
 
 @Component({
   selector: 'app-employer-profile',
@@ -154,5 +155,14 @@ export class EmployerProfileComponent implements OnInit {
       }
     })
   }
+
+  getPlanDetails(): void{
+    const dialogRef=this.dialog.open(PlanDialogComponent)
+  }
+
+
+
+
+
 
 }

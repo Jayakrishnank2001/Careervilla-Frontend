@@ -33,16 +33,29 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="message-content">
-
-            </div>
+            <div class="chat-container">
+                    <ng-container *ngFor="let message of messages">
+                        <mat-card
+                            class="message"
+                            [ngClass]="{
+                                'sent': message.senderId === jobseekerId,
+                                'received': message.senderId !== jobseekerId
+                            }"
+                        >
+                            {{ message.message }}
+                        </mat-card>
+                    </ng-container>
+            </div>            
             <mat-divider></mat-divider>
             <div class="message-input">
-                <mat-form-field appearance="outline">
-                    <mat-label>Write your message</mat-label>
-                    <input matInput class="mat-Input" formControlName="message" type="text">
-                </mat-form-field>
-                <button mat-raised-button class="mat-raised-button">Send</button>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Write your message</mat-label>
+                        <input matInput class="mat-Input" formControlName="message" type="text">
+                    </mat-form-field>
+                    <button mat-raised-button class="mat-raised-button" type="submit"
+                        [disabled]="form.get('message')?.value == ''">Send</button>
+                </form>
             </div>
 
         </mat-card>

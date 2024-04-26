@@ -13,6 +13,10 @@ import { CompanyService } from 'src/app/services/company.service';
 export class JobseekerCompaniesComponent implements OnInit {
 
   companies: ICompany[] = []
+  page: number = 1;
+  pageSize: number = 3;
+  hasMoreCompanies: boolean = true;
+  searchQuery: string = ''
 
   constructor(private breakpointObserver: BreakpointObserver,
     private companyService: CompanyService,
@@ -28,15 +32,36 @@ export class JobseekerCompaniesComponent implements OnInit {
     );
 
   getCompanies(): void {
-    this.companyService.getAllCompanies().subscribe({
+    this.companyService.getAllCompanies(this.page, this.pageSize, this.searchQuery).subscribe({
       next: (res) => {
-        this.companies = res
+        if (this.searchQuery==='') {
+          this.companies = [...this.companies,...res]
+        } else {
+          this.companies=[...res]
+        }
+        if (res.length < this.pageSize) {
+          this.hasMoreCompanies = false;
+        } else {
+          this.hasMoreCompanies = true;
+        }
       }
     })
   }
 
+  onScrollDown(): void {
+    if (this.hasMoreCompanies) {
+      this.page += 1;
+      this.getCompanies();
+    }
+  }
+
   companyDetails(companyId: string | undefined): void {
-    this.router.navigate(['/jobseeker/company'],{ queryParams: { companyId: companyId } })
+    this.router.navigate(['/jobseeker/company'], { queryParams: { companyId: companyId } })
+  }
+
+  onSearch(): void {
+    this.page=1
+    this.getCompanies()
   }
 
 

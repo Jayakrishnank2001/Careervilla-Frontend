@@ -49,10 +49,6 @@
   margin: 15px 15px 15px 15px;
 }
 
-.message-content{
-  height: 500px;
-}
-
 .message-input{
   display: flex;
   flex-direction: row;
@@ -63,13 +59,49 @@ mat-form-field{
   margin: 10px 0px 10px 10px;
 }
 
+form{
+  width: 100%;
+  align-items: center;
+}
+
 button.mat-raised-button{
   height: 55%;
   width: 10%;
-  margin: 11px 0px 0px 9px;
+  margin: -1px 0px 0px 9px;
   background-color: #644DFF;
   color: white;
 }
+
+.chat-container {
+  height: 500px; /* Adjust to fit the available space */
+  overflow-y: auto; /* Allow vertical scrolling */
+  display: flex;
+  flex-direction: column-reverse; /* Reverse the order to show new messages at the bottom */
+}
+
+.message-list {
+  padding: 10px;
+  flex: 1; 
+}
+
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 60%;
+}
+
+.sent {
+  background-color: #b7acff; 
+  align-self: flex-end; 
+}
+
+.received {
+  background-color: #e2e2e2; 
+  align-self: flex-start; 
+}
+
+
 
 @media screen and (max-width:600px) {
   .message {

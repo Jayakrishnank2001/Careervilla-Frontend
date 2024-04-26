@@ -42,6 +42,9 @@ import { JobseekerCompaniesComponent } from './jobseeker-companies/jobseeker-com
 import { ReviewDialogComponent } from './review-dialog/review-dialog.component';
 import { ReviewService } from "src/app/services/review.service";
 import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-job-details.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FormsModule } from "@angular/forms";
+
 
 
 
@@ -76,6 +79,7 @@ import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-
     MaterialModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireStorageModule,
     StoreModule.forFeature('jobseeker', jobSeekerReducer),
     AngularFireModule.initializeApp(environments.firebaseConfig),
@@ -84,7 +88,8 @@ import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-
     ChangePasswordComponent,
     ChangePhoneNumberComponent,
     ChangeLocationComponent,
-    ReportJobComponent
+    ReportJobComponent,
+    InfiniteScrollModule
   ],
   providers: [
     JobseekerService,

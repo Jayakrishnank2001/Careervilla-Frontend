@@ -8,11 +8,11 @@ export interface IEmployerRes {
   isBlocked?: boolean,
   isSubscribed?: boolean,
   planExpiresAt?: string,
-  image?:string,
+  image?: string,
   password?: string,
-  postedJobs?:AppliedJob[],
+  postedJobs?: AppliedJob[],
   companyId?: {
-    _id?:string,
+    _id?: string,
     companyName?: string,
     website?: string,
     email?: string,
@@ -20,7 +20,13 @@ export interface IEmployerRes {
     industry?: string,
     foundedYear?: number,
     description?: string,
-    logo?:string
+    logo?: string
+  }
+  planId?: {
+    _id?: string
+    duration?: string,
+    amount?: number,
+    planName?: string,
   }
 }
 
@@ -46,11 +52,11 @@ export interface IEmployerAuthResponse {
   };
 }
 
-export interface IResponse{
+export interface IResponse {
   status: string,
   data: {
     success: boolean,
-    message:string
+    message: string
   }
 }
 

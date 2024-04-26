@@ -16,13 +16,18 @@ import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.co
   templateUrl: './jobseeker-jobs.component.html',
   styleUrls: ['./jobseeker-jobs.component.css']
 })
-export class JobseekerJobsComponent implements OnInit{
+export class JobseekerJobsComponent implements OnInit {
 
   jobs: IJobRes[] = []
   selectJob: IJobRes = {}
   savedJobs: (string | undefined)[] = []
   appliedJobs: (string | undefined)[] = []
   jobseekerId!: string | null
+  page: number = 1;
+  pageSize: number = 3;
+  hasMorePages: boolean = true;
+  hasPreviousPages: boolean = false
+  searchQuery: string = ''
 
 
   constructor(private breakpointObserver: BreakpointObserver,
@@ -45,11 +50,13 @@ export class JobseekerJobsComponent implements OnInit{
     );
 
   getJobs(): void {
-    this.jobService.getJobs().subscribe({
+    this.jobService.getJobs(this.page, this.pageSize).subscribe({
       next: (res) => {
         this.jobs = res
-        this.jobs.reverse()
         this.selectJob = this.jobs[0]
+        if (this.jobs.length < 3) {
+          this.hasMorePages=false
+        }
       }
     })
   }
@@ -147,7 +154,23 @@ export class JobseekerJobsComponent implements OnInit{
         }
       })
     }
+  }
 
+  goToPreviousPage(): void {
+    if (this.page > 1) {
+      this.page -= 1;
+      this.getJobs();
+    }
+    if (this.page == 1) {
+      this.hasPreviousPages = false
+    }
+    this.hasMorePages=true
+  }
+
+  goToNextPage(): void {
+    this.page += 1;
+    this.getJobs();
+    this.hasPreviousPages = true
   }
 
 

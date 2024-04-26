@@ -109,6 +109,12 @@ p {
   background-color: rgb(238, 238, 238);
 }
 
+.pagination-controls {
+  position: relative;
+  text-align: center;
+  justify-content: space-between;
+}
+
 @media screen and (max-width:600px) {
   .search-field {
     width: 150px;

@@ -30,6 +30,10 @@ export class JobseekerCompanyComponent implements OnInit {
   jobs: IJobRes[] = []
   savedJobs: (string | undefined)[] = []
   appliedJobs: (string | undefined)[] = []
+  page: number = 1;
+  pageSize: number = 3;
+  hasMoreJobs: boolean = true;
+  searchQuery: string = ''
 
   constructor(private _route: ActivatedRoute,
     private _companyService: CompanyService,
@@ -70,7 +74,7 @@ export class JobseekerCompanyComponent implements OnInit {
   }
 
   getCompanyJobs(): void {
-    this._jobService.getJobs(this.companyId).subscribe({
+    this._jobService.getJobs(this.page, this.pageSize, this.companyId).subscribe({
       next: (res) => {
         this.jobs = res
         this.jobs.reverse()
@@ -179,8 +183,8 @@ export class JobseekerCompanyComponent implements OnInit {
     })
   }
 
-  getJobDetails(jobId: string | undefined): void{
-    this._router.navigate(['/jobseeker/job-details'],{ queryParams: { jobId: jobId } })
+  getJobDetails(jobId: string | undefined): void {
+    this._router.navigate(['/jobseeker/job-details'], { queryParams: { jobId: jobId } })
   }
 
 

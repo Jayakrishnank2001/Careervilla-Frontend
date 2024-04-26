@@ -2,27 +2,31 @@
 
 <mat-card class="announce-card">
   <h1 class="h1">Choose your right plan!</h1>
-  <span class="span1">Select from the best plans, ensuring a perfect match. Need more or less? Customize your subscription for a seamless fit!</span>
+  <span class="span1">Select from the best plans, ensuring a perfect match. Need more or less? Customize your
+    subscription for a seamless fit!</span>
 </mat-card>
 
 <div fxLayout="row" fxLayoutAlign="space-between" class="subscription-cards">
 
   <ng-container *ngFor="let plan of plans">
-  <mat-card class="subscription-card" *ngIf="plan.status === 'Active'">
-   <button mat-fab extended>{{plan.planName}}</button>
-   <span class="span2">Get immediate access to our premium job posting features with our subscription plans.</span>
-   <br>
-   <h1 class="h1">${{plan.amount}}<span style="font-size:medium;"> for {{plan.duration}}</span></h1>
-   <mat-divider></mat-divider>
-   <br>
-   <span class="span2"><mat-icon>check_circle_outline</mat-icon>Immediate access to premium job posting features.</span>
-   <span class="span2"><mat-icon>check_circle_outline</mat-icon>Comprehensive access for continuous hiring success.</span>
-   <span class="span2"><mat-icon>check_circle_outline</mat-icon>Priority placement in search results.</span>
-   <br>
-   <mat-divider></mat-divider>
-   <br>
-   <button mat-raised-button class="mat-raised-button" (click)="makePayment(plan.amount,plan.duration)">Get Started</button>
-  </mat-card>
+    <mat-card class="subscription-card" *ngIf="plan.status === 'Active'">
+      <button mat-fab extended>{{plan.planName}}</button>
+      <span class="span2">Get immediate access to our premium job posting features with our subscription plans.</span>
+      <br>
+      <h1 class="h1">${{plan.amount}}<span style="font-size:medium;"> for {{plan.duration}}</span></h1>
+      <mat-divider></mat-divider>
+      <br>
+      <span class="span2"><mat-icon>check_circle_outline</mat-icon>Immediate access to premium job posting
+        features.</span>
+      <span class="span2"><mat-icon>check_circle_outline</mat-icon>Comprehensive access for continuous hiring
+        success.</span>
+      <span class="span2"><mat-icon>check_circle_outline</mat-icon>Priority placement in search results.</span>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <button mat-raised-button class="mat-raised-button" (click)="makePayment(plan.amount,plan.duration,plan._id)">Get
+        Started</button>
+    </mat-card>
   </ng-container>
 
 </div>

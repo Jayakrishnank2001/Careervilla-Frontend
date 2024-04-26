@@ -37,11 +37,11 @@ button.search-button {
   margin-top: 1%;
 }
 
-.job-list {
+.company-list {
   width: 65%;
 }
 
-.job-card {
+.company-card {
   margin-bottom: 30px;
   border: 1px solid #ccc;
 }
@@ -74,6 +74,7 @@ button.search-button {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 
 @media screen and (max-width:700px) {
   .job-list {

@@ -44,7 +44,7 @@ export class EmployerSubscriptionComponent implements OnInit {
     })
   }
 
-  makePayment(amount: number,duration:string|undefined) {
+  makePayment(amount: number, duration: string | undefined, planId: string | undefined) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environments.stripe_publishable_key,
       locale: 'auto',
@@ -56,8 +56,8 @@ export class EmployerSubscriptionComponent implements OnInit {
 
     const paymentstripe = (stripeToken: any) => {
       const employerId = this.authService.extractUserIdFromToken('employerToken')
-      if(employerId && duration)
-      this.subscriptionPlanService.makePayment(stripeToken,duration,employerId).subscribe({
+      if(employerId && duration && planId)
+      this.subscriptionPlanService.makePayment(stripeToken,duration,employerId,planId).subscribe({
         next: (res) => {
           if (res.data == 'success') {
             this.success = true

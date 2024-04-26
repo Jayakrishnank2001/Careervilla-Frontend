@@ -32,8 +32,10 @@
                 </div>
                 <div class="right">
                     <button mat-button color="primary" (click)="onGetApplications(selectedJob._id)">Total</button>
-                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id,'Approved')">Approved</button>
-                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id,'Rejected')">Rejected</button>
+                    <button mat-button color="primary"
+                        (click)="onGetApplications(selectedJob._id,'Approved')">Approved</button>
+                    <button mat-button color="primary"
+                        (click)="onGetApplications(selectedJob._id,'Rejected')">Rejected</button>
                 </div>
             </mat-card>
         </div>
@@ -51,14 +53,24 @@
                                 <mat-card-subtitle>{{application.jobseekerId?.location}}</mat-card-subtitle>
                             </mat-card-header>
                             <mat-card-actions>
-                                <button mat-button class="mat-button" (click)="onChangeApplicationStatus(application._id,'Approved')" *ngIf="application.status!=='Approved'"><mat-icon
+                                <button mat-button class="mat-button"
+                                    (click)="onChangeApplicationStatus(application._id,'Approved')"
+                                    *ngIf="application.status!=='Approved'"><mat-icon
                                         style="color: rgb(20, 113, 20);">check_circle</mat-icon></button>
-                                <button mat-button class="mat-button" (click)="onChangeApplicationStatus(application._id,'Rejected')" *ngIf="application.status!=='Rejected'"><mat-icon color="warn">cancel</mat-icon></button>
-                                <button mat-button color="primary" (click)="onViewResume(application.resume)">View Resume</button>
+                                <button mat-button class="mat-button"
+                                    (click)="onChangeApplicationStatus(application._id,'Rejected')"
+                                    *ngIf="application.status!=='Rejected'"><mat-icon
+                                        color="warn">cancel</mat-icon></button>
+                                <button mat-button color="primary" (click)="onViewResume(application.resume)">View
+                                    Resume</button>
+                                <button mat-button *ngIf="application.status=='Approved'" (click)="messageCandidate(application.jobseekerId?._id)">
+                                    <mat-icon>message</mat-icon>
+                                </button>
                             </mat-card-actions>
                         </div>
                         <div>
-                            <img src={{application.jobseekerId?.image}} alt="" mat-card-avatar class="example-header-image">
+                            <img src={{application.jobseekerId?.image}} alt="" mat-card-avatar
+                                class="example-header-image">
                         </div>
                     </div>
                 </mat-card>

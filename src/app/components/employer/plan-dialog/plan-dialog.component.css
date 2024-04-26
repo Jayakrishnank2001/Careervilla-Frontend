@@ -1,0 +1,28 @@
+.plan-card {
+    max-width: 450px;
+    padding: 16px;   
+    background-image: linear-gradient(to right, #e5e1f6, #b0a5fb);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .plan-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-details strong {
+    color: #422cd4; 
+  }
+  
+  .mat-card-actions {
+    padding-top: 16px;
+  }
+
+  span{
+    margin-bottom: 10px;
+    font-size: medium;
+  }
+
+  mat-card-actions{
+    justify-content: center;
+  }

@@ -4,18 +4,19 @@
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="search-criteria">
         <mat-form-field class="search-field" appearance="outline">
             <mat-label>Search for a company</mat-label>
-            <input matInput placeholder="">
+            <input matInput [(ngModel)]="searchQuery">
             <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">search</mat-icon>
         </mat-form-field>
-        <button mat-raised-button class="search-button">Search</button>
+        <button mat-raised-button class="search-button" (click)="onSearch()" type="submit">Search</button>
     </div>
     <mat-divider></mat-divider>
 </mat-card>
 
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
-    <div class="job-list" fxFlex="100" fxFlex.xs="100%">
+    <div class="company-list" fxFlex="100" fxFlex.xs="100%" infiniteScroll [infiniteScrollDistance]="1"
+        [infiniteScrollUpDistance]="1" [scrollWindow]="true" (scrolled)="onScrollDown()">
         <ng-container *ngFor="let company of companies">
-            <mat-card class="job-card" style="cursor:pointer;" (click)="companyDetails(company._id)">
+            <mat-card class="company-card" style="cursor:pointer;" (click)="companyDetails(company._id)">
                 <mat-card-header class="header-container">
                     <div>
                         <img src={{company.logo}} alt="" mat-card-avatar class="example-header-image">

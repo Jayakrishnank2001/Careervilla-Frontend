@@ -38,6 +38,14 @@
                 </mat-card-content>
             </mat-card>
         </ng-container>
+        <div class="pagination-controls" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
+            <button mat-mini-fab color="primary" style="margin-right: 6px;" (click)="goToPreviousPage()" [disabled]="!hasPreviousPages">
+                <mat-icon>navigate_before</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" style="margin-left: 6px;" (click)="goToNextPage()" [disabled]="!hasMorePages">
+                <mat-icon>navigate_next</mat-icon>
+            </button>
+        </div>
     </div>
     <div class="job-list2" *ngIf="isSmallScreen">
         <mat-card class="selected-job">

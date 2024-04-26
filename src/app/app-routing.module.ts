@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JobseekerLoginComponent } from './components/jobseeker/jobseeker-login/jobseeker-login.component';
 
 const routes: Routes = [
   {

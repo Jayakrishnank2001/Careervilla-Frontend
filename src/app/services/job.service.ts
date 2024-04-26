@@ -5,34 +5,34 @@ import { HttpClient } from '@angular/common/http';
 import { IRes } from '../models/common';
 
 @Injectable()
-  
+
 export class JobService {
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  baseURL=environments.baseURL
+  baseURL = environments.baseURL
 
-  saveJob(jobData: IJobRes,employerId:string) {
-    return this._http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`,jobData)
+  saveJob(jobData: IJobRes, employerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`, jobData)
   }
 
-  getJobs(companyId?:string) {
-    return this._http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs?companyId=${companyId}`)
+  getJobs(page: number, pageSize: number, companyId?: string) {
+    return this._http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs?companyId=${companyId}&page=${page}&pageSize=${pageSize}`)
   }
 
   getJobDetails(jobId: string) {
     return this._http.get<IJobRes>(`${this.baseURL}/employer/get-jobDetails/${jobId}`)
   }
 
-  updateJob(jobData: IJobRes, jobId: string, addressId:string) {
-    return this._http.put<IRes>(`${this.baseURL}/employer/updateJob`,{jobData,jobId,addressId})
+  updateJob(jobData: IJobRes, jobId: string, addressId: string) {
+    return this._http.put<IRes>(`${this.baseURL}/employer/updateJob`, { jobData, jobId, addressId })
   }
 
   updateJobStatus(jobId: string) {
-    return this._http.patch<IRes>(`${this.baseURL}/employer/update-jobStatus/${jobId}`,{})
+    return this._http.patch<IRes>(`${this.baseURL}/employer/update-jobStatus/${jobId}`, {})
   }
 
-  
+
 
 
 }

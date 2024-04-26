@@ -16,14 +16,25 @@
       <input type="file" accept="image/*" #fileInput style="display: none;" (change)="onFileSelected($event)">
       <label class="avatar-container" (click)="openFileInput(fileInput)">
         <img src={{userData.image}} alt="" mat-card-avatar class="example-header-image" *ngIf="userData.image">
-        <img src="../../../../assets/images/user-default-profile-pic.jpg" alt="" mat-card-avatar class="example-header-image" *ngIf="!userData.image">
+        <img src="../../../../assets/images/user-default-profile-pic.jpg" alt="" mat-card-avatar
+          class="example-header-image" *ngIf="!userData.image">
         <mat-icon class="camera-icon">camera_alt</mat-icon>
       </label>
     </div>
   </mat-card-header>
   <br>
-  <button mat-raised-button *ngIf="!userData.companyId" style="background-color: #644DFF; color: white;" (click)="onAddCompany()">Add
-    Company</button>
+  <div style="text-align: center;">
+    <br>
+    <button mat-raised-button *ngIf="userData.isSubscribed" (click)="getPlanDetails()"
+      style="background-color: #644DFF; color: white; width: 90%;">See Plan Details</button>
+  </div>
+  <div style="text-align: center;">
+    <br>
+    <button mat-raised-button *ngIf="!userData.companyId" style="background-color: #644DFF; color: white; width: 90%;"
+      (click)="onAddCompany()">Add
+      Company
+    </button>
+  </div>
   <div class="employer-profile" *ngIf="userData.companyId">
     <div class="details-section">
       <mat-card-content>
@@ -37,8 +48,8 @@
           </li>
           <li class="detail-item">
             <span class="detail-label">Website </span>
-            <mat-card-subtitle><a class="detail-value"
-                href="https://{{userData.companyId.website}}" target="_blank">{{userData.companyId.website}}</a> </mat-card-subtitle>
+            <mat-card-subtitle><a class="detail-value" href="https://{{userData.companyId.website}}"
+                target="_blank">{{userData.companyId.website}}</a> </mat-card-subtitle>
           </li>
           <li class="detail-item">
             <span class="detail-label">Company Size </span>
@@ -80,15 +91,18 @@
       <input type="file" accept="image/*" #companyLogo style="display: none;" (change)="onCompanyPhoto($event)">
       <label (click)="openFileInput(companyLogo)" style="cursor: pointer;">
         <img src={{companyDetails.logo}} alt="" mat-card-avatar class="company-image" *ngIf="companyDetails.logo">
-        <img src="../../../../assets/images/company-defaultLogo.png" alt="" mat-card-avatar class="company-image" *ngIf="!companyDetails.logo">
+        <img src="../../../../assets/images/company-defaultLogo.png" alt="" mat-card-avatar class="company-image"
+          *ngIf="!companyDetails.logo">
         <mat-card-subtitle *ngIf="companyDetails.logo" style="margin-left: -4%;">Change Logo</mat-card-subtitle>
         <mat-card-subtitle *ngIf="!companyDetails.logo" style="margin-left: 7px;">Add Logo</mat-card-subtitle>
       </label>
     </div>
   </div>
-  <button mat-raised-button style="background-color: #644DFF; color: white;" *ngIf="userData.companyId" (click)="onEditCompany()">Edit Company Details</button>
+  <button mat-raised-button style="background-color: #644DFF; color: white;" *ngIf="userData.companyId"
+    (click)="onEditCompany()">Edit Company Details</button>
   <br>
-  <button mat-raised-button style="background-color: #644DFF; color: white;" *ngIf="userData.companyId" (click)="onAddCompany()">Add New Company</button>
+  <button mat-raised-button style="background-color: #644DFF; color: white;" *ngIf="userData.companyId"
+    (click)="onAddCompany()">Add New Company</button>
 
 </mat-card>
 <br>

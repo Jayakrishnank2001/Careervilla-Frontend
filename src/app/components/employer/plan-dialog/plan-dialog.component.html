@@ -1,0 +1,21 @@
+<div class="plan-dialog">
+    <mat-card class="plan-card">
+        <mat-card-header>
+            <mat-card-title>Subscription Plan Details</mat-card-title>
+            <mat-card-subtitle>{{employerDetails.planId?.planName }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <br>
+        <mat-card-content>
+            <div class="plan-details">
+                <span><strong>Plan Name:</strong> {{ employerDetails.planId?.planName }}</span>
+                <span><strong>Amount:</strong> {{ employerDetails.planId?.amount | currency }}</span>
+                <span><strong>Duration:</strong> {{ employerDetails.planId?.duration }}</span>
+                <span><strong>Expiry Date:</strong> {{ employerDetails.planExpiresAt | date }}</span>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="closeDialog()" color="primary">Close</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
