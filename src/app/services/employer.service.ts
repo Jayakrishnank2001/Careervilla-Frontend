@@ -40,7 +40,7 @@ export class EmployerService {
     return this._http.post<IRes>(`${this.baseURL}/employer/resendOTP`, {})
   }
 
-  getEmployerDetails(employerId: String): Observable<IEmployerRes> {
+  getEmployerDetails(employerId: string): Observable<IEmployerRes> {
     return this._http.get<IEmployerRes>(`${this.baseURL}/employer/getDetails/${employerId}`)
   }
 

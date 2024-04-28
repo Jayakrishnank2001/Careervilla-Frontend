@@ -34,6 +34,26 @@
     height: 220px;
     margin: 130px 0px 0px 0px;
 }
+
+.single-message-card {
+  height: 570px;
+  margin-left: 35px;
+  border: 1px solid #ccc;
+  border-radius: 0.8em;
+}
+
+.jobTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.example-header-image {
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  margin: 10px 10px 10px 10px;
+}
   
 @media screen and (max-width:600px) {
   .message {

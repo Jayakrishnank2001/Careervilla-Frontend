@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IJobRes } from 'src/app/models/job';
 import { AuthService } from 'src/app/services/auth.service';
 import { JobService } from 'src/app/services/job.service';
@@ -29,7 +29,8 @@ export class JobseekerJobDetailsComponent implements OnInit {
     private _jobseekerService: JobseekerService,
     private _snackBar: MatSnackBar,
     private _dialog: MatDialog,
-    private _reportedJobService: ReportedJobService) { }
+    private _reportedJobService: ReportedJobService,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this._route.queryParams.subscribe(params => {
@@ -134,6 +135,10 @@ export class JobseekerJobDetailsComponent implements OnInit {
         }
       })
     }
+  }
+
+  goCompanyPage(companyId: string | undefined): void{
+    this._router.navigate(['/jobseeker/company'], { queryParams: { companyId: companyId } })
   }
 
 

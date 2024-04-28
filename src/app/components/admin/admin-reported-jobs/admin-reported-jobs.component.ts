@@ -14,7 +14,7 @@ export class AdminReportedJobsComponent implements OnInit {
 
   reportedJobs: IReportedJob[] = []
   currPage = 1
-  itemsPerPage = 10
+  itemsPerPage = 6
   searchQuery: string = ''
   reportedJobCount = 0
 
@@ -31,7 +31,6 @@ export class AdminReportedJobsComponent implements OnInit {
         if (res.data !== null) {
           this.reportedJobs = res.data.reportedJobs
           this.reportedJobCount = res.data.reportedJobsCount
-          console.log(this.reportedJobs, this.reportedJobCount)
         }
       }
     })

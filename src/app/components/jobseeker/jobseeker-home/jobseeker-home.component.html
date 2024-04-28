@@ -3,28 +3,28 @@
 <mat-card class="search-bar-card">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="search-criteria">
       <mat-form-field class="search-field" appearance="outline">
-        <mat-label>Company Name/Job Title</mat-label>
-        <input matInput placeholder="">
+        <mat-label>Job Title</mat-label>
+        <input matInput [(ngModel)]="searchQuery.jobTitle">
         <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">search</mat-icon>
       </mat-form-field>
   
       <mat-form-field class="search-field" appearance="outline">
         <mat-label>Location</mat-label>
-        <input matInput placeholder="">
+        <input matInput [(ngModel)]="searchQuery.location">
         <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">place</mat-icon>
       </mat-form-field>
   
       <mat-form-field class="search-field" appearance="outline" *ngIf="!(isSmallScreen | async)">
         <mat-label>Experience</mat-label>
-        <mat-select>
-          <mat-option value="0-1">0-1 years</mat-option>
-          <mat-option value="1-3">1-3 years</mat-option>
-          <mat-option value="3-5">3-5 years</mat-option>
-          <mat-option value="5+">5+ years</mat-option>
+        <mat-select [(ngModel)]="searchQuery.experience">
+          <mat-option value="0-1">0-2 years</mat-option>
+          <mat-option value="1-3">2-5 years</mat-option>
+          <mat-option value="3-5">5-10 years</mat-option>
+          <mat-option value="5+">10+ years</mat-option>
         </mat-select>
         <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">date_range</mat-icon>
       </mat-form-field>
-      <button mat-raised-button class="search-button">Search</button>
+      <button mat-raised-button class="search-button" (click)="searchJobs()">Search</button>
     </div>
 </mat-card>
   

@@ -1,0 +1,48 @@
+<div class="main-div">
+    <app-admin-layout></app-admin-layout>
+    <app-admin-table (search)="onSearchIndustry($event)" (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="industriesCount">
+
+        <div class="btn-div">
+            <button mat-raised-button color="primary" class="createIndustry-btn">ADD NEW INDUSTRY</button>
+        </div>
+
+        <mat-table [dataSource]="industries" class="mat-elevation-z8">
+            <ng-container matColumnDef="IndustryId">
+                <mat-header-cell *matHeaderCellDef>Industry ID</mat-header-cell>
+                <mat-cell *matCellDef="let industry">{{industry._id}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="industryName">
+                <mat-header-cell *matHeaderCellDef>Industry Name</mat-header-cell>
+                <mat-cell *matCellDef="let industry">{{industry.industryName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dateAdded">
+                <mat-header-cell *matHeaderCellDef>Date Added</mat-header-cell>
+                <mat-cell *matCellDef="let industry">{{ industry.dateAdded | date: 'shortDate' }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let industry"
+                    [style.color]="industry.status === 'Active' ? 'rgb(244, 67, 54)' : 'rgb(63, 81, 181)'">
+                    {{ industry.status }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" class="heading">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let industry">
+
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row
+                *matHeaderRowDef="['IndustryId', 'industryName', 'dateAdded', 'status', 'actions']"></mat-header-row>
+            <mat-row
+                *matRowDef="let row; columns: ['IndustryId', 'industryName', 'dateAdded', 'status', 'actions']"></mat-row>
+        </mat-table>
+
+    </app-admin-table>
+</div>

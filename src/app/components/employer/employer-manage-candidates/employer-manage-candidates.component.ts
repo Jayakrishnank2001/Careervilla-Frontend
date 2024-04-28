@@ -83,8 +83,8 @@ export class EmployerManageCandidatesComponent implements OnInit {
       })
   }
 
-  messageCandidate(jobseekerId: string | undefined): void {
-    const queryParams = { jobseekerId: jobseekerId }
+  messageCandidate(jobseekerId: string | undefined,firstName:string | undefined,lastName:string | undefined,image:string | undefined): void {
+    const queryParams = { jobseekerId: jobseekerId,firstName:firstName,lastName:lastName,image:image }
     this._router.navigate(['/employer/messages'], { queryParams })
   }
 

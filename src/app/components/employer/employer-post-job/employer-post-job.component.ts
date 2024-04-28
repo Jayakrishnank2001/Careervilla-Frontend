@@ -28,36 +28,36 @@ export class EmployerPostJobComponent implements OnInit {
   cities: string[] = []
   selectedCountry!: string;
   employer: IEmployerRes = {}
-
+  employerId!: string | null
   isSubmitted: boolean = false
   form!: FormGroup
-  employerDetails$ = this.store.pipe(select(selectEmployerDetails))
+  employerDetails$ = this._store.pipe(select(selectEmployerDetails))
+  companyName!: string | undefined
+
+  constructor(private _breakpointObserver: BreakpointObserver,
+    private _locationService: LocationService,
+    private readonly _formBuilder: FormBuilder,
+    private _store: Store,
+    private _authService: AuthService,
+    private _employerService: EmployerService,
+    private _router: Router,
+    private _jobService: JobService,
+    private _snackbar: MatSnackBar) {
+
+  }
 
 
-  constructor(private breakpointObserver: BreakpointObserver,
-    private locationService: LocationService,
-    private readonly formBuilder: FormBuilder,
-    private store: Store,
-    private authService: AuthService,
-    private employerService: EmployerService,
-    private router: Router,
-    private jobService: JobService,
-    private snackbar: MatSnackBar) { 
-    
-    }
-  
 
-
-  isSmallScreen = this.breakpointObserver.observe('(max-width: 600px)').pipe(
+  isSmallScreen = this._breakpointObserver.observe('(max-width: 600px)').pipe(
     map(result => result.matches)
   );
 
   ngOnInit(): void {
-    this.getEmployerData()
-    this.countries = this.locationService.getCountries()
-    this.form = this.formBuilder.group({
+    this.employerId = this._authService.extractUserIdFromToken('employerToken')
+    this.getEmployerDetails()
+    this.form = this._formBuilder.group({
       jobTitle: ['', Validators.required],
-      companyName: ['', Validators.required],
+      companyName: [{value:this.companyName,disabled:true},Validators.required],
       jobDescription: ['', Validators.required],
       email: ['', Validators.required],
       jobType: ['', Validators.required],
@@ -72,15 +72,19 @@ export class EmployerPostJobComponent implements OnInit {
       state: ['', Validators.required],
       city: ['', Validators.required]
     })
+    this.countries = this._locationService.getCountries()
   }
 
-  getEmployerData(): void{
-    const employerId = this.authService.extractUserIdFromToken('employerToken')
-    if(employerId)
-      this.employerService.getEmployerDetails(employerId).subscribe({
+  getEmployerDetails(): void {
+    if (this.employerId)
+      this._employerService.getEmployerDetails(this.employerId).subscribe({
         next: (res) => {
-          this.employer = res
-      }})
+          this.companyName = res.companyId?.companyName
+          this.form.patchValue({
+            companyName:this.companyName
+          })
+        }
+      })
   }
 
   getCountryCode(countryName: string): string | undefined {
@@ -100,7 +104,7 @@ export class EmployerPostJobComponent implements OnInit {
     const countryCode = this.getCountryCode(countryName);
     if (countryCode) {
       this.selectedCountry = countryCode;
-      this.states = this.locationService.getStates(countryCode);
+      this.states = this._locationService.getStates(countryCode);
     }
   }
 
@@ -108,17 +112,16 @@ export class EmployerPostJobComponent implements OnInit {
     const stateName = event.value;
     const stateCode = this.getStateCode(countryCode, stateName);
     if (stateCode) {
-      this.cities = this.locationService.getCities(countryCode, stateCode);
+      this.cities = this._locationService.getCities(countryCode, stateCode);
     }
   }
 
-  resetForm():void {
+  resetForm(): void {
     this.form.reset()
   }
 
   onSubmit(): void {
-    const employerId = this.authService.extractUserIdFromToken('employerToken')
-    if (employerId && this.form.valid) {
+    if (this.employerId && this.form.valid) {
       void Swal.fire({
         title: 'Do you want to Post this Job ?',
         icon: 'warning',
@@ -130,26 +133,28 @@ export class EmployerPostJobComponent implements OnInit {
           const data: IJobRes = this.form.getRawValue()
           const dataAsString: string = JSON.stringify(data);
           localStorage.setItem('postJobDetails', dataAsString)
-          this.employerService.getEmployerDetails(employerId).subscribe({
-            next: (res) => {
-              if (res.isSubscribed == false || (res.planExpiresAt && new Date(res.planExpiresAt) < new Date())) {
-                void this.router.navigate(['/employer/subscription'])
-              } else {
-                this.jobService.saveJob(data,employerId).subscribe({
-                  next: (res) => {
-                    if (res.data.success == true) {
-                      this.resetForm()
-                      void this.router.navigate(['/employer/manage-jobs'])
-                      this.snackbar.open('Job Posted Successfully', 'Close', {
-                        duration: 5000,
-                        verticalPosition: 'top',
-                      })
-                    }
-                  }
-                })
+          if (this.employerId)
+            this._employerService.getEmployerDetails(this.employerId).subscribe({
+              next: (res) => {
+                if (res.isSubscribed == false || (res.planExpiresAt && new Date(res.planExpiresAt) < new Date())) {
+                  void this._router.navigate(['/employer/subscription'])
+                } else {
+                  if (this.employerId)
+                    this._jobService.saveJob(data, this.employerId).subscribe({
+                      next: (res) => {
+                        if (res.data.success == true) {
+                          this.resetForm()
+                          void this._router.navigate(['/employer/manage-jobs'])
+                          this._snackbar.open('Job Posted Successfully', 'Close', {
+                            duration: 5000,
+                            verticalPosition: 'top',
+                          })
+                        }
+                      }
+                    })
+                }
               }
-            }
-          })
+            })
         }
       })
     }

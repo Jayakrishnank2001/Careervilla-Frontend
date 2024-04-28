@@ -10,6 +10,7 @@
       <a mat-list-item class="custom-list-item" routerLink="/admin/dashboard" [class.active]="isActive('/admin/dashboard')"><span class="options">DASHBOARD</span></a>
       <a mat-list-item class="custom-list-item" routerLink="/admin/jobseekers" [class.active]="isActive('/admin/jobseekers')"><span class="options">JOBSEEKERS</span></a>
       <a mat-list-item class="custom-list-item" routerLink="/admin/employers" [class.active]="isActive('/admin/employers')"><span class="options">EMPLOYERS</span></a>
+      <a mat-list-item class="custom-list-item" routerLink="/admin/industries" [class.active]="isActive('/admin/industries')"><span class="options">INDUSTRIES</span></a>
       <a mat-list-item class="custom-list-item" routerLink="/admin/reported-jobs" [class.active]="isActive('/admin/reported-jobs')"><span class="options">REPORTED JOBS</span></a>
       <a mat-list-item class="custom-list-item" routerLink="/admin/subscription-plans" [class.active]="isActive('/admin/subscription-plans')"><span class="options">SUBSCRIPTION PLAN</span></a>
     </mat-nav-list>
@@ -38,6 +39,9 @@
         </button>
         <button mat-menu-item routerLink="/admin/employers">
           <mat-icon>work</mat-icon> EMPLOYERS
+        </button>
+        <button mat-menu-item routerLink="/admin/industries">
+          <mat-icon>work</mat-icon> INDUSTRIES
         </button>
         <button mat-menu-item routerLink="/admin/reported-jobs">
           <mat-icon>error</mat-icon> REPORTED JOBS

@@ -14,6 +14,7 @@ import { AdminReportedJobsComponent } from './admin-reported-jobs/admin-reported
 import { AdminPlansDialogComponent } from './admin-plans-dialog/admin-plans-dialog.component';
 import { AdminService } from "src/app/services/admin.service";
 import { AdminReportedDialogComponent } from './admin-reported-dialog/admin-reported-dialog.component';
+import { AdminIndustriesComponent } from './admin-industries/admin-industries.component';
 
 @NgModule({
     declarations:[
@@ -26,6 +27,7 @@ import { AdminReportedDialogComponent } from './admin-reported-dialog/admin-repo
         AdminReportedJobsComponent,
         AdminPlansDialogComponent,
         AdminReportedDialogComponent,
+        AdminIndustriesComponent,
         
     ],
     imports:[

@@ -18,6 +18,7 @@ import { LocationService } from './services/location.service';
 import { JobService } from './services/job.service';
 import { ReportedJobService } from './services/reported-job.service';
 import { CompanyService } from './services/company.service';
+import { IndustryService } from './services/industry.service';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -41,6 +42,7 @@ import { CompanyService } from './services/company.service';
     CompanyService,
     JobService,
     ReportedJobService,
+    IndustryService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
   ],

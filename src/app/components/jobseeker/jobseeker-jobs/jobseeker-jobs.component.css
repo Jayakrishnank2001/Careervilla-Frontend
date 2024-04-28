@@ -51,11 +51,33 @@ button.search-button {
   border: 1px solid #ccc;
 }
 
+.job-card.selected {
+  border: 1.6px solid #8877fc; 
+}
+
 .truncate-text {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.job-header{
+  display: flex;
+  flex-direction: column;
+}
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.example-header-image {
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  border-radius: 1em;
 }
 
 mat-card-actions button.mat-button {
@@ -113,6 +135,10 @@ p {
   position: relative;
   text-align: center;
   justify-content: space-between;
+}
+
+mat-card-title{
+  cursor: pointer;
 }
 
 @media screen and (max-width:600px) {

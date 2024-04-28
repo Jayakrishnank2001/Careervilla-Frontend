@@ -3,17 +3,17 @@
 <mat-card class="search-bar-card">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="search-criteria">
         <mat-form-field class="search-field" appearance="outline">
-            <mat-label>Company Name/Job Title</mat-label>
-            <input matInput placeholder="">
+            <mat-label>Job Title</mat-label>
+            <input matInput [(ngModel)]="searchQuery.jobTitle">
             <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">search</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="search-field" appearance="outline">
             <mat-label>Location</mat-label>
-            <input matInput placeholder="">
+            <input matInput [(ngModel)]="searchQuery.location">
             <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">place</mat-icon>
         </mat-form-field>
-        <button mat-raised-button class="search-button">Search</button>
+        <button mat-raised-button class="search-button" (click)="getJobs()">Search</button>
     </div>
     <mat-divider></mat-divider>
 </mat-card>
@@ -21,11 +21,17 @@
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
     <div class="job-list" fxFlex="100" fxFlex.xs="100%">
         <ng-container *ngFor="let job of jobs">
-            <mat-card class="job-card" (click)="selectedJob(job)" style="cursor:pointer;">
-                <mat-card-header>
+            <mat-card class="job-card" (click)="selectedJob(job)" [ngClass]="{'selected': selectJob._id === job._id}"
+                style="cursor:pointer;">
+                <mat-card-header class="job-header">
                     <mat-card-title>{{job.jobTitle}}</mat-card-title>
-                    <mat-card-subtitle>{{job.companyId?.companyName}}</mat-card-subtitle>
-                    <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>
+                    <div class="logo">
+                        <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
+                        <mat-card-subtitle (click)="goCompanyPage(job.companyId?._id)">{{job.companyId?.companyName}}</mat-card-subtitle>
+                    </div>
+                    <div style="margin-top: -10px;">
+                        <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>
+                    </div>
                 </mat-card-header>
                 <mat-card-actions>
                     <button mat-button class="mat-button">{{job.salary}}</button>
@@ -39,27 +45,36 @@
             </mat-card>
         </ng-container>
         <div class="pagination-controls" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px">
-            <button mat-mini-fab color="primary" style="margin-right: 6px;" (click)="goToPreviousPage()" [disabled]="!hasPreviousPages">
+            <button mat-mini-fab color="primary" style="margin-right: 6px;" (click)="goToPreviousPage()"
+                [disabled]="!hasPreviousPages">
                 <mat-icon>navigate_before</mat-icon>
             </button>
-            <button mat-mini-fab color="primary" style="margin-left: 6px;" (click)="goToNextPage()" [disabled]="!hasMorePages">
+            <button mat-mini-fab color="primary" style="margin-left: 6px;" (click)="goToNextPage()"
+                [disabled]="!hasMorePages">
                 <mat-icon>navigate_next</mat-icon>
             </button>
         </div>
     </div>
     <div class="job-list2" *ngIf="isSmallScreen">
         <mat-card class="selected-job">
-            <mat-card-header>
-                <mat-card-title>{{selectJob.jobTitle}}</mat-card-title>
-                <mat-card-subtitle>{{selectJob.companyId?.companyName}}</mat-card-subtitle>
-                <mat-card-subtitle>{{selectJob.addressId?.city}}, {{selectJob.addressId?.state}}</mat-card-subtitle>
+            <mat-card-header class="job-header">
+                <mat-card-title (click)="jobDetails(selectJob._id)">{{selectJob.jobTitle}}</mat-card-title>
+                <div class="logo">
+                    <img src={{selectJob.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
+                    <mat-card-subtitle (click)="goCompanyPage(selectJob.companyId?._id)" style="cursor:pointer;">{{selectJob.companyId?.companyName}}</mat-card-subtitle>
+                </div>
+                <div style="margin-top: -10px;">
+                    <mat-card-subtitle>{{selectJob.addressId?.city}}, {{selectJob.addressId?.state}}</mat-card-subtitle>
+                </div>
             </mat-card-header>
             <mat-card-actions>
                 <button mat-button>{{selectJob.salary}}</button>
             </mat-card-actions>
             <mat-card-actions>
-                <button mat-raised-button class="apply-button" (click)="onApplyJob(selectJob._id)" *ngIf="!appliedJobs.includes(selectJob._id)">Apply</button>
-                <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(selectJob._id)" style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
+                <button mat-raised-button class="apply-button" (click)="onApplyJob(selectJob._id)"
+                    *ngIf="!appliedJobs.includes(selectJob._id)">Apply</button>
+                <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(selectJob._id)"
+                    style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
                 <button mat-raised-button class="save-button" (click)="onUnsaveJob(selectJob._id)"
                     *ngIf="isJobSaved(selectJob._id)"><span class="icon-wrapper">
                         <mat-icon>bookmark</mat-icon>

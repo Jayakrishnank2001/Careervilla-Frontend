@@ -37,8 +37,8 @@ export class EmployerSubscriptionComponent implements OnInit {
   getPlans(): void {
     this.subscriptionPlanService.getAllPlans('employer').subscribe({
       next: (res) => {
-        if (res !== null) {
-          this.plans = res
+        if (res.data !== null) {
+          this.plans = res.data?.plans
         }
       }
     })

@@ -63,7 +63,8 @@
                                         color="warn">cancel</mat-icon></button>
                                 <button mat-button color="primary" (click)="onViewResume(application.resume)">View
                                     Resume</button>
-                                <button mat-button *ngIf="application.status=='Approved'" (click)="messageCandidate(application.jobseekerId?._id)">
+                                <button mat-button *ngIf="application.status=='Approved'"
+                                    (click)="messageCandidate(application.jobseekerId?._id,application.jobseekerId?.firstName,application.jobseekerId?.lastName,application.jobseekerId?.image)">
                                     <mat-icon>message</mat-icon>
                                 </button>
                             </mat-card-actions>

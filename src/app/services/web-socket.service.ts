@@ -14,11 +14,12 @@ export class WebSocketService {
 
   sendMessage(senderId: string, receiverId: string, message: string, role: 'jobseeker' | 'employer') {
     const endpoint = role == 'jobseeker' ? 'jobseeker/send-message' : 'employer/send-message'
-    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/${endpoint}`, { senderId, receiverId, message })
+    return this._http.post<IResponse>(`${this.baseURL}/${endpoint}`, { senderId, receiverId, message })
   }
 
-  getMessages(senderId: string, receiverId: string) {
-    return this._http.get<IMessage[]>(`${this.baseURL}/jobseeker/messages?senderId=${senderId}&receiverId=${receiverId}`)
+  getMessages(senderId: string, receiverId: string, role: 'jobseeker' | 'employer') {
+    const endpoint = role == 'jobseeker' ? 'jobseeker/messages' : 'employer/messages'
+    return this._http.get<IMessage[]>(`${this.baseURL}/${endpoint}?senderId=${senderId}&receiverId=${receiverId}`)
   }
 
 

@@ -13,7 +13,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./admin-subscription.component.css']
 })
 export class AdminSubscriptionComponent implements OnInit {
+
   plans: ISubscriptionRes[] = []
+  currPage = 1
+  itemsPerPage = 5
+  searchQuery: string = ''
+  plansCount = 0
 
   constructor(private readonly _subscriptionPlanService: SubscriptionPlanService,
     private _dialog: MatDialog,
@@ -24,13 +29,30 @@ export class AdminSubscriptionComponent implements OnInit {
   }
 
   getPlans(): void {
-    this._subscriptionPlanService.getAllPlans('admin').subscribe({
+    this._subscriptionPlanService.getAllPlans('admin', this.currPage, this.itemsPerPage, this.searchQuery).subscribe({
       next: (res) => {
-        if (res !== null) {
-          this.plans = res
+        if (res.data !== null) {
+          this.plans = res.data?.plans
+          this.plansCount = res.data.plansCount
         }
       }
     })
+  }
+
+  onSearchPlan(searchQuery: string): void {
+    this.searchQuery = searchQuery
+    this.getPlans()
+  }
+
+  onPageChange(page: number): void {
+    this.currPage = page
+    this.getPlans()
+  }
+
+  onItemsPerPageChange(itemsPerPage: number): void {
+    this.itemsPerPage = itemsPerPage
+    this.currPage = 1
+    this.getPlans()
   }
 
   onDeletePlan(planId: string): void {
@@ -48,7 +70,7 @@ export class AdminSubscriptionComponent implements OnInit {
             this.ngOnInit()
             this._snackBar.open('Plan deleted successfully', 'Close', {
               duration: 5000,
-              verticalPosition:'top'
+              verticalPosition: 'top'
             })
           }
         })
@@ -77,12 +99,12 @@ export class AdminSubscriptionComponent implements OnInit {
               if (res.data.message == 'Plan created successfully') {
                 this._snackBar.open('New plan created', 'Close', {
                   duration: 5000,
-                  verticalPosition:'top'
+                  verticalPosition: 'top'
                 })
               } else {
                 this._snackBar.open('Plan already exists', 'Close', {
                   duration: 5000,
-                  verticalPosition:'top'
+                  verticalPosition: 'top'
                 })
               }
             }
@@ -95,7 +117,7 @@ export class AdminSubscriptionComponent implements OnInit {
               if (res.data.message == 'Plan updated successfully') {
                 this._snackBar.open('Plan updated successfully', 'Close', {
                   duration: 5000,
-                  verticalPosition:'top'
+                  verticalPosition: 'top'
                 })
               }
             }

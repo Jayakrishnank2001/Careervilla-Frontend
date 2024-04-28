@@ -7,49 +7,56 @@ import { AdminEmployersComponent } from "./admin-employers/admin-employers.compo
 import { AdminSubscriptionComponent } from "./admin-subscription/admin-subscription.component";
 import { AdminReportedJobsComponent } from "./admin-reported-jobs/admin-reported-jobs.component";
 import { AuthGuard } from "src/app/guards/auth.guard";
+import { AdminIndustriesComponent } from "./admin-industries/admin-industries.component";
 
 const routes: Routes = [
     {
-        path:'login',
-        title:'Careervilla | Admin Login',
+        path: 'login',
+        title: 'Careervilla | Admin Login',
         component: AdminLoginComponent
     },
     {
-        path:'dashboard',
-        title:'Careervilla | Dashboard',
+        path: 'dashboard',
+        title: 'Careervilla | Dashboard',
         component: AdminDashboardComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
-        path:'jobseekers',
-        title:'Careervilla | Jobseekers',
+        path: 'jobseekers',
+        title: 'Careervilla | Jobseekers',
         component: AdminJobseekersComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'employers',
         title: 'Carrervilla | Employers',
         component: AdminEmployersComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'reported-jobs',
         title: 'Careervilla | Reported Jobs',
         component: AdminReportedJobsComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
 
     },
     {
         path: 'subscription-plans',
         title: 'Careervilla | Subscription Plans',
         component: AdminSubscriptionComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'industries',
+        title: 'Careervilla | Industries',
+        component: AdminIndustriesComponent,
+        canActivate: [AuthGuard]
     }
 ]
 
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
-    exports:[RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-    
-export class AdminRoutingModule{}
+
+export class AdminRoutingModule { }

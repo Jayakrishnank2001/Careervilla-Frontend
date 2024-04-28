@@ -16,6 +16,12 @@
     flex: 1;
     margin-bottom: 10px;
   }
+
+  .company-input-field {
+    flex: 1;
+    margin-bottom: 10px;
+    opacity: 1; 
+  }
   
   button {
     width: 30%;

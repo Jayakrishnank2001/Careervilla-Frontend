@@ -10,4 +10,9 @@ export interface IDialogData {
     editMode: boolean;
     planId: string;
     plans: ISubscriptionRes[];
-  }
+}
+  
+export interface IPlansAndCount {
+    plans: ISubscriptionRes[],
+    plansCount: number
+}

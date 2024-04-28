@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class AdminEmployersComponent implements OnInit {
   employers: IEmployerRes[] = []
   currPage = 1
-  itemsPerPage = 10
+  itemsPerPage = 6
   searchQuery: string = ''
   employersCount = 0
 

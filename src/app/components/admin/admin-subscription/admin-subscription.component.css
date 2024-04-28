@@ -1,34 +1,31 @@
 .main-div {
     display: flex;
     background-color: #242136; 
-    height: 100vh; /* Adjust height as needed */
+    height: 100vh;
   }
 
-  mat-table{
+  .mat-elevation-z8{
     width: 1150px;
+    height: 100%;
     background-color: #1D1A2B;
-    margin-top: 20px;
     margin-left: 50px;
   }
 
-  .createPlan-btn{
-     margin-top: 90px;
-     margin-left: 50px;
-  }
+  .createPlan-btn {
+    margin: 0px 0px 10px 50px;
+}
 
-  mat-header-cell{
+.btn-div {
+    text-align: start;
+}
+
+mat-header-cell,
+mat-cell {
     height: 5em;
     border-color: rgb(72, 71, 71);
     color: rgb(187, 187, 187);
     justify-content: center;
-  }
-
-  mat-cell{
-    height: 5em;
-    border-color: rgb(72, 71, 71);
-    color: rgb(187, 187, 187);
-    justify-content: center;
-  }
+}
 
   .delete-icon,
   .edit-icon{

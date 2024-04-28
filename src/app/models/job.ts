@@ -32,3 +32,9 @@ export interface IJobRes {
         country?: string
     };
 }
+
+export interface JobSearchQuery {
+    jobTitle?: string;
+    location?: string;
+    experience?: string;
+  }

@@ -4,7 +4,7 @@ mat-card {
     margin: 30px auto;
 }
 
-.jobTitle{
+.jobTitle {
     font-size: x-large;
 }
 
@@ -54,9 +54,27 @@ p {
     background-color: rgb(238, 238, 238);
 }
 
-@media screen and (max-width:600px){
-    mat-card{
+.job-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.example-header-image {
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    border-radius: 1em;
+}
+
+@media screen and (max-width:600px) {
+    mat-card {
         width: 95%;
     }
-    
+
 }

@@ -56,7 +56,7 @@ export class JobseekerMessagesComponent implements OnInit {
   getMessages(): void {
     console.log(this.jobseekerId,this.employerId)
     if (this.jobseekerId && this.employerId)
-      this._socketService.getMessages(this.jobseekerId, this.employerId).subscribe({
+      this._socketService.getMessages(this.jobseekerId, this.employerId,'jobseeker').subscribe({
         next: (res) => {
           this.messages = res
           console.log(this.messages)
