@@ -19,13 +19,7 @@
         <br>
         <mat-divider></mat-divider>
 
-        <div *ngIf="!selectedJob" class="image">
-            <img src="../../../../assets/images/4208395.jpg" alt="Welcome Image">
-            <h2>Discover top talent and build your dream team.</h2>
-            <h3>Ready to find your best candidates? Select a job!</h3>
-        </div>
-
-        <div class="selectedJob" *ngIf="selectedJob">
+        <div class="selectedJob">
             <mat-card class="job-title-card">
                 <div style="flex-grow: 1; margin-left: 5px;">
                     <mat-card-title>{{selectedJob.jobTitle}}</mat-card-title>
@@ -67,6 +61,7 @@
                                     (click)="messageCandidate(application.jobseekerId?._id,application.jobseekerId?.firstName,application.jobseekerId?.lastName,application.jobseekerId?.image)">
                                     <mat-icon>message</mat-icon>
                                 </button>
+                                <button mat-button *ngIf="application.status=='Rejected'" color="warn">Reason</button>
                             </mat-card-actions>
                         </div>
                         <div>

@@ -40,6 +40,7 @@ import { NotificationService } from "src/app/services/notification.service";
 import { EditJobDialogComponent } from "./edit-job-dialog/edit-job-dialog.component";
 import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
 import { PlanDialogComponent } from './plan-dialog/plan-dialog.component';
+import { RejectionReasonDialogComponent } from './rejection-reason-dialog/rejection-reason-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { PlanDialogComponent } from './plan-dialog/plan-dialog.component';
     EmployerNotificationsComponent,
     EditJobDialogComponent,
     CustomDatePipe,
-    PlanDialogComponent
+    PlanDialogComponent,
+    RejectionReasonDialogComponent
   ],
   imports: [
     EmployerRoutingModule,

@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { map } from 'rxjs';
 import { LocationService } from 'src/app/services/location.service';
@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 import { IJobRes } from 'src/app/models/job';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IEmployerRes } from 'src/app/models/employer';
+import { IIndustry } from 'src/app/models/industry';
+import { IndustryService } from 'src/app/services/industry.service';
 
 @Component({
   selector: 'app-employer-post-job',
@@ -33,18 +35,18 @@ export class EmployerPostJobComponent implements OnInit {
   form!: FormGroup
   employerDetails$ = this._store.pipe(select(selectEmployerDetails))
   companyName!: string | undefined
+  industries: IIndustry[] = []
 
-  constructor(private _breakpointObserver: BreakpointObserver,
-    private _locationService: LocationService,
-    private readonly _formBuilder: FormBuilder,
-    private _store: Store,
-    private _authService: AuthService,
-    private _employerService: EmployerService,
-    private _router: Router,
-    private _jobService: JobService,
-    private _snackbar: MatSnackBar) {
-
-  }
+  constructor(@Inject(BreakpointObserver) private _breakpointObserver: BreakpointObserver,
+    @Inject(LocationService) private _locationService: LocationService,
+    @Inject(FormBuilder) private readonly _formBuilder: FormBuilder,
+    @Inject(Store) private _store: Store,
+    @Inject(AuthService) private _authService: AuthService,
+    @Inject(EmployerService) private _employerService: EmployerService,
+    @Inject(Router) private _router: Router,
+    @Inject(JobService) private _jobService: JobService,
+    @Inject(MatSnackBar) private _snackbar: MatSnackBar,
+    @Inject(IndustryService) private _industryService: IndustryService) { }
 
 
 
@@ -55,9 +57,10 @@ export class EmployerPostJobComponent implements OnInit {
   ngOnInit(): void {
     this.employerId = this._authService.extractUserIdFromToken('employerToken')
     this.getEmployerDetails()
+    this.getIndustries()
     this.form = this._formBuilder.group({
       jobTitle: ['', Validators.required],
-      companyName: [{value:this.companyName,disabled:true},Validators.required],
+      companyName: [{ value: this.companyName, disabled: true }, Validators.required],
       jobDescription: ['', Validators.required],
       email: ['', Validators.required],
       jobType: ['', Validators.required],
@@ -81,10 +84,18 @@ export class EmployerPostJobComponent implements OnInit {
         next: (res) => {
           this.companyName = res.companyId?.companyName
           this.form.patchValue({
-            companyName:this.companyName
+            companyName: this.companyName
           })
         }
       })
+  }
+
+  getIndustries(): void {
+    this._industryService.getAllIndustries('employer').subscribe({
+      next: (res) => {
+        this.industries = res.data?.industries || []
+      }
+    })
   }
 
   getCountryCode(countryName: string): string | undefined {

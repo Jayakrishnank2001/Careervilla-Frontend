@@ -38,6 +38,7 @@ export class EmployerManageCandidatesComponent implements OnInit {
       this._employerService.getPostedJobs(employerId).subscribe({
         next: (res) => {
           this.postedJobs = res
+          this.onSelectJob(this.postedJobs[0])
           this.postedJobs.reverse()
         }
       })

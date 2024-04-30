@@ -7,6 +7,11 @@ button.mat-raised-button{
   color:white;
 }
 
+.active {
+  color: #5e45ff; 
+  background-color: #d4ceff;
+}
+
 
 @media (max-width: 600px) {
     .logo-text {

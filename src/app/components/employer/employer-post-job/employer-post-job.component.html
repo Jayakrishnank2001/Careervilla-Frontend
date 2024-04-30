@@ -76,8 +76,13 @@
     <div class="form-container">
       <mat-form-field class="input-field" appearance="outline">
         <mat-label>Industry</mat-label>
-        <input matInput placeholder="" formControlName="industry">
+        <mat-select formControlName="industry">
+          <mat-option *ngFor="let industry of industries" [value]="industry?.industryName">
+            {{ industry?.industryName }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+      
       <mat-form-field class="input-field" appearance="outline">
         <mat-label>Application Deadline</mat-label>
         <input matInput [matDatepicker]="picker" placeholder="" formControlName="applicationDeadline">
