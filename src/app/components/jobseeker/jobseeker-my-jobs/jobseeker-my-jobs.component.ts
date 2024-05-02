@@ -143,7 +143,7 @@ export class JobseekerMyJobsComponent implements OnInit {
     if (jobId)
       this._jobService.getJobDetails(jobId).subscribe({
         next: (res) => {
-          const queryParams = { jobId: jobId, employerId: res.postedBy?._id }
+          const queryParams = { image: res.postedBy?.image, employerId: res.postedBy?._id, firstName: res.postedBy?.firstName, lastName: res.postedBy?.lastName, companyName: res.companyId?.companyName }
           this._router.navigate(['/jobseeker/messages'], { queryParams })
         }
       })

@@ -1,48 +1,43 @@
-
-  .container {
-    display: flex;
-    margin-left: 5%;
-    margin-top: 2.06%;
-  }
-  
-  .message-list {
-    width: 30%;
-  }
-
-  .message-card{
-    height: 570px;
-    margin-bottom: 30px;
-    border: 1px solid #ccc;
-  }
-
-  .message{
-    width: 64.5%;
-  }
-
-  .single-message-card{
-    height: 570px;
-    margin-left: 35px;
-    border: 1px solid #ccc;
-  }
-
-  .image{
-    text-align: center;
-  }
-
-  img {
-    width: 300px;
-    height: 220px;
-    margin: 130px 0px 0px 0px;
+.container {
+  display: flex;
+  margin-left: 4.2%;
+  margin-top: 2%;
 }
 
-.single-message-card {
+.message-list {
+  width: 30%;
+}
+
+.message-card {
   height: 570px;
-  margin-left: 35px;
+
   border: 1px solid #ccc;
   border-radius: 0.8em;
 }
 
-.jobTitle{
+.message {
+  width: 70%;
+}
+
+.single-message-card {
+  height: 570px;
+  width: 90%;
+  margin-left: 36px;
+  border: 1px solid #ccc;
+  border-radius: 0.8em;
+}
+
+.image-div {
+  text-align: center;
+}
+
+.message-image {
+  width: 300px;
+  height: 220px;
+  margin: 130px 0px 0px 0px;
+}
+
+.username{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,7 +49,61 @@
   width: 40px;
   margin: 10px 10px 10px 10px;
 }
-  
+
+.message-input{
+  display: flex;
+  flex-direction: row;
+}
+
+mat-form-field{
+  width: 87%;
+  margin: 10px 0px 10px 10px;
+}
+
+form{
+  width: 100%;
+  align-items: center;
+}
+
+button.mat-raised-button{
+  height: 55%;
+  width: 10%;
+  margin: -1px 0px 0px 9px;
+  background-color: #644DFF;
+  color: white;
+}
+
+.chat-container {
+  height: 500px;
+  overflow-y:auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+}
+
+.messages {
+  padding: 10px;
+  margin:5px 2px 5px 2px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.sent {
+  background-color: #b7acff; 
+  align-self: flex-end; 
+}
+
+.received {
+  background-color: #e2e2e2; 
+  align-self: flex-start; 
+}
+
+.chat-title{
+  font-size: medium;
+}
+
+
+
 @media screen and (max-width:600px) {
   .message {
     display: none;
@@ -71,4 +120,3 @@
 
 
 }
-

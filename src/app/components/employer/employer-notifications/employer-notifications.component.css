@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    margin-top: 3%;
+    margin-top: 2%;
     justify-content: center;
   }
 
@@ -33,6 +33,15 @@ mat-icon{
 .details {
     flex-grow: 0; 
 }
+
+.notifications{
+  height: 490px;
+  overflow-y:auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+}
+
 
 @media screen and (max-width:800px){
   .notification-card{

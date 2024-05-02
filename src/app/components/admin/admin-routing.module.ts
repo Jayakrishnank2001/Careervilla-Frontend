@@ -8,51 +8,58 @@ import { AdminSubscriptionComponent } from "./admin-subscription/admin-subscript
 import { AdminReportedJobsComponent } from "./admin-reported-jobs/admin-reported-jobs.component";
 import { AuthGuard } from "src/app/guards/auth.guard";
 import { AdminIndustriesComponent } from "./admin-industries/admin-industries.component";
+import { AdminLayoutComponent } from "./admin-layout/admin-layout.component";
 
 const routes: Routes = [
     {
+        path: '',
+        component: AdminLayoutComponent,
+        title: 'Careervilla | Admin',
+        children: [
+            {
+                path: 'dashboard',
+                title: 'Careervilla | Admin Dashboard',
+                component: AdminDashboardComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'jobseekers',
+                title: 'Careervilla | Admin Jobseekers',
+                component: AdminJobseekersComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'employers',
+                title: 'Careervilla | Admin Employers',
+                component: AdminEmployersComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'reported-jobs',
+                title: 'Careervilla | Admin Reported-Jobs',
+                component: AdminReportedJobsComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'subscription-plans',
+                title: 'Careervilla | Admin Subscription-Plans',
+                component: AdminSubscriptionComponent,
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'industries',
+                title: 'Careervilla | Admin Industries',
+                component: AdminIndustriesComponent,
+                canActivate: [AuthGuard],
+            },
+        ],
+    },
+    {
         path: 'login',
         title: 'Careervilla | Admin Login',
-        component: AdminLoginComponent
+        component: AdminLoginComponent,
     },
-    {
-        path: 'dashboard',
-        title: 'Careervilla | Dashboard',
-        component: AdminDashboardComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'jobseekers',
-        title: 'Careervilla | Jobseekers',
-        component: AdminJobseekersComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'employers',
-        title: 'Carrervilla | Employers',
-        component: AdminEmployersComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'reported-jobs',
-        title: 'Careervilla | Reported Jobs',
-        component: AdminReportedJobsComponent,
-        canActivate: [AuthGuard]
-
-    },
-    {
-        path: 'subscription-plans',
-        title: 'Careervilla | Subscription Plans',
-        component: AdminSubscriptionComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'industries',
-        title: 'Careervilla | Industries',
-        component: AdminIndustriesComponent,
-        canActivate: [AuthGuard]
-    }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

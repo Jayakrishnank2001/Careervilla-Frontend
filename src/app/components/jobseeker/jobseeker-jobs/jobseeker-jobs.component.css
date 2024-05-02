@@ -9,7 +9,6 @@
 .search-criteria {
   display: flex;
   align-items: center;
-  /* Center vertically */
   justify-content: center;
   text-align: center;
 }
@@ -29,6 +28,17 @@ button.search-button {
   font-size: 16px;
   margin-top: -22px;
   padding: 25px 40px;
+}
+
+.filter-criteria {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.filter-select{
+  width: 180px;
 }
 
 .container {
@@ -157,6 +167,16 @@ mat-card-title{
 
   .job-list2 {
     display: none;
+  }
+
+  .filter-criteria {
+    justify-content: left;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .filter-select{
+    width: 120px;
   }
 
 

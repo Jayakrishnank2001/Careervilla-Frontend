@@ -34,6 +34,7 @@ export class JobseekerCompanyComponent implements OnInit {
   pageSize: number = 3;
   hasMoreJobs: boolean = true;
   searchQuery: string = ''
+  viewPage:boolean=false
 
   constructor(private _route: ActivatedRoute,
     private _companyService: CompanyService,
@@ -60,6 +61,7 @@ export class JobseekerCompanyComponent implements OnInit {
       next: (res) => {
         this.company = res
         this.selected = 'overview'
+        this.viewPage=true
       }
     })
   }

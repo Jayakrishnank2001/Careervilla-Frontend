@@ -10,3 +10,9 @@ export interface IIndustryAndCount {
     industries: IIndustry[],
     industriesCount: number
 }
+
+export interface IIndustryDialogData {
+    editMode: boolean;
+    industryId: string;
+    industries: IIndustry[];
+}

@@ -7,31 +7,65 @@
                 <mat-card-title>Messages</mat-card-title>
             </mat-card-header>
             <mat-divider></mat-divider>
+            <ng-container *ngFor="let chat of chats">
+                <div class="username" style="cursor: pointer;" (click)="getMessages(chat._doc.participants[0]._id)">
+                    <div>
+                        <img src={{chat._doc.participants[0].image}} alt="" mat-card-avatar class="example-header-image">
+                    </div>
+                    <div>
+                        <mat-card-title class="chat-title">{{chat._doc.participants[0].firstName}} {{chat._doc.participants[0].lastName}}</mat-card-title>
+                        <mat-card-subtitle>{{chat.lastMessage?.message}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </ng-container>
         </mat-card>
     </div>
 
     <div class="message" fxFlex="100" fxFlex.xs="100%">
 
-        <mat-card class="single-message-card" *ngIf="!jobseekerId">
-            <div class="image">
-                <img src="../../../../assets/images/66149.jpg" alt="Welcome Image">
+        <mat-card class="single-message-card" *ngIf="!showMessages">
+            <div class="image-div">
+                <img src="../../../../assets/images/66149.jpg" alt="Welcome Image" class="message-image">
                 <mat-card-title>Welcome to Messages</mat-card-title>
                 <mat-card-subtitle>When a jobseeker contacts you,
                     you will see messages here.</mat-card-subtitle>
             </div>
         </mat-card>
 
-        <mat-card class="single-message-card" *ngIf="jobseekerId">
+        <mat-card class="single-message-card" *ngIf="showMessages">
 
-            <div class="jobTitle">
+            <div class="username">
                 <div>
-                    <img src={{image}} alt="" mat-card-avatar class="example-header-image">
+                    <img src={{jobseekerDetails.image}} alt="" mat-card-avatar class="example-header-image">
                 </div>
                 <div>
-                    <mat-card-title>{{firstName}} {{lastName}}</mat-card-title>
+                    <mat-card-title>{{jobseekerDetails.firstName}} {{jobseekerDetails.lastName}}</mat-card-title>
                 </div>
             </div>
             <mat-divider></mat-divider>
+
+            <div class="chat-container">
+                <ng-container *ngFor="let message of messages">
+                    <mat-card class="messages" [ngClass]="{
+                            'sent': message.senderId === employerId,
+                            'received': message.senderId !== employerId
+                        }">
+                        {{ message.message }}
+                    </mat-card>
+                </ng-container>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="message-input">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Write your message</mat-label>
+                        <input matInput class="mat-Input" formControlName="message" type="text">
+                    </mat-form-field>
+                    <button mat-raised-button class="mat-raised-button" type="submit"
+                        [disabled]="form.get('message')?.value == ''">Send</button>
+                </form>
+            </div>
 
         </mat-card>
 

@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs';
@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { JobseekerService } from 'src/app/services/jobseeker.service';
 import { ApplyJobDialogComponent } from '../apply-job-dialog/apply-job-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IIndustry } from 'src/app/models/industry';
+import { IndustryService } from 'src/app/services/industry.service';
 
 @Component({
   selector: 'app-jobseeker-jobs',
@@ -28,22 +30,25 @@ export class JobseekerJobsComponent implements OnInit {
   pageSize: number = 3;
   hasMorePages: boolean = true;
   hasPreviousPages: boolean = false
+  industries: IIndustry[] = []
   searchQuery: JobSearchQuery = {
     jobTitle: '',
     location: '',
-    experience:''
+    experience: ''
   }
-  
 
-  constructor(private _breakpointObserver: BreakpointObserver,
-    private _jobService: JobService,
-    private _snackBar: MatSnackBar,
-    private _dialog: MatDialog,
-    private _reportedJobService: ReportedJobService,
-    private _authService: AuthService,
-    private _jobseekerService: JobseekerService,
-    private _router: Router,
-    private _route: ActivatedRoute) { }
+
+  constructor(
+    @Inject(BreakpointObserver) private _breakpointObserver: BreakpointObserver,
+    @Inject(JobService) private _jobService: JobService,
+    @Inject(MatSnackBar) private _snackBar: MatSnackBar,
+    @Inject(MatDialog) private _dialog: MatDialog,
+    @Inject(ReportedJobService) private _reportedJobService: ReportedJobService,
+    @Inject(AuthService) private _authService: AuthService,
+    @Inject(JobseekerService) private _jobseekerService: JobseekerService,
+    @Inject(Router) private _router: Router,
+    @Inject(ActivatedRoute) private _route: ActivatedRoute,
+    @Inject(IndustryService) private _industryService: IndustryService) { }
 
   ngOnInit(): void {
     this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
@@ -54,6 +59,7 @@ export class JobseekerJobsComponent implements OnInit {
     })
     this.getJobs()
     this.getSavedJobs()
+    this.getIndustries()
   }
 
   isSmallScreen = this._breakpointObserver.observe(Breakpoints.XSmall)
@@ -62,13 +68,14 @@ export class JobseekerJobsComponent implements OnInit {
     );
 
   getJobs(): void {
-    this._jobService.getJobs(this.page, this.pageSize,undefined,this.searchQuery).subscribe({
+    this._jobService.getJobs(this.page, this.pageSize, undefined, this.searchQuery).subscribe({
       next: (res) => {
         this.jobs = res
         this.selectJob = this.jobs[0]
         if (this.jobs.length < 3) {
           this.hasMorePages = false
         }
+        this.searchQuery.experience = ''
       }
     })
   }
@@ -180,6 +187,14 @@ export class JobseekerJobsComponent implements OnInit {
 
   jobDetails(jobId: string | undefined): void {
     this._router.navigate(['/jobseeker/job-details'], { queryParams: { jobId: jobId } })
+  }
+
+  getIndustries(): void {
+    this._industryService.getAllIndustries('jobseeker').subscribe({
+      next: (res) => {
+        this.industries=res.data?.industries || []
+      }
+    })
   }
 
 

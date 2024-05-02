@@ -1,1 +1,10 @@
-<p>rejection-reason-dialog works!</p>
+<form [formGroup]="reasonForm" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1>Rejection Reason</h1>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Reason</mat-label>
+        <textarea matInput type="text" formControlName="rejectionReason"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" [disabled]="reasonForm.invalid" color="primary">SUBMIT</button>
+</form>

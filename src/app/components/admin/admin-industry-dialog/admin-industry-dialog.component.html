@@ -1,0 +1,22 @@
+<form [formGroup]="newIndustryForm" (ngSubmit)="onSubmit()" class="mat-form">
+    <h1 *ngIf="data.editMode">EDIT INDUSTRY</h1>
+    <h1 *ngIf="!data.editMode">ADD NEW INDUSTRY</h1>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Industry Name</mat-label>
+        <input matInput type="text" formControlName="industryName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput type="text" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="newIndustryForm.invalid" color="primary">SUBMIT</button>
+</form>

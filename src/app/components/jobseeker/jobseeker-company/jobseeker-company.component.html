@@ -1,6 +1,6 @@
 <app-jobseeker-nav></app-jobseeker-nav>
 
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px" *ngIf="viewPage">
     <mat-card class="company-card">
         <mat-card-header class="header-container">
             <div>
@@ -13,11 +13,11 @@
         <br>
         <mat-card-content class="mat-card-content">
             <div class="company-options">
-                <span (click)="getCompanyDetails()">Overview</span>
+                <span (click)="getCompanyDetails()" [ngClass]="{ 'selected': selected === 'overview' }" color="primary">Overview</span>
                 <span class="divider">|</span>
-                <span (click)="getCompanyReviews()">Reviews</span>
+                <span (click)="getCompanyReviews()" [ngClass]="{ 'selected': selected === 'review' }" color="primary">Reviews</span>
                 <span class="divider">|</span>
-                <span (click)="getCompanyJobs()">Jobs</span>
+                <span (click)="getCompanyJobs()" [ngClass]="{ 'selected': selected === 'jobs' }" color="primary">Jobs</span>
             </div>
             <button mat-raised-button class="mat-raised-btn" (click)="onAddReview()">Add a Review +</button>
         </mat-card-content>

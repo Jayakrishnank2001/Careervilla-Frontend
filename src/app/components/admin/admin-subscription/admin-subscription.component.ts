@@ -110,7 +110,6 @@ export class AdminSubscriptionComponent implements OnInit {
             }
           })
         } else if (planId !== undefined) {
-          console.log(result)
           this._subscriptionPlanService.editPlan(planId, result).subscribe({
             next: (res: IRes) => {
               this.getPlans()
@@ -126,5 +125,9 @@ export class AdminSubscriptionComponent implements OnInit {
       }
     })
   }
+
+
+
+  
 
 }

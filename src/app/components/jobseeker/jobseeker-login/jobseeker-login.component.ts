@@ -44,7 +44,6 @@ export class JobseekerLoginComponent implements OnInit, AfterViewInit, OnDestroy
 
   ngAfterViewInit(): void {
     this.authSubscription = this.socialAuthService.authState.subscribe((user) => {
-      console.log(user)
       this.jobseekerService.googleLogin(user.email, user.firstName, user.photoUrl).subscribe({
         next: (res: IJobseekerAuthResponse) => {
           if (res.data.success) {

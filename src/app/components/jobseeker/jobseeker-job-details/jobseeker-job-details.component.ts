@@ -22,6 +22,7 @@ export class JobseekerJobDetailsComponent implements OnInit {
   savedJobs: (string | undefined)[] = []
   appliedJobs: (string | undefined)[] = []
   jobseekerId!: string | null
+  viewPage:boolean=false
 
   constructor(private _route: ActivatedRoute,
     private _jobService: JobService,
@@ -44,7 +45,7 @@ export class JobseekerJobDetailsComponent implements OnInit {
     this._jobService.getJobDetails(this.jobId).subscribe({
       next: (res) => {
         this.job = res
-        console.log(this.job)
+        this.viewPage=true
       }
     })
   }

@@ -28,5 +28,9 @@ export class JobApplicationService {
     return this._http.get<IJobApplication[]>(`${this.baseURL}/jobseeker/get-appliedJobs/${jobseekerId}`)
   }
 
+  addRejectionReason(applicationId: string, reason: string) {
+    return this._http.patch<IResponse>(`${this.baseURL}/employer/add-rejectionReason`, { applicationId,reason })
+  }
+
 
 }

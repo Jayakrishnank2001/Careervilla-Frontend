@@ -6,7 +6,7 @@ export interface ISubscriptionRes{
     status?:string
 }
 
-export interface IDialogData {
+export interface IPlansDialogData {
     editMode: boolean;
     planId: string;
     plans: ISubscriptionRes[];

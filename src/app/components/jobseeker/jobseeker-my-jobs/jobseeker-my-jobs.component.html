@@ -9,12 +9,12 @@
     <br>
     <span class="job-categories">
         <span (click)="getSavedJobs(jobseekerId)" matBadge={{savedJobs.length}} matBadgeOverlap="false"
-            matBadgePosition="before">Saved</span>
+            matBadgePosition="above before">Saved</span>
         <span (click)="getAppliedJobs(jobseekerId)" matBadge={{appliedApplications.length}} matBadgeOverlap="false"
-            matBadgePosition="before">Applied</span>
+            matBadgePosition="above before">Applied</span>
     </span>
     <mat-divider></mat-divider>
-    <div *ngIf="isSavedJobs">
+    <div *ngIf="isSavedJobs" class="job-list">
         <ng-container *ngFor="let job of savedJobs">
             <br>
             <div class="jobs">
@@ -39,7 +39,7 @@
         </ng-container>
 
     </div>
-    <div *ngIf="!isSavedJobs">
+    <div *ngIf="!isSavedJobs" class="job-list">
         <ng-container *ngFor="let application of appliedApplications">
             <br>
             <div class="jobs">
@@ -51,6 +51,9 @@
                     <div class="message" *ngIf="application.status=='Approved'">
                         <mat-card-subtitle (click)="messageEmployer(application.jobId?._id)">Message this employer</mat-card-subtitle>
                         <mat-card-subtitle><mat-icon>arrow_forward</mat-icon></mat-card-subtitle>
+                    </div>
+                    <div class="reason" *ngIf="application?.rejectionReason && application.status=='Rejected'">
+                        <mat-card-subtitle color="warn">Reason : {{application?.rejectionReason}}</mat-card-subtitle>
                     </div>
                 </div>
                 <div>
@@ -77,4 +80,3 @@
         </ng-container>
     </div>
 </mat-card>
-<br>

@@ -1,5 +1,4 @@
 <div class="main-div">
-    <app-admin-layout></app-admin-layout>
     <app-admin-table (search)="onSearchReportedJob($event)" (pageChange)="onPageChange($event)"
         (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="reportedJobCount">
 
@@ -17,7 +16,7 @@
 
             <ng-container matColumnDef="reportedAt">
                 <mat-header-cell *matHeaderCellDef>Date Reported</mat-header-cell>
-                <mat-cell *matCellDef="let job">{{ job.reportedAt | date: 'shortDate' }}</mat-cell>
+                <mat-cell *matCellDef="let job">{{ job.reportedAt | date: 'dd/MM/yy' }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="reportedBy">

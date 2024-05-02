@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  margin-left: 5%;
-  margin-top: 2.06%;
+  margin-left: 4.2%;
+  margin-top: 2%;
 }
 
 .message-list {
@@ -10,17 +10,19 @@
 
 .message-card {
   height: 570px;
+
   border: 1px solid #ccc;
   border-radius: 0.8em;
 }
 
 .message {
-  width: 64.5%;
+  width: 70%;
 }
 
 .single-message-card {
   height: 570px;
-  margin-left: 35px;
+  width: 90%;
+  margin-left: 36px;
   border: 1px solid #ccc;
   border-radius: 0.8em;
 }
@@ -35,7 +37,7 @@
   margin: 130px 0px 0px 0px;
 }
 
-.jobTitle{
+.username{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -43,10 +45,9 @@
 
 .example-header-image {
   background-size: cover;
-  height: 35px;
-  width: 35px;
-  border-radius: 1em;
-  margin: 15px 15px 15px 15px;
+  height: 40px;
+  width: 40px;
+  margin: 10px 10px 10px 10px;
 }
 
 .message-input{
@@ -73,21 +74,17 @@ button.mat-raised-button{
 }
 
 .chat-container {
-  height: 500px; /* Adjust to fit the available space */
-  overflow-y: auto; /* Allow vertical scrolling */
+  height: 500px;
+  overflow-y:auto;
   display: flex;
-  flex-direction: column-reverse; /* Reverse the order to show new messages at the bottom */
+  flex-direction: column;
+  scrollbar-width: none;
 }
 
-.message-list {
+.messages {
   padding: 10px;
-  flex: 1; 
-}
-
-.message {
-  padding: 10px;
+  margin:5px 2px 5px 2px;
   border-radius: 10px;
-  margin-bottom: 10px;
   max-width: 60%;
 }
 
@@ -101,6 +98,9 @@ button.mat-raised-button{
   align-self: flex-start; 
 }
 
+.chat-title{
+  font-size: medium;
+}
 
 
 @media screen and (max-width:600px) {

@@ -54,12 +54,12 @@ img {
 
 .candidates-list {
     margin: 30px auto;
-    width:90%;
+    width: 90%;
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    grid-auto-rows: auto; /* Auto-sized rows */
-    gap: 20px; /* Gap between cards */
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
 }
 
 .candidate-card {
@@ -71,11 +71,15 @@ img {
     background-size: cover;
     height: 90px;
     width: 90px;
-    margin:38px 15px 0px 0px;
+    margin: 38px 15px 0px 0px;
 }
 
-.jobApplication{
+.jobApplication {
     display: flex;
+}
+
+.selected {
+    background-color: #a597ff;
 }
 
 @media screen and (max-width:950px) {
@@ -83,13 +87,13 @@ img {
         width: 95%;
     }
 
-    mat-card-header{
+    mat-card-header {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    .job-title-card{
+    .job-title-card {
         width: 95%;
         display: flex;
         flex-direction: column;
@@ -98,10 +102,10 @@ img {
         height: 60px;
     }
 
-    .candidates-list{
+    .candidates-list {
         display: flex;
         flex-direction: column;
-        width:90%;
+        width: 90%;
     }
 
     img {

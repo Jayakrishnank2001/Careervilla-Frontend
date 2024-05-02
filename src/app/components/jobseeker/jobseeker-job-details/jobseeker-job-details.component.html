@@ -1,10 +1,11 @@
 <app-jobseeker-nav></app-jobseeker-nav>
-<mat-card>
+<mat-card *ngIf="viewPage">
     <mat-card-header class="job-header">
         <mat-card-title>{{job.jobTitle}}</mat-card-title>
         <div class="logo">
             <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
-            <mat-card-subtitle (click)="goCompanyPage(job.companyId?._id)" style="cursor:pointer;">{{job.companyId?.companyName}}</mat-card-subtitle>
+            <mat-card-subtitle (click)="goCompanyPage(job.companyId?._id)"
+                style="cursor:pointer;">{{job.companyId?.companyName}}</mat-card-subtitle>
         </div>
         <div style="margin-top: -10px;">
             <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>

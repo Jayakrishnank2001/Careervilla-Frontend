@@ -89,3 +89,9 @@ mat-label{
 mat-form-field input.mat-Input{
   color: white;
 }
+
+@media screen and (max-width:600px){
+  .login-card{
+    width: 340px;
+  }
+}

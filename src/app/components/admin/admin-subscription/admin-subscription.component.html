@@ -1,5 +1,4 @@
 <div class="main-div">
-    <app-admin-layout></app-admin-layout>
     <app-admin-table (search)="onSearchPlan($event)" (pageChange)="onPageChange($event)"
         (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="plansCount">
 
@@ -46,5 +45,4 @@
             <mat-row *matRowDef="let row; columns: ['planName', 'amount', 'duration', 'status', 'actions']"></mat-row>
         </mat-table>
     </app-admin-table>
-
 </div>

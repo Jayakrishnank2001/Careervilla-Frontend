@@ -17,10 +17,10 @@
       <mat-form-field class="search-field" appearance="outline" *ngIf="!(isSmallScreen | async)">
         <mat-label>Experience</mat-label>
         <mat-select [(ngModel)]="searchQuery.experience">
-          <mat-option value="0-1">0-2 years</mat-option>
-          <mat-option value="1-3">2-5 years</mat-option>
-          <mat-option value="3-5">5-10 years</mat-option>
-          <mat-option value="5+">10+ years</mat-option>
+          <mat-option value="0-2">0-2 years</mat-option>
+          <mat-option value="2-5">2-5 years</mat-option>
+          <mat-option value="5-10">5-10 years</mat-option>
+          <mat-option value="10+">10+ years</mat-option>
         </mat-select>
         <mat-icon matSuffix *ngIf="!(isSmallScreen | async)">date_range</mat-icon>
       </mat-form-field>

@@ -28,7 +28,7 @@
           <button mat-raised-button class="mat-large-fab1" type="submit">LOGIN</button>
         </mat-card-actions>
         <mat-card-actions>
-          <app-google-login (loginWithGoogle)="googleSignin($event)"></app-google-login>
+          <app-google-login (loginWithGoogle)="googleSignin($event)" (click)="googleSignin($event)"></app-google-login>
         </mat-card-actions>
     </mat-card>
   </form>

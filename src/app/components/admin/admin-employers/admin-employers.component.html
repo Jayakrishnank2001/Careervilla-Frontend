@@ -1,5 +1,4 @@
 <div class="main-class">
-    <app-admin-layout></app-admin-layout>
     <app-admin-table (search)="onSearchEmployers($event)" (pageChange)="onPageChange($event)"
     (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="employersCount">
     <mat-table [dataSource]="employers" class="mat-elevation-z8">

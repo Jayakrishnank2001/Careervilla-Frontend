@@ -27,6 +27,12 @@ mat-cell {
     text-align: start;
 }
 
+.delete-icon,
+  .edit-icon{
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
 
 @media screen and (max-width: 600px) {
 

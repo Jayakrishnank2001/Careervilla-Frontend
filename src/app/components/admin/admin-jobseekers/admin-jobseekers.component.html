@@ -1,6 +1,5 @@
 
 <div class="main-div">
-    <app-admin-layout></app-admin-layout>
     <app-admin-table (search)="onSearchJobseekers($event)" (pageChange)="onPageChange($event)"
         (itemsPerPageChange)="onItemsPerPageChange($event)" [totalItems]="jobseekersCount">
 

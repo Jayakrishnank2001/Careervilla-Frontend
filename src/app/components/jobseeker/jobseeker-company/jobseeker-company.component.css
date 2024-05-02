@@ -167,6 +167,10 @@ mat-card-actions button.save-button {
     height: 38px;
 }
 
+.selected{
+    color: #4428fa;
+}
+
 
 @media screen and (max-width:600px) {
     .company-card {

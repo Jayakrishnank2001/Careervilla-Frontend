@@ -2,7 +2,7 @@
 
   <img src="../../../../assets/images/app-logo.png" alt="" class="logo-image">
   <span class="logo-text">CAREERVILLA</span>
-  
+
   <span class="fill-remaining-space"></span>
 
   <ng-container *ngIf="(screenSize | async) === 'small'">
@@ -10,35 +10,35 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      
+
       <ng-container *ngIf="token;else loginButtonGroup">
-        <button mat-menu-item routerLink="/jobseeker/home">
+        <button mat-menu-item routerLink="/jobseeker/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>home</mat-icon>HOME
         </button>
-        <button mat-menu-item routerLink="/jobseeker/jobs">
+        <button mat-menu-item routerLink="/jobseeker/jobs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>work</mat-icon>JOBS
         </button>
-        <button mat-menu-item routerLink="/jobseeker/companies">
+        <button mat-menu-item routerLink="/jobseeker/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>location_city</mat-icon>COMPANIES
         </button>
         <button mat-menu-item routerLink="/employer/login">
           <mat-icon>login</mat-icon>EMPLOYER LOGIN
         </button>
-        <button mat-menu-item routerLink="/jobseeker/notifications">
+        <button mat-menu-item routerLink="/jobseeker/notifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>notifications</mat-icon> NOTIFICATIONS
         </button>
-        <button mat-menu-item routerLink="/jobseeker/messages">
+        <button mat-menu-item routerLink="/jobseeker/messages" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>message</mat-icon> MESSAGES
         </button>
-        <button mat-menu-item [matMenuTriggerFor]="accountMenu">
+        <button mat-menu-item [matMenuTriggerFor]="accountMenu" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <mat-icon>account_circle</mat-icon> ACCOUNT
         </button>
-  
+
         <mat-menu #accountMenu="matMenu">
-          <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
-          <button mat-menu-item routerLink="/jobseeker/my-jobs">My Jobs</button>
-          <button mat-menu-item routerLink="/jobseeker/my-reviews">My Reviews</button>
-          <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
+          <button mat-menu-item routerLink="/jobseeker/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Profile</button>
+          <button mat-menu-item routerLink="/jobseeker/my-jobs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">My Jobs</button>
+          <button mat-menu-item routerLink="/jobseeker/my-reviews" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">My Reviews</button>
+          <button mat-menu-item routerLink="/jobseeker/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
           <button mat-menu-item (click)="onLogOut()">Logout</button>
         </mat-menu>
       </ng-container>
@@ -48,35 +48,35 @@
           <mat-icon>login</mat-icon> EMPLOYER LOGIN
         </button>
       </ng-template>
-      
+
     </mat-menu>
   </ng-container>
-  
+
 
   <!-- Add a ngIf directive to check if it's not a small screen -->
   <ng-container *ngIf="(screenSize | async) !== 'small'">
-    
+
     <ng-container *ngIf="token;else loginButtonGroup">
-      <button mat-button routerLink="/jobseeker/home">HOME</button>
-    <button mat-button routerLink="/jobseeker/jobs">JOBS</button>
-    <button mat-button routerLink="/jobseeker/companies">COMPANIES</button>
-    <span class="fill-remaining-space"></span>
-    <button mat-button routerLink="/employer/login">EMPLOYER LOGIN</button>
-      <button mat-icon-button routerLink="/jobseeker/notifications">
+      <button mat-button routerLink="/jobseeker/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HOME</button>
+      <button mat-button routerLink="/jobseeker/jobs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">JOBS</button>
+      <button mat-button routerLink="/jobseeker/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">COMPANIES</button>
+      <span class="fill-remaining-space"></span>
+      <button mat-button routerLink="/employer/login">EMPLOYER LOGIN</button>
+      <button mat-icon-button routerLink="/jobseeker/notifications" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button routerLink="/jobseeker/messages">
+      <button mat-icon-button routerLink="/jobseeker/messages" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <mat-icon>message</mat-icon>
       </button>
       <button mat-icon-button [matMenuTriggerFor]="accountMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
-      
+
       <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item routerLink="/jobseeker/profile">Profile</button>
-        <button mat-menu-item routerLink="/jobseeker/my-jobs">My Jobs</button>
-          <button mat-menu-item routerLink="/jobseeker/my-reviews">My Reviews</button>
-        <button mat-menu-item routerLink="/jobseeker/settings">Settings</button>
+        <button mat-menu-item routerLink="/jobseeker/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Profile</button>
+        <button mat-menu-item routerLink="/jobseeker/my-jobs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">My Jobs</button>
+        <button mat-menu-item routerLink="/jobseeker/my-reviews" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">My Reviews</button>
+        <button mat-menu-item routerLink="/jobseeker/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
         <button mat-menu-item (click)="onLogOut()">Logout</button>
       </mat-menu>
     </ng-container>
@@ -84,7 +84,7 @@
     <ng-template #loginButtonGroup>
       <button mat-raised-button class="mat-raised-button" routerLink="/employer/login">EMPLOYER LOGIN</button>
     </ng-template>
-    
+
   </ng-container>
 
 </mat-toolbar>

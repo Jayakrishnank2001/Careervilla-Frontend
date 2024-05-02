@@ -1,6 +1,6 @@
 <app-employer-nav></app-employer-nav>
 
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px" *ngIf="viewPage">
     <mat-card class="candidates-card">
         <mat-card-header>
             <div class="title">
@@ -22,17 +22,27 @@
         <div class="selectedJob">
             <mat-card class="job-title-card">
                 <div style="flex-grow: 1; margin-left: 5px;">
-                    <mat-card-title>{{selectedJob.jobTitle}}</mat-card-title>
+                    <mat-card-title>{{ selectedJob.jobTitle }}</mat-card-title>
                 </div>
                 <div class="right">
-                    <button mat-button color="primary" (click)="onGetApplications(selectedJob._id)">Total</button>
-                    <button mat-button color="primary"
-                        (click)="onGetApplications(selectedJob._id,'Approved')">Approved</button>
-                    <button mat-button color="primary"
-                        (click)="onGetApplications(selectedJob._id,'Rejected')">Rejected</button>
+                    <button mat-button [ngClass]="{ 'selected': selectedButton === 'Total' }" color="primary"
+                        (click)="onGetApplications(selectedJob._id)">
+                        Total
+                    </button>
+
+                    <button mat-button [ngClass]="{ 'selected': selectedButton === 'Approved' }" color="primary"
+                        (click)="onGetApplications(selectedJob._id, 'Approved')">
+                        Approved
+                    </button>
+
+                    <button mat-button [ngClass]="{ 'selected': selectedButton === 'Rejected' }" color="primary"
+                        (click)="onGetApplications(selectedJob._id, 'Rejected')">
+                        Rejected
+                    </button>
                 </div>
             </mat-card>
         </div>
+
         <div class="candidates-list">
             <ng-container *ngFor="let application of jobApplications; let i = index">
                 <mat-card class="candidate-card" [style.grid-column]="(i % 2 === 0) ? '1 / span 1' : '2 / span 1'"
@@ -61,7 +71,8 @@
                                     (click)="messageCandidate(application.jobseekerId?._id,application.jobseekerId?.firstName,application.jobseekerId?.lastName,application.jobseekerId?.image)">
                                     <mat-icon>message</mat-icon>
                                 </button>
-                                <button mat-button *ngIf="application.status=='Rejected'" color="warn">Reason</button>
+                                <button mat-button *ngIf="application.status=='Rejected'" color="warn"
+                                    (click)="openRejectionDialog(application?.rejectionReason,application?._id)">Reason</button>
                             </mat-card-actions>
                         </div>
                         <div>

@@ -15,10 +15,28 @@
         </mat-form-field>
         <button mat-raised-button class="search-button" (click)="getJobs()">Search</button>
     </div>
+    <div class="filter-criteria">
+        <button mat-raised-button style="background-color: #c0c0fa;">
+            <mat-select placeholder="Industry" class="filter-select">
+                <mat-option *ngFor="let industry of industries" [value]="industry">
+                    {{industry?.industryName}}
+                </mat-option>
+            </mat-select>
+        </button>
+        <button mat-raised-button style="background-color: #c0c0fa;">
+            <mat-select placeholder="Job Type" class="filter-select">
+                <mat-option value="Full-time">Full-Time</mat-option>
+                <mat-option value="Part-time">Part-Time</mat-option>
+                <mat-option value="Freelance">Freelance</mat-option>
+                <mat-option value="Remote">Remote</mat-option>
+                <mat-option value="Hybrid">Hybrid</mat-option>
+              </mat-select>
+        </button>
+    </div>
     <mat-divider></mat-divider>
 </mat-card>
 
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px" *ngIf="jobs.length>=1">
     <div class="job-list" fxFlex="100" fxFlex.xs="100%">
         <ng-container *ngFor="let job of jobs">
             <mat-card class="job-card" (click)="selectedJob(job)" [ngClass]="{'selected': selectJob._id === job._id}"
@@ -27,7 +45,8 @@
                     <mat-card-title>{{job.jobTitle}}</mat-card-title>
                     <div class="logo">
                         <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
-                        <mat-card-subtitle (click)="goCompanyPage(job.companyId?._id)">{{job.companyId?.companyName}}</mat-card-subtitle>
+                        <mat-card-subtitle
+                            (click)="goCompanyPage(job.companyId?._id)">{{job.companyId?.companyName}}</mat-card-subtitle>
                     </div>
                     <div style="margin-top: -10px;">
                         <mat-card-subtitle>{{job.addressId?.city}}, {{job.addressId?.state}}</mat-card-subtitle>
@@ -61,7 +80,8 @@
                 <mat-card-title (click)="jobDetails(selectJob._id)">{{selectJob.jobTitle}}</mat-card-title>
                 <div class="logo">
                     <img src={{selectJob.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
-                    <mat-card-subtitle (click)="goCompanyPage(selectJob.companyId?._id)" style="cursor:pointer;">{{selectJob.companyId?.companyName}}</mat-card-subtitle>
+                    <mat-card-subtitle (click)="goCompanyPage(selectJob.companyId?._id)"
+                        style="cursor:pointer;">{{selectJob.companyId?.companyName}}</mat-card-subtitle>
                 </div>
                 <div style="margin-top: -10px;">
                     <mat-card-subtitle>{{selectJob.addressId?.city}}, {{selectJob.addressId?.state}}</mat-card-subtitle>

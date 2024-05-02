@@ -7,12 +7,24 @@
                 <mat-card-title>Messages</mat-card-title>
             </mat-card-header>
             <mat-divider></mat-divider>
+            <ng-container *ngFor="let chat of chats">
+                <div class="username" style="cursor: pointer;" (click)="getMessages(chat._doc.participants[0]._id)">
+                    <div>
+                        <img src={{chat._doc.participants[0].image}} alt="" mat-card-avatar class="example-header-image">
+                    </div>
+                    <div>
+                        <mat-card-title class="chat-title">{{chat._doc.participants[0].firstName}} {{chat._doc.participants[0].lastName}}</mat-card-title>
+                        <mat-card-subtitle>{{chat.lastMessage?.message}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </ng-container>
         </mat-card>
     </div>
 
     <div class="message" fxFlex="100" fxFlex.xs="100%">
 
-        <mat-card class="single-message-card" *ngIf="!jobId">
+        <mat-card class="single-message-card" *ngIf="!showMessages">
             <div class="image-div">
                 <img src="../../../../assets/images/66149.jpg" alt="Welcome Image" class="message-image">
                 <mat-card-title>Welcome to Messages</mat-card-title>
@@ -21,22 +33,22 @@
             </div>
         </mat-card>
 
-        <mat-card class="single-message-card" *ngIf="jobId">
+        <mat-card class="single-message-card" *ngIf="showMessages">
 
-            <div class="jobTitle">
+            <div class="username">
                 <div>
-                    <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
+                    <img src={{employerDetails.image}} alt="" mat-card-avatar class="example-header-image">
                 </div>
                 <div>
-                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
-                    <mat-card-subtitle>{{job.companyId?.companyName}}</mat-card-subtitle>
+                    <mat-card-title>{{employerDetails.firstName}} {{employerDetails.lastName}}</mat-card-title>
+                    <mat-card-subtitle>{{employerDetails.companyId?.companyName}}</mat-card-subtitle>
                 </div>
             </div>
             <mat-divider></mat-divider>
             <div class="chat-container">
                     <ng-container *ngFor="let message of messages">
                         <mat-card
-                            class="message"
+                            class="messages"
                             [ngClass]="{
                                 'sent': message.senderId === jobseekerId,
                                 'received': message.senderId !== jobseekerId

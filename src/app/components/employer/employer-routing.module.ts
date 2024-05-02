@@ -15,7 +15,6 @@ import { EmployerManageCandidatesComponent } from "./employer-manage-candidates/
 import { EmployerMessagesComponent } from "./employer-messages/employer-messages.component";
 import { EmployerNotificationsComponent } from "./employer-notifications/employer-notifications.component";
 
-
 const routes: Routes = [
     {
         path: 'login',

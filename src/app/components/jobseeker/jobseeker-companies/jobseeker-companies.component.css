@@ -34,11 +34,15 @@ button.search-button {
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 1%;
 }
 
 .company-list {
   width: 65%;
+  height: 492.5px;
+  overflow-y:auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
 }
 
 .company-card {

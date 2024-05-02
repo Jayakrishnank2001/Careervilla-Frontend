@@ -22,7 +22,10 @@ export interface IJobRes {
     applicationDeadline?: string,
     status?: string,
     postedBy?: {
-        _id:string
+        _id: string
+        firstName?: string
+        lastName?: string
+        image?:string
     }
     addressId?: {
         _id?:string
