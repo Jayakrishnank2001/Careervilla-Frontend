@@ -6,6 +6,7 @@ import { IJobseekerRes } from 'src/app/models/jobseeker';
 import { IMessage } from 'src/app/models/message';
 import { AuthService } from 'src/app/services/auth.service';
 import { JobseekerService } from 'src/app/services/jobseeker.service';
+import { MessageService } from 'src/app/services/message.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class EmployerMessagesComponent implements OnInit {
     @Inject(WebSocketService) private _socketService: WebSocketService,
     @Inject(AuthService) private _authService: AuthService,
     @Inject(FormBuilder) private _fb: FormBuilder,
-    @Inject(JobseekerService) private _jobseekerService: JobseekerService) { }
+    @Inject(JobseekerService) private _jobseekerService: JobseekerService,
+    @Inject(MessageService) private _messageService: MessageService) { }
 
   ngOnInit(): void {
     this.employerId = this._authService.extractUserIdFromToken('employerToken')
@@ -45,7 +47,7 @@ export class EmployerMessagesComponent implements OnInit {
   getMessages(jobseekerId: string | null): void {
     if (jobseekerId && this.employerId) {
       this.getJobseekerDetails(jobseekerId)
-      this._socketService.getMessages(this.employerId, jobseekerId, 'employer').subscribe({
+      this._messageService.getMessages(this.employerId, jobseekerId, 'employer').subscribe({
         next: (res) => {
           this.messages = res
           this.showMessages=true
@@ -54,23 +56,18 @@ export class EmployerMessagesComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    const data = this.form.getRawValue()
-    if (this.jobseekerId && this.employerId)
-      this._socketService.sendMessage(this.employerId, this.jobseekerId, data.message, 'employer').subscribe({
-        next: (res) => {
-          if (res.data.success == true) {
-            this.form.reset()
-            this.getMessages(this.jobseekerId)
-            this.getAllChats()
-          }
-        }
-      })
+  sendMessage(): void {
+    const message = this.form.getRawValue()
+    const data = { senderId: this.employerId, receiverId: this.jobseekerId, message: message.message }
+    this._socketService.sendMessage(data);
+    this.form.reset()
+    this.getMessages(this.employerId)
+    this.getAllChats()
   }
 
   getAllChats(): void {
     if (this.employerId)
-      this._socketService.getAllChats(this.employerId, 'employer').subscribe({
+      this._messageService.getAllChats(this.employerId, 'employer').subscribe({
         next: (res) => {
           this.chats = res
         }

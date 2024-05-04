@@ -46,7 +46,7 @@ export class EditJobDialogComponent implements OnInit {
       specialisms: [this.data.specialisms, Validators.required],
       experience: [this.data.experience, Validators.required],
       gender: [this.data.gender],
-      industry: [this.data.companyId?.industry, Validators.required],
+      industryName: [this.data.companyId?.industry, Validators.required],
       applicationDeadline: [this.data.applicationDeadline, Validators.required],
       address: [this.data.addressId?.address, Validators.required],
       country: [this.data.addressId?.country, Validators.required],

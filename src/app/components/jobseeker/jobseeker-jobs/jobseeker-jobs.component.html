@@ -17,14 +17,14 @@
     </div>
     <div class="filter-criteria">
         <button mat-raised-button style="background-color: #c0c0fa;">
-            <mat-select placeholder="Industry" class="filter-select">
-                <mat-option *ngFor="let industry of industries" [value]="industry">
+            <mat-select placeholder="Industry" class="filter-select" (selectionChange)="onIndustryChange($event.value)">
+                <mat-option *ngFor="let industry of industries" [value]="industry.industryName">
                     {{industry?.industryName}}
                 </mat-option>
             </mat-select>
         </button>
         <button mat-raised-button style="background-color: #c0c0fa;">
-            <mat-select placeholder="Job Type" class="filter-select">
+            <mat-select placeholder="Job Type" class="filter-select" (selectionChange)="onJobTypeChange($event.value)">
                 <mat-option value="Full-time">Full-Time</mat-option>
                 <mat-option value="Part-time">Part-Time</mat-option>
                 <mat-option value="Freelance">Freelance</mat-option>

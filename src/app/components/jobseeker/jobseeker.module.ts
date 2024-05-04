@@ -45,6 +45,7 @@ import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from "@angular/forms";
 import { EmployerService } from "src/app/services/employer.service";
+import { MessageService } from "src/app/services/message.service";
 
 
 
@@ -99,6 +100,7 @@ import { EmployerService } from "src/app/services/employer.service";
     NotificationService,
     ReviewService,
     EmployerService,
+    MessageService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

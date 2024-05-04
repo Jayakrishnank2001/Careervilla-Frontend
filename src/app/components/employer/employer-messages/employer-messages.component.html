@@ -57,7 +57,7 @@
             </div>
             <mat-divider></mat-divider>
             <div class="message-input">
-                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <form [formGroup]="form" (ngSubmit)="sendMessage()">
                     <mat-form-field appearance="outline">
                         <mat-label>Write your message</mat-label>
                         <input matInput class="mat-Input" formControlName="message" type="text">

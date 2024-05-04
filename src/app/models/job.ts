@@ -34,10 +34,13 @@ export interface IJobRes {
         state?: string,
         country?: string
     };
+    industry?:string
 }
 
 export interface JobSearchQuery {
     jobTitle?: string;
     location?: string;
     experience?: string;
+    industryName?: string
+    jobType?:string
   }

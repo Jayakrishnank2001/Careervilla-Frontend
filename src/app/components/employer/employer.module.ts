@@ -42,6 +42,7 @@ import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
 import { PlanDialogComponent } from './plan-dialog/plan-dialog.component';
 import { RejectionReasonDialogComponent } from './rejection-reason-dialog/rejection-reason-dialog.component';
 import { JobseekerService } from "src/app/services/jobseeker.service";
+import { MessageService } from "src/app/services/message.service";
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { JobseekerService } from "src/app/services/jobseeker.service";
     WebSocketService,
     NotificationService,
     JobseekerService,
+    MessageService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

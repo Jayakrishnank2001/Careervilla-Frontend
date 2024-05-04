@@ -2,7 +2,7 @@
     <div class="form-container">
         <h1 mat-dialog-title class="title">APPLY JOB</h1>
         <mat-card class="center-card">
-            <mat-card-content class="resume">
+            <mat-card-content class="resume" *ngIf="jobseekerResume">
                 <div class="centered-content">
                     <div>
                         <mat-icon style="color: #644DFF;">description</mat-icon>
@@ -18,13 +18,18 @@
                     </div>
                 </div>
             </mat-card-content>
-            <span><strong>OR</strong></span>
+            <span *ngIf="jobseekerResume"><strong>OR</strong></span>
 
-            <div class="upload-resume">
+            <div class="upload-resume" *ngIf="jobseekerResume">
                 <input type="file" accept="application/pdf" #resumeInput style="display: none;"
                     (change)="onResumeSelected($event)">
                 <button mat-raised-button color="primary" (click)="openResumeInput($event,resumeInput)">Upload another
                     resume</button>
+            </div>
+            <div class="upload-resume" *ngIf="!jobseekerResume">
+                <input type="file" accept="application/pdf" #resumeInput style="display: none;"
+                    (change)="onResumeSelected($event)">
+                <button mat-raised-button color="primary" (click)="openResumeInput($event,resumeInput)">Upload resume</button>
             </div>
             <br>
             <mat-form-field class="input-field" appearance="outline">

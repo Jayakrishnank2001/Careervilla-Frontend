@@ -1,6 +1,6 @@
 .profile-card {
     width: 50%;
-    margin: 50px auto;
+    margin: 25px auto;
     padding: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -12,7 +12,7 @@
 .left-content {
     flex: 1;
     display: flex;
-    margin: 30px 30px auto;
+    margin: 20px 30px auto;
     flex-direction: column;
     padding-right: 70px;
 }
@@ -33,7 +33,7 @@
 }
 
 .details {
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
 }

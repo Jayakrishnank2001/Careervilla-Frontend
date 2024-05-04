@@ -75,7 +75,7 @@
     <div class="form-container">
       <mat-form-field class="input-field" appearance="outline">
         <mat-label>Industry</mat-label>
-        <mat-select formControlName="industry">
+        <mat-select formControlName="industryName">
           <mat-option *ngFor="let industry of industries" [value]="industry?.industryName">
             {{ industry?.industryName }}
           </mat-option>

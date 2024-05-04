@@ -34,7 +34,9 @@ export class JobseekerJobsComponent implements OnInit {
   searchQuery: JobSearchQuery = {
     jobTitle: '',
     location: '',
-    experience: ''
+    experience: '',
+    industryName: '',
+    jobType:''
   }
 
 
@@ -71,6 +73,7 @@ export class JobseekerJobsComponent implements OnInit {
     this._jobService.getJobs(this.page, this.pageSize, undefined, this.searchQuery).subscribe({
       next: (res) => {
         this.jobs = res
+        console.log(this.jobs)
         this.selectJob = this.jobs[0]
         if (this.jobs.length < 3) {
           this.hasMorePages = false
@@ -195,6 +198,16 @@ export class JobseekerJobsComponent implements OnInit {
         this.industries=res.data?.industries || []
       }
     })
+  }
+
+  onIndustryChange(industry:string): void{
+    this.searchQuery.industryName = industry
+    this.getJobs()
+  }
+
+  onJobTypeChange(jobType:string): void{
+    this.searchQuery.jobType = jobType
+    this.getJobs()
   }
 
 

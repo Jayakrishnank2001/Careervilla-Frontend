@@ -1,33 +1,35 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
-import { IResponse } from '../models/jobseeker';
-import { IMessage } from '../models/message';
-import { IChat } from '../models/chat';
+import { Observable } from 'rxjs';
+import { Socket, io } from 'socket.io-client';
 
 @Injectable()
 
 export class WebSocketService {
 
-  baseURL = environments.baseURL
+  socket: Socket;
 
-  constructor(private _http: HttpClient) { }
-
-  sendMessage(senderId: string, receiverId: string, message: string, role: 'jobseeker' | 'employer') {
-    const endpoint = role == 'jobseeker' ? 'jobseeker/send-message' : 'employer/send-message'
-    return this._http.post<IResponse>(`${this.baseURL}/${endpoint}`, { senderId, receiverId, message })
+  constructor() {
+    console.log('socket')
+    this.socket = io(environments.baseURL)
   }
 
-  getMessages(senderId: string, receiverId: string, role: 'jobseeker' | 'employer') {
-    const endpoint = role == 'jobseeker' ? 'jobseeker/messages' : 'employer/messages'
-    return this._http.get<IMessage[]>(`${this.baseURL}/${endpoint}?senderId=${senderId}&receiverId=${receiverId}`)
+  sendMessage(data: any): void {
+    console.log(data)
+    this.socket.emit('send-message', data); // Send a message to the server
   }
 
-  getAllChats(userId: string, role: 'jobseeker' | 'employer') {
-    const endpoint = role == 'jobseeker' ? 'jobseeker/get-chats' : 'employer/get-chats'
-    return this._http.get<IChat[]>(`${this.baseURL}/${endpoint}?userId=${userId}&role=${role}`)
-  }
+  onMessage(): Observable<any> {
+    return new Observable((observer) => {
+      this.socket.on('receive-message', (data) => {
+        observer.next(data); // Receive messages from the server
+      });
 
+      return () => {
+        this.socket.off('receive-message'); // Clean up when no longer needed
+      };
+    });
+  }
 
 
 }

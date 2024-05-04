@@ -53,7 +53,7 @@ export class ApplyJobDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
+    if (this.form.valid && this.jobseekerResume) {
       const data = this.form.getRawValue()
       const jobApplicationData = { ...data, jobId: this.jobId, jobseekerId: this.jobseekerId, resume: this.jobseekerResume }
       this.jobApplicationService.applyJob(jobApplicationData).subscribe({
@@ -66,6 +66,11 @@ export class ApplyJobDialogComponent implements OnInit {
             this.dialogRef.close()
           }
         }
+      })
+    } else {
+      this.snackBar.open('Please upload a resume', 'Close', {
+        duration: 5000,
+        verticalPosition:'top'
       })
     }
   }

@@ -68,7 +68,7 @@ export class EmployerPostJobComponent implements OnInit {
       specialisms: ['', Validators.required],
       experience: ['', Validators.required],
       gender: [''],
-      industry: ['', Validators.required],
+      industryName: ['', Validators.required],
       applicationDeadline: ['', Validators.required],
       address: ['', Validators.required],
       country: ['', Validators.required],
