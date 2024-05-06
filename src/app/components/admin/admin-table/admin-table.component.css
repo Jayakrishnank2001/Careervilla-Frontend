@@ -60,6 +60,7 @@ form{
   margin-top: 16px;
   height: 54px;
   margin-left: 2px;
+  background-color: #0b284f;
 }
 
 mat-label{

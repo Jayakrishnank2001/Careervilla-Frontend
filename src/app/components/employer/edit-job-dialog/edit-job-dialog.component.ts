@@ -36,6 +36,7 @@ export class EditJobDialogComponent implements OnInit {
   ngOnInit(): void {
     this.countries = this.locationService.getCountries()
     this.getIndustries()
+    console.log(this.data)
     this.form = this.formBuilder.group({
       jobTitle: [this.data.jobTitle, Validators.required],
       companyName: [this.data.companyId?.companyName, Validators.required],
@@ -46,7 +47,7 @@ export class EditJobDialogComponent implements OnInit {
       specialisms: [this.data.specialisms, Validators.required],
       experience: [this.data.experience, Validators.required],
       gender: [this.data.gender],
-      industryName: [this.data.companyId?.industry, Validators.required],
+      industryName: [this.data.industry?.industryName, Validators.required],
       applicationDeadline: [this.data.applicationDeadline, Validators.required],
       address: [this.data.addressId?.address, Validators.required],
       country: [this.data.addressId?.country, Validators.required],
@@ -55,10 +56,10 @@ export class EditJobDialogComponent implements OnInit {
     })
   }
 
-  getIndustries(): void{
+  getIndustries(): void {
     this._industryService.getAllIndustries('employer').subscribe({
       next: (res) => {
-        this.industries=res.data?.industries || []
+        this.industries = res.data?.industries || []
       }
     })
   }

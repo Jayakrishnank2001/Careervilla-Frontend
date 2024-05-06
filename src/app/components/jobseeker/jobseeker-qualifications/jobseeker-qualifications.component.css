@@ -30,6 +30,15 @@ button.previous-btn {
     display: flex;
 }
 
+.add-icon{
+    cursor: pointer;
+}
+
+.datas{
+    margin: 0px 30px auto;
+    color: #2201a8;
+}
+
 @media screen and (max-width:800px) {
     .profile-card {
         width: 90%;

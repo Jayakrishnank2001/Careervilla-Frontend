@@ -3,8 +3,9 @@ mat-sidenav {
     height: 100%;
     width: 235px; /* Set your desired sidebar width */
     padding: 16px;
-    background-color: #1D1A2B; /* Set your desired sidebar background color */
+    background-image: linear-gradient(to right, #010313, #011836);
     transition: width 0.3s ease; /* Add a transition for a smooth animation */
+    position: fixed;
   }
 
   mat-label{
@@ -43,6 +44,7 @@ mat-sidenav {
     padding: 15px 30px;
     color: rgb(208, 207, 207);
     border-radius: 0.5em;
+    background-color: #0b284f;
   }
 
   mat-nav-list {
@@ -67,7 +69,7 @@ mat-sidenav {
   }
 
   .custom-list-item.active {
-    background-color: #403561;
+    background-color: #264670;
     border-radius: 0.5em;
   }
   

@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Minimum Salary</h1>
+    <hr>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Salary</mat-label>
+        <input matInput type="text" formControlName="minimumSalary">
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-raised-button (click)="deleteSalary()" color="warn" *ngIf="data.salary">DELETE</button>
+        <button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" (click)="onSubmit()">SUBMIT</button>
+    </div>
+</form>

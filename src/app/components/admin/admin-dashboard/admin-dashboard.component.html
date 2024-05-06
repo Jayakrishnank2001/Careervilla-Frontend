@@ -1,2 +1,16 @@
 <div class="main-class">
-</div>
+    <div class="barChart"> 
+      <p-chart type="bar" [data]="chart1" [options]="chartOptions1"></p-chart>   
+    </div>
+  
+    <div class="chart-container">
+      <div class="pieChart">
+        <p-chart type="pie" [data]="chart2" [options]="chartOptions2"></p-chart>
+      </div>
+  
+      <div class="pieChart">
+        <p-chart type="pie" [data]="chart3" [options]="chartOptions3"></p-chart>
+      </div>
+    </div>
+    <br>
+  </div>

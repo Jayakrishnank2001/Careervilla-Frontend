@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Recent Work Experience</h1>
+    <hr>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Recent Work</mat-label>
+        <input matInput type="text" formControlName="recentWork">
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-raised-button (click)="deleteExperience()" color="warn" *ngIf="data.work">DELETE</button>
+        <button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" (click)="onSubmit()">SUBMIT</button>
+    </div>
+</form>

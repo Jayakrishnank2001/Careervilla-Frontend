@@ -16,7 +16,7 @@ export class AdminService {
     return this._http.post<IAdminAuthResponse>(`${this.baseURL}/admin/login`,{username,password})
   }
 
-  getAllJobseekers(page: number, limit: number, searchQuery: string): Observable<IApiRes<IJobseekersAndCount | null>>{
+  getAllJobseekers(page?: number, limit?: number, searchQuery?: string): Observable<IApiRes<IJobseekersAndCount | null>>{
     return this._http.get<IApiRes<IJobseekersAndCount | null>>(`${this.baseURL}/admin/jobseekers?page=${page}&limit=${limit}&searchQuery=${searchQuery}`)
   }
 
@@ -24,7 +24,7 @@ export class AdminService {
     return this._http.patch<IResponse>(`${this.baseURL}/admin/jobseekers/block/${jobseekerId}`,{})
   }
 
-  getAllEmployers(page: number, limit: number, searchQuery: string): Observable<IApiRes<IEmployersAndCount | null>>{
+  getAllEmployers(page?: number, limit?: number, searchQuery?: string): Observable<IApiRes<IEmployersAndCount | null>>{
     return this._http.get<IApiRes<IEmployersAndCount|null>>(`${this.baseURL}/admin/employers?page=${page}&limit=${limit}&searchQuery=${searchQuery}`)
   }
 

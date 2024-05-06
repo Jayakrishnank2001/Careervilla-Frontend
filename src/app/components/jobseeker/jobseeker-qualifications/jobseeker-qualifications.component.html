@@ -13,9 +13,11 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>domain</mat-icon> Add most recent work experience</mat-card-title>
+            <mat-card-subtitle class="datas">{{jobseeker.qualifications?.recentExperience}}</mat-card-subtitle>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addRecentWork()" *ngIf="!jobseeker.qualifications?.recentExperience">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addRecentWork()" *ngIf="jobseeker.qualifications?.recentExperience">edit</mat-icon>
         </div>
     </div>
     <br>
@@ -24,9 +26,11 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>school</mat-icon> Add highest education</mat-card-title>
+            <mat-card-subtitle class="datas">{{jobseeker.qualifications?.highestEducation}}</mat-card-subtitle>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addHighestEducation()" *ngIf="!jobseeker.qualifications?.highestEducation">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addHighestEducation()" *ngIf="jobseeker.qualifications?.highestEducation">edit</mat-icon>
         </div>
     </div>
     <br>
@@ -35,9 +39,13 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>badge</mat-icon> Add skills</mat-card-title>
+            <ng-container *ngFor="let skill of jobseeker.qualifications?.skills">
+                <mat-card-subtitle class="datas">{{skill}}</mat-card-subtitle>
+            </ng-container>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addSkills()" *ngIf="!jobseeker.qualifications?.skills?.length">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addSkills()" *ngIf="jobseeker.qualifications?.skills?.length">edit</mat-icon>
         </div>
     </div>
     <br>
@@ -46,9 +54,13 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>language</mat-icon> Add languages</mat-card-title>
+            <ng-container *ngFor="let language of jobseeker.qualifications?.languages">
+                <mat-card-subtitle class="datas">{{language}}</mat-card-subtitle>
+            </ng-container>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addLanguages()" *ngIf="!jobseeker.qualifications?.languages?.length">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addLanguages()" *ngIf="jobseeker.qualifications?.languages?.length">edit</mat-icon>
         </div>
     </div>
     <br>

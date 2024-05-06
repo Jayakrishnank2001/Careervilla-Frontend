@@ -46,6 +46,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from "@angular/forms";
 import { EmployerService } from "src/app/services/employer.service";
 import { MessageService } from "src/app/services/message.service";
+import { RecentWorkDialogComponent } from './recent-work-dialog/recent-work-dialog.component';
+import { HighestEducationDialogComponent } from './highest-education-dialog/highest-education-dialog.component';
+import { AddSkillsDialogComponent } from './add-skills-dialog/add-skills-dialog.component';
+import { AddLanguagesDialogComponent } from './add-languages-dialog/add-languages-dialog.component';
+import { JobTitlesDialogComponent } from './job-titles-dialog/job-titles-dialog.component';
+import { JobTypesDialogComponent } from './job-types-dialog/job-types-dialog.component';
+import { AddPayDialogComponent } from './add-pay-dialog/add-pay-dialog.component';
 
 
 
@@ -75,6 +82,13 @@ import { MessageService } from "src/app/services/message.service";
     JobseekerCompaniesComponent,
     ReviewDialogComponent,
     JobseekerJobDetailsComponent,
+    RecentWorkDialogComponent,
+    HighestEducationDialogComponent,
+    AddSkillsDialogComponent,
+    AddLanguagesDialogComponent,
+    JobTitlesDialogComponent,
+    JobTypesDialogComponent,
+    AddPayDialogComponent,
   ],
   imports: [
     JobseekerRoutingModule,

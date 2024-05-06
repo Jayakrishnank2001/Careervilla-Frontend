@@ -34,7 +34,10 @@ export interface IJobRes {
         state?: string,
         country?: string
     };
-    industry?:string
+    industry?: {
+        industryName?:string
+    }
+    postedAt?:string
 }
 
 export interface JobSearchQuery {

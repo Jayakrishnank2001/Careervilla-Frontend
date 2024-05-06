@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Add Languages</h1>
+    <ng-container formArrayName="languages">
+        <ng-container *ngFor="let language of languages.controls; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline" class="form-field" >
+                <mat-label>Language {{ i + 1 }}</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </ng-container>
+    </ng-container>
+    <button mat-button color="primary" (click)="addLanguage()">
+       + Language
+    </button>
+    <br>
+    <div class="actions">
+        <button mat-raised-button (click)="deleteLanguages()" color="warn">Delete</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()" color="primary">
+            Submit
+        </button>
+    </div>
+</form>

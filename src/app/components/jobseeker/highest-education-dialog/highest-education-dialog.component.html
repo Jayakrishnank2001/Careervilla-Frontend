@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Highest Education</h1>
+    <hr>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Education</mat-label>
+        <input matInput type="text" formControlName="highestEducation">
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-raised-button (click)="deleteEducation()" color="warn" *ngIf="data.education">DELETE</button>
+        <button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" (click)="onSubmit()">SUBMIT</button>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Job Types</h1>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Select Job Types</mat-label>
+      <mat-select formControlName="jobTypes" multiple>
+        <mat-option value="Full-time">Full-Time</mat-option>
+        <mat-option value="Part-time">Part-Time</mat-option>
+        <mat-option value="Freelance">Freelance</mat-option>
+        <mat-option value="Remote">Remote</mat-option>
+        <mat-option value="Hybrid">Hybrid</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div class="actions">
+      <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">SUBMIT</button>
+    </div>
+  </form>
+  

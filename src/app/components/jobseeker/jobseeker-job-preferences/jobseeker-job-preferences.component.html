@@ -5,7 +5,8 @@
     </button>
     <mat-card-header class="job-preferences">
         <mat-card-title>Job Preferences</mat-card-title>
-        <mat-card-subtitle>Tell us the job details you're interested in to get better recommendations across Careervilla.</mat-card-subtitle>
+        <mat-card-subtitle>Tell us the job details you're interested in to get better recommendations across
+            Careervilla.</mat-card-subtitle>
     </mat-card-header>
     <br>
     <mat-divider></mat-divider>
@@ -13,9 +14,13 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>person</mat-icon> Add job titles</mat-card-title>
+            <ng-container *ngFor="let jobTitle of jobseeker.jobPreferences?.jobTitles">
+                <mat-card-subtitle class="datas">{{jobTitle}}</mat-card-subtitle>
+            </ng-container>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addJobTitles()" *ngIf="!jobseeker.jobPreferences?.jobTitles?.length">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addJobTitles()" *ngIf="jobseeker.jobPreferences?.jobTitles?.length">edit</mat-icon>
         </div>
     </div>
     <br>
@@ -24,9 +29,15 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>work</mat-icon> Add job types</mat-card-title>
+            <ng-container *ngFor="let jobType of jobseeker.jobPreferences?.jobTypes">
+                <mat-card-subtitle class="datas">{{jobType}}</mat-card-subtitle>
+            </ng-container>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addJobTypes()"
+                *ngIf="!jobseeker.jobPreferences?.jobTypes?.length">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addJobTypes()"
+                *ngIf="jobseeker.jobPreferences?.jobTypes?.length">edit</mat-icon>
         </div>
     </div>
     <br>
@@ -35,9 +46,15 @@
     <div class="user-details">
         <div style="flex-grow: 1;">
             <mat-card-title><mat-icon>account_balance_wallet</mat-icon> Add pay</mat-card-title>
+            <mat-card-subtitle class="datas"
+                *ngIf="jobseeker.jobPreferences?.minimumSalary">{{jobseeker.jobPreferences?.minimumSalary}} per
+                month</mat-card-subtitle>
         </div>
         <div>
-            <mat-icon>add</mat-icon>
+            <mat-icon class="add-icon" (click)="addMinimumSalary()"
+                *ngIf="!jobseeker.jobPreferences?.minimumSalary">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addMinimumSalary()"
+                *ngIf="jobseeker.jobPreferences?.minimumSalary">edit</mat-icon>
         </div>
     </div>
     <br>

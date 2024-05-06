@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Add Skills</h1>
+    <ng-container formArrayName="skills">
+        <ng-container *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline" class="form-field" >
+                <mat-label>Skill {{ i + 1 }}</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </ng-container>
+    </ng-container>
+    <button mat-button color="primary" (click)="addSkill()">
+       + Another Skill
+    </button>
+    <br>
+    <div class="actions">
+        <button mat-raised-button (click)="deleteSkills()" color="warn">Delete</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()" color="primary">
+            Submit
+        </button>
+    </div>
+</form>

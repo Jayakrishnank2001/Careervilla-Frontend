@@ -15,14 +15,14 @@
       <a mat-list-item class="custom-list-item" routerLink="/admin/subscription-plans" [class.active]="isActive('/admin/subscription-plans')"><span class="options">SUBSCRIPTION PLAN</span></a>
     </mat-nav-list>
     <mat-card-actions>
-      <button mat-raised-button class="mat-large-fab1" color="primary" (click)="onLogout()">LOGOUT</button>
+      <button mat-raised-button class="mat-large-fab1" (click)="onLogout()">LOGOUT</button>
     </mat-card-actions>
   </mat-sidenav>
 
   <div *ngIf="(screenSize | async) === 'small'" class="small-screen-container">
     <ng-container>
       <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon style="color:#6f689c;">menu</mat-icon>
+        <mat-icon style="color:#0b284f;">menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <div class="centered-container">

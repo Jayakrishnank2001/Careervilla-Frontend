@@ -16,6 +16,7 @@ import { AdminService } from "src/app/services/admin.service";
 import { AdminReportedDialogComponent } from './admin-reported-dialog/admin-reported-dialog.component';
 import { AdminIndustriesComponent } from './admin-industries/admin-industries.component';
 import { AdminIndustryDialogComponent } from './admin-industry-dialog/admin-industry-dialog.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
     declarations:[
@@ -37,7 +38,8 @@ import { AdminIndustryDialogComponent } from './admin-industry-dialog/admin-indu
         MaterialModule,
         ReactiveFormsModule,
         AdminTableComponent,
-        CommonModule
+        CommonModule,
+        ChartModule
     ],
     providers:[AdminService]
 })

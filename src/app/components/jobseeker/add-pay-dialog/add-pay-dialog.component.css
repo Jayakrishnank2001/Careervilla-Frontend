@@ -1,0 +1,41 @@
+.mat-form {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    max-height: 250px;
+}
+
+.form-field {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+.actions {
+    display: flex;
+    gap: 10px
+}
+
+@media screen and (min-width: 600px) {
+    .mat-form {
+        margin-top: 10px;
+        text-align: center;
+        width: 500px;
+        height: 540px;
+        flex-direction: column;
+    }
+
+    button {
+        width: 150px;
+        border-radius: 1em;
+    }
+
+    h1 {
+        font-weight: 600;
+    }
+}

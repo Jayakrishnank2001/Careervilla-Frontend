@@ -13,7 +13,8 @@ export interface IJobseekerRes {
   location?: string
   savedJobs?: SavedJob[];
   appliedJobs?: AppliedJob[];
-
+  jobPreferences?: JobPreferences
+  qualifications?:Qualifications
 }
 
 export interface SavedJob {
@@ -51,3 +52,30 @@ export interface IResponse {
     message: string
   }
 }
+
+export interface JobPreferences {
+  jobTitles?: [string]
+  jobTypes?: [string]
+  minimumSalary?: string
+}
+
+export interface Qualifications {
+  recentExperience?: string
+  highestEducation?: string
+  skills?: [string]
+  languages?: [string]
+}
+
+export interface skills{
+  name:string
+}
+
+export interface languages{
+  name:string
+}
+
+export interface jobTitles{
+  name:string
+}
+
+

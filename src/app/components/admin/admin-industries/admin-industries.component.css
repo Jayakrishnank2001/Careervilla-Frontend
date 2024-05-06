@@ -1,13 +1,13 @@
 .main-div {
     display: flex;
-    background-color: #242136;
+    background-image: linear-gradient(to right, #010313, #011836);
     height: 100vh;
 }
 
 .mat-elevation-z8 {
     width: 1150px;
     height: 100%;
-    background-color: #1D1A2B;
+    background-color: #010e1f;
     margin-left: 50px;
 }
 

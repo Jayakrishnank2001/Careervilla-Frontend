@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="mat-form">
+    <h1>Add Job Titles</h1>
+    <ng-container formArrayName="jobTitles">
+        <ng-container *ngFor="let jobTitle of jobTitles.controls; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="outline" class="form-field" >
+                <mat-label>job Title {{ i + 1 }}</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </ng-container>
+    </ng-container>
+    <button mat-button color="primary" (click)="addJobTitle()">
+       + Job Title
+    </button>
+    <br>
+    <div class="actions">
+        <button mat-raised-button (click)="deleteJobTitles()" color="warn">Delete</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()" color="primary">
+            Submit
+        </button>
+    </div>
+</form>

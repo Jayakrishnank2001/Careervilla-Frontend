@@ -58,23 +58,23 @@ export class JobseekerService {
   }
 
   updatePhoto(jobseekerId: string, url: string) {
-    return this._http.put<IResponse>(`${this.baseURL}/jobseeker/updatePhoto/${jobseekerId}`,{url})
+    return this._http.put<IResponse>(`${this.baseURL}/jobseeker/updatePhoto/${jobseekerId}`, { url })
   }
 
   addResume(jobseekerId: string, url: string) {
-    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/addResume/${jobseekerId}`,{url})
+    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/addResume/${jobseekerId}`, { url })
   }
 
   deleteResume(jobseekerId: string) {
     return this._http.delete<IResponse>(`${this.baseURL}/jobseeker/deleteResume/${jobseekerId}`)
   }
 
-  saveJob(jobseekerId:string,jobId: String) {
-    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/saveJob`,{jobseekerId,jobId})
+  saveJob(jobseekerId: string, jobId: String) {
+    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/saveJob`, { jobseekerId, jobId })
   }
 
   unsaveJob(jobseekerId: string, jobId: string) {
-    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/unsaveJob`,{jobseekerId,jobId})
+    return this._http.post<IResponse>(`${this.baseURL}/jobseeker/unsaveJob`, { jobseekerId, jobId })
   }
 
   getSavedJobs(jobseekerId: string) {
@@ -82,10 +82,36 @@ export class JobseekerService {
   }
 
   withdrawApplication(jobId: string, jobseekerId: string) {
-    return this._http.patch<IResponse>(`${this.baseURL}/jobseeker/withdraw-application`,{jobId,jobseekerId})
+    return this._http.patch<IResponse>(`${this.baseURL}/jobseeker/withdraw-application`, { jobId, jobseekerId })
   }
 
-  
+  addRecentWork(work: string, jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-recent-work`, { work, jobseekerId })
+  }
+
+  addHighestEducation(education: string, jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-education`, { education, jobseekerId })
+  }
+
+  addMinimumSalary(salary: string, jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-salary`, { salary, jobseekerId })
+  }
+
+  addJobTypes(jobTypes: [string], jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-jobTypes`, { jobTypes, jobseekerId })
+  }
+
+  addSkills(skills: string[], jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-skills`, { skills, jobseekerId })
+  }
+
+  addLanguages(languages: string[], jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-languages`, { languages, jobseekerId })
+  }
+
+  addJobTitles(jobTitles: string[], jobseekerId: string) {
+    return this._http.post<IRes>(`${this.baseURL}/jobseeker/add-jobTitles`, { jobTitles, jobseekerId })
+  }
 
 
 
