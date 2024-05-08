@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IChat } from 'src/app/models/chat';
@@ -14,7 +14,7 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './jobseeker-messages.component.html',
   styleUrls: ['./jobseeker-messages.component.css']
 })
-export class JobseekerMessagesComponent implements OnInit {
+export class JobseekerMessagesComponent implements OnInit, OnDestroy {
 
   form!: FormGroup
   jobseekerId!: string | null
@@ -30,10 +30,14 @@ export class JobseekerMessagesComponent implements OnInit {
     @Inject(AuthService) private _authService: AuthService,
     @Inject(WebSocketService) private _socketService: WebSocketService,
     @Inject(EmployerService) private _employerService: EmployerService,
-    @Inject(MessageService) private _messageService: MessageService) { }
+    @Inject(MessageService) private _messageService: MessageService) {
+
+    this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
+    if (this.jobseekerId)
+      this._socketService.connectSocket(this.jobseekerId)
+  }
 
   ngOnInit(): void {
-    this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
     this._route.queryParamMap.subscribe((params) => {
       this.employerId = params.get('employerId')
     })
@@ -42,6 +46,11 @@ export class JobseekerMessagesComponent implements OnInit {
     })
     this.getAllChats()
     this.getMessages(this.employerId)
+    this._socketService.listen('receive-message').subscribe((data) => { this.updateMessage(data) })
+  }
+
+  ngOnDestroy(): void {
+    this._socketService.disconnectSocket()
   }
 
   getMessages(employerId: string | null): void {
@@ -56,11 +65,19 @@ export class JobseekerMessagesComponent implements OnInit {
     }
   }
 
+  updateMessage(res: IMessage): void {
+    this.getMessages(this.employerId)
+    this.getAllChats()
+  }
+
+
   sendMessage(): void {
     const message = this.form.getRawValue()
-    const data = { senderId: this.jobseekerId, receiverId: this.employerId, message: message.message }
-    this._socketService.sendMessage(data);
+    const messageData = { senderId: this.jobseekerId, receiverId: this.employerId, message: message.message }
+    this._socketService.emit('send-message', messageData);
     this.form.reset()
+    if (this.jobseekerId && this.employerId)
+      this.messages.push({ senderId: this.jobseekerId, receiverId: this.employerId, message: message.message })
     this.getMessages(this.employerId)
     this.getAllChats()
   }

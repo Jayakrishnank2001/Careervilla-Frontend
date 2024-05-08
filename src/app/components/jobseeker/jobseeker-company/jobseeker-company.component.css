@@ -171,6 +171,23 @@ mat-card-actions button.save-button {
     color: #4428fa;
 }
 
+.review-list{
+    height: 270px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+.job-list{
+    height: 270px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+
 
 @media screen and (max-width:600px) {
     .company-card {

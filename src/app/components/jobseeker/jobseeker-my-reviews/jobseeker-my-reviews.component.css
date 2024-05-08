@@ -1,6 +1,7 @@
 .myReviews-card {
     width: 70%;
-    margin: 25px auto;
+    height: 575px;
+    margin: 30px auto;
     padding: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -78,6 +79,14 @@
 
 .span{
     font-weight: 500;
+}
+
+.review-list{
+    height: 490px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
 }
 
 

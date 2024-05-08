@@ -16,7 +16,7 @@ export class JobService {
     return this._http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`, jobData)
   }
 
-  getJobs(page: number, pageSize: number, companyId?: string, searchQuery?: JobSearchQuery) {
+  getJobs(page?: number, pageSize?: number, companyId?: string, searchQuery?: JobSearchQuery) {
     let params = new HttpParams()
       .set('jobTitle', searchQuery?.jobTitle ?? '')
       .set('location', searchQuery?.location ?? '')

@@ -1,7 +1,7 @@
 .settings-card {
     width: 75%;
-    height: 580px;
-    margin: 25px auto;
+    height: 560px;
+    margin: 37px auto;
     padding: 20px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -13,7 +13,7 @@
     margin-left: -10px;
 }
 
-.job-title{
+.job-title {
     margin-left: 15px;
 }
 
@@ -40,17 +40,26 @@
 }
 
 .status {
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px;
+    /* Adjust as needed */
 }
 
-button.mat-raised-button{
+button.mat-raised-button {
     color: white;
     background-color: #644DFF;
 }
 
-.jobStatus-btn{
+.jobStatus-btn {
     margin-left: 5px;
     width: 90px;
+}
+
+.jobs-list {
+    height: 470px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
 }
 
 

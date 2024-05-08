@@ -17,6 +17,6 @@ export interface IJobApplication {
     resume: string,
     status?: string,
     qualification?: string,
-    experience?: number,
+    experience?: string,
     rejectionReason?:string
 }

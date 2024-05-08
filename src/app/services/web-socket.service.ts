@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Socket, io } from 'socket.io-client';
+import { type Socket, io } from 'socket.io-client';
+
 
 @Injectable()
 
 export class WebSocketService {
 
-  socket: Socket;
+  socket!: Socket;
 
-  constructor() {
-    console.log('socket')
-    this.socket = io(environments.baseURL)
+  connectSocket(id: string): void {
+    this.socket = io('ws://localhost:3001', { query: { id } })
   }
 
-  sendMessage(data: any): void {
-    console.log(data)
-    this.socket.emit('send-message', data); // Send a message to the server
+  listen(eventName: string): Observable<any> {
+    return new Observable((subscribe) => {
+      this.socket.on(eventName, (data) => {
+        subscribe.next(data)
+      })
+    })
   }
 
-  onMessage(): Observable<any> {
-    return new Observable((observer) => {
-      this.socket.on('receive-message', (data) => {
-        observer.next(data); // Receive messages from the server
-      });
+  emit(eventName: string, data: any): void {
+    this.socket.emit(eventName, data)
+  }
 
-      return () => {
-        this.socket.off('receive-message'); // Clean up when no longer needed
-      };
-    });
+  disconnectSocket(): void {
+    this.socket.disconnect()
   }
 
 

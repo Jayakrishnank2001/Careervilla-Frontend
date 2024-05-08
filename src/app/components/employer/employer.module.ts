@@ -89,10 +89,8 @@ import { MessageService } from "src/app/services/message.service";
   providers: [
     EmployerService,
     JobApplicationService,
-    WebSocketService,
     NotificationService,
     JobseekerService,
-    MessageService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

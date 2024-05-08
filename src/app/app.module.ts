@@ -19,6 +19,8 @@ import { JobService } from './services/job.service';
 import { ReportedJobService } from './services/reported-job.service';
 import { CompanyService } from './services/company.service';
 import { IndustryService } from './services/industry.service';
+import { WebSocketService } from './services/web-socket.service';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -43,6 +45,8 @@ import { IndustryService } from './services/industry.service';
     JobService,
     ReportedJobService,
     IndustryService,
+    WebSocketService,
+    MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },
   ],

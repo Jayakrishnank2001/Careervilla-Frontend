@@ -30,10 +30,6 @@ export class JobseekerCompanyComponent implements OnInit {
   jobs: IJobRes[] = []
   savedJobs: (string | undefined)[] = []
   appliedJobs: (string | undefined)[] = []
-  page: number = 1;
-  pageSize: number = 3;
-  hasMoreJobs: boolean = true;
-  searchQuery: string = ''
   viewPage:boolean=false
 
   constructor(private _route: ActivatedRoute,
@@ -69,17 +65,16 @@ export class JobseekerCompanyComponent implements OnInit {
   getCompanyReviews(): void {
     this._reviewService.getAllReviews(undefined, this.companyId).subscribe({
       next: (res) => {
-        this.reviews = res
+        this.reviews = res.reverse()
         this.selected = 'review'
       }
     })
   }
 
   getCompanyJobs(): void {
-    this._jobService.getJobs(this.page, this.pageSize, this.companyId).subscribe({
+    this._jobService.getJobs(undefined,undefined,this.companyId).subscribe({
       next: (res) => {
-        this.jobs = res
-        this.jobs.reverse()
+        this.jobs = res.reverse()
         this.selected = 'jobs'
       }
     })

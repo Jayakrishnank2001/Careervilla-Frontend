@@ -23,7 +23,7 @@ mat-card-title {
 .job-title-card {
     border: 1px solid #ccc;
     height: 50px;
-    margin: 40px 50px 0px 50px;
+    margin: 10px 50px 0px 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,8 +36,8 @@ mat-card-title {
 
 .candidates-card {
     width: 80%;
+    height:560px;
     border-radius: 1em;
-    margin-bottom: 30px;
     border: 1px solid #ccc;
 }
 
@@ -53,17 +53,20 @@ img {
 }
 
 .candidates-list {
-    margin: 30px auto;
+    margin: 10px auto;
     width: 90%;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
     gap: 20px;
+    height: 400px;
+    overflow-y: auto;
+    flex-direction: column;
+    scrollbar-width: none;
 }
 
 .candidate-card {
-    margin-bottom: 30px;
     border: 1px solid #ccc;
 }
 
@@ -79,7 +82,7 @@ img {
 }
 
 .selected {
-    background-color: #a597ff;
+    background-color: #e2ddff;
 }
 
 @media screen and (max-width:950px) {

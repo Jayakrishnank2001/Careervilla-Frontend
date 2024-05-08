@@ -30,10 +30,14 @@ export class EmployerMessagesComponent implements OnInit {
     @Inject(AuthService) private _authService: AuthService,
     @Inject(FormBuilder) private _fb: FormBuilder,
     @Inject(JobseekerService) private _jobseekerService: JobseekerService,
-    @Inject(MessageService) private _messageService: MessageService) { }
+    @Inject(MessageService) private _messageService: MessageService) { 
+    
+      this.employerId = this._authService.extractUserIdFromToken('employerToken')
+    if (this.employerId)
+        this._socketService.connectSocket(this.employerId)
+    }
 
   ngOnInit(): void {
-    this.employerId = this._authService.extractUserIdFromToken('employerToken')
     this._route.queryParamMap.subscribe((params) => {
       this.jobseekerId = params.get('jobseekerId')
     })
@@ -42,7 +46,13 @@ export class EmployerMessagesComponent implements OnInit {
     })
     this.getAllChats()
     this.getMessages(this.jobseekerId)
+    this._socketService.listen('receive-message').subscribe((data) => { this.updateMessage(data) })
   }
+
+  ngOnDestroy (): void {
+    this._socketService.disconnectSocket()
+  }
+
 
   getMessages(jobseekerId: string | null): void {
     if (jobseekerId && this.employerId) {
@@ -56,11 +66,18 @@ export class EmployerMessagesComponent implements OnInit {
     }
   }
 
+  updateMessage (res: IMessage): void {
+    this.getMessages(this.jobseekerId)
+    this.getAllChats()
+  }
+
   sendMessage(): void {
     const message = this.form.getRawValue()
-    const data = { senderId: this.employerId, receiverId: this.jobseekerId, message: message.message }
-    this._socketService.sendMessage(data);
+    const messageData = { senderId: this.employerId, receiverId: this.jobseekerId, message: message.message }
+    this._socketService.emit('send-message', messageData);
     this.form.reset()
+    if (this.jobseekerId && this.employerId)
+      this.messages.push({ senderId: this.employerId, receiverId: this.jobseekerId, message: message.message })
     this.getMessages(this.employerId)
     this.getAllChats()
   }

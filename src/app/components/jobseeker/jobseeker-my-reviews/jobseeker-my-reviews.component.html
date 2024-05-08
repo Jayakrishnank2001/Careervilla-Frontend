@@ -7,13 +7,12 @@
         </mat-card-title>
     </mat-card-header>
     <br>
-    <br>
     <span class="reviews">
         <span matBadge={{myReviews.length}} matBadgeOverlap="false" matBadgePosition="before">My Reviews</span>
     </span>
     <mat-divider></mat-divider>
     <br>
-    <div>
+    <div class="review-list">
         <ng-container *ngFor="let review of myReviews">
             <mat-card class="company-card">
                 <div class="review-header">
@@ -49,4 +48,3 @@
         </ng-container>
     </div>
 </mat-card>
-<br>

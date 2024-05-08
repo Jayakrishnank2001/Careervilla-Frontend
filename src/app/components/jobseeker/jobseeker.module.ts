@@ -34,7 +34,6 @@ import { JobseekerMyJobsComponent } from './jobseeker-my-jobs/jobseeker-my-jobs.
 import { JobseekerMyReviewsComponent } from './jobseeker-my-reviews/jobseeker-my-reviews.component';
 import { JobApplicationService } from "src/app/services/job-application.service";
 import { JobseekerMessagesComponent } from './jobseeker-messages/jobseeker-messages.component';
-import { JobseekerNotificationsComponent } from './jobseeker-notifications/jobseeker-notifications.component';
 import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { JobseekerCompanyComponent } from './jobseeker-company/jobseeker-company.component';
@@ -77,7 +76,6 @@ import { AddPayDialogComponent } from './add-pay-dialog/add-pay-dialog.component
     JobseekerMyJobsComponent,
     JobseekerMyReviewsComponent,
     JobseekerMessagesComponent,
-    JobseekerNotificationsComponent,
     JobseekerCompanyComponent,
     JobseekerCompaniesComponent,
     ReviewDialogComponent,
@@ -110,11 +108,9 @@ import { AddPayDialogComponent } from './add-pay-dialog/add-pay-dialog.component
   providers: [
     JobseekerService,
     JobApplicationService,
-    WebSocketService,
     NotificationService,
     ReviewService,
     EmployerService,
-    MessageService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
