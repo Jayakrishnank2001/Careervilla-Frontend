@@ -11,7 +11,7 @@
           <div class="rounded-input">
             <mat-form-field appearance="outline">
               <mat-label>Email ID</mat-label>
-              <input matInput class="mat-Input" placeholder="" formControlName="email" type="email">
+              <input matInput class="mat-Input" placeholder="" formControlName="email" type="email" required>
             </mat-form-field>
             <div *ngIf="form.get('email')!.hasError('email') && form.get('email')!.touched" class="error-message">
               Please enter a valid email.
@@ -20,7 +20,7 @@
           <div class="rounded-input">
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput class="mat-Input" placeholder="" formControlName="password" type="password">
+              <input matInput class="mat-Input" placeholder="" formControlName="password" type="password" required>
             </mat-form-field>
           </div>
           <a (click)="onForgotPasswordClick()" style="cursor: pointer;"><p class="forgot-password">Forgot Password?</p></a>

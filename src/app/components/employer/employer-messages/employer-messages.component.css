@@ -102,13 +102,36 @@ button.mat-raised-button{
   font-size: medium;
 }
 
+.message-time{
+  font-size: smaller;
+}
 
+.lastMessage{
+  display: flex;
+  flex-direction: column;
+}
+
+.date-separator {
+  text-align: center;
+  font-weight:500; 
+  padding: 10px;
+  margin: 10px 0; 
+  color: #0e0068;
+}
 
 @media screen and (max-width:600px) {
-  .message {
-    display: none;
-  }
 
+  .single-message-card{
+    margin: 10px auto;
+  }
+  .message-card{
+    margin-top: 10px;
+  }
+  .message {
+    width: 100%;
+    display: none;
+    margin: 0;
+  }
   .message-list {
     width: 90%;
   }
@@ -117,6 +140,29 @@ button.mat-raised-button{
     margin-left: 0;
     justify-content: center;
   }
+
+  .chats{
+    display: none;
+  }
+
+  .hide{
+    display: flex;
+  }
+
+  .message-input{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  mat-form-field{
+    width: 75%;
+    margin: 10px 3px 10px 10px;
+  }
+
+  button.mat-raised-button{
+    margin: 0;
+  }
+
 
 
 }

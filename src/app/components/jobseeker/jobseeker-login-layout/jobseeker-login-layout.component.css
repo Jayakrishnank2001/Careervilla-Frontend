@@ -1,14 +1,19 @@
 mat-card {
-    margin: 0 auto;
-    max-width: 500px;
-    text-align:center;
-    margin-left: 200px;
-    box-shadow: none;
-  }
+  margin: 0 auto;
+  max-width: 500px;
+  text-align: center;
+  margin-left: 200px;
+  box-shadow: none;
+}
 
-  .text{
-    font-weight:500;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(60, 60, 60);
+.text {
+  font-weight: 500;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(60, 60, 60);
+}
+
+@media screen and (max-width:600px){
+  mat-card{
+    display: none;
   }
-  
+}

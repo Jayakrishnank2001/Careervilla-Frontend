@@ -36,7 +36,7 @@ export class JobseekerJobsComponent implements OnInit {
     location: '',
     experience: '',
     industryName: '',
-    jobType:''
+    jobType: ''
   }
 
 
@@ -70,17 +70,17 @@ export class JobseekerJobsComponent implements OnInit {
     );
 
   getJobs(): void {
-    this._jobService.getJobs(this.page, this.pageSize, undefined, this.searchQuery).subscribe({
-      next: (res) => {
-        this.jobs = res
-        console.log(this.jobs)
-        this.selectJob = this.jobs[0]
-        if (this.jobs.length < 3) {
-          this.hasMorePages = false
+    if (this.jobseekerId)
+      this._jobService.getJobs(this.page, this.pageSize, undefined, this.searchQuery, this.jobseekerId).subscribe({
+        next: (res) => {
+          this.jobs = res
+          this.selectJob = this.jobs[0]
+          if (this.jobs.length < 3) {
+            this.hasMorePages = false
+          }
+          this.searchQuery.experience = ''
         }
-        this.searchQuery.experience = ''
-      }
-    })
+      })
   }
 
   getSavedJobs(): void {
@@ -159,12 +159,25 @@ export class JobseekerJobsComponent implements OnInit {
   }
 
   onApplyJob(jobId: string | undefined): void {
-    const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
-      data: { jobId, jobseekerId: this.jobseekerId }
-    })
-    dialogRef.afterClosed().subscribe(result => {
-      this.getSavedJobs()
-    })
+    if (jobId)
+      this._jobService.getJobDetails(jobId).subscribe({
+        next: (res) => {
+          if (res.status === 'Active' && res.isBlocked === false) {
+            const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
+              data: { jobId, jobseekerId: this.jobseekerId }
+            })
+            dialogRef.afterClosed().subscribe(result => {
+              this.getSavedJobs()
+            })
+          } else {
+            this._snackBar.open('Job not found', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top'
+            })
+            this.getJobs()
+          }
+        }
+      })
   }
 
   goToPreviousPage(): void {
@@ -195,17 +208,17 @@ export class JobseekerJobsComponent implements OnInit {
   getIndustries(): void {
     this._industryService.getAllIndustries('jobseeker').subscribe({
       next: (res) => {
-        this.industries=res.data?.industries || []
+        this.industries = res.data?.industries || []
       }
     })
   }
 
-  onIndustryChange(industry:string): void{
+  onIndustryChange(industry: string): void {
     this.searchQuery.industryName = industry
     this.getJobs()
   }
 
-  onJobTypeChange(jobType:string): void{
+  onJobTypeChange(jobType: string): void {
     this.searchQuery.jobType = jobType
     this.getJobs()
   }

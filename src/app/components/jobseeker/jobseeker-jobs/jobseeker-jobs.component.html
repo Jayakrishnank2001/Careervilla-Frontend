@@ -30,7 +30,7 @@
                 <mat-option value="Freelance">Freelance</mat-option>
                 <mat-option value="Remote">Remote</mat-option>
                 <mat-option value="Hybrid">Hybrid</mat-option>
-              </mat-select>
+            </mat-select>
         </button>
     </div>
     <mat-divider></mat-divider>
@@ -42,7 +42,7 @@
             <mat-card class="job-card" (click)="selectedJob(job)" [ngClass]="{'selected': selectJob._id === job._id}"
                 style="cursor:pointer;">
                 <mat-card-header class="job-header">
-                    <mat-card-title>{{job.jobTitle}}</mat-card-title>
+                    <mat-card-title (click)="jobDetails(job._id)">{{job.jobTitle}}</mat-card-title>
                     <div class="logo">
                         <img src={{job.companyId?.logo}} alt="" mat-card-avatar class="example-header-image">
                         <mat-card-subtitle
@@ -96,18 +96,20 @@
                 <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(selectJob._id)"
                     style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
                 <button mat-raised-button class="save-button" (click)="onUnsaveJob(selectJob._id)"
-                    *ngIf="isJobSaved(selectJob._id)"><span class="icon-wrapper">
+                    *ngIf="isJobSaved(selectJob._id)" [disabled]="appliedJobs.includes(selectJob._id)">
+                    <span class="icon-wrapper">
                         <mat-icon>bookmark</mat-icon>
                     </span>
                 </button>
                 <button mat-raised-button class="save-button" (click)="onSaveJob(selectJob._id)"
-                    *ngIf="!isJobSaved(selectJob._id)"><span class="icon-wrapper">
+                    *ngIf="!isJobSaved(selectJob._id)" [disabled]="appliedJobs.includes(selectJob._id)">
+                    <span class="icon-wrapper">
                         <mat-icon>bookmark_border</mat-icon>
                     </span>
                 </button>
                 <button mat-raised-button class="save-button"
-                    (click)="onReportJob(selectJob.jobTitle,selectJob.companyId?.companyName)"><span
-                        class="icon-wrapper">
+                    (click)="onReportJob(selectJob.jobTitle,selectJob.companyId?.companyName)">
+                    <span class="icon-wrapper">
                         <mat-icon>outlined_flag</mat-icon>
                     </span>
                 </button>

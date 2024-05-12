@@ -65,10 +65,15 @@ button.mat-raised-button {
 
 @media screen and (max-width:600px) {
     .settings-card {
-        width: 90%;
+        width: 95%;
     }
 
-    button.btn {
-        width: 110px;
+    button.mat-raised-button {
+        width: 90px;
+        margin: 0px 0px 5px 5px;
     }
+    .status{
+        margin-left: 15px;
+    }
+
 }

@@ -81,7 +81,7 @@ button.search-button {
 
 
 @media screen and (max-width:700px) {
-  .job-list {
-    width: 90%;
+  .company-list {
+    width: 95%;
   }
 }

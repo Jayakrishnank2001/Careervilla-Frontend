@@ -123,18 +123,20 @@
                             <button mat-raised-button class="apply-button" *ngIf="appliedJobs.includes(job._id)"
                                 style="color: #f9f9f9; background-color: #806cff;" disabled>Applied</button>
                             <button mat-raised-button class="save-button" (click)="unsaveJob(job._id)"
-                                *ngIf="savedJobs.includes(job._id)"><span class="icon-wrapper">
+                                *ngIf="savedJobs.includes(job._id)" [disabled]="appliedJobs.includes(job._id)">
+                                <span class="icon-wrapper">
                                     <mat-icon>bookmark</mat-icon>
                                 </span>
                             </button>
                             <button mat-raised-button class="save-button" (click)="saveJob(job._id)"
-                                *ngIf="!savedJobs.includes(job._id)"><span class="icon-wrapper">
+                                *ngIf="!savedJobs.includes(job._id)" [disabled]="appliedJobs.includes(job._id)">
+                                <span class="icon-wrapper">
                                     <mat-icon>bookmark_border</mat-icon>
                                 </span>
                             </button>
                             <button mat-raised-button class="save-button"
-                                (click)="reportJob(job.jobTitle,job.companyId?.companyName,job._id)"><span
-                                    class="icon-wrapper">
+                                (click)="reportJob(job.jobTitle,job.companyId?.companyName,job._id)">
+                                <span class="icon-wrapper">
                                     <mat-icon>outlined_flag</mat-icon>
                                 </span>
                             </button>

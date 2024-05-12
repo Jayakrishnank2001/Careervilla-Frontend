@@ -1,5 +1,5 @@
 <app-jobseeker-nav></app-jobseeker-nav>
-<mat-card *ngIf="viewPage">
+<mat-card *ngIf="viewPage && job.status=='Active'">
     <mat-card-header class="job-header">
         <mat-card-title>{{job.jobTitle}}</mat-card-title>
         <div class="logo">

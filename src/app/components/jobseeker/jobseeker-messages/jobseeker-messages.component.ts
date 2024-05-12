@@ -1,4 +1,5 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { AfterViewChecked, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IChat } from 'src/app/models/chat';
@@ -14,7 +15,8 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './jobseeker-messages.component.html',
   styleUrls: ['./jobseeker-messages.component.css']
 })
-export class JobseekerMessagesComponent implements OnInit, OnDestroy {
+export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @ViewChild('chatContainer') chatContainer!: ElementRef<HTMLDivElement>;
 
   form!: FormGroup
   jobseekerId!: string | null
@@ -46,7 +48,17 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy {
     })
     this.getAllChats()
     this.getMessages(this.employerId)
-    this._socketService.listen('receive-message').subscribe((data) => { this.updateMessage(data) })
+    this._socketService.listen('receive-message').subscribe(() => { this.updateMessage() })
+  }
+
+  private scrollToBottom() {
+    if (this.chatContainer) {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom()
   }
 
   ngOnDestroy(): void {
@@ -65,7 +77,7 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateMessage(res: IMessage): void {
+  updateMessage(): void {
     this.getMessages(this.employerId)
     this.getAllChats()
   }
@@ -80,13 +92,14 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy {
       this.messages.push({ senderId: this.jobseekerId, receiverId: this.employerId, message: message.message })
     this.getMessages(this.employerId)
     this.getAllChats()
+    this.scrollToBottom()
   }
 
   getAllChats(): void {
     if (this.jobseekerId)
       this._messageService.getAllChats(this.jobseekerId, 'jobseeker').subscribe({
         next: (res) => {
-          this.chats = res
+          this.chats = res.reverse()
         }
       })
   }
@@ -98,10 +111,24 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy {
         this.employerId = res._id || null
       }
     })
-
   }
 
+  isNewDate(index: number): boolean {
+    if (index === 0) {
+      return true;
+    }
+    const time = this.messages[index]?.time;
+    const previousTime = this.messages[index - 1]?.time;
 
+    if (time && previousTime) {
+      const currentDate = formatDate(time, 'yyyy-MM-dd', 'en');
+      const previousDate = formatDate(previousTime, 'yyyy-MM-dd', 'en');
+
+      return currentDate !== previousDate;
+    } else {
+      return false;
+    }
+  }
 
 
 

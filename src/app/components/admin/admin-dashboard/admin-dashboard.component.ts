@@ -36,7 +36,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getMonthlyJobs(): void{
-    this._jobService.getJobs(1,10).subscribe({
+    this._jobService.getJobs().subscribe({
       next: (res) => {
         const jobCounts=this.calculateJobsPerMonth(res)
         this.chart1 = {

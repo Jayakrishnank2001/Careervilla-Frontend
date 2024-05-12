@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { JobseekerService } from 'src/app/services/jobseeker.service';
@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JobApplicationService } from 'src/app/services/job-application.service';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { JobApplicationService } from 'src/app/services/job-application.service'
   templateUrl: './apply-job-dialog.component.html',
   styleUrls: ['./apply-job-dialog.component.css']
 })
-export class ApplyJobDialogComponent implements OnInit {
+export class ApplyJobDialogComponent implements OnInit,OnDestroy {
 
   @ViewChild('resumeInput') resumeInput!: ElementRef<HTMLInputElement>;
 
@@ -21,7 +22,7 @@ export class ApplyJobDialogComponent implements OnInit {
   jobId!: string
   jobseekerId!: string
   jobseekerResume!: string | undefined
-  resumeName!:string|undefined
+  resumeName!: string | undefined
 
   constructor(private fb: FormBuilder,
     private dialogRef: MatDialogRef<ApplyJobDialogComponent>,
@@ -29,11 +30,13 @@ export class ApplyJobDialogComponent implements OnInit {
     private jobseekerService: JobseekerService,
     private storage: AngularFireStorage,
     private snackBar: MatSnackBar,
-    private jobApplicationService: JobApplicationService) { 
-    
-      this.jobseekerId = this.data.jobseekerId
-      this.jobId = this.data.jobId
-    }
+    private jobApplicationService: JobApplicationService,
+    private socketService: WebSocketService) {
+
+    this.jobseekerId = this.data.jobseekerId
+    this.jobId = this.data.jobId
+    this.socketService.connectSocket(this.jobseekerId)
+  }
 
   ngOnInit(): void {
     this.getUserResume()
@@ -47,7 +50,7 @@ export class ApplyJobDialogComponent implements OnInit {
     this.jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
       next: (res) => {
         this.jobseekerResume = res.resume
-        this.resumeName = res.firstName+'(Resume)'
+        this.resumeName = res.firstName + '(Resume)'
       }
     })
   }
@@ -59,9 +62,10 @@ export class ApplyJobDialogComponent implements OnInit {
       this.jobApplicationService.applyJob(jobApplicationData).subscribe({
         next: (res) => {
           if (res.success == true) {
+            this.socketService.emit('send-notification',this.jobId)
             this.snackBar.open('Job applied successfully', 'Close', {
               duration: 5000,
-              verticalPosition:'top'
+              verticalPosition: 'top'
             })
             this.dialogRef.close()
           }
@@ -70,12 +74,12 @@ export class ApplyJobDialogComponent implements OnInit {
     } else {
       this.snackBar.open('Please upload a resume', 'Close', {
         duration: 5000,
-        verticalPosition:'top'
+        verticalPosition: 'top'
       })
     }
   }
 
-  onViewResume(event: Event): void{
+  onViewResume(event: Event): void {
     event.preventDefault()
     if (this.jobseekerResume) {
       window.open(this.jobseekerResume)
@@ -87,7 +91,7 @@ export class ApplyJobDialogComponent implements OnInit {
     input.click()
   }
 
-  onResumeSelected(event: any): void{
+  onResumeSelected(event: any): void {
     const file = event.target.files[0]
     const filePath = `Jobseeker/resume/${file.name}`
     const fileRef = this.storage.ref(filePath)
@@ -98,12 +102,16 @@ export class ApplyJobDialogComponent implements OnInit {
           this.jobseekerResume = url
           this.snackBar.open('New resume uploaded', 'Close', {
             duration: 5000,
-            verticalPosition:'top'
+            verticalPosition: 'top'
           })
-          this.resumeName=file.name
+          this.resumeName = file.name
         })
       })
     ).subscribe()
+  }
+
+  ngOnDestroy (): void {
+    this.socketService.disconnectSocket()
   }
 
 

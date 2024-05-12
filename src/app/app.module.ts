@@ -21,9 +21,10 @@ import { CompanyService } from './services/company.service';
 import { IndustryService } from './services/industry.service';
 import { WebSocketService } from './services/web-socket.service';
 import { MessageService } from './services/message.service';
+import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, PageNotFoundComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

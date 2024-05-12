@@ -149,7 +149,7 @@ mat-icon {
 
 @media screen and (max-width:800px) {
     .profile-card {
-        width: 90%;
+        width: 96%;
         flex-direction: column;
     }
 
@@ -160,8 +160,12 @@ mat-icon {
     }
 
     .example-header-image {
-        height: 80px;
-        width: 80px;
+        height: 90px;
+        width: 90px;
+    }
+
+    .professionalDetails{
+        margin: 0;
     }
 
 }

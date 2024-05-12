@@ -37,7 +37,8 @@ export interface IJobRes {
     industry?: {
         industryName?:string
     }
-    postedAt?:string
+    postedAt?: string
+    isBlocked?:boolean
 }
 
 export interface JobSearchQuery {

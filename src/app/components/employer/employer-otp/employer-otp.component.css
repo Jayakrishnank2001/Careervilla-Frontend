@@ -1,54 +1,67 @@
-.otp-page{
-    display: flex;
-    margin:auto;
-    margin: 40px;
+.otp-page {
+  display: flex;
+  margin: auto;
+  margin: 40px;
 }
 
-mat-card{
-    margin-left: 100px;
-    margin-top: 80px;
-    box-shadow: none;
-    align-items: center;
+mat-card {
+  margin-left: 100px;
+  margin-top: 80px;
+  box-shadow: none;
+  align-items: center;
 }
 
 mat-card-actions button.mat-large-fab1 {
-    width: 300px;
-    font-size: 18px;
-    padding: 15px 30px;
-    background-color: #644DFF;
-    color: white;
-    border-radius: 0.5em;
-  }
-  
-  mat-card-content{
-    margin-top: 10px;
-  }
+  width: 300px;
+  font-size: 18px;
+  padding: 15px 30px;
+  background-color: #644DFF;
+  color: white;
+  border-radius: 0.5em;
+}
 
-  mat-form-field{
-    width: 300px;
-  }
+mat-card-content {
+  margin-top: 10px;
+}
 
-  .resend-otp{
-    text-align: end;
-    color: #644DFF;
-  }
+mat-form-field {
+  width: 300px;
+}
 
-  a{
-    text-decoration: none;
-  }
+.resend-otp {
+  text-align: end;
+  color: #644DFF;
+}
 
-  .register{
-    color: #644DFF;
-    margin-left: 4px;
-  }
+a {
+  text-decoration: none;
+}
 
+.register {
+  color: #644DFF;
+  margin-left: 4px;
+}
+
+.sign-up {
+  display: flex;
+  height: 5px;
+}
+
+.otp-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width:600px){
+  .otp-page{
+    margin: 0;
+    justify-content: center;
+  }
+  mat-card{
+    margin-left:9px;
+  }
   .sign-up{
-    display:flex;
-    height:5px;
-  }
-
-  .otp-container {
-    display: flex;
-    justify-content: space-between;
+    display: none;
   }
   
+}

@@ -45,4 +45,17 @@ button.previous-btn {
         flex-direction: column;
     }
 
+    .qualifications{
+        margin: 0;
+    }
+
+    button.previous-btn{
+        margin: 0;
+    }
+
+    .user-details{
+        margin: 0;
+    }
+    
+
 }

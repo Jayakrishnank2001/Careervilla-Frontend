@@ -1,7 +1,8 @@
 export interface IChat {
     _id: string
     lastMessage?: {
-        message?:string
+        message?: string
+        time?:string
     }
     _doc: {
         participants: participantsData[]

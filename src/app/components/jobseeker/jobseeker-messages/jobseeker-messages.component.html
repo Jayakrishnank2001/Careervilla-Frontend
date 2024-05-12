@@ -1,7 +1,7 @@
 <app-jobseeker-nav></app-jobseeker-nav>
 
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="20px">
-    <div class="message-list" fxFlex="100" fxFlex.xs="100%">
+    <div class="message-list" fxFlex="100" fxFlex.xs="100%" [ngClass]="{'chats': showMessages}">
         <mat-card class="message-card">
             <mat-card-header>
                 <mat-card-title>Messages</mat-card-title>
@@ -10,11 +10,18 @@
             <ng-container *ngFor="let chat of chats">
                 <div class="username" style="cursor: pointer;" (click)="getMessages(chat._doc.participants[0]._id)">
                     <div>
-                        <img src={{chat._doc.participants[0].image}} alt="" mat-card-avatar class="example-header-image">
+                        <img src={{chat._doc.participants[0].image}} alt="" mat-card-avatar
+                            class="example-header-image">
                     </div>
                     <div>
-                        <mat-card-title class="chat-title">{{chat._doc.participants[0].firstName}} {{chat._doc.participants[0].lastName}}</mat-card-title>
-                        <mat-card-subtitle>{{chat.lastMessage?.message}}</mat-card-subtitle>
+                        <mat-card-title class="chat-title">{{chat._doc.participants[0].firstName}}
+                            {{chat._doc.participants[0].lastName}}</mat-card-title>
+                        <div class="lastMessage">
+                            <mat-card-subtitle>{{chat.lastMessage?.message}}</mat-card-subtitle>
+                            <div class="last-message-time">
+                                <mat-card-subtitle>{{chat.lastMessage?.time | customDate}}</mat-card-subtitle>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <mat-divider></mat-divider>
@@ -22,7 +29,7 @@
         </mat-card>
     </div>
 
-    <div class="message" fxFlex="100" fxFlex.xs="100%">
+    <div class="message" fxFlex="100" fxFlex.xs="100%" [ngClass]="{'hide': showMessages}">
 
         <mat-card class="single-message-card" *ngIf="!showMessages">
             <div class="image-div">
@@ -45,19 +52,20 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="chat-container">
-                    <ng-container *ngFor="let message of messages">
-                        <mat-card
-                            class="messages"
-                            [ngClass]="{
+            <div #chatContainer class="chat-container">
+                <ng-container *ngFor="let message of messages;let i=index">
+                    <span *ngIf="isNewDate(i)" class="date-separator">
+                        {{ message.time | customDate }}
+                    </span>
+                    <mat-card class="messages" [ngClass]="{
                                 'sent': message.senderId === jobseekerId,
                                 'received': message.senderId !== jobseekerId
-                            }"
-                        >
-                            {{ message.message }}
-                        </mat-card>
-                    </ng-container>
-            </div>            
+                            }">
+                        {{ message.message }}
+                        <mat-card-subtitle class="message-time">{{message.time | date: 'hh:mm a'}}</mat-card-subtitle>
+                    </mat-card>
+                </ng-container>
+            </div>
             <mat-divider></mat-divider>
             <div class="message-input">
                 <form [formGroup]="form" (ngSubmit)="sendMessage()">

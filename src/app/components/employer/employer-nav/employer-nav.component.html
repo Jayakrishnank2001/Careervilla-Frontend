@@ -68,7 +68,7 @@
           <button mat-menu-item routerLink="/employer/manage-candidates" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Manage candidates</button>
           <button mat-menu-item routerLink="/employer/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
           <mat-divider></mat-divider>
-          <button mat-raised-button class="logout-button" color="warn" (click)="onLogOut()">Sign Out</button>
+          <button mat-menu-item class="logout-button" color="warn" (click)="onLogOut()">Sign Out</button>
         </mat-menu>
       </mat-card>
     </ng-container>

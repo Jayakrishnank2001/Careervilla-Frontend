@@ -116,4 +116,8 @@ img {
         height: 170px;
     }
 
+    .selected{
+        display: none;
+    }
+
 }

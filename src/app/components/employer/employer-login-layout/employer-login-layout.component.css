@@ -12,4 +12,10 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(60, 60, 60);
   }
+
+  @media screen and (max-width:600px){
+    mat-card{
+      display: none;
+    }
+  }
   

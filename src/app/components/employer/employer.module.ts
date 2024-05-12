@@ -35,14 +35,12 @@ import { EmployerManageCandidatesComponent } from './employer-manage-candidates/
 import { AddCompanyDialogComponent } from './add-company-dialog/add-company-dialog.component';
 import { EmployerMessagesComponent } from './employer-messages/employer-messages.component';
 import { EmployerNotificationsComponent } from './employer-notifications/employer-notifications.component';
-import { WebSocketService } from "src/app/services/web-socket.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { EditJobDialogComponent } from "./edit-job-dialog/edit-job-dialog.component";
 import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
 import { PlanDialogComponent } from './plan-dialog/plan-dialog.component';
 import { RejectionReasonDialogComponent } from './rejection-reason-dialog/rejection-reason-dialog.component';
 import { JobseekerService } from "src/app/services/jobseeker.service";
-import { MessageService } from "src/app/services/message.service";
 
 @NgModule({
   declarations: [
@@ -65,7 +63,6 @@ import { MessageService } from "src/app/services/message.service";
     EmployerMessagesComponent,
     EmployerNotificationsComponent,
     EditJobDialogComponent,
-    CustomDatePipe,
     PlanDialogComponent,
     RejectionReasonDialogComponent
   ],
@@ -84,7 +81,8 @@ import { MessageService } from "src/app/services/message.service";
     GoogleLoginComponent,
     ChangePasswordComponent,
     ChangePhoneNumberComponent,
-    ChangeLocationComponent
+    ChangeLocationComponent,
+    CustomDatePipe,
   ],
   providers: [
     EmployerService,

@@ -28,7 +28,7 @@ export class JobseekerMyReviewsComponent implements OnInit {
     if (this.jobseekerId)
       this._reviewService.getAllReviews(this.jobseekerId,undefined).subscribe({
         next: (res) => {
-          this.myReviews = res
+          this.myReviews = res.reverse()
         }
       })
   }

@@ -30,7 +30,7 @@ export class JobseekerCompanyComponent implements OnInit {
   jobs: IJobRes[] = []
   savedJobs: (string | undefined)[] = []
   appliedJobs: (string | undefined)[] = []
-  viewPage:boolean=false
+  viewPage: boolean = false
 
   constructor(private _route: ActivatedRoute,
     private _companyService: CompanyService,
@@ -57,7 +57,7 @@ export class JobseekerCompanyComponent implements OnInit {
       next: (res) => {
         this.company = res
         this.selected = 'overview'
-        this.viewPage=true
+        this.viewPage = true
       }
     })
   }
@@ -72,7 +72,7 @@ export class JobseekerCompanyComponent implements OnInit {
   }
 
   getCompanyJobs(): void {
-    this._jobService.getJobs(undefined,undefined,this.companyId).subscribe({
+    this._jobService.getJobs(undefined, undefined, this.companyId).subscribe({
       next: (res) => {
         this.jobs = res.reverse()
         this.selected = 'jobs'
@@ -105,23 +105,25 @@ export class JobseekerCompanyComponent implements OnInit {
   }
 
   applyJob(jobId: string | undefined): void {
-    if (this.jobseekerId) {
-      this._jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
+    if (jobId)
+      this._jobService.getJobDetails(jobId).subscribe({
         next: (res) => {
-          this.appliedJobs = res?.appliedJobs?.map(job => job.jobId) || [];
-          if (this.appliedJobs.includes(jobId)) {
-            this._snackBar.open('Already applied to this job', 'Close', {
-              duration: 5000,
-              verticalPosition: 'top'
-            })
-          } else {
-            this._dialog.open(ApplyJobDialogComponent, {
+          if (res.status === 'Active' && res.isBlocked === false) {
+            const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
               data: { jobId, jobseekerId: this.jobseekerId }
             })
+            dialogRef.afterClosed().subscribe(result => {
+              this.getSavedJobs()
+            })
+          } else {
+            this._snackBar.open('Job not found', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top'
+            })
+            this.getCompanyJobs()
           }
         }
       })
-    }
   }
 
   saveJob(jobId: string | undefined): void {

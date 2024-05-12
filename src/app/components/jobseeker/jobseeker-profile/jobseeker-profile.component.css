@@ -128,4 +128,14 @@ mat-icon {
         margin-top: 15px;
     }
 
+    .qualifications{
+        margin: 0;
+    }
+    .resume{
+        margin: 0;
+    }
+    button.resume-btn{
+        width:98%;
+    }
+
 }

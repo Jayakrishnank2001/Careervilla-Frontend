@@ -16,14 +16,14 @@ export class JobService {
     return this._http.post<IRes>(`${this.baseURL}/employer/addJob/${employerId}`, jobData)
   }
 
-  getJobs(page?: number, pageSize?: number, companyId?: string, searchQuery?: JobSearchQuery) {
+  getJobs(page?: number, pageSize?: number, companyId?: string, searchQuery?: JobSearchQuery,jobseekerId?:string) {
     let params = new HttpParams()
       .set('jobTitle', searchQuery?.jobTitle ?? '')
       .set('location', searchQuery?.location ?? '')
       .set('experience', searchQuery?.experience ?? '')
       .set('industryName', searchQuery?.industryName ?? '')
       .set('jobType', searchQuery?.jobType ?? '')
-    return this._http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs?companyId=${companyId}&page=${page}&pageSize=${pageSize}`, { params })
+    return this._http.get<IJobRes[]>(`${this.baseURL}/jobseeker/jobs?companyId=${companyId}&page=${page}&pageSize=${pageSize}&jobseekerId=${jobseekerId}`, { params })
   }
 
   getJobDetails(jobId: string) {

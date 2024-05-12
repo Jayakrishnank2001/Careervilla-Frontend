@@ -43,3 +43,17 @@ a{
   margin-left:20px;
 }
 
+@media screen and (max-width:600px){
+  .sign-up{
+    margin: 0;
+    justify-content: center;
+  }
+  mat-card{
+    margin-left:9px;
+  }
+  .sign-in{
+    display: none;
+  }
+  
+}
+

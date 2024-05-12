@@ -78,20 +78,23 @@ export class JobseekerMyJobsComponent implements OnInit {
   }
 
   onApplyJob(jobId: string | undefined): void {
-    this.getJobseekerDetails()
-    if (this.appliedJobsIdArray.includes(jobId)) {
-      this._snackBar.open('Already applied to this job', 'Close', {
-        duration: 5000,
-        verticalPosition: 'top'
+    if (jobId)
+      this._jobService.getJobDetails(jobId).subscribe({
+        next: (res) => {
+          if (res.status === 'Active' && res.isBlocked === false) {
+            const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
+              data: { jobId, jobseekerId: this.jobseekerId }
+            })
+            dialogRef.afterClosed().subscribe(result => {
+            })
+          } else {
+            this._snackBar.open('Job not found', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top'
+            })
+          }
+        }
       })
-    } else {
-      const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
-        data: { jobId, jobseekerId: this.jobseekerId }
-      })
-      dialogRef.afterClosed().subscribe(result => {
-        this.ngOnInit()
-      })
-    }
   }
 
   onUnsaveJob(jobId: string | undefined): void {

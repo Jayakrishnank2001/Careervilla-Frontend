@@ -52,4 +52,18 @@ mat-card-actions button.mat-large-fab1 {
     justify-content: space-between;
   }
 
+  @media screen and (max-width:600px){
+    .otp-page{
+      margin: 0;
+      justify-content: center;
+    }
+    mat-card{
+      margin-left:9px;
+    }
+    .sign-up{
+      display: none;
+    }
+   
+  }
+
   
