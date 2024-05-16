@@ -1,5 +1,5 @@
 export const environments = {
-    production: false,
+    production: true,
     baseURL: 'https://shoesstore.website/api',
     backendURL:'https://shoesstore.website',
     google_client_id: '114508694191-14tebumtbjbkbc4pqcs93b256vk31h12.apps.googleusercontent.com',
