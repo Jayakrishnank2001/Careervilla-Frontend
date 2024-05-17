@@ -10,7 +10,7 @@ export class WebSocketService {
   socket!: Socket;
 
   connectSocket(id: string): void {
-    this.socket = io('ws://localhost:3001', { query: { id } })
+    this.socket = io('wss://www.shoesstore.website', { query: { id } })
   }
 
   listen(eventName: string): Observable<any> {
