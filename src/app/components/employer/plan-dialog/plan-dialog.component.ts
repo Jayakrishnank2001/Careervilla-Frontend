@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { IEmployerRes } from 'src/app/models/employer';
-import { ISubscriptionRes } from 'src/app/models/subscriptionPlan';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmployerService } from 'src/app/services/employer.service';
 

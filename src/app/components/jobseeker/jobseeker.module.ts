@@ -109,7 +109,6 @@ import { CustomDatePipe } from "src/app/pipes/custom-date.pipe";
     JobApplicationService,
     NotificationService,
     ReviewService,
-    EmployerService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

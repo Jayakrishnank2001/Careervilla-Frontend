@@ -63,23 +63,25 @@ export class JobseekerJobDetailsComponent implements OnInit {
   }
 
   applyJob(jobId: string | undefined): void {
-    if (this.jobseekerId) {
-      this._jobseekerService.getJobseekerDetails(this.jobseekerId).subscribe({
+    if (jobId)
+      this._jobService.getJobDetails(jobId).subscribe({
         next: (res) => {
-          this.appliedJobs = res?.appliedJobs?.map(job => job.jobId) || [];
-          if (this.appliedJobs.includes(jobId)) {
-            this._snackBar.open('Already applied to this job', 'Close', {
-              duration: 5000,
-              verticalPosition: 'top'
-            })
-          } else {
-            this._dialog.open(ApplyJobDialogComponent, {
+          if (res.status === 'Active' && res.isBlocked === false) {
+            const dialogRef = this._dialog.open(ApplyJobDialogComponent, {
               data: { jobId, jobseekerId: this.jobseekerId }
             })
+            dialogRef.afterClosed().subscribe(result => {
+              this.getAppliedJobs()
+            })
+          } else {
+            this._snackBar.open('Job not found', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top'
+            })
+            this.getJobDetails()
           }
         }
       })
-    }
   }
 
   reportJob(jobTitle: string | undefined, companyName: string | undefined): void {

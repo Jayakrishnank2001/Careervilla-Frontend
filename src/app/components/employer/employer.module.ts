@@ -88,7 +88,6 @@ import { JobseekerService } from "src/app/services/jobseeker.service";
     EmployerService,
     JobApplicationService,
     NotificationService,
-    JobseekerService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

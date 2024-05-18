@@ -86,6 +86,9 @@ export class JobseekerMyJobsComponent implements OnInit {
               data: { jobId, jobseekerId: this.jobseekerId }
             })
             dialogRef.afterClosed().subscribe(result => {
+              this.getSavedJobs(this.jobseekerId)
+              this.getAppliedJobs(this.jobseekerId)
+              this.isSavedJobs = false
             })
           } else {
             this._snackBar.open('Job not found', 'Close', {

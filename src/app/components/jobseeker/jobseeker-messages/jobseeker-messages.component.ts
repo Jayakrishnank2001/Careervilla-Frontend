@@ -15,6 +15,7 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './jobseeker-messages.component.html',
   styleUrls: ['./jobseeker-messages.component.css']
 })
+
 export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('chatContainer') chatContainer!: ElementRef<HTMLDivElement>;
 
@@ -31,7 +32,6 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewC
     @Inject(FormBuilder) private _fb: FormBuilder,
     @Inject(AuthService) private _authService: AuthService,
     @Inject(WebSocketService) private _socketService: WebSocketService,
-    @Inject(EmployerService) private _employerService: EmployerService,
     @Inject(MessageService) private _messageService: MessageService) {
 
     this.jobseekerId = this._authService.extractUserIdFromToken('jobseekerToken')
@@ -67,7 +67,7 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewC
 
   getMessages(employerId: string | null): void {
     if (this.jobseekerId && employerId) {
-      this.getEmployerDetails(employerId)
+      this.getReceiverDetails(employerId)
       this._messageService.getMessages(this.jobseekerId, employerId, 'jobseeker').subscribe({
         next: (res) => {
           this.messages = res
@@ -84,10 +84,10 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewC
 
 
   sendMessage(): void {
-    const message = this.form.getRawValue()
+    let message = this.form.getRawValue()
     const messageData = { senderId: this.jobseekerId, receiverId: this.employerId, message: message.message }
     this._socketService.emit('send-message', messageData);
-    this.form.reset()
+    this.form.get('message')!.setValue('');
     if (this.jobseekerId && this.employerId)
       this.messages.push({ senderId: this.jobseekerId, receiverId: this.employerId, message: message.message })
     this.getMessages(this.employerId)
@@ -100,12 +100,13 @@ export class JobseekerMessagesComponent implements OnInit, OnDestroy, AfterViewC
       this._messageService.getAllChats(this.jobseekerId, 'jobseeker').subscribe({
         next: (res) => {
           this.chats = res.reverse()
+          console.log(this.chats)
         }
       })
   }
 
-  getEmployerDetails(employerId: string): void {
-    this._employerService.getEmployerDetails(employerId).subscribe({
+  getReceiverDetails(employerId: string): void {
+    this._messageService.getEmployerAsReceiver(employerId,'jobseeker').subscribe({
       next: (res) => {
         this.employerDetails = res
         this.employerId = res._id || null

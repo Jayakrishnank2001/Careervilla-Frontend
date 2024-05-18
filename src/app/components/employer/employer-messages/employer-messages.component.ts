@@ -31,7 +31,6 @@ export class EmployerMessagesComponent implements OnInit,OnDestroy,AfterViewChec
     @Inject(WebSocketService) private _socketService: WebSocketService,
     @Inject(AuthService) private _authService: AuthService,
     @Inject(FormBuilder) private _fb: FormBuilder,
-    @Inject(JobseekerService) private _jobseekerService: JobseekerService,
     @Inject(MessageService) private _messageService: MessageService) { 
     
       this.employerId = this._authService.extractUserIdFromToken('employerToken')
@@ -68,7 +67,7 @@ export class EmployerMessagesComponent implements OnInit,OnDestroy,AfterViewChec
 
   getMessages(jobseekerId: string | null): void {
     if (jobseekerId && this.employerId) {
-      this.getJobseekerDetails(jobseekerId)
+      this.getReceiverDetails(jobseekerId)
       this._messageService.getMessages(this.employerId, jobseekerId, 'employer').subscribe({
         next: (res) => {
           this.messages = res
@@ -87,7 +86,7 @@ export class EmployerMessagesComponent implements OnInit,OnDestroy,AfterViewChec
     const message = this.form.getRawValue()
     const messageData = { senderId: this.employerId, receiverId: this.jobseekerId, message: message.message }
     this._socketService.emit('send-message', messageData);
-    this.form.reset()
+    this.form.get('message')!.setValue('');
     if (this.jobseekerId && this.employerId)
       this.messages.push({ senderId: this.employerId, receiverId: this.jobseekerId, message: message.message })
     this.getMessages(this.jobseekerId)
@@ -104,8 +103,8 @@ export class EmployerMessagesComponent implements OnInit,OnDestroy,AfterViewChec
       })
   }
 
-  getJobseekerDetails(jobseekerId: string): void {
-    this._jobseekerService.getJobseekerDetails(jobseekerId).subscribe({
+  getReceiverDetails(jobseekerId: string): void {
+    this._messageService.getJobseekerAsReceiver(jobseekerId,'employer').subscribe({
       next: (res) => {
         this.jobseekerDetails = res
         this.jobseekerId=res._id || null
