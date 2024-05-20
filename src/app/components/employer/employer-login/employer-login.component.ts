@@ -1,5 +1,5 @@
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -17,7 +17,7 @@ import { saveEmployerOnStore } from 'src/app/states/employer/employer.actions';
   styleUrls: ['./employer-login.component.css'],
 })
 
-export class EmployerLoginComponent implements OnInit, OnDestroy {
+export class EmployerLoginComponent implements OnInit, OnDestroy,AfterViewInit {
 
   isSubmitted: boolean = false
   form!: FormGroup
@@ -41,19 +41,20 @@ export class EmployerLoginComponent implements OnInit, OnDestroy {
       email: ['', [validateByTrimming(emailValidators)]],
       password: ['', [validateByTrimming(passwordValidators)]]
     })
-    this.authenticateUser()
   }
 
-  authenticateUser(): void {
+  ngAfterViewInit(): void {
     this.authSubscription = this.socialAuthService.authState.subscribe((user) => {
       this.employerService.googleLogin(user.email, user.firstName, user.photoUrl).subscribe({
         next: (res: IEmployerAuthResponse) => {
           if (res.data.success) {
             const jwtToken = res.data.token
-            console.log(jwtToken)
             if (jwtToken) {
               this.authService.setToken('employerToken', jwtToken)
             }
+            setTimeout(() => {
+              window.location.reload()
+            })
             void this.router.navigate(['/employer/home'])
             if (res.data.data !== null) {
               this.store.dispatch(saveEmployerOnStore({employerDetails:res.data.data}))
