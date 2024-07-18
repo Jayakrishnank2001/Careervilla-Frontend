@@ -10,7 +10,7 @@ export class WebSocketService {
   socket!: Socket;
 
   connectSocket(id: string): void {
-    this.socket = io('wss://shoesstore.website', { query: { id } })
+    this.socket = io('wss://careervilla-backend.onrender.com', { query: { id } })
     // this.socket = io('ws://localhost:3000', { query: { id } })
   }
 

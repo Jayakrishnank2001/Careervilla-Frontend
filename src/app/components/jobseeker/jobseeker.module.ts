@@ -42,7 +42,6 @@ import { ReviewService } from "src/app/services/review.service";
 import { JobseekerJobDetailsComponent } from './jobseeker-job-details/jobseeker-job-details.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FormsModule } from "@angular/forms";
-import { EmployerService } from "src/app/services/employer.service";
 import { RecentWorkDialogComponent } from './recent-work-dialog/recent-work-dialog.component';
 import { HighestEducationDialogComponent } from './highest-education-dialog/highest-education-dialog.component';
 import { AddSkillsDialogComponent } from './add-skills-dialog/add-skills-dialog.component';

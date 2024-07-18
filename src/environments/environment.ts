@@ -1,7 +1,7 @@
 export const environments = {
     production: false,
-    baseURL: 'https://shoesstore.website/api',
-    backendURL:'https://shoesstore.website',
+    baseURL: 'https://careervilla-backend.onrender.com/api',
+    backendURL:'https://careervilla-backend.onrender.com',
     // baseURL: 'http://localhost:3000/api',
     // backendURL:'http://localhost:3000',
     google_client_id: '114508694191-14tebumtbjbkbc4pqcs93b256vk31h12.apps.googleusercontent.com',
